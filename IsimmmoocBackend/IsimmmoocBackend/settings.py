@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Isimmmooc_App',
-    'Isimmmooc_Users'
+    'Isimmmooc_Users',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
