@@ -12,12 +12,11 @@ class FormateurAdmin(admin.ModelAdmin):
     '''Admin View for Formateur'''
     list_display = ('name',)
 
-@admin.register(Comite)
+'''@admin.register(Comite)
 class ComiteAdmin(admin.ModelAdmin):
-    '''Admin View for Comite'''
-    list_display = ('name',)
+    list_display = ('nom',)'''
 
 @admin.register(Organisme)
 class OrganismeAdmin(admin.ModelAdmin):
     '''Admin View for Organisme'''
-    list_display = ('name',)
+    list_display = ('name','email',"phone_number")

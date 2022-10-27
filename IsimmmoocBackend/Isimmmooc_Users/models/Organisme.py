@@ -14,12 +14,6 @@ class Organisme(models.Model):
    #Metadata
    class Meta :
        ordering = ['-name']
-       ordering = ['-categorie_cours']
-       ordering = ['-email']
-       ordering = ['-phone_number']
-       ordering = ['-password']
-       ordering = ['-site_web']
-       ordering = ['-file_exist']
 
    #Methods
 

@@ -32,6 +32,7 @@ VI) Dependences et modules :
 
     1-pip install django-phonenumbers  
     2-pip install django-phonenumber-field
+	
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
 ##DataBase
 I) Mot clé :
