@@ -2,7 +2,15 @@ from unittest.util import _MAX_LENGTH
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+class Comite (models.Model):
+    first_name=models.CharField(max_length=255,null=False,default="Comite first name")
+    last_name=models.CharField(max_length=255,null=False,default="Comite last name")
+    grade=models.CharField(max_length=255,null=False,blank=True)
+    department=models.CharField(max_length=255,null=False,default="Comite Department")
+    email=models.EmailField(max_length=255,null=False,blank=True,unique=True)
+    phone_number=PhoneNumberField(max_length=12,null=False, blank=False,unique=True,default="")
 
+<<<<<<< HEAD
 # Create your models here.
 
 class Comite(models.Model):
@@ -30,6 +38,16 @@ class Comite(models.Model):
     ordering = ['-Email']
     ordering = ['-phone']
 
+=======
+   #Methods
+    class Meta :
+        ordering = ['-first_name']
+        ordering = ['-last_name']
+        ordering = ['-grade']
+        ordering = ['-department']
+        ordering = ['-email']
+        ordering = ['-phone_number']
+>>>>>>> a0d0d785703d030782d4c4b89199564ecea3c649
 
     def __str__(self):
-       return self.name
+       return self.first_name + self.last_name
