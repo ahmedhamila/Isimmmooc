@@ -6,7 +6,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 class Comite(models.Model):
-    nom=models.CharField(max_length=18,null=False,blank=True)
+    name=models.CharField(max_length=18,null=False,blank=True)
     prenom=models.CharField(max_length=18,null=False,blank=True)
     grade=models.CharField(max_length=12,null=False,blank=True)
     departement=models.CharField(max_length=12,null=False,blank=True)
@@ -22,7 +22,7 @@ class Comite(models.Model):
             )
         
     ]
-    ordering = ['-nom']
+    ordering = ['-name']
     ordering = ['-prenom']
     ordering = ['-grade']
     ordering = ['-departement']

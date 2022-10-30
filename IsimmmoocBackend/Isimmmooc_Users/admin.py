@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Apprenant,Formateur,Comite,Organisme
+from .models import Apprenant,Formateur,Comite,Organisme,PreFormateur
 # Register your models here.
 @admin.register(Apprenant)
 class ApprenantAdmin(admin.ModelAdmin):
@@ -9,6 +9,10 @@ class ApprenantAdmin(admin.ModelAdmin):
 
 @admin.register(Formateur)
 class FormateurAdmin(admin.ModelAdmin):
+    '''Admin View for Formateur'''
+    list_display = ('name',)
+@admin.register(PreFormateur)
+class PreFormateurAdmin(admin.ModelAdmin):
     '''Admin View for Formateur'''
     list_display = ('name',)
 
