@@ -10,7 +10,7 @@ class Question (models.Model):
             MinValueValidator(1)
         ],null=False)
 
-    chapitre = models.ForeignKey('Isimmmooc_App.Chapitre', null=False, on_delete=models.CASCADE,default="")
+    chapitre = models.OneToOneField('Isimmmooc_App.Chapitre', null=False, on_delete=models.CASCADE,default="")
 
     class QuestionType(models.TextChoices):
         ONE_CHOICE = 'OC', ('One_Choice')
