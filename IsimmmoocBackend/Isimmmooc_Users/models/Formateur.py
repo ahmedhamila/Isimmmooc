@@ -3,11 +3,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 from datetime import datetime
 class Formateur (models.Model):
     first_name = models.CharField(max_length=20, help_text='Nom de Formateur')
-    last_name = models.CharField(max_length=30, null=False, blank=False )
-    date_of_birth = models.DateField(null=False, blank=False,default=datetime.now )
-    mail = models.EmailField(null=False, blank=False,default=datetime.now )
-    phone_number = PhoneNumberField(null=False, blank=False,default="" )
-    cv = models.FileField(null=False, blank=False)
+    last_name = models.CharField(max_length=30, null=False, blank=True, )
+    date_of_birth = models.DateField(null=False, blank=True,default=datetime.now )
+    mail = models.EmailField(null=False, blank=True,default="" )
+    phone_number = PhoneNumberField(null=False, blank=True,default="" )
+    cv = models.FileField(null=False, blank=True)
     organisme = models.ForeignKey('Isimmmooc_Users.Organisme', null=True,default="",on_delete=models.CASCADE)
 
     class Meta :

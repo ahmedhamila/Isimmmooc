@@ -47,6 +47,8 @@ VI) Dependences et modules :
 
     1-pip install django-phonenumbers  
     2-pip install django-phonenumber-field
+	3-pip install djangorestframework
+	4-pip install django-rest-swagger
 	
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
 ##DataBase
