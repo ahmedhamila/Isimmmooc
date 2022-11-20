@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 from django.contrib import admin
-from .models import Apprenant,Formateur,Comite,Organisme,PreFormateur
+from .models import Apprenant,Formateur,Comite,Organisme,PreFormateur,preOrganisme
 # Register your models here.
 @admin.register(Apprenant)
 class ApprenantAdmin(admin.ModelAdmin):
@@ -26,6 +26,10 @@ class ComiteAdmin(admin.ModelAdmin):
 class OrganismeAdmin(admin.ModelAdmin):
     '''Admin View for Organisme'''
     list_display = ('name',)
+@admin.register(preOrganisme)
+class preOrganismeAdmin(admin.ModelAdmin):
+    '''Admin View for preOrganisme'''
+    list_display = ('name',)    
 =======
 
 

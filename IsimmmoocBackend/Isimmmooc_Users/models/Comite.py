@@ -5,9 +5,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Comite (models.Model):
     first_name=models.CharField(max_length=255,null=False,default="Comite first name")
     last_name=models.CharField(max_length=255,null=False,default="Comite last name")
-    grade=models.CharField(max_length=255,null=False,blank=True)
+    grade=models.CharField(max_length=255,null=False,blank=False)
     department=models.CharField(max_length=255,null=False,default="Comite Department")
-    email=models.EmailField(max_length=255,null=False,blank=True,unique=True)
+    email=models.EmailField(max_length=255,null=False,blank=False,unique=True)
     phone_number=PhoneNumberField(max_length=12,null=False, blank=False,unique=True,default="")
 
    #Methods
