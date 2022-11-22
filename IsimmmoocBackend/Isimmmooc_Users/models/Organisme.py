@@ -6,7 +6,7 @@ class Organisme(models.Model):
     email=models.EmailField(max_length = 200,null=False,blank=True, help_text='Email de l Organisme')
     phone_number = PhoneNumberField(null=False,blank=True, help_text='Numero de telephone de l Organisme')
     web_site=models.URLField(max_length=200,null=False,blank=True, help_text='Web Site de l Organisme')
-    file_exist=models.FileField(null=False,blank=True, help_text='File Exist de l Organisme')
+    file_exist=models.FileField(null=False,blank=True,upload_to='Uploaded_files/Organisme_files', help_text='File Exist de l Organisme')
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=False,default=None)
     #Metadata
     class Meta :
