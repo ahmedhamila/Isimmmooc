@@ -3,7 +3,7 @@ from .Question import Question
 
 class Answer (models.Model):
     answer_text = models.CharField(max_length=2000, help_text='Answer Text')
-    question = models.ForeignKey('Isimmmooc_App.Question', null=False, on_delete=models.CASCADE,default="")
+    question = models.ForeignKey('Isimmmooc_App.Question', null=False, on_delete=models.CASCADE,default=None, help_text='Question relative')
     
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
 
