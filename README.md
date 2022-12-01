@@ -30,14 +30,14 @@ II) Installation & Configuration
 	2- Vous pouvez télecharger l'éditeur pycharm (Cette etape est optionnelle)
 		lien :https://www.jetbrains.com/fr-fr/pycharm/
 
-    6- Tapez la commande suivante pour installer Django
+    3- Tapez la commande suivante pour installer Django
 		commande : pip install django
 
-	7- Tapez les commandes suivantes pour faire les migrations de données:
+	4- Tapez les commandes suivantes pour faire les migrations de données:
 	    commande : a) python manage.py makemigrations
 	               b) python manage.py migrate
 
-	8- Tapez la commande suivante pour crée le super user du projet
+	5- Tapez la commande suivante pour crée le super user du projet
 		commande : python manage.py createsuperuser
 
 III) Démarrage de l'application
@@ -49,6 +49,31 @@ VI) Dependences et modules :
     2-pip install django-phonenumber-field
 	3-pip install djangorestframework
 	4-pip install django-rest-swagger
+	
+---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
+
+##Front-End
+
+I) Mot clé :
+	1- Languages : JavaScript
+	2- Frameworks : React
+
+II) Installation & Configuration
+	1- Installer Node
+		version : v18.10.0
+		build : 64 bits
+		site web : https://nodejs.org/
+
+	2- Vous pouvez télecharger l'éditeur VsCode (Cette etape est optionnelle)
+		lien :https://code.visualstudio.com/
+
+III) Démarrage de l'application
+	1- Afin de démarrer l'application en locale juste tapez la commande suivante :
+		commande : npm start
+
+VI) Dependences et modules :
+
+    
 	
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
 ##DataBase
