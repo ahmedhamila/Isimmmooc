@@ -1,0 +1,24 @@
+.NavBar{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%);
+}
+
+.DrawerBox{
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%);
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex : 1 1 0px;
+
+    .DrawerList{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        flex : 1 1 0px;
+
+    }
+}
+
