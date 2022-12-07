@@ -31,7 +31,7 @@ const themes={
     color:'#fff',
     "&:hover" : {
       backgroundColor : '#fff',
-      color: '#453D80'  ,
+      color: '#FF7468'  ,
     }
   },
   ThemeTransparent:{
@@ -44,7 +44,8 @@ function ThemedButton(props) {
         theme,
         sx,
         variant,
-        value
+        value,
+        size
     } = props
    
     if(theme){
@@ -61,7 +62,7 @@ function ThemedButton(props) {
     }
 
   return (
-    <Button  variant={variant} sx={sx}>
+    <Button size={size} variant={variant} sx={sx}>
         {value}
     </Button>
   )
