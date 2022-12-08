@@ -4,13 +4,9 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import HomeIcon from '@mui/icons-material/Home';
+
+import ThemedButton from '../Buttons/ThemedButton/ThemedButton';
 
 import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
@@ -19,19 +15,16 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import {Pages} from '../../Data'
+
 
 import './NavBar.scss'
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 
 const drawerWidth = 240;
 
 function NavBar(props) {
     const { window } = props;
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const pages=Pages.PagesArray
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const container = window !== undefined ? () => window().document.body : undefined;
@@ -40,12 +33,12 @@ function NavBar(props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box className='DrawerBox' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Isimmmooc
       </Typography>
       <Divider />
-      <List>
+      <List className='DrawerList'>
         {pages.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
@@ -53,37 +46,37 @@ function NavBar(props) {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem  >
+          <ThemedButton 
+          variant='text' 
+          value='Log in'
+          sx={{ width:'100%'}}
+          theme='ThemeSecondaryEmpty'
+          />
+                 
+        </ListItem>
+        <ListItem>
+        <ThemedButton 
+          variant='text' 
+          value='Sign up'
+          sx={{ width:'100%'}}
+          theme='ThemeSecondaryEmpty'
+          />
+        </ListItem>
       </List>
     </Box>
   );
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
-    <div className='NavBar'>
-    <AppBar position="fixed">
+    <AppBar position="fixed" className='NavBar'>
         <Container maxWidth="xl">
             <Toolbar disableGutters>
-            <HomeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <IconButton
+                sx={{ mr: 2, display: { xs: 'block', sm: 'none' } }}
                 color="inherit"
                 aria-label="open drawer"
                 edge="start"
                 onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { sm: 'none' } }}
                 >
                 <MenuIcon />
             </IconButton>
@@ -94,7 +87,7 @@ function NavBar(props) {
                 href="/"
                 sx={{
                 mr: 2,
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', sm: 'flex' },
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
@@ -104,11 +97,11 @@ function NavBar(props) {
             >
                 Isimmmooc
             </Typography>
-
+              {/* Draxer Box*/}
             <Box component="nav">
                 <Drawer
                 container={container}
-                variant="temporary"
+                variant='temporary'
                 open={mobileOpen}
                 onClose={handleDrawerToggle}
                 ModalProps={{
@@ -122,8 +115,8 @@ function NavBar(props) {
                 {drawer}
                 </Drawer>
             </Box>
-            
-            <HomeIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+            {/* ////////////////////////////////////// */}
+            {/* Title display on resize */}
             <Typography
                 variant="h5"
                 noWrap
@@ -131,7 +124,7 @@ function NavBar(props) {
                 href=""
                 sx={{
                 mr: 2,
-                display: { xs: 'flex', md: 'none' },
+                display: { xs: 'flex', sm: 'none' },
                 flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
@@ -142,52 +135,40 @@ function NavBar(props) {
             >
                 Isimmmooc
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                {pages.map((page) => (
-                <Button
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                    {page}
-                </Button>
+            {/* ////////////////////////////////////// */}
+            {/* Pages List */}
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }}}>
+                {pages.map((page,index) => (
+                <ThemedButton
+                    key={index}
+                    sx={{ my: 2, color: 'white', display: 'block', }}
+                    value={page}
+                />
                 ))}
             </Box>
-
-            <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-                </Tooltip>
-                <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-                >
-                {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                ))}
-                </Menu>
+            {/* ////////////////////////////////////// */}
+            {/* Authentifation Buttons */}
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, justifyContent:'flex-end'} }>
+                
+                <ThemedButton 
+                variant='text' 
+                sx={{ my: 2 , mx:2 }}
+                value='Log in'
+                theme='ThemeTransparent'
+                />
+                <ThemedButton 
+                variant='contained'
+                sx={{
+                  my: 2, borderRadius : '3px'
+                  }}
+                  theme='ThemeSecondaryEmpty'
+                  value='Sign up'
+                  />
             </Box>
+            {/* ////////////////////////////////////// */}
             </Toolbar>
         </Container>
         </AppBar>
-    </div>
-    
   );
 }
 export default NavBar;

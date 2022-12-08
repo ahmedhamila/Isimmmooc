@@ -1,0 +1,43 @@
+.HeroSectionTopPart{
+    padding-top: 15px;
+    margin-top: 50px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: row;
+    background: rgb(2,0,36);
+    padding: 25px;
+    color: white;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%);
+    .HeroContent{
+       padding-bottom: 10%;
+    }
+    .HeroImage{
+        
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .HeroSectionBottomPart{
+        
+    }
+}
+
+.Item{
+    border-radius: 10px;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    .ItemIcon{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+}
