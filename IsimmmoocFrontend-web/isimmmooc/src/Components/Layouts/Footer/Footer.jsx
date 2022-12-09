@@ -243,15 +243,15 @@ const Footer = ({ setValue, setSelectedIndex }) => {
             </Grid> 
           </Grid>  
         <Grid container direction="column">
-          <Grid container justify="space-between">
+          <Grid container justifyContent="space-between">
               <Grid
                 item
-                component={"a"}
+                
                 target="_blank"
                 rel="noreferrer noopener"
               >
                 <Typography className={classes.copylight}>
-                &copy;Copyright Isimmmooc {new Date().getFullYear()} 
+                &copy; Copyright Isimmmooc,Inc {new Date().getFullYear()} 
                 </Typography>
               </Grid>
               <Grid>
