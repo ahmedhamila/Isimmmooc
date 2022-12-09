@@ -1,0 +1,52 @@
+.Footer{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%);
+    width : 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1302;
+    padding: 20px 0;
+    justify-content: space-between;
+}
+
+.FooterContainer{
+    position: relative;
+    z-index: 10;
+    justify-content: space-between;
+}
+.FooterLink{
+    text-decoration: none;
+    color: #fff;
+}
+
+.GridItem{
+    margin: 2.25em !important;
+}
+.FooterIcon{
+    width: 40px !important;
+    height: 40px !important;
+    color: white;
+    margin:10px;
+}
+
+.CopyRightContainer{
+    position: relative;
+    z-index: 50;
+    margin: 30px 10px;
+}
+
+.CopyRight{
+    color: #fff;
+    text-decoration: none;
+    font-size: 2.5rem;
+    font-family: Impact;
+}
+
+.CopyLight{
+    color: #fff;
+    text-decoration: none;
+    font-size: 15;
+    font-family:Arial;
+    text-align:center;
+    
+    margin-top:50;
+}

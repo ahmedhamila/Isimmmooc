@@ -41,13 +41,14 @@ const themes={
 }
 function ThemedButton(props) {
     const {
+        onClick,
         theme,
         sx,
         variant,
         value,
         size
     } = props
-    
+    console.log(onClick)
     if(theme){
       if(themes[theme])
       {
@@ -62,7 +63,7 @@ function ThemedButton(props) {
     }
 
   return (
-    <Button size={size} variant={variant} sx={sx}>
+    <Button  size={size} variant={variant} sx={sx}>
         {value}
     </Button>
   )

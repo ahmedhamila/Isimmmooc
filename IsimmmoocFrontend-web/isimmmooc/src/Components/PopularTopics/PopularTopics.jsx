@@ -6,7 +6,7 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import ComputerIcon from '@mui/icons-material/Computer';
 import StoreIcon from '@mui/icons-material/Store';
 import VideocamIcon from '@mui/icons-material/Videocam';
-import ThemedButton from '../Buttons/ThemedButton/ThemedButton';
+import {Button} from '@mui/material';
 function PopularTopics() {
   return (
     <div className='PopularTopics'>
@@ -114,13 +114,22 @@ function PopularTopics() {
             alignItems='center'
             justifyContent='center'
             className='PopularTopicsButton'>
-                <ThemedButton 
+                <Button
                 variant='text' 
-                value='Browse All'
-                sx={{}}
-                theme='ThemeSecondaryFilled'
+                sx={{
+                    backgroundColor:'#FF7468',
+                    color:'#fff',
+                    "&:hover" : {
+                      backgroundColor : '#fff',
+                      color: '#FF7468'  ,
+                    }
+                  }}
                 size="large"
-                />
+                >
+                    Browse All 
+                </Button> 
+                
+                
             </Grid>
         </Grid>
     </div>

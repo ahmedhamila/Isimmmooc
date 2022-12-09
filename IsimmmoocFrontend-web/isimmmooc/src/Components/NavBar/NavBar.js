@@ -5,8 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { Button } from '@mui/material';
 
-import ThemedButton from '../Buttons/ThemedButton/ThemedButton';
 
 import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
@@ -16,21 +16,27 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import {Pages} from '../../Data'
-
+import { useNavigate } from "react-router-dom";
 
 import './NavBar.scss'
 
 const drawerWidth = 240;
 
 function NavBar(props) {
-    const { window } = props;
-    const pages=Pages.PagesArray
-
+  const { window } = props;
+  const pages=Pages.PagesArray
+  const navigate=useNavigate()
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const container = window !== undefined ? () => window().document.body : undefined;
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const signUpClickHandle = ()=>{
+    console.log("eeeeeeee")
+    navigate("/SignUp")
+  }
 
   const drawer = (
     <Box className='DrawerBox' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -47,21 +53,39 @@ function NavBar(props) {
           </ListItem>
         ))}
         <ListItem  >
-          <ThemedButton 
+          <Button 
           variant='text' 
-          value='Log in'
-          sx={{ width:'100%'}}
-          theme='ThemeSecondaryEmpty'
-          />
+          sx={{
+            backgroundColor:'#fff',
+            color:'#FF7468',
+            "&:hover" : {
+              backgroundColor : '#FF7468',
+              color: '#fff'  ,
+            },
+            width:'100%'
+          }}
+          >
+            Log in
+          </Button>
                  
         </ListItem>
         <ListItem>
-        <ThemedButton 
-          variant='text' 
-          value='Sign up'
-          sx={{ width:'100%'}}
-          theme='ThemeSecondaryEmpty'
-          />
+        <Button
+        variant='text' 
+        sx={{
+          backgroundColor:'#fff',
+          color:'#FF7468',
+          "&:hover" : {
+            backgroundColor : '#FF7468',
+            color: '#fff'  ,
+          },
+          width:'100%'
+        }}
+        onClick={signUpClickHandle}
+        >
+          Sign up
+        </Button>
+
         </ListItem>
       </List>
     </Box>
@@ -139,31 +163,50 @@ function NavBar(props) {
             {/* Pages List */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }}}>
                 {pages.map((page,index) => (
-                <ThemedButton
-                    key={index}
-                    sx={{ my: 2, color: 'white', display: 'block', }}
-                    value={page}
-                />
+                <Button
+                key={index}
+                sx={{ mx:1,my: 2, color: 'white', display: 'block', }}
+                >
+                  {page}
+                </Button>
+                    
+                
                 ))}
             </Box>
             {/* ////////////////////////////////////// */}
             {/* Authentifation Buttons */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, justifyContent:'flex-end'} }>
                 
-                <ThemedButton 
+                <Button
                 variant='text' 
-                sx={{ my: 2 , mx:2 }}
-                value='Log in'
-                theme='ThemeTransparent'
-                />
-                <ThemedButton 
+                sx={{
+                  backgroundColor:'transparent',
+                  color:'#fff',
+                  my: 2 , 
+                  mx:2
+                }}
+                >
+                  Log in
+                </Button>
+                 
+                <Button 
                 variant='contained'
                 sx={{
-                  my: 2, borderRadius : '3px'
-                  }}
-                  theme='ThemeSecondaryEmpty'
-                  value='Sign up'
-                  />
+                  backgroundColor:'#fff',
+                  color:'#FF7468',
+                  "&:hover" : {
+                    backgroundColor : '#FF7468',
+                    color: '#fff'  ,
+                  },
+                  my: 2, 
+                  borderRadius : '3px'
+                }}
+                onClick={signUpClickHandle}
+                >
+                  Sign up
+                </Button >
+                
+            
             </Box>
             {/* ////////////////////////////////////// */}
             </Toolbar>

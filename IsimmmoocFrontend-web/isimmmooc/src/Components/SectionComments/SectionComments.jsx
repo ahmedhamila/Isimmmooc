@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { makeStyles, useTheme, createTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Paper from '@mui/material/Paper';
 
 import './SectionComments.scss'

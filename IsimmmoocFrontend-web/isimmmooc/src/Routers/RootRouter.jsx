@@ -9,6 +9,8 @@ function RootRouter() {
     <BrowserRouter>
         <Routes>
             <Route exact path='/' element={<HomeSpace />}/>
+            <Route exact path='/SignUp' element={<div> <h1>Helooooo</h1></div>}/>
+            
         </Routes>
     </BrowserRouter>
   )

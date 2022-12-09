@@ -1,17 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-//make styles
-import { makeStyles, useTheme, createTheme } from "@material-ui/core/styles";
 
-import Container from "@material-ui/core/Container";
+import { Grid,Container } from "@mui/material";
 
-//grid
-import Grid from "@material-ui/core/Grid";
-
-//mediaquery
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Typography from '@material-ui/core/Typography';
+import {Typography} from "@mui/material";
 //sns icon
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
@@ -22,74 +15,15 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailIcon from '@mui/icons-material/Mail';
 import LanguageIcon from '@mui/icons-material/Language';
 
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    background: 'rgb(2,0,36)',
-    background: 'linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%)',
-    width: `100%`,
-    position: "relative",
-    overflow: "hidden",
-    zIndex: 1302,
-    padding: "20px 0",
-    justifyContent: 'space-between',
-  },
-  footerContainer: {
-    position: "relative",
-    zIndex: 10,
-    justifyContent: 'space-between',
-  },
-  footerLink: {
-    textDecoration: "none",
-    color: "#fff",
+import './Footer.scss'
 
-  },
-  gridItem: {
-    margin: "2.25em",
-    [theme.breakpoints.down("sm")]: {
-      margin: "0.5em",
-    },
-  },
-  snsIcon: {
-    width: "40px",
-    height: "40px",
-    color: "white",
-    margin: "10px",
-    [theme.breakpoints.down("xs")]: {
-      width: "30px",
-      height: "30px",
-    },
-  },
-  copyRightContainer: {
-    position: "relative",
-    zIndex: 50,
-    margin: "30px 10px ",
-  },
-  copyRight: {
-    color: "#fff",
-    textDecoration: "none",
-    fontSize: 30,
-    fontFamily:"Impact",
-  },
-  copylight:{
-    color: "#fff",
-    textDecoration: "none",
-    fontSize: 15,
-    fontFamily:"Arial",
-    textAlign:"center",
-    
-    marginTop:50,
-  },
-}));
 
 const Footer = ({ setValue, setSelectedIndex }) => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const matchesSM = useMediaQuery(theme.breakpoints.down("sm"));
   return (
-    <footer className={classes.footer}>
+    <footer className='Footer'>
       <Container maxWidth="lg">
-        <div className={classes.copyRightContainer}>
-          <a href="#" className={classes.copyRight}>
+        <div className='CopyRightContainer'>
+          <a href="/" className='CopyRight'>
             Isimmmooc
           </a>
           <p style={{
@@ -102,21 +36,20 @@ const Footer = ({ setValue, setSelectedIndex }) => {
 
         <Grid
           container
-          direction={matchesSM ? "column" : "row"}
-          justify="center"
-          className={classes.footerContainer}
+          direction={{xs:'column',sm:'column', md: 'column',lg:'row'}}
+          className='FooterContainer'
         >
-          <Grid item className={classes.gridItem}>
+          <Grid item className='GridItem'>
             <Grid container direction="column" spacing={3}>
               <h4
                 item
-                className={classes.footerLink}
+                className='FooterLink'
               >
                 About Us
               </h4>
               <Grid
                 item
-                className={classes.footerLink}
+                className='FooterLink'
                 component={Link}
                 to="/custom-software"
                 onClick={() => {
@@ -128,7 +61,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
               </Grid>
               <Grid
                 item
-                className={classes.footerLink}
+                className='FooterLink'
                 component={Link}
                 to="/mobile-apps"
                 onClick={() => {
@@ -140,7 +73,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
               </Grid>
               <Grid
                 item
-                className={classes.footerLink}
+                className='FooterLink'
                 component={Link}
                 to="/web-sites"
                 onClick={() => {
@@ -152,18 +85,18 @@ const Footer = ({ setValue, setSelectedIndex }) => {
               </Grid> 
             </Grid>
           </Grid>
-          <Grid item className={classes.gridItem}>
+          <Grid item className='GridItem'>
               <Grid container direction="column" spacing={3}>
                 <h4
                   item
-                  className={classes.footerLink}
+                  className='FooterLink'
                   
                 >
                   Helpful Links
                 </h4>
                 <Grid
                   item
-                  className={classes.footerLink}
+                  className='FooterLink'
                   component={Link}
                   to="/revolution"
                   onClick={() => setValue(2)}
@@ -172,7 +105,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 </Grid>
                 <Grid
                   item
-                  className={classes.footerLink}
+                  className='FooterLink'
                   component={Link}
                   to="/revolution"
                   onClick={() => setValue(2)}
@@ -181,7 +114,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 </Grid>
                 <Grid
                   item
-                  className={classes.footerLink}
+                  className='FooterLink'
                   component={Link}
                   to="/revolution"
                   onClick={() => setValue(2)}
@@ -190,11 +123,11 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item className={classes.gridItem}>
+            <Grid item className='GridItem'>
               <Grid container direction="column" spacing={3}>
                 <h4
                   item
-                  className={classes.footerLink}
+                  className='FooterLink'
                 >
                   Contact Us
                 </h4>
@@ -204,7 +137,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                   flexWrap: 'wrap',
                   
                 }}>
-                  <LocationOnIcon className={classes.snsIcon}/>
+                  <LocationOnIcon className='FooterIcon'/>
                   <span style={{
                   color: '#fff',              
                   }}>20 Avenue de la Corniche, Monastir, Tunisia, 5000</span>
@@ -214,7 +147,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                   alignItems: 'center',
                   flexWrap: 'wrap',
                 }}>
-                  <MailIcon className={classes.snsIcon}/>
+                  <MailIcon className='FooterIcon'/>
                   <span style={{
                   color: '#fff',              
                   }}>isimm@isimm.u-monastir.tn</span>
@@ -224,7 +157,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                     alignItems: 'center',
                     flexWrap: 'wrap',
                 }}>
-                  <LocalPhoneIcon className={classes.snsIcon}/>
+                  <LocalPhoneIcon className='FooterIcon'/>
                   <span style={{
                   color: '#fff',              
                   }}>73 464 167</span>
@@ -234,7 +167,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                     alignItems: 'center',
                     flexWrap: 'wrap',
                 }}>
-                  <LanguageIcon className={classes.snsIcon}/>
+                  <LanguageIcon className='FooterIcon'/>
                   <Link to="http://www.isimm.rnu.tn/" style={{
                   color: '#fff',              
                   }}>http://www.isimm.rnu.tn/</Link>
@@ -250,7 +183,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Typography className={classes.copylight}>
+                <Typography className='CopyLight'>
                 &copy; Copyright Isimmmooc,Inc {new Date().getFullYear()} 
                 </Typography>
               </Grid>
@@ -262,7 +195,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 rel="noreferrer noopener"
                 href="https://satoruakiyama.com"
               >
-                <HomeIcon className={classes.snsIcon} />
+                <HomeIcon className='FooterIcon' />
               </Grid>
               <Grid
                 item
@@ -271,7 +204,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 rel="noreferrer noopener"
                 href="https://www.facebook.com/satoruakiyama1998"
               >
-                <FacebookIcon className={classes.snsIcon} />
+                <FacebookIcon  className='FooterIcon' />
               </Grid>
               <Grid
                 item
@@ -280,7 +213,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 rel="noreferrer noopener"
                 href="https://www.instagram.com/developer_satoru_akiyama/"
               >
-                <InstagramIcon className={classes.snsIcon} />
+                <InstagramIcon className='FooterIcon' />
               </Grid>
               <Grid
                 item
@@ -289,7 +222,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 rel="noreferrer noopener"
                 href="https://github.com/SatoruAkiyama/material-ui-header-and-footer/"
               >
-                <GitHubIcon className={classes.snsIcon} />
+                <GitHubIcon className='FooterIcon' />
               </Grid>
  
             </Grid>  

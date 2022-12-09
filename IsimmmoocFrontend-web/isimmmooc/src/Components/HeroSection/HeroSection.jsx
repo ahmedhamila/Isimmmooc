@@ -7,7 +7,7 @@ import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import ThemedButton from '../Buttons/ThemedButton/ThemedButton';
+import {Button} from '@mui/material';
 import { useState,useEffect } from 'react';
 import './HeroSection.scss'
 const useWindowWidth = () => {
@@ -191,13 +191,21 @@ function HeroSection() {
                 <p>
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
                 </p>
-                <ThemedButton 
+                <Button
                 variant='text' 
-                value='Sign up'
-                sx={{}}
-                theme='ThemeSecondaryFilled'
+                sx={{
+                  backgroundColor:'#FF7468',
+                  color:'#fff',
+                  "&:hover" : {
+                    backgroundColor : '#fff',
+                    color: '#FF7468'  ,
+                  }
+                }}
                 size="large"
-                />
+                >
+                  Sign up
+
+                </Button>
               </Grid>
             </Grid>
         </Grid>
