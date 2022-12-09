@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
     fontFamily:"Arial",
     textAlign:"center",
-    marginLeft:400,
+    
     marginTop:50,
   },
 }));
@@ -251,7 +251,7 @@ const Footer = ({ setValue, setSelectedIndex }) => {
                 rel="noreferrer noopener"
               >
                 <Typography className={classes.copylight}>
-                &copy;copyright Yosra Omran,Ahmed Hamila {new Date().getFullYear()} 
+                &copy;Copyright Isimmmooc {new Date().getFullYear()} 
                 </Typography>
               </Grid>
               <Grid>
