@@ -62,14 +62,18 @@ function HeroSection() {
       </Box>
 
       <Box paddingTop='75px' className='HeroSectionBottomPart' >
-        <Grid container rowSpacing={1} >
+        <Grid container 
+        direction={{sm:'column',md:'row',lg:'row'  }}
+        justifyContent='center'
+        alignItems='center'
+        rowSpacing={1} >
           
           <Grid 
             direction='column' 
             alignItems='center'
             justifyContent='center'
-            container
-            xs={6}>
+            item
+            xs={{sm:12,md:6}}>
               <Grid
               container 
               direction='column'
@@ -77,20 +81,22 @@ function HeroSection() {
               justifyContent='space-between'
               gap="15px"
               padding={'25px'} 
-              spacing={{  md: 3 }} 
-              columns={{ sm: 4, md: 12 }}>
+              spacing={{  md: 3 }} >
                   <Grid 
                   container
-                  direction={{sm:'column',md:'row' ,xl:"row" }}
+                  direction={{xs:'column',sm:'row',md:'row' ,xl:"row" }}
                   alignItems='center'
-                  justifyContent='space-evenly'>
+                  justifyContent='space-evenly'
+                  gap='10px'
+                  >
+                  
                     <Grid
                     container
-                    direction={{sm:'column',md:'row'  }}
+                    direction={{sm:'row',md:'row'  }}
                     gap={{sm:'0px',md:'20px',xl:'20px'}}
                     sx={{
-                      width : {sm:'175px',md:'250px',xl:'325px'},
-                      height : {sm:'fit-content',md:'fit-content',lg:'fit-content',xl:'175px'}
+                      width : '325px',
+                      height :'175px'
                     }}
                     className='Item'
                     >
@@ -107,8 +113,8 @@ function HeroSection() {
                     direction={{sm:'column',md:'row'  }}
                     gap={{sm:'0px',md:'20px',xl:'20px'}}
                     sx={{
-                      width : {sm:'175px',md:'250px',xl:'325px'},
-                      height : {sm:'fit-content',md:'fit-content',lg:'fit-content',xl:'175px'}
+                      width : '325px',
+                      height :'175px'
                     }}
                     className='Item'>
                       <div className='ItemIcon' style={{backgroundColor:"#7765FF",borderColor:"#7765FF",color:"#E1DDFF"}}>
@@ -122,16 +128,18 @@ function HeroSection() {
                   </Grid>
                   <Grid 
                   container
-                  direction={{sm:'column',md:'row' ,xl:"row" }}
+                  direction={{xs:'column',sm:'row',md:'row' ,xl:"row" }}
                   alignItems='center'
-                  justifyContent='space-evenly'>
+                  justifyContent='space-evenly'
+                  gap='10px'
+                  >
                     <Grid
                     container
                     direction={{sm:'column',md:'row'  }}
                     gap={{sm:'0px',md:'20px',xl:'20px'}}
                     sx={{
-                      width : {sm:'175px',md:'250px',xl:'325px'},
-                      height : {sm:'fit-content',md:'fit-content',lg:'fit-content',xl:'175px'}
+                      width : '325px',
+                      height :'175px'
                     }}
                     className='Item'
                     >
@@ -148,8 +156,8 @@ function HeroSection() {
                     direction={{sm:'column',md:'row'  }}
                     gap={{sm:'0px',md:'20px',xl:'20px'}}
                     sx={{
-                      width : {sm:'175px',md:'250px',xl:'325px'},
-                      height : {sm:'fit-content',md:'fit-content',lg:'fit-content',xl:'175px'}
+                      width : '325px',
+                      height :'175px'
                     }}
                     className='Item'>
                       <div className='ItemIcon' style={{backgroundColor:"#06DE90",borderColor:"#06DE90",color:"#EDF8F4"}}>

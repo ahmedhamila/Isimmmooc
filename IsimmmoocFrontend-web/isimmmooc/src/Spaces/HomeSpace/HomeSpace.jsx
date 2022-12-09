@@ -6,12 +6,14 @@ import SectionComments from '../../Components/SectionComments/SectionComments'
 import './HomeSpace.scss'
 
 import HeroSection from '../../Components/HeroSection/HeroSection'
+import PopularTopics from '../../Components/PopularTopics/PopularTopics'
 function HomeSpace() {
   return (
   <div>
     <div>
         <Header/>
         <HeroSection />
+        <PopularTopics />
     </div>
     <div className="SectionCommentsDisposition">
       <SectionComments/>

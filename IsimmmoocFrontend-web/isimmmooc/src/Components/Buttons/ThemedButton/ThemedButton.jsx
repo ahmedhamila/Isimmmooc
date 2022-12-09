@@ -47,7 +47,7 @@ function ThemedButton(props) {
         value,
         size
     } = props
-   
+    
     if(theme){
       if(themes[theme])
       {
