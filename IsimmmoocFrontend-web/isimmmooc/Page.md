@@ -5,9 +5,7 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
+
 
 
 /*
@@ -23,7 +21,7 @@ import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import "";
 
 /*
  * ----------------------------------------------------------------------
@@ -31,7 +29,7 @@ import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+function () {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -50,7 +48,7 @@ function RootRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -70,17 +68,3 @@ function RootRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
-  return (
-    
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<HomeSpace />}/>
-            <Route exact path='/SignUp' element={<div> <h1>Helooooo</h1></div>}/>
-            
-        </Routes>
-    </BrowserRouter>
-  )
-}
-
-export default RootRouter

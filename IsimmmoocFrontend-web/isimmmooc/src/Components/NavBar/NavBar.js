@@ -1,3 +1,11 @@
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                          Components & Functions                      |
+ * ----------------------------------------------------------------------
+ */
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,28 +23,82 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+
 import {Pages} from '../../Data'
 import { useNavigate } from "react-router-dom";
 
+/*
+* ----------------------------------------------------------------------
+*                              Services & Models                       |
+* ----------------------------------------------------------------------
+*/
+
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Styles                                |
+ * ----------------------------------------------------------------------
+ */
 import './NavBar.scss'
 
-const drawerWidth = 240;
+/*
+ * ----------------------------------------------------------------------
+ *                                Images                                |
+ * ----------------------------------------------------------------------
+ */
 
 function NavBar(props) {
+  /* --------------------------------------------------------------------
+   *                           Constants                                |
+   * --------------------------------------------------------------------
+   */
+  const drawerWidth = 240;
+  /* --------------------------------------------------------------------
+   *                               Props                                |
+   * --------------------------------------------------------------------
+   */
   const { window } = props;
+  /*--------------------------------------------------------------------
+  *                                 Data                               |
+  * --------------------------------------------------------------------
+  */
   const pages=Pages.PagesArray
+
+  /* --------------------------------------------------------------------
+   *                              Hooks & States                        |
+   * --------------------------------------------------------------------
+   */
+
   const navigate=useNavigate()
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const container = window !== undefined ? () => window().document.body : undefined;
+
+  /* --------------------------------------------------------------------
+   *                             Functions                              |
+   * --------------------------------------------------------------------
+   */
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const signUpClickHandle = ()=>{
-    console.log("eeeeeeee")
     navigate("/SignUp")
   }
+  
+  /* --------------------------------------------------------------------
+   *                            Effect Hooks                            |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                                 JSX                                |
+   * --------------------------------------------------------------------
+   */
+  
+  const container = window !== undefined ? () => window().document.body : undefined;
+
+  
 
   const drawer = (
     <Box className='DrawerBox' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>

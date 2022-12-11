@@ -1,36 +1,102 @@
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                          Components & Functions                      |
+ * ----------------------------------------------------------------------
+ */
 import React from 'react'
 import {Box,Grid} from '@mui/material'
-import bigImage from '../../Assets/Images/isimmmooc-Hero-Image-Big.png';
-import mediumImage from '../../Assets/Images/isimmmooc-Hero-Image-Medium.png';
-import smallImage from '../../Assets/Images/isimmmooc-Hero-Image-Small.png';
 import DesktopMacOutlinedIcon from '@mui/icons-material/DesktopMacOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import {Button} from '@mui/material';
 import { useState,useEffect } from 'react';
+
+
+
+/*
+* ----------------------------------------------------------------------
+*                              Services & Models                       |
+* ----------------------------------------------------------------------
+*/
+
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Styles                                |
+ * ----------------------------------------------------------------------
+ */
 import './HeroSection.scss'
-const useWindowWidth = () => {
-  const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
 
-  useEffect(() => {
-      const handleWindowResize = () => {
-          setWindowWidth(window.innerWidth);
-      };
+/*
+ * ----------------------------------------------------------------------
+ *                                Images                                |
+ * ----------------------------------------------------------------------
+ */
+import bigImage from '../../Assets/Images/isimmmooc-Hero-Image-Big.png';
+import mediumImage from '../../Assets/Images/isimmmooc-Hero-Image-Medium.png';
+import smallImage from '../../Assets/Images/isimmmooc-Hero-Image-Small.png';
 
-      window.addEventListener('resize', handleWindowResize);
-      return () => window.removeEventListener('resize', handleWindowResize);
-  },[]);
-
-  if (windowWidth >=1300)
-    return bigImage;
-  else if(windowWidth <1300 && windowWidth >660)
-    return mediumImage
-  else if(windowWidth <=660)
-    return smallImage
-};
 function HeroSection() {
 
+  /* --------------------------------------------------------------------
+   *                           Constants                                |
+   * --------------------------------------------------------------------
+   */
+  
+  /* --------------------------------------------------------------------
+   *                               Props                                |
+   * --------------------------------------------------------------------
+   */
+
+  /*--------------------------------------------------------------------
+  *                                 Data                               |
+  * --------------------------------------------------------------------
+  */
+
+
+  /* --------------------------------------------------------------------
+   *                             Hooks & States                         |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                             Functions                              |
+   * --------------------------------------------------------------------
+   */
+
+  const useWindowWidth = () => {
+    const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
+  
+    useEffect(() => {
+        const handleWindowResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+  
+        window.addEventListener('resize', handleWindowResize);
+        return () => window.removeEventListener('resize', handleWindowResize);
+    },[]);
+  
+    if (windowWidth >=1300)
+      return bigImage;
+    else if(windowWidth <1300 && windowWidth >660)
+      return mediumImage
+    else if(windowWidth <=660)
+      return smallImage
+  };
+  
+  /* --------------------------------------------------------------------
+   *                            Effect Hooks                            |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                                 JSX                                |
+   * --------------------------------------------------------------------
+   */
   const imageUrl = useWindowWidth()
   return (
     <Box>

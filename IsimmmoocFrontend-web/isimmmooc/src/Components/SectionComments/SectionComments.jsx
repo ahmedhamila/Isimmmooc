@@ -1,37 +1,92 @@
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                          Components & Functions                      |
+ * ----------------------------------------------------------------------
+ */
+
+
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { makeStyles } from "@material-ui/core/styles";
 import Paper from '@mui/material/Paper';
 
+
+/*
+* ----------------------------------------------------------------------
+*                              Services & Models                       |
+* ----------------------------------------------------------------------
+*/
+
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Styles                                |
+ * ----------------------------------------------------------------------
+ */
 import './SectionComments.scss'
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    padding: "20px 0",
-  },
-  containerHearder: {
-    textAlign:'center',
-    
-  },
-  h5: {
-    color:'#f5b70a',
-  }
-}))
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Images                                |
+ * ----------------------------------------------------------------------
+ */
+
 function SectionComments(){
-  const classes = useStyles();
+
+  /* --------------------------------------------------------------------
+   *                           Constants                                |
+   * --------------------------------------------------------------------
+   */
+  /* --------------------------------------------------------------------
+   *                               Props                                |
+   * --------------------------------------------------------------------
+   */
+
+  /*--------------------------------------------------------------------
+  *                                 Data                               |
+  * --------------------------------------------------------------------
+  */
+
+
+  /* --------------------------------------------------------------------
+   *                              States                                |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                             Functions                              |
+   * --------------------------------------------------------------------
+   */
+
+    
+  
+  /* --------------------------------------------------------------------
+   *                            Effect Hooks                            |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                                 JSX                                |
+   * --------------------------------------------------------------------
+   */
+  
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg" className={classes.container}>
+      <Container maxWidth="lg" sx={{padding : '20px 0'}}>
         <Box sx={{ bgcolor: '#f8f8ff',
             height: '100%',
             padding: "20px 0",
             position: "relative" }} >
-          <div className={classes.containerHearder}>
-            <h5 className={classes.h5}>Membership</h5>
+          <div style={{textAlign:'center'}}>
+            <h5 style={{color:'#f5b70a'}}>Membership</h5>
             <h1>What student says</h1>
             <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
           </div>    

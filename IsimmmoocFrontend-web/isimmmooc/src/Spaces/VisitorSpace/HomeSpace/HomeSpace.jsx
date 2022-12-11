@@ -5,10 +5,13 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
 
+import React from 'react'
+import Header from '../../../Components/Layouts/Header/Header'
+import Footer from '../../../Components/Layouts/Footer/Footer'
+import SectionComments from '../../../Components/SectionComments/SectionComments'
+import HeroSection from '../../../Components/HeroSection/HeroSection'
+import PopularTopics from '../../../Components/PopularTopics/PopularTopics'
 
 /*
 * ----------------------------------------------------------------------
@@ -23,7 +26,7 @@ import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './HomeSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -31,7 +34,7 @@ import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+function HomeSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -72,15 +75,17 @@ function RootRouter() {
    */
 
   return (
+  <div>
+      <Header/>
+      <HeroSection />
+      <PopularTopics />
+      <SectionComments/>
+      <div className="FooterDisposition">
+        <Footer />
+      </div>
+  </div>
     
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<HomeSpace />}/>
-            <Route exact path='/SignUp' element={<div> <h1>Helooooo</h1></div>}/>
-            
-        </Routes>
-    </BrowserRouter>
   )
 }
 
-export default RootRouter
+export default HomeSpace
