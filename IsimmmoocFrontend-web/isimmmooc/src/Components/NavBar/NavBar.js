@@ -41,7 +41,7 @@ import { useNavigate } from "react-router-dom";
  * ----------------------------------------------------------------------
  */
 import './NavBar.scss'
-
+import styles from './../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
@@ -119,9 +119,9 @@ function NavBar(props) {
           variant='text' 
           sx={{
             backgroundColor:'#fff',
-            color:'#FF7468',
+            color:styles.SecondaryColor,
             "&:hover" : {
-              backgroundColor : '#FF7468',
+              backgroundColor : styles.SecondaryColor,
               color: '#fff'  ,
             },
             width:'100%'
@@ -136,9 +136,9 @@ function NavBar(props) {
         variant='text' 
         sx={{
           backgroundColor:'#fff',
-          color:'#FF7468',
+          color:styles.SecondaryColor,
           "&:hover" : {
-            backgroundColor : '#FF7468',
+            backgroundColor : styles.SecondaryColor,
             color: '#fff'  ,
           },
           width:'100%'
@@ -255,9 +255,9 @@ function NavBar(props) {
                 variant='contained'
                 sx={{
                   backgroundColor:'#fff',
-                  color:'#FF7468',
+                  color:styles.SecondaryColor,
                   "&:hover" : {
-                    backgroundColor : '#FF7468',
+                    backgroundColor : styles.SecondaryColor,
                     color: '#fff'  ,
                   },
                   my: 2, 

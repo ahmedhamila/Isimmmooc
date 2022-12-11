@@ -1,3 +1,4 @@
+@import './../../Assets/Styles/variables';
 .HeroSectionTopPart{
     padding-top: 15px;
     margin-top: 50px;
@@ -7,7 +8,7 @@
     background: rgb(2,0,36);
     padding: 25px;
     color: white;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(69,61,128,1) 50%, rgba(255,116,104,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, $PrimaryColor 50%, $SecondaryColor 100%);
     .HeroContent{
        padding-bottom: 10%;
     }

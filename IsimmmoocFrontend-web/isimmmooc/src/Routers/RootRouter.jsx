@@ -8,7 +8,7 @@
 import React from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
-
+import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
 
 /*
 * ----------------------------------------------------------------------
@@ -76,7 +76,7 @@ function RootRouter() {
     <BrowserRouter>
         <Routes>
             <Route exact path='/' element={<HomeSpace />}/>
-            <Route exact path='/SignUp' element={<div> <h1>Helooooo</h1></div>}/>
+            <Route exact path='/SignUp' element={<SignUp />}/>
             
         </Routes>
     </BrowserRouter>

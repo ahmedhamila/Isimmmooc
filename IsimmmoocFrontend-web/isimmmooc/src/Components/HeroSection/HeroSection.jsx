@@ -30,6 +30,7 @@ import { useState,useEffect } from 'react';
  * ----------------------------------------------------------------------
  */
 import './HeroSection.scss'
+import styles from './../../Assets/Styles/style.module.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -209,7 +210,7 @@ function HeroSection() {
                     }}
                     className='Item'
                     >
-                      <div className='ItemIcon' style={{backgroundColor:"#F5B70A",borderColor:"#F5B70A",color:"#FFF6DD"}}>
+                      <div className='ItemIcon' style={{backgroundColor:styles.QuaternaryColor,borderColor:styles.QuaternaryColor,color:"#FFF6DD"}}>
                         <NoteAddOutlinedIcon />
                       </div>
                       <div>
@@ -226,7 +227,7 @@ function HeroSection() {
                       height :'175px'
                     }}
                     className='Item'>
-                      <div className='ItemIcon' style={{backgroundColor:"#06DE90",borderColor:"#06DE90",color:"#EDF8F4"}}>
+                      <div className='ItemIcon' style={{backgroundColor:styles.TertiaryColor,borderColor:styles.TertiaryColor,color:"#EDF8F4"}}>
                         <BookmarkBorderOutlinedIcon />
                       </div>
                       <div>
@@ -260,11 +261,11 @@ function HeroSection() {
                 <Button
                 variant='text' 
                 sx={{
-                  backgroundColor:'#FF7468',
+                  backgroundColor:styles.SecondaryColor,
                   color:'#fff',
                   "&:hover" : {
                     backgroundColor : '#fff',
-                    color: '#FF7468'  ,
+                    color: styles.SecondaryColor  ,
                   }
                 }}
                 size="large"
