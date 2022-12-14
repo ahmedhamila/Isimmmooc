@@ -1,13 +1,80 @@
-import React from 'react'
-import './PopularTopics.scss'
 
+
+/*
+ * ----------------------------------------------------------------------
+ *                          Components & Functions                      |
+ * ----------------------------------------------------------------------
+ */
+
+import React from 'react'
 import { Grid } from '@mui/material'
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import ComputerIcon from '@mui/icons-material/Computer';
 import StoreIcon from '@mui/icons-material/Store';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import {Button} from '@mui/material';
+
+/*
+* ----------------------------------------------------------------------
+*                              Services & Models                       |
+* ----------------------------------------------------------------------
+*/
+
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Styles                                |
+ * ----------------------------------------------------------------------
+ */
+
+import './PopularTopics.scss'
+import styles from './../../Assets/Styles/style.module.scss'
+/*
+ * ----------------------------------------------------------------------
+ *                                Images                                |
+ * ----------------------------------------------------------------------
+ */
+
 function PopularTopics() {
+
+  /* --------------------------------------------------------------------
+   *                           Constants                                |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                               Props                                |
+   * --------------------------------------------------------------------
+   */
+
+  /*--------------------------------------------------------------------
+  *                                 Data                               |
+  * --------------------------------------------------------------------
+  */
+
+
+  /* --------------------------------------------------------------------
+   *                              States                                |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                             Functions                              |
+   * --------------------------------------------------------------------
+   */
+
+    
+  
+  /* --------------------------------------------------------------------
+   *                            Effect Hooks                            |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                                 JSX                                |
+   * --------------------------------------------------------------------
+   */
   return (
     <div className='PopularTopics'>
         <Grid
@@ -46,7 +113,7 @@ function PopularTopics() {
                     alignItems='center'
                     className='PopularTopicsCardsItem'>
                       <div className='PopularTopicsCardsItemIcon' >
-                        <DesignServicesIcon  sx={{ color: '#FF7468' }} fontSize='large'/>
+                        <DesignServicesIcon  sx={{ color: styles.SecondaryColor }} fontSize='large'/>
                       </div>
                       <div>
                         <h2>Design Sector</h2>
@@ -64,7 +131,7 @@ function PopularTopics() {
                     alignItems='center'
                     className='PopularTopicsCardsItem'>
                       <div className='PopularTopicsCardsItemIcon' >
-                        <ComputerIcon sx={{ color: '#453D80' }} color='#453D80' fontSize='large'/>
+                        <ComputerIcon sx={{ color: styles.PrimaryColor }} color={styles.PrimaryColor} fontSize='large'/>
                       </div>
                       <div>
                         <h2>Development Sector</h2>
@@ -82,7 +149,7 @@ function PopularTopics() {
                     alignItems='center'
                     className='PopularTopicsCardsItem'>
                       <div className='PopularTopicsCardsItemIcon' >
-                        <StoreIcon sx={{ color: '#06DE90' }}  fontSize='large'/>
+                        <StoreIcon sx={{ color: styles.TertiaryColor }}  fontSize='large'/>
                       </div>
                       <div>
                         <h2>Design Sector</h2>
@@ -100,7 +167,7 @@ function PopularTopics() {
                     alignItems='center'
                     className='PopularTopicsCardsItem'>
                       <div className='PopularTopicsCardsItemIcon' >
-                        <VideocamIcon sx={{ color: '#F5B70A' }} fontSize='large'/>
+                        <VideocamIcon sx={{ color: styles.QuaternaryColor }} fontSize='large'/>
                       </div>
                       <div>
                         <h2>Development Sector</h2>
@@ -117,11 +184,11 @@ function PopularTopics() {
                 <Button
                 variant='text' 
                 sx={{
-                    backgroundColor:'#FF7468',
+                    backgroundColor:styles.SecondaryColor,
                     color:'#fff',
                     "&:hover" : {
                       backgroundColor : '#fff',
-                      color: '#FF7468'  ,
+                      color: styles.SecondaryColor  ,
                     }
                   }}
                 size="large"

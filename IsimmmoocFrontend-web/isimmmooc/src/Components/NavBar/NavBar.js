@@ -1,3 +1,11 @@
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                          Components & Functions                      |
+ * ----------------------------------------------------------------------
+ */
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,28 +23,82 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+
 import {Pages} from '../../Data'
 import { useNavigate } from "react-router-dom";
 
-import './NavBar.scss'
+/*
+* ----------------------------------------------------------------------
+*                              Services & Models                       |
+* ----------------------------------------------------------------------
+*/
 
-const drawerWidth = 240;
+
+
+/*
+ * ----------------------------------------------------------------------
+ *                                Styles                                |
+ * ----------------------------------------------------------------------
+ */
+import './NavBar.scss'
+import styles from './../../Assets/Styles/style.module.scss'
+/*
+ * ----------------------------------------------------------------------
+ *                                Images                                |
+ * ----------------------------------------------------------------------
+ */
 
 function NavBar(props) {
+  /* --------------------------------------------------------------------
+   *                           Constants                                |
+   * --------------------------------------------------------------------
+   */
+  const drawerWidth = 240;
+  /* --------------------------------------------------------------------
+   *                               Props                                |
+   * --------------------------------------------------------------------
+   */
   const { window } = props;
+  /*--------------------------------------------------------------------
+  *                                 Data                               |
+  * --------------------------------------------------------------------
+  */
   const pages=Pages.PagesArray
+
+  /* --------------------------------------------------------------------
+   *                              Hooks & States                        |
+   * --------------------------------------------------------------------
+   */
+
   const navigate=useNavigate()
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const container = window !== undefined ? () => window().document.body : undefined;
+
+  /* --------------------------------------------------------------------
+   *                             Functions                              |
+   * --------------------------------------------------------------------
+   */
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
   const signUpClickHandle = ()=>{
-    console.log("eeeeeeee")
     navigate("/SignUp")
   }
+  
+  /* --------------------------------------------------------------------
+   *                            Effect Hooks                            |
+   * --------------------------------------------------------------------
+   */
+
+  /* --------------------------------------------------------------------
+   *                                 JSX                                |
+   * --------------------------------------------------------------------
+   */
+  
+  const container = window !== undefined ? () => window().document.body : undefined;
+
+  
 
   const drawer = (
     <Box className='DrawerBox' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -57,9 +119,9 @@ function NavBar(props) {
           variant='text' 
           sx={{
             backgroundColor:'#fff',
-            color:'#FF7468',
+            color:styles.SecondaryColor,
             "&:hover" : {
-              backgroundColor : '#FF7468',
+              backgroundColor : styles.SecondaryColor,
               color: '#fff'  ,
             },
             width:'100%'
@@ -74,9 +136,9 @@ function NavBar(props) {
         variant='text' 
         sx={{
           backgroundColor:'#fff',
-          color:'#FF7468',
+          color:styles.SecondaryColor,
           "&:hover" : {
-            backgroundColor : '#FF7468',
+            backgroundColor : styles.SecondaryColor,
             color: '#fff'  ,
           },
           width:'100%'
@@ -193,9 +255,9 @@ function NavBar(props) {
                 variant='contained'
                 sx={{
                   backgroundColor:'#fff',
-                  color:'#FF7468',
+                  color:styles.SecondaryColor,
                   "&:hover" : {
-                    backgroundColor : '#FF7468',
+                    backgroundColor : styles.SecondaryColor,
                     color: '#fff'  ,
                   },
                   my: 2, 

@@ -1,11 +1,17 @@
+
+
 /*
  * ----------------------------------------------------------------------
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
 
-
-import { RootRouter } from './Routers';
+import React from 'react'
+import Header from '../../../Components/Layouts/Header/Header'
+import Footer from '../../../Components/Layouts/Footer/Footer'
+import SectionComments from '../../../Components/SectionComments/SectionComments'
+import HeroSection from '../../../Components/HeroSection/HeroSection'
+import PopularTopics from '../../../Components/PopularTopics/PopularTopics'
 
 /*
 * ----------------------------------------------------------------------
@@ -20,7 +26,7 @@ import { RootRouter } from './Routers';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './App.css';
+import './HomeSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -28,7 +34,7 @@ import './App.css';
  * ----------------------------------------------------------------------
  */
 
-function App() {
+function HomeSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -67,18 +73,19 @@ function App() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-  
-    return (
-      <div className='App'>
-        <RootRouter />
+
+  return (
+  <div>
+      <Header/>
+      <HeroSection />
+      <PopularTopics />
+      <SectionComments/>
+      <div className="FooterDisposition">
+        <Footer />
       </div>
-      
-    );
-  }
-  
-  export default App;
+  </div>
+    
+  )
+}
 
-
-
-
-
+export default HomeSpace

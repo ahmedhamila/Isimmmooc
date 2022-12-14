@@ -1,3 +1,5 @@
+
+
 /*
  * ----------------------------------------------------------------------
  *                          Components & Functions                      |
@@ -5,7 +7,8 @@
  */
 
 
-import { RootRouter } from './Routers';
+import React from 'react'
+import { Button } from '@mui/material';
 
 /*
 * ----------------------------------------------------------------------
@@ -20,7 +23,8 @@ import { RootRouter } from './Routers';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './App.css';
+import './SignUp.scss';
+import styles from './../../../Assets/Styles/style.module.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -28,7 +32,9 @@ import './App.css';
  * ----------------------------------------------------------------------
  */
 
-function App() {
+
+function SignUp() {
+  
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -47,7 +53,7 @@ function App() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -67,18 +73,10 @@ function App() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-  
-    return (
-      <div className='App'>
-        <RootRouter />
-      </div>
-      
-    );
-  }
-  
-  export default App;
 
+  return (
+    <Button >SignUp</Button>
+  )
+}
 
-
-
-
+export default SignUp

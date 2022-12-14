@@ -1,8 +1,9 @@
+@import './../../Assets/Styles/variables';
 .PopularTopics{
     .PopularTopicsHeader{
         text-align: center;
         h5{
-            color: #FF7468;
+            color: $SecondaryColor;
         }
     }
     .PopularTopicsCards{
