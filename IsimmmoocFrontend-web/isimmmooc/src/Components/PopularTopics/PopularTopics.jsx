@@ -92,7 +92,7 @@ function PopularTopics() {
             className='PopularTopicsHeader'>
                 <h5>Browse Categories</h5>
                 <h2>Popular Topics to learn</h2>
-                <p>A best and cheapest way of getting know learning to make a better tomorrow</p>
+                <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
             </Grid>
             <Grid 
             container
@@ -195,8 +195,6 @@ function PopularTopics() {
                 >
                     Browse All 
                 </Button> 
-                
-                
             </Grid>
         </Grid>
     </div>
