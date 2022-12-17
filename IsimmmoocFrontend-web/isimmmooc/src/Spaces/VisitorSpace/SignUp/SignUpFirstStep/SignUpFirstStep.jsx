@@ -80,6 +80,9 @@ function SignUpFirstStep() {
   return (
       <Grid
         className='SignUpFirstStep'
+        sx={{
+          width:{'xs':'100%','sm':'50%','md':'50%'}
+        }}
       >
         <Grid
         container
