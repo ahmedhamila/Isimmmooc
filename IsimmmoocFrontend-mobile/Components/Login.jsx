@@ -12,8 +12,8 @@ import CustomInput from './field';
 import { useState } from 'react';
 import FormateurSignUp from './Formateur_SignUp';
 import SignUp from './SignUp';
+
 export default function Login({navigation}){
-    
 
 const loginValidationSchema = yup.object().shape({
   email: yup
@@ -124,6 +124,10 @@ const toggleDialog5 = () => {
         </View>
        );
 }
+
+
+
+
 const styles = StyleSheet.create({
 
     loginContainer: {
@@ -144,6 +148,7 @@ const styles = StyleSheet.create({
       borderWidth: StyleSheet.hairlineWidth,
       borderRadius: 10,
     },
+    
     errorInput:{
         borderColor:'red',
     }

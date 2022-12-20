@@ -1,23 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import * as React from 'react';
 import { StyleSheet, Text, View ,Button,TextInput,} from 'react-native';
 import Login from './Components/Login';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import SignUp from './Components/SignUp';
+
+
+
 import FormateurSignUp from './Components/Formateur_SignUp';
+
+import Ionicons from '@expo/vector-icons/MaterialIcons';
 import OrganismeSignUp from './Components/Organisme_SignUP';
+import SignUp from './Components/SignUp';
+import {Welcome,Quiz,SearchCategorie} from './Components/index';
+
 
 export default createAppContainer(
+
   createStackNavigator(
     {
       Login,FormateurSignUp,SignUp,OrganismeSignUp
     },
     {
-      initialRouteName:"Loginn"
+      initialRouteName:"Login"
     }
   )
 );
+
+
+
 
 const styles = StyleSheet.create({
   container: {
