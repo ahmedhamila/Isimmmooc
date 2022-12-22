@@ -1,5 +1,5 @@
 import { Field, Formik } from 'formik'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button,Modal,StyleSheet, Text, TextInput, View } from 'react-native';
 import {
   
   Dialog,
@@ -12,8 +12,10 @@ import CustomInput from './field';
 import { useState } from 'react';
 import FormateurSignUp from './Formateur_SignUp';
 import SignUp from './SignUp';
+import { Actionsheet, Box, Center, NativeBaseProvider } from 'native-base';
 
 export default function Login({navigation}){
+    
 
 const loginValidationSchema = yup.object().shape({
   email: yup
@@ -30,12 +32,19 @@ const [checked, setChecked] = useState("");
 const toggleDialog5 = () => {
   setVisible5(!visible5);
 };
-       return( <View style={styles.loginContainer}>
+
+const [modalVisible, setModalVisible] = useState(false);
+       return(  
+        
+       <View style={styles.loginContainer}>
+       
+      
+         
           <Text>Login Screen</Text>
           <Formik
             validationSchema={loginValidationSchema}
             initialValues={{ email: '', password: '' }}
-            onSubmit={values => console.log(values)}
+            onSubmit={values =>{ console.log(values);}}
           >
             {({
      handleChange,
@@ -47,11 +56,13 @@ const toggleDialog5 = () => {
      isValid,
    }) => (
               <>
+              
                  <Field
         component={CustomInput}
         name="email"
         placeholder="Email Address"
-        icon="home"
+        icon="ios-mail"
+        label="email"
         keyboardType="email-address"
       />
        
@@ -60,6 +71,8 @@ const toggleDialog5 = () => {
         name="password"
         placeholder="Password"
         secureTextEntry
+        label="password"
+        icon="lock-closed"
       />
        <Button
          onPress={handleSubmit}
@@ -67,8 +80,9 @@ const toggleDialog5 = () => {
          
          disabled={!isValid}
        />
-
+              
               </>
+              
             )}
             
           </Formik>
@@ -76,58 +90,34 @@ const toggleDialog5 = () => {
               style={styles.registerTextStyle}
               onPress={toggleDialog5}>
               New Here ?<Text style={{color:"blue",textDecorationLine:"underline"}}> Register</Text>
-            </Text>                                         
-            <Dialog
-      isVisible={visible5}
-      onBackdropPress={toggleDialog5}
-    >
-      <Dialog.Title title="Select Preference"/>
-      {['apprenant','formateur','organisme'].map((l, i) => (
-        <CheckBox
-          key={i}
-          title={l}
-          containerStyle={{ backgroundColor: 'white', borderWidth: 0 }}
-          checkedIcon="dot-circle-o"
-          uncheckedIcon="circle-o"
-          checked={checked }
-          onPress={() => setChecked(l)}
-        />
-      ))}
-
-<Dialog.Actions>
-       
-        <Button
-          title="CONFIRM"
-          onPress={()=>{
-             console.log("ddddddd");
-            if (
-              checked==="apprenant") {
-              console.log("ddddddd55");
-          navigation.navigate("SignUp");
-          }
-
-
-
-          
-          if (checked==="formateur") 
-          navigation.navigate("FormateurSignUp");
-          if (checked!=="organisme") 
-          navigation.navigate("OrganismeSignUp");
-          console.log("dddddddccc");
-          console.log(`Option ${checked} was selected!`);
-          toggleDialog5();}}
-        />
-        <Button title="CANCEL" onPress={toggleDialog5} />
-      </Dialog.Actions>
-      
-    </Dialog>
+            </Text> 
+            <NativeBaseProvider>                               
+            <Center>
+      <Actionsheet isOpen={visible5} onClose={!visible5}>
+        <Actionsheet.Content>
+          <Box w="100%" h={60} px={4} justifyContent="center">
+            <Text fontSize="16" color="gray.500" _dark={{
+            color: "gray.300"
+          }}>
+              select registationtype
+            </Text>
+          </Box>
+          <Actionsheet.Item onPress={()=>{toggleDialog5(!visible5)
+                                    navigation.navigate("SignUp")}}>apprenant</Actionsheet.Item>
+          <Actionsheet.Item onPress={()=>{toggleDialog5(!visible5);
+                                         navigation.navigate("FormateurSignUp");}}>formateur</Actionsheet.Item>
+          <Actionsheet.Item onPress={()=>{toggleDialog5(!visible5);
+             navigation.navigate("OrganismeSignUp");}}>organisme</Actionsheet.Item>
+          <Actionsheet.Item onPress={()=>{toggleDialog5(!visible5)}}>Cancel</Actionsheet.Item>
+        </Actionsheet.Content>
+      </Actionsheet>
+    </Center>
+    
+    </NativeBaseProvider>
         </View>
+        
        );
 }
-
-
-
-
 const styles = StyleSheet.create({
 
     loginContainer: {
@@ -148,7 +138,6 @@ const styles = StyleSheet.create({
       borderWidth: StyleSheet.hairlineWidth,
       borderRadius: 10,
     },
-    
     errorInput:{
         borderColor:'red',
     }

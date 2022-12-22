@@ -12,16 +12,16 @@ import Ionicons from '@expo/vector-icons/MaterialIcons';
 import OrganismeSignUp from './Components/Organisme_SignUP';
 import SignUp from './Components/SignUp';
 import {Welcome,Quiz,SearchCategorie} from './Components/index';
-
-
+import Navigation from './Components/Navigation';
+import Splash from './Components/Splash';
 export default createAppContainer(
 
   createStackNavigator(
     {
-      Login,FormateurSignUp,SignUp,OrganismeSignUp
+      Login,FormateurSignUp,SignUp,OrganismeSignUp,Welcome
     },
     {
-      initialRouteName:"Login"
+      initialRouteName:"Welcome"
     }
   )
 );

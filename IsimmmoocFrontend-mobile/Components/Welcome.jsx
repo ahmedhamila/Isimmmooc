@@ -11,6 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Login from './Login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import Navigation from './Navigation';
 
 const Welcome = ({navigation}) => {
   
@@ -48,7 +49,7 @@ const course=({item})=>{
       
       <TouchableOpacity  style={styles.btn}
       
-        onPress={()=> navigation.navigate('Log')}
+        onPress={()=> navigation.navigate("Login")}
        ><Text  style={styles.btnText}   
       >Commencer ici</Text></TouchableOpacity>
          

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,21 +7,49 @@ import {
   StatusBar,
   TextInput,
   Button,
+  ScrollView,
 } from 'react-native'
 import { Formik, Field } from 'formik'
 import * as yup from 'yup'
 import CustomInput from './field'
 import DateField from 'react-native-datefield';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { HStack, NativeBaseProvider, Pressable } from 'native-base'
+import { Icon } from '@rneui/themed'
 const SignUp = () => {
+  const [date, setDate] = useState('');
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+  const getDate = () => {
+    let tempDate = date.toString().split(' ');
+    return date !== ''
+      ? `${tempDate[0]} ${tempDate[1]} ${tempDate[2]} ${tempDate[3]}`
+      : '';
+  };
+
+  const handleConfirm = (dates) => {
+    console.warn("A date has been picked: ", dates);
+    setDate(dates);
+    hideDatePicker();
+    console.warn("A date has been picked1: ", date);
+    console.warn("A date has been picked2: ", date);
+  };
     const signUpValidationSchema = yup.object().shape({
         Name: yup
           .string()
-          .matches(/(\w.+\s).+/, 'Enter at least 2 names')
-          .required('Full name is required'),
-        lastName: yup
+          .matches(/(\w){2}/, 'Enter at least 2 charcter')
+          .required(' name is required'),
+        LastName: yup
           .string()
-          .matches(/(\w.+\s).+/, 'Enter at least 2 names')
-          .required('Full name is required'),
+          .matches(/(\w){2}/, 'Enter at least 2 charcter')
+          .required('Last name is required'),
         phoneNumber: yup
           .string()
           .matches(/(\d){8}\b/, 'Enter a valid phone number')
@@ -47,64 +75,113 @@ const SignUp = () => {
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
+      <ScrollView style={{width:"100%"}}>
         <View style={styles.signupContainer}>
         <Text>Sign Up Screen</Text>
+        
 
 <Formik
    validationSchema={signUpValidationSchema}
   initialValues={{
     Name: '',
-    lastName:'',
+    LastName:'',
     email: '',
-    birthdate:'',
     phoneNumber: '',
     password: '',
     confirmPassword: '',
   }}
-  onSubmit={values => console.log(values)}
+  onSubmit={values => {console.log(values);
+                        console.log(getDate());
+                            }}
 >
   {({ handleSubmit, isValid }) => (
     <>
+    
       <Field
         component={CustomInput}
         name="Name"
         placeholder="Name"
+        label="Name"
+        icon="person"
       />
       <Field
         component={CustomInput}
-        name="lastName"
-        placeholder="last Name"
+        name="LastName"
+        placeholder="Last Name"
+        label="Last Name"
+        icon="person"
       />
-      <DateField
-  labelDate="Input date"
-  labelMonth="Input month"
-  labelYear="Input year"
-  defaultValue={new Date()}
-  styleInput={styles.inputBorder}
-  onSubmit={(value) => console.log(value)}
-/>
+      <View style={{width:"95%"}}>
+      
+     <NativeBaseProvider>
+        <Pressable p={0.7}  alignItems="flex-start" borderWidth={0} borderBottomWidth={1} borderBottomColor="rgb(134, 147, 158)" _light={{
+    borderColor: "dark.200"
+  }} _dark={{
+    borderColor: "dark.600"
+  }}
+           onPress={showDatePicker}>
+       <Text style={{alignSelf:"flex-start",marginBottom:10,fontWeight:"bold",fontSize:16,color:"#86939E"}}> Date</Text>
+    <View style={{alignItems:"flex-start"}} >
+            <HStack space={30} alignItems="flex-start" >    
+            <Icon name="perm-contact-calendar"  size={30} /> 
+            
+              
+              <Text>
+             {getDate()}
+           
+          </Text>
+          </HStack>
+          </View>
+         
+    
+    
+    </Pressable>
+    
+    </NativeBaseProvider>
+     
+      <DateTimePickerModal
+        
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+      />
+      
+   
+ 
+
+</View>
+
       <Field
         component={CustomInput}
         name="email"
         placeholder="Email Address"
         keyboardType="email-address"
+        label="Email"
+        icon="mail"
       />
       <Field
         component={CustomInput}
         name="phoneNumber"
         placeholder="Phone Number"
         keyboardType="numeric"
+        label="phoneNumber"
+        icon="call"
       />
       <Field
         component={CustomInput}
         name="password"
         placeholder="Password"
+        label="Password"
+        icon="lock-closed"
         secureTextEntry
       />
       <Field
         component={CustomInput}
         name="confirmPassword"
         placeholder="Confirm Password"
+        label="ConfirmPAssword"
+        icon="lock-closed"
         secureTextEntry
       />
 
@@ -113,11 +190,14 @@ const SignUp = () => {
         title="SIGN UP"
         disabled={!isValid}
       />
+     
     </>
   )}
 </Formik>
 
+
         </View>
+        </ScrollView>
       </SafeAreaView>
     </>
   )
