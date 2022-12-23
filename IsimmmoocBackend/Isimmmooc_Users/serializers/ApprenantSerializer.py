@@ -5,3 +5,4 @@ class ApprenantSerializer(serializers.ModelSerializer):
     class Meta:
         model=Apprenant
         fields=["first_name","last_name","date_of_birth","mail","phone_number"]
+    

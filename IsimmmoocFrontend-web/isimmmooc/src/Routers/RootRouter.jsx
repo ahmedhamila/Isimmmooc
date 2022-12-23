@@ -9,6 +9,7 @@ import React from 'react'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
 import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
+import SignIn from '../Spaces/VisitorSpace/SignIn/SignIn'
 
 /*
 * ----------------------------------------------------------------------
@@ -77,6 +78,7 @@ function RootRouter() {
         <Routes>
             <Route exact path='/' element={<HomeSpace />}/>
             <Route exact path='/SignUp' element={<SignUp />}/>
+            <Route exact path='/SignIn' element={<SignIn />}/>
             
         </Routes>
     </BrowserRouter>

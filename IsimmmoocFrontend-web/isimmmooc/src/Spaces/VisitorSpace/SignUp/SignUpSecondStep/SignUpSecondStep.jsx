@@ -8,7 +8,11 @@
 
 
 import React from 'react'
-
+import { Button,Grid} from '@mui/material';
+import {useSelector} from 'react-redux'
+import SignUpFirstStepApprenant from './SignUpSecondStepApprenant/SignUpSecondStepApprenant'
+import SignUpSecondtStepFormateur from './SignUpSecondStepFormateur/SignUpSecondStepFormateur'
+import SignUpThirdtStepOrganisme from './SignUpSecondStepOrganisme/SignUpSecondStepOrganisme'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -23,14 +27,14 @@ import React from 'react'
  * ----------------------------------------------------------------------
  */
 import './SignUpSecondStep.scss';
-
+import styles from './../../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
 
-function SignUpSecondStep() {
+function SignUpSecondStep(props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -41,7 +45,8 @@ function SignUpSecondStep() {
    *                               Props                                |
    * --------------------------------------------------------------------
    */
-
+  const {currentStep,goPrevious,goNext}=props
+  const {userType} = useSelector((state)=>state.userInfo)
   /*--------------------------------------------------------------------
   *                                 Data                               |
   * --------------------------------------------------------------------
@@ -57,20 +62,50 @@ function SignUpSecondStep() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
+  function _renderSecondStepContent() {
+    switch (userType) {
+      case 'Apprenant':
+        return <SignUpFirstStepApprenant currentStep handleGoNext={handleGoNext}  handleGoPrevious={handleGoPrevious}/>;
+      case 'Formateur':
+        return <SignUpSecondtStepFormateur currentStep handleGoNext={handleGoNext} handleGoPrevious={handleGoPrevious} />;
+      case 'Organisme':
+        return <SignUpThirdtStepOrganisme currentStep handleGoNext={handleGoNext} handleGoPrevious={handleGoPrevious} />;
+      default:
+        return <div>ERROR</div>;
+    }
+  }
 
+  const handleGoNext = () => {
     
+    goNext();
+    
+  };
+  const handleGoPrevious = () => {
+    
+
+    goPrevious();
+    
+  };
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
    */
 
+
   /* --------------------------------------------------------------------
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
   return (
-    <div className='SignUpSecondStep'>SignUpSecondStep</div>
+      <Grid
+        className='SignUpSecondStep'
+        sx={{
+          width:{'xs':'100%','sm':'50%','md':'50%'}
+        }}
+      >
+        {_renderSecondStepContent()}
+      </Grid>
   )
 }
 

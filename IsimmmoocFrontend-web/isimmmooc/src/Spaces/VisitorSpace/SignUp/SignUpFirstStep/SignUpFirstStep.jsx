@@ -7,10 +7,11 @@
  */
 
 
-import React from 'react'
-import { Container,Grid, TextField,ToggleButton,ToggleButtonGroup, Typography } from '@mui/material';
+import React, { useState } from 'react'
+import { Button,Grid, TextField,ToggleButton,ToggleButtonGroup, Typography,Snackbar } from '@mui/material';
 
-import { useState } from 'react';
+import MuiAlert from '@mui/material/Alert';
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -26,6 +27,8 @@ import { useState } from 'react';
  */
 import './SignUpFirstStep.scss';
 import styles from './../../../../Assets/Styles/style.module.scss'
+import { useDispatch, useSelector } from 'react-redux';
+import { updateEmail, updateUserType } from '../../../../Redux/UserSignUpInfoSlice';
 
 /*
  * ----------------------------------------------------------------------
@@ -33,18 +36,21 @@ import styles from './../../../../Assets/Styles/style.module.scss'
  * ----------------------------------------------------------------------
  */
 
-function SignUpFirstStep() {
+function SignUpFirstStep(props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
    */
-
+    const {goNext}=props
   /*--------------------------------------------------------------------
   *                                 Data                               |
   * --------------------------------------------------------------------
@@ -55,17 +61,50 @@ function SignUpFirstStep() {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-    const [email,setEmail]=useState(null)
-    const [userType,setUserType]=useState('Apprenant')
+  const {email,userType} = useSelector((state)=>state.userInfo)
+  const dispatch = useDispatch()
+  const [emailError,setEmailError]=useState(false)
+  const [open, setOpen] = useState(false);
+  const [warningMessage, setWarningMessage] = useState('');
+
+
+  
 
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
+  
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+  const validateEmail =(email)=>{
+    var regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/
+    console.log(regex.test(email))
+    return regex.test(email)
+  }
 
   const handleUserType = (event, newUserType) => {
     if(newUserType !==null)
-      setUserType(newUserType);
+      dispatch(updateUserType(newUserType));
+  };
+  const handleEmail = (event) => {
+      setEmailError(!validateEmail(event.target.value))
+      dispatch(updateEmail(event.target.value));
+  };
+
+  const handleGoNext = () => {
+    if(validateEmail(email))
+      goNext();
+    else
+    {
+      setWarningMessage("Invalid Email !")
+      setOpen(true);
+    }
+      
   };
   
   /* --------------------------------------------------------------------
@@ -98,28 +137,29 @@ function SignUpFirstStep() {
           >
           <TextField
             value={email}
-            onTextChange={(newEmail)=>{setEmail(newEmail)}}
+            onChange={handleEmail}
             name='Email'
             placeholder='Eg. example@email.com'
             label="Email"
             fullWidth
+            error={emailError}
             sx={{
               width:'100%',
               '& label.Mui-focused': {
-                color: styles.PrimaryColorLight,
+                color: emailError?'red':styles.PrimaryColorLight,
               },
               '& .MuiInput-underline:after': {
                 borderBottomColor: styles.PrimaryColorLight,
               },
               '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                  borderColor: styles.PrimaryColorLight,
+                  borderColor: emailError?'red':styles.PrimaryColorLight,
                 },
                 '&:hover fieldset': {
-                  borderColor: styles.PrimaryColorLight,
+                  borderColor: emailError?'red':styles.PrimaryColorLight,
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: styles.PrimaryColorLight,
+                  borderColor: emailError?'red':styles.PrimaryColorLight,
                 },
               },
             }}
@@ -130,7 +170,7 @@ function SignUpFirstStep() {
           flexDirection='column'
           >
             <Typography variant='h6' color={styles.SecondaryColor}>
-              Vous etes un ?
+              Vous êtes un ?
             </Typography>
             <ToggleButtonGroup
               value={userType}
@@ -205,6 +245,35 @@ function SignUpFirstStep() {
             </ToggleButtonGroup>
           </Grid>
         </Grid>
+        <Grid 
+          container
+          direction='row'
+          alignItems='center'
+          justifyContent='flex-end'
+          className="StepperFooter">
+             <Button 
+                variant='text'
+                sx={{
+                  backgroundColor:'#fff',
+                  color:styles.SecondaryColor,
+                  "&:hover" : {
+                    backgroundColor : styles.SecondaryColor,
+                    color: '#fff'  ,
+                  },
+                  my: 2, 
+                  mx:1,
+                  borderRadius : '3px'
+                }}
+                onClick={handleGoNext}
+              >
+                next
+              </Button>
+          </Grid>
+          <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+              {warningMessage}
+            </Alert>
+          </Snackbar>
       </Grid>
   )
 }

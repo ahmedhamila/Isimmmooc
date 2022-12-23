@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@expo/webpack-config": "^0.17.3",
+    "@react-native-community/datetimepicker": "^6.5.2",
     "@react-navigation/bottom-tabs": "^6.5.2",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
@@ -30,6 +31,7 @@
     "react-native-safe-area-context": "4.4.1",
     "react-native-safe-area-view": "^1.1.1",
     "react-native-screens": "^3.18.2",
+    "react-native-web": "^0.18.10",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
     "react-router-dom": "^6.5.0",

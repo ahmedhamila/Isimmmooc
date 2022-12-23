@@ -12,11 +12,12 @@ import {
   Step,
   StepLabel,
 } from "@material-ui/core";
-import { Button, Container, Grid } from "@mui/material";
+import {  Container, Grid } from "@mui/material";
 
 import SignUpFirstStep from "./SignUpFirstStep/SignUpFirstStep";
 import SignUpSecondtStep from "./SignUpSecondStep/SignUpSecondStep";
 import SignUpThirdtStep from "./SignUpThirdStep/SignUpThirdStep";
+import SignUpSuccessStep from "./SignUpSuccessStep/SignUpSuccessStep";
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -68,23 +69,29 @@ const SignUp = () => {
   function _renderStepContent(step) {
     switch (step) {
       case 0:
-        return <SignUpFirstStep/>;
+        return <SignUpFirstStep goNext={handleGoNext}  />;
       case 1:
-        return <SignUpSecondtStep/>;
+        return <SignUpSecondtStep  currentStep goNext={handleGoNext} goPrevious={handleGoPrevious} />;
       case 2:
-        return <SignUpThirdtStep/>;
+        return <SignUpThirdtStep  currentStep goNext={handleGoNext} goPrevious={handleGoPrevious} />;
       default:
         return <div>Not Found</div>;
     }
   }
 
   const handleGoNext = ()=>{
+   
     if(currentStep<3)
-        setCurrentStep((currentStep)=> currentStep+1)
+    {
+      setCurrentStep((currentStep)=> currentStep+1)
+    }
   }
   const handleGoPrevious = ()=>{
     if(currentStep !== -1)
-        setCurrentStep((currentStep)=> currentStep-1)
+    {
+      setCurrentStep((currentStep)=> currentStep-1)
+    }
+        
   }
     
   
@@ -93,106 +100,71 @@ const SignUp = () => {
    * --------------------------------------------------------------------
    */
 
+
   /* --------------------------------------------------------------------
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
 
   return (
-      <Container
+      <Grid
         className="SignUp"
+        container
+        flexDirection='column'
+        justifyContent='center'
+        alignItems='center'
       >
         <Grid
-        container
-        direction='column'
-        gap='50px'
+          className="SignUpContent"
+          container
         >
-          <Grid
-          className="StepperHeader"
-          >
-            <Stepper activeStep={currentStep}>
-                {steps.map((step,index)=>{
-                    return(
-                        <Step key={index}>
-                          <StepLabel>
-                            {step}
-                          </StepLabel>
-                        </Step>
-                        
-                    )
-                })}
-            </Stepper>
-          </Grid>
           <Grid
           container
           direction='column'
-          alignItems='center'
-          justifyContent='flex-start'
-          className="StepperContent"
+          gap='50px'
           >
             <Grid
-            container
-            flexDirection='row'
-            justifyContent='flex-start'
+            className="StepperHeader"
             >
-              {currentStep === steps.length?(
-                <div>Success Step</div>
-              ):(
-                _renderStepContent(currentStep)
-              )}
+              <Stepper activeStep={currentStep}>
+                  {steps.map((step,index)=>{
+                      return(
+                          <Step key={index}>
+                            <StepLabel>
+                              {step}
+                            </StepLabel>
+                          </Step>
+                          
+                      )
+                  })}
+              </Stepper>
             </Grid>
-              
-          </Grid>
-          <Grid 
-          container
-          direction='row'
-          alignItems='center'
-          justifyContent='flex-end'
-          className="StepperFooter">
-           
-            {currentStep !== 0?(
-              <Button  
-                variant='text' 
-                sx={{
-                  backgroundColor:'#fff',
-                  color:styles.PrimaryColor,
-                  "&:hover" : {
-                    backgroundColor : styles.PrimaryColor,
-                    color: '#fff'  ,
-                  },
-                  my: 2, 
-                  mx:1,
-                  borderRadius : '3px'
-                }}
-                onClick={handleGoPrevious}
+            <Grid
+            container
+            direction='column'
+            alignItems='center'
+            justifyContent='flex-start'
+            className="StepperContent"
+            >
+              <Grid
+              container
+              flexDirection='row'
+              justifyContent='center'
               >
-                previous
-              </Button>
-            ):(
-              <></>
-            )}
-             <Button 
-                variant='text'
-                sx={{
-                  backgroundColor:'#fff',
-                  color:styles.SecondaryColor,
-                  "&:hover" : {
-                    backgroundColor : styles.SecondaryColor,
-                    color: '#fff'  ,
-                  },
-                  my: 2, 
-                  mx:1,
-                  borderRadius : '3px'
-                }}
-                onClick={handleGoNext}
-              >
-                next
-              </Button>
+                {currentStep === steps.length?(
+                  <SignUpSuccessStep />
+                ):(
+                  _renderStepContent(currentStep)
+                )}
+              </Grid>
+                
+            </Grid>
+            
           </Grid>
-          
         </Grid>
+        
       
-      </Container>
+      </Grid>
   );
 };
 
