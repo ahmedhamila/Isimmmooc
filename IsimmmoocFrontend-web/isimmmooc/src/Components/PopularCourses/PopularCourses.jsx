@@ -15,6 +15,9 @@ import Paper from '@mui/material/Paper';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import Avatar from '@mui/material/Avatar';
 
 /*
 * ----------------------------------------------------------------------
@@ -37,6 +40,8 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+import courseImg from '../../Assets/Images/coursePhoto.jpg';
+import formateurImg from '../../Assets/Images/formateurImg.jpg';
 
 function PopularCourses() {
 
@@ -45,8 +50,9 @@ function PopularCourses() {
    * --------------------------------------------------------------------
    */
   const [courses,setCourses]=useState([
-    {}
+    {title:'Developement mobile',desc:'The complete dev mobile course for beginer.',formateurName:'Paolo yokt'}
   ])
+
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -104,11 +110,43 @@ function PopularCourses() {
                         backgroundColor: (theme) =>
                           theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                         border: '1px solid rgb(206, 194, 194)',
-                        borderRadius:'15px',
+                        
                       }}
                       
                       >
-
+                      <CardMedia
+                        component="img"
+                        height="160"
+                        image={courseImg}
+                        alt="course photo"
+                        sx={{p:0.2}}
+                      />
+                      {courses.map((item)=>{
+                        return(
+                          
+                        <CardContent>
+                          <Grid container direction='row'>
+                          
+                          <Typography gutterBottom variant="p" textAlign="left" marginBottom="3%" fontFamily='Segoe UI' color='#9d9da8' component="div">
+                            {item.title}
+                          </Typography>
+                          </Grid>
+                          <Typography variant="h6" marginTop="3%" fontFamily="Arial" fontSize='18' fontWeight='bold'>
+                            {item.desc}
+                          </Typography>
+                          <Stack spacing={1} marginTop="5%">
+                            <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
+                          </Stack>
+                          <Stack marginTop="7%" direction='row' spacing={2}>
+                          <Avatar alt="Remy Sharp" src={formateurImg} />
+                          <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
+                            {item.formateurName}
+                          </Typography>
+                          </Stack>
+                          
+                        </CardContent>)
+                            
+                        })}  
                       </Paper>
                   </Grid>
                 ))}
