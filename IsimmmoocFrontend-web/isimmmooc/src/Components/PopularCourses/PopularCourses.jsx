@@ -87,99 +87,99 @@ function PopularCourses() {
    */
   return (
 <React.Fragment>
-      <Container maxWidth="false" sx={{marginTop:'2%',
-        width:"100%",}} 
-      >
-        <Box sx={{
-            height: '100%',
-            padding: "20px 0",
-            position: "relative" }} >
-          <div style={{textAlign:'center'}}>
-            <h1>Our popular courses</h1>
-            <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-          </div>    
-          <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-            <Grid item xs={12}>
-              <Grid container justifyContent="center" spacing={9}>
-                {[0, 1, 2].map((value) => (
-                  <Grid key={value} item >
-                    <Paper
-                      sx={{
-                        height: 400,
-                        width: 300,
-                        backgroundColor: (theme) =>
-                          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                        border: '1px solid rgb(206, 194, 194)',
-                        
-                      }}
-                      
-                      >
-                      <CardMedia
-                        component="img"
-                        height="160"
-                        image={courseImg}
-                        alt="course photo"
-                        sx={{p:0.2}}
-                      />
-                      {courses.map((item)=>{
-                        return(
-                          
-                        <CardContent>
-                          <Grid container direction='row'>
-                          
-                          <Typography gutterBottom variant="p" textAlign="left" marginBottom="3%" fontFamily='Segoe UI' color='#9d9da8' component="div">
-                            {item.title}
-                          </Typography>
-                          </Grid>
-                          <Typography variant="h6" marginTop="3%" fontFamily="Arial" fontSize='18' fontWeight='bold'>
-                            {item.desc}
-                          </Typography>
-                          <Stack spacing={1} marginTop="5%">
-                            <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
-                          </Stack>
-                          <Stack marginTop="7%" direction='row' spacing={2}>
-                          <Avatar alt="Remy Sharp" src={formateurImg} />
-                          <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
-                            {item.formateurName}
-                          </Typography>
-                          </Stack>
-                          
-                        </CardContent>)
-                            
-                        })}  
-                      </Paper>
-                  </Grid>
-                ))}
-              </Grid>
-            </Grid>
-            <Grid 
-            container
-            marginTop='2%'
-            direction='column'
-            alignItems='center'
-            justifyContent='center'
-            className='PopularTopicsButton'>
-                <Button
-                variant='text' 
-                sx={{
-                    backgroundColor:styles.SecondaryColor,
-                    color:'#fff',
-                    "&:hover" : {
-                      backgroundColor : '#fff',
-                      color: styles.SecondaryColor  ,
-                    }
+  <Container maxWidth="false" sx={{marginTop:'2%',backgroundColor: '#6159a2',
+    width:"100%",}} 
+  >
+    <Box sx={{
+        height: '100%',
+        padding: "20px 0",
+        position: "relative" }} >
+      <div style={{textAlign:'center',color:'#fff'}}>
+        <h1 >Our popular courses</h1>
+        <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
+      </div>    
+      <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justifyContent="center" spacing={9}>
+            {[0, 1, 2].map((value) => (
+              <Grid key={value} item >
+                <Paper
+                  sx={{
+                    height: 400,
+                    width: 300,
+                    backgroundColor: (theme) =>
+                      theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                    border: '1px solid rgb(206, 194, 194)',
+                    
                   }}
-                size="large"
-                >
-                    Browse All 
-                </Button> 
-            </Grid>
+                  
+                  >
+                  <CardMedia
+                    component="img"
+                    height="160"
+                    image={courseImg}
+                    alt="course photo"
+                    sx={{p:0.2}}
+                  />
+                  {courses.map((item)=>{
+                    return(
+                      
+                    <CardContent>
+                      <Grid container direction='row'>
+                      
+                      <Typography gutterBottom variant="p" textAlign="left" marginBottom="3%" fontFamily='Segoe UI' color='#9d9da8' component="div">
+                        {item.title}
+                      </Typography>
+                      </Grid>
+                      <Typography variant="h6" marginTop="3%" fontFamily="Arial" fontSize='18' fontWeight='bold'>
+                        {item.desc}
+                      </Typography>
+                      <Stack spacing={1} marginTop="5%">
+                        <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
+                      </Stack>
+                      <Stack marginTop="7%" direction='row' spacing={2}>
+                      <Avatar alt="Remy Sharp" src={formateurImg} />
+                      <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
+                        {item.formateurName}
+                      </Typography>
+                      </Stack>
+                      
+                    </CardContent>)
+                        
+                    })}  
+                  </Paper>
+              </Grid>
+            ))}
           </Grid>
-          
-        </Box>
-      </Container>
-    </React.Fragment>
-    
+        </Grid>
+        <Grid 
+        container
+        marginTop='2%'
+        direction='column'
+        alignItems='center'
+        justifyContent='center'
+        className='PopularTopicsButton'>
+            <Button
+            variant='text' 
+            sx={{
+                backgroundColor:styles.SecondaryColor,
+                color:'#fff',
+                "&:hover" : {
+                  backgroundColor : '#fff',
+                  color: styles.SecondaryColor  ,
+                }
+              }}
+            size="large"
+            >
+                Browse All 
+            </Button> 
+        </Grid>
+      </Grid>
+      
+    </Box>
+  </Container>
+</React.Fragment>
+
   )
 }
 
