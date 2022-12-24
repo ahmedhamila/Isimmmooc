@@ -87,7 +87,7 @@ function SectionTeachers() {
    * --------------------------------------------------------------------
    */
   return (
-    <React.Fragment>
+  <React.Fragment>
   <Container maxWidth="false" sx={{marginTop:'2%',
     width:"100%"}} 
   >

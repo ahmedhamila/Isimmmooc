@@ -6,7 +6,17 @@
  * ----------------------------------------------------------------------
  */
 
-import React from 'react'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import {Button,Grid} from '@mui/material';
+import { useState } from 'react';
+import { styled } from '@mui/material/styles';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -21,12 +31,13 @@ import React from 'react'
  * ----------------------------------------------------------------------
  */
 import './SectionOrganizmes.scss'
-
+import styles from './../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+import organizmeImg from '../../Assets/Images/organizmeImg.jpg';
 
 function SectionOrganizmes() {
 
@@ -68,7 +79,87 @@ function SectionOrganizmes() {
    * --------------------------------------------------------------------
    */
   return (
-    <h1>holaaa!</h1>
+    <React.Fragment>
+    <Container maxWidth="false" sx={{marginTop:'2%',
+      width:"100%"}} 
+    >
+      <Box sx={{
+          height: '100%',
+          padding: "20px 0",
+          position: "relative" }} >
+        <div style={{textAlign:'center'}}>
+          <p style={{color:'#ff7468',fontFamily:'Arial'}}>Meet with our organizmes</p>
+          <h1 >Our organizmes</h1>
+          <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
+        </div>    
+        <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+          <Grid item xs={12}>
+            <Grid container justifyContent="center" spacing={12}>
+              {[0, 1].map((value) => (
+                <Grid key={value} item >
+                  <Card sx={{ maxWidth: 500, height:420 }}>
+                    <CardMedia
+                      sx={{ height: 230}}
+                      image={organizmeImg}
+                      title="organizme photo"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="p" component="div" color="text.secondary" align='right'>
+                        Graduation
+                      </Typography>
+                      <Typography variant="h5" align='center' fontWeight='bold'>
+                      Graduation: The Premier Personal Growth Learning Platform
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        variant='text' 
+                        sx={{
+                            marginTop:'3%',
+                            backgroundColor:styles.SecondaryColor,
+                            color:'#fff',
+                            "&:hover" : {
+                              backgroundColor : '#fff',
+                              color: styles.SecondaryColor  ,
+                            }
+                          }}
+                        size=" large"
+                        >
+                          View Profile 
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+          <Grid 
+          container
+          marginTop='2%'
+          direction='column'
+          alignItems='center'
+          justifyContent='center'
+          className='PopularTopicsButton'>
+              <Button
+              variant='text' 
+              sx={{
+                  backgroundColor:styles.SecondaryColor,
+                  color:'#fff',
+                  "&:hover" : {
+                    backgroundColor : '#fff',
+                    color: styles.SecondaryColor  ,
+                  }
+                }}
+              size="large"
+              >
+                 See All 
+              </Button> 
+          </Grid>
+        </Grid>
+        
+      </Box>
+    </Container>
+  </React.Fragment>
   )
 }
 
