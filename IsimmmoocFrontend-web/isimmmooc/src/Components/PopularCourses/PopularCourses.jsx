@@ -104,6 +104,7 @@ function PopularCourses() {
             {[0, 1, 2].map((value) => (
               <Grid key={value} item >
                 <Paper
+                  className='CoursePaper'
                   sx={{
                     height: 400,
                     width: 300,
