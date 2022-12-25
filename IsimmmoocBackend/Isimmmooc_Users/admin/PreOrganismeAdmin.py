@@ -5,4 +5,4 @@ from ..models import PreOrganisme
 @admin.register(PreOrganisme)
 class PreOrganismeAdmin(admin.ModelAdmin):
     '''Admin View for preOrganisme'''
-    list_display = ('name',)
+    list_display = ('name','email','phone_number','web_site','adress','accepted')
