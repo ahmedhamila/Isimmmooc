@@ -9,6 +9,7 @@
 import * as React from 'react';
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
 import ApprenantHeroSection from '../../../Components/ApprenantHeroSection/ApprenantHeroSection';
+import ApprentissageSectionApprenant from '../../../Components/ApprentissageSectionApprenant/ApprentissageSectionApprenant';
 import Footer from '../../../Components/Layouts/Footer/Footer'
 /*
 * ----------------------------------------------------------------------
@@ -75,7 +76,8 @@ function ApprenantHomeSpace() {
     <div className='ApprenantHome'>
     <NavBarApprenantSpace />
     <ApprenantHeroSection />
-    <h1>Hollaaa!</h1>
+    <ApprentissageSectionApprenant/>
+    <h1>YOOOOOOOO</h1>
     <Footer />
     </div>
   )
