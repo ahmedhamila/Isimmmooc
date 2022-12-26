@@ -104,7 +104,9 @@ function ApprentissageSectionApprenant() {
             <br />
             <br />
           </Grid>
-          <Grid container spacing={3} flexDirection='row' sx={{}}>
+          <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+          <Grid item xs={12}>
+          <Grid container spacing={3} flexDirection='row'>
           {[0, 1, 2].map((value) => (
             <Grid key={value} item>
               <Paper
@@ -123,6 +125,7 @@ function ApprentissageSectionApprenant() {
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                 }}
               >
+
                 <Grid container spacing={2}>
                   <Grid item >
                     <ButtonBase sx={{ width: 128, height:'100%',borderRight:1,borderColor:'#8d8e8f', }}>
@@ -154,6 +157,8 @@ function ApprentissageSectionApprenant() {
               </Paper>
             </Grid>
           ))}
+          </Grid>
+          </Grid>
           </Grid>
         </Box>
       </Container>

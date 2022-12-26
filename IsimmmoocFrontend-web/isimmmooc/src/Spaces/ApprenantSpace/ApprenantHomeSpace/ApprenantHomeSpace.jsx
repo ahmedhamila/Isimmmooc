@@ -26,6 +26,7 @@ import SectionApprenantCourses from '../../../Components/SectionApprenantCourses
  * ----------------------------------------------------------------------
  */
 import './ApprenantHomeSpace.scss'
+import { Grid } from 'semantic-ui-react';
 
 
 /*
@@ -75,7 +76,7 @@ function ApprenantHomeSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='ApprenantHome'>
+    <Grid className='ApprenantHome'>
     <NavBarApprenantSpace />
     <ApprenantHeroSection />
     <ApprentissageSectionApprenant/>
@@ -83,7 +84,7 @@ function ApprenantHomeSpace() {
     <SectionApprenantCourses key={value} />
     ))}
     <Footer />
-    </div>
+    </Grid>
   )
 }
 
