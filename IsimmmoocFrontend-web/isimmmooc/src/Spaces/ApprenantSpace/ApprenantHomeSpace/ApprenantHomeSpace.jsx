@@ -11,6 +11,7 @@ import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBa
 import ApprenantHeroSection from '../../../Components/ApprenantHeroSection/ApprenantHeroSection';
 import ApprentissageSectionApprenant from '../../../Components/ApprentissageSectionApprenant/ApprentissageSectionApprenant';
 import Footer from '../../../Components/Layouts/Footer/Footer'
+import SectionApprenantCourses from '../../../Components/SectionApprenantCourses/SectionApprenantCourses';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -25,6 +26,7 @@ import Footer from '../../../Components/Layouts/Footer/Footer'
  * ----------------------------------------------------------------------
  */
 import './ApprenantHomeSpace.scss'
+
 
 /*
  * ----------------------------------------------------------------------
@@ -77,7 +79,9 @@ function ApprenantHomeSpace() {
     <NavBarApprenantSpace />
     <ApprenantHeroSection />
     <ApprentissageSectionApprenant/>
-    <h1>YOOOOOOOO</h1>
+    {[0, 1, 2].map((value) => (
+    <SectionApprenantCourses key={value} />
+    ))}
     <Footer />
     </div>
   )

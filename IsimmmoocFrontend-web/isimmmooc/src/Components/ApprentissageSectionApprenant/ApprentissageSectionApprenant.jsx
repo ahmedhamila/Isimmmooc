@@ -95,12 +95,12 @@ function ApprentissageSectionApprenant() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth='false' >
-        <Box sx={{height: '60vh',  maxWidth:'100%',flexDirection: 'column'}} >
+        <Box sx={{height: '50vh',  maxWidth:'100%',flexDirection: 'column'}} >
           <Grid classeName='textContainer' item>
             <h1 color='#1C1D1F' fontFamily=' Georgia'>Commençons notre apprentissage,<br/>
               yosomran@Gmail.Com
             </h1>
-            <a><span>Mon apprentissage</span></a>
+            <a className='link1'><span>Mon apprentissage</span></a>
             <br />
             <br />
           </Grid>
