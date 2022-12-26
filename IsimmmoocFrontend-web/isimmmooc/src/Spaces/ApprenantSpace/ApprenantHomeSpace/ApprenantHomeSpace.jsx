@@ -5,13 +5,11 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
-import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
-import SignIn from '../Spaces/VisitorSpace/SignIn/SignIn'
-import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
 
+import * as React from 'react';
+import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
+import ApprenantHeroSection from '../../../Components/ApprenantHeroSection/ApprenantHeroSection';
+import Footer from '../../../Components/Layouts/Footer/Footer'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -25,7 +23,7 @@ import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/Appr
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './ApprenantHomeSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -33,13 +31,14 @@ import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/Appr
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+
+function ApprenantHomeSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+ 
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -52,7 +51,7 @@ function RootRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -72,18 +71,14 @@ function RootRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<HomeSpace />}/>
-            <Route exact path='/SignUp' element={<SignUp />}/>
-            <Route exact path='/SignIn' element={<SignIn />}/>
-            <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-        </Routes>
-    </BrowserRouter>
+    <div className='ApprenantHome'>
+    <NavBarApprenantSpace />
+    <ApprenantHeroSection />
+    <h1>Hollaaa!</h1>
+    <Footer />
+    </div>
   )
 }
 
-export default RootRouter
+export default ApprenantHomeSpace

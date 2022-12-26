@@ -5,12 +5,15 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
-import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
-import SignIn from '../Spaces/VisitorSpace/SignIn/SignIn'
-import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
+import * as React from 'react';
+import {Box,Grid} from '@mui/material'
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
+import { useState,useEffect } from 'react';
+
+
 
 /*
 * ----------------------------------------------------------------------
@@ -25,21 +28,23 @@ import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/Appr
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './ApprenantHeroSection.scss'
+import styles from './../../Assets/Styles/style.module.scss'
 
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+import ApprenantHomeImg from '../../Assets/Images/ApprenantHome.png';
 
-function RootRouter() {
+function ApprenantHeroSection() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+  
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -52,7 +57,7 @@ function RootRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -60,8 +65,6 @@ function RootRouter() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
-    
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -72,18 +75,54 @@ function RootRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
+ 
   return (
+    <Box>
+      <Box className='HeroSectionTopPart1' >
+        <Grid container rowSpacing={2}>
+          <Grid 
+          direction='column' 
+          alignItems='center'
+          justifyContent='center'
+          container
+          className='HeroContent' 
+          xs={6}>
+            <div >
+            <Paper
+              sx={{
+                p: 2,
+                margin: 'auto',
+                width: 400,
+                flexGrow: 1,
+                backgroundColor: (theme) =>
+                  theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+              }}
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm container>
+                  <Grid item xs container direction="column" >
+                    <Grid item xs>
+                      <Typography gutterBottom variant="h1" color='#1C1D1F' fontWeight='bold' fontFamily='Georgia' fontSize='32px' component="div">
+                      Révélez un monde de connaissances
+                      </Typography>
+                      <Typography variant="p" color='#1C1D1F' fontFamily='sf pro text' fontSize='18px' gutterBottom>
+                      Nos formateurs confirmés ont hâte de partager leur expérience avec vous pour vous aider à vous développer.
+                      </Typography> 
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Paper>
+            </div>
+          </Grid>
+          <Grid className='ApprenantHeroImg' item xs={6} style={{backgroundImage: `url(${ApprenantHomeImg})` }}>
+            
+          </Grid>
+        </Grid>    
+      </Box>
+    </Box>
     
-    <BrowserRouter>
-        <Routes>
-            <Route exact path='/' element={<HomeSpace />}/>
-            <Route exact path='/SignUp' element={<SignUp />}/>
-            <Route exact path='/SignIn' element={<SignIn />}/>
-            <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-        </Routes>
-    </BrowserRouter>
   )
 }
 
-export default RootRouter
+export default ApprenantHeroSection
