@@ -6,13 +6,11 @@
  * ----------------------------------------------------------------------
  */
 
-import * as React from 'react';
+import React from 'react'
 import { Grid } from 'semantic-ui-react';
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
-import ApprenantHeroSection from '../../../Components/ApprenantHeroSection/ApprenantHeroSection';
-import ApprentissageSectionApprenant from '../../../Components/ApprentissageSectionApprenant/ApprentissageSectionApprenant';
 import Footer from '../../../Components/Layouts/Footer/Footer'
-import SectionApprenantCourses from '../../../Components/SectionApprenantCourses/SectionApprenantCourses';
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -26,9 +24,8 @@ import SectionApprenantCourses from '../../../Components/SectionApprenantCourses
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './ApprenantHomeSpace.scss'
-
-
+import './ModifierApprenant.scss'
+import SectionModifierApprenant from '../../../Components/SectionModifierApprenant/SectionModifierApprenant';
 
 /*
  * ----------------------------------------------------------------------
@@ -36,14 +33,13 @@ import './ApprenantHomeSpace.scss'
  * ----------------------------------------------------------------------
  */
 
-
-function ApprenantHomeSpace() {
+function ModifierApprenant() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
- 
+
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -77,16 +73,12 @@ function ApprenantHomeSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <Grid className='ApprenantHome'>
+    <div className='ApprenantHome'>
     <NavBarApprenantSpace />
-    <ApprenantHeroSection />
-    <ApprentissageSectionApprenant/>
-    {[0, 1, 2].map((value) => (
-    <SectionApprenantCourses key={value} />
-    ))}
+    <SectionModifierApprenant/>
     <Footer />
-    </Grid>
+    </div>
   )
 }
 
-export default ApprenantHomeSpace
+export default ModifierApprenant
