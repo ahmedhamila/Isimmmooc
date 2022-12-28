@@ -87,7 +87,7 @@ const Footer = (props) => {
 
   return (
     <footer className='Footer'>
-      <Container maxWidth="lg">
+      <Container>
         <div className='CopyRightContainer'>
           <a href="/" className='CopyRight'>
             Isimmmooc

@@ -5,11 +5,12 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
+
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
-import VisitorRouter from "./VisitorRouter.jsx";
-import FormateurRouter from './FormateurRouter.jsx';
-import ApprenantRouter from './ApprenantRouter.jsx';
+import { Grid } from 'semantic-ui-react';
+import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
+import Footer from '../../../Components/Layouts/Footer/Footer'
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -23,7 +24,8 @@ import ApprenantRouter from './ApprenantRouter.jsx';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './ModifierApprenant.scss'
+import SectionModifierApprenant from '../../../Components/SectionModifierApprenant/SectionModifierApprenant';
 
 /*
  * ----------------------------------------------------------------------
@@ -31,7 +33,7 @@ import ApprenantRouter from './ApprenantRouter.jsx';
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+function ModifierApprenant() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -50,7 +52,7 @@ function RootRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -70,15 +72,13 @@ function RootRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <BrowserRouter>
-        <VisitorRouter />
-        <FormateurRouter />
-        <ApprenantRouter />
-    </BrowserRouter>
+    <div className='ApprenantHome'>
+    <NavBarApprenantSpace />
+    <SectionModifierApprenant/>
+    <Footer />
+    </div>
   )
 }
 
-export default RootRouter
+export default ModifierApprenant

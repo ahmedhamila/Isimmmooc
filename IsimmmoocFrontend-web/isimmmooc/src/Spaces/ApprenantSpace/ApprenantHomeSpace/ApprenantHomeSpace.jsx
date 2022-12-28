@@ -5,11 +5,14 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
-import VisitorRouter from "./VisitorRouter.jsx";
-import FormateurRouter from './FormateurRouter.jsx';
-import ApprenantRouter from './ApprenantRouter.jsx';
+
+import * as React from 'react';
+import { Grid } from 'semantic-ui-react';
+import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
+import ApprenantHeroSection from '../../../Components/ApprenantHeroSection/ApprenantHeroSection';
+import ApprentissageSectionApprenant from '../../../Components/ApprentissageSectionApprenant/ApprentissageSectionApprenant';
+import Footer from '../../../Components/Layouts/Footer/Footer'
+import SectionApprenantCourses from '../../../Components/SectionApprenantCourses/SectionApprenantCourses';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -23,6 +26,8 @@ import ApprenantRouter from './ApprenantRouter.jsx';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
+import './ApprenantHomeSpace.scss'
+
 
 
 /*
@@ -31,13 +36,14 @@ import ApprenantRouter from './ApprenantRouter.jsx';
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+
+function ApprenantHomeSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+ 
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -50,7 +56,7 @@ function RootRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -70,15 +76,17 @@ function RootRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <BrowserRouter>
-        <VisitorRouter />
-        <FormateurRouter />
-        <ApprenantRouter />
-    </BrowserRouter>
+    <Grid className='ApprenantHome'>
+    <NavBarApprenantSpace />
+    <ApprenantHeroSection />
+    <ApprentissageSectionApprenant/>
+    {[0, 1, 2].map((value) => (
+    <SectionApprenantCourses key={value} />
+    ))}
+    <Footer />
+    </Grid>
   )
 }
 
-export default RootRouter
+export default ApprenantHomeSpace

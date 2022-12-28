@@ -1,0 +1,15 @@
+.CoursePaper{
+    transition: transform ease 300ms !important;
+    cursor: pointer;
+}
+
+.CoursePaper:hover{
+    transform: translate(0, -10px);
+}
+.link{
+    color: #5624d0;
+    font-size:'32px';
+    font-family: ' Georgia' ;
+    font-weight:'bold';
+    cursor: pointer;
+}

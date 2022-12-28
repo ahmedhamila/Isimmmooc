@@ -1,0 +1,20 @@
+.textContainer{
+    flex-direction: row;
+}
+h1{
+    color: #1C1D1F;
+    font-size: 32px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0px 0px 8px;
+}
+.link1{
+    color: #5624d0;
+    background-color: transparent;
+    min-width: auto;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+    font-weight: bold;
+    float:right;
+    cursor: pointer;
+}
