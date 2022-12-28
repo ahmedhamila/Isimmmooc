@@ -6,9 +6,10 @@
  * ----------------------------------------------------------------------
  */
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
-import VisitorRouter from "./VisitorRouter.jsx";
-import FormateurRouter from './FormateurRouter.jsx';
+import {Routes,Route} from 'react-router-dom'
+import Dashboard from './../Spaces/FormateurSpace/Dashboard/Dashboard'
+import FormateurProfile from './../Spaces/FormateurSpace/FormateurProfile/FormateurProfile'
+import FormateurSideBar from './../Components/FormateurSideBar/FormateurSideBar'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -30,7 +31,7 @@ import FormateurRouter from './FormateurRouter.jsx';
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+function FormateurRouter() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -72,11 +73,18 @@ function RootRouter() {
 
   return (
     
-    <BrowserRouter>
-        <VisitorRouter />
-        <FormateurRouter />
-    </BrowserRouter>
+    <React.Fragment>
+        
+        <Routes>
+            <Route exact path='/FormateurSpace' element={<FormateurSideBar />}/>
+            <Route exact path='/FormateurSpace/Dashboard' element={<Dashboard />}/>
+            <Route exact path='/FormateurSpace/Profile' element={<FormateurProfile />}/>
+        </Routes>
+        
+        
+    </React.Fragment>
+    
   )
 }
 
-export default RootRouter
+export default FormateurRouter

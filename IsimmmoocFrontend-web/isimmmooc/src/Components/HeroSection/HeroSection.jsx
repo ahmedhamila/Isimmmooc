@@ -13,6 +13,10 @@ import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import {Button} from '@mui/material';
 import { useState,useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+
+import {motion} from 'framer-motion';
+
 
 
 
@@ -41,6 +45,109 @@ import bigImage from '../../Assets/Images/isimmmooc-Hero-Image-Big.png';
 import mediumImage from '../../Assets/Images/isimmmooc-Hero-Image-Medium.png';
 import smallImage from '../../Assets/Images/isimmmooc-Hero-Image-Small.png';
 
+let easing = [0.6,-0.05,0.01,0.99];
+const stagger = {
+  animate:{
+    transition:{
+      delayChildren:0.4,
+      staggerChildren:0.2,
+      staggerDirection:1
+    }
+  }
+}
+
+const fadeInUp = {
+  initial:{
+    y:-60,
+    opacity:0,
+    transition:{
+      duration:0.6, ease:easing
+    }
+  },
+  animate:{
+    y:0,
+    opacity:1,
+    transition:{
+      duration:0.6,
+      delay:0.5,
+      ease:easing
+    }
+  }
+};
+
+const transition = {duration:1.4,ease:[0.6,0.01,-0.05,0.9]};
+const letter = {
+  initial:{
+    y:400,
+  },
+  animate:{
+    y:0,
+    transition:{duration:1, ...transition}
+  }
+};
+
+
+
+const header={
+  initial:{
+    y:-60,
+    opacity:0,
+    transition:{duration:0.05, ease:easing}
+  },
+  animate:{
+    y:0,
+    opacity:1,
+    animation:{
+      duration:0.6,
+      ease:easing
+    }
+  }
+};
+const container = {
+  show:{
+      transition:{
+          staggerChildren:0.2
+      }
+  }
+};
+
+const item = {
+  hidden:{opacity:0,y:20},
+  show:{
+      opacity:1,
+      y:0,
+      transition:{
+          ease:'easeInOut',
+          duration:.2
+      }
+  }
+}
+
+const title = {
+  hidden:{
+      y:60,
+      opacity:0
+  },
+  show:{
+      y:0,
+      opacity:1,
+      transition:{
+          delay:.2,
+          duration:0.6,
+          ease:easing
+      }
+  }
+};
+
+const hoverEffect = {
+  whileHover:{
+      scale:1.5,rotate:630,borderRadius:"100%"
+  },
+  whileTap:{
+      scale:.8,rotate:630,borderRadius:"100%"
+  },
+}
+
 function HeroSection() {
 
   /* --------------------------------------------------------------------
@@ -63,12 +170,14 @@ function HeroSection() {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-
+  const navigate=useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
+  const signUpClickHandle = ()=>{
+    navigate("/SignUp")
+  }
   const useWindowWidth = () => {
     const [windowWidth, setWindowWidth ] = useState(window.innerWidth);
   
@@ -100,9 +209,33 @@ function HeroSection() {
    */
   const imageUrl = useWindowWidth()
   return (
-    <Box>
-      <Box paddingTop='75px' className='HeroSectionTopPart' >
-        <Grid container rowSpacing={1} >
+    <Box
+      component={motion.div}
+      initial='initial'
+      animate='animate'
+    >
+      <Box 
+        paddingTop='75px' 
+        className='HeroSectionTopPart' 
+        component={motion.div}
+        initial={{
+          opacity:0,
+          scale:0
+        }}
+        animate={{
+          opacity:1,
+          scale:1
+        }}
+        transition={{
+          duration:0.3,
+          ease:easing
+        }}
+      >
+        <Grid 
+          container 
+          rowSpacing={1}
+          component={motion.div}
+        >
           <Grid 
           direction='column' 
           alignItems='center'
@@ -110,17 +243,34 @@ function HeroSection() {
           container
           className='HeroContent' 
           xs={6}>
-            <div >
-              <h2>
+            <motion.div>
+              <motion.h2 variants={fadeInUp} initial='initial' animate='animate'>
                 Anytime Anywhere learn on your suitable schedule
-              </h2>
-              <p>
+              </motion.h2>
+              <motion.p variants={fadeInUp}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, 
                 maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </Grid>
-          <Grid className='HeroImage' item xs={6} style={{backgroundImage: `url(${imageUrl})` }}>
+          <Grid 
+            className='HeroImage' 
+            item xs={6} 
+            style={{backgroundImage: `url(${imageUrl})` }}
+            component={motion.div}
+            initial={{
+              x:200,
+              opacity:0
+            }}
+            animate={{
+              x:0,
+              opacity:1
+            }}
+            transition={{
+              duration:.5,
+              delay:.8
+            }}
+          >
             
           </Grid>
         </Grid>
@@ -128,7 +278,12 @@ function HeroSection() {
           
       </Box>
 
-      <Box paddingTop='75px' className='HeroSectionBottomPart' >
+      <Box 
+        paddingTop='75px' 
+        className='HeroSectionBottomPart' 
+        component={motion.header}
+        variants={letter}
+      >
         <Grid container 
         direction={{sm:'column',md:'row',lg:'row'  }}
         justifyContent='center'
@@ -142,13 +297,20 @@ function HeroSection() {
             item
             xs={{sm:12,md:6}}>
               <Grid
-              container 
-              direction='column'
-              alignItems='center'
-              justifyContent='space-between'
-              gap="15px"
-              padding={'25px'} 
-              spacing={{  md: 3 }} >
+                container 
+                direction='column'
+                alignItems='center'
+                justifyContent='space-between'
+                gap="15px"
+                padding={'25px'} 
+                spacing={{  md: 3 }} 
+                component={motion.div}
+                variants={container}
+                initial='hidden'
+                exit='exit'
+                whileInView='show'
+                viewport={{once:false}}
+              >
                   <Grid 
                   container
                   direction={{xs:'column',sm:'row',md:'row' ,xl:"row" }}
@@ -158,14 +320,16 @@ function HeroSection() {
                   >
                   
                     <Grid
-                    container
-                    direction={{sm:'row',md:'row'  }}
-                    gap={{sm:'0px',md:'20px',xl:'20px'}}
-                    sx={{
-                      width : '325px',
-                      height :'175px'
-                    }}
-                    className='Item'
+                      container
+                      direction={{sm:'row',md:'row'  }}
+                      gap={{sm:'0px',md:'20px',xl:'20px'}}
+                      sx={{
+                        width : '325px',
+                        height :'175px'
+                      }}
+                      className='Item'
+                      component={motion.div}
+                      variants={item}
                     >
                       <div className='ItemIcon' style={{backgroundColor:"#FF766A",borderColor:"#FF766A",color:"#FFF0E9"}}>
                         <DesktopMacOutlinedIcon />
@@ -176,14 +340,17 @@ function HeroSection() {
                       </div>
                     </Grid>
                     <Grid
-                    container
-                    direction={{sm:'column',md:'row'  }}
-                    gap={{sm:'0px',md:'20px',xl:'20px'}}
-                    sx={{
-                      width : '325px',
-                      height :'175px'
-                    }}
-                    className='Item'>
+                      container
+                      direction={{sm:'column',md:'row'  }}
+                      gap={{sm:'0px',md:'20px',xl:'20px'}}
+                      sx={{
+                        width : '325px',
+                        height :'175px'
+                      }}
+                      className='Item'
+                      component={motion.div}
+                      variants={item}
+                    >
                       <div className='ItemIcon' style={{backgroundColor:"#7765FF",borderColor:"#7765FF",color:"#E1DDFF"}}>
                         <SmsOutlinedIcon />
                       </div>
@@ -201,14 +368,16 @@ function HeroSection() {
                   gap='10px'
                   >
                     <Grid
-                    container
-                    direction={{sm:'column',md:'row'  }}
-                    gap={{sm:'0px',md:'20px',xl:'20px'}}
-                    sx={{
-                      width : '325px',
-                      height :'175px'
-                    }}
-                    className='Item'
+                      container
+                      direction={{sm:'column',md:'row'  }}
+                      gap={{sm:'0px',md:'20px',xl:'20px'}}
+                      sx={{
+                        width : '325px',
+                        height :'175px'
+                      }}
+                      className='Item'
+                      component={motion.div}
+                      variants={item}
                     >
                       <div className='ItemIcon' style={{backgroundColor:styles.QuaternaryColor,borderColor:styles.QuaternaryColor,color:"#FFF6DD"}}>
                         <NoteAddOutlinedIcon />
@@ -219,14 +388,17 @@ function HeroSection() {
                       </div>
                     </Grid>
                     <Grid
-                    container
-                    direction={{sm:'column',md:'row'  }}
-                    gap={{sm:'0px',md:'20px',xl:'20px'}}
-                    sx={{
-                      width : '325px',
-                      height :'175px'
-                    }}
-                    className='Item'>
+                      container
+                      direction={{sm:'column',md:'row'  }}
+                      gap={{sm:'0px',md:'20px',xl:'20px'}}
+                      sx={{
+                        width : '325px',
+                        height :'175px'
+                      }}
+                      className='Item'
+                      component={motion.div}
+                      variants={item}
+                    >
                       <div className='ItemIcon' style={{backgroundColor:styles.TertiaryColor,borderColor:styles.TertiaryColor,color:"#EDF8F4"}}>
                         <BookmarkBorderOutlinedIcon />
                       </div>
@@ -246,11 +418,27 @@ function HeroSection() {
             container
             xs={6}>
               <Grid 
-              container
-              direction='column'
-              alignItems='center'
-              justifyContent='center'
-              flexWrap='wrap'
+                container
+                direction='column'
+                alignItems='center'
+                justifyContent='center'
+                flexWrap='wrap'
+                component={motion.div}
+                initial={{
+                  y:20,
+                  opacity:0
+                }}
+                animate={{
+                  y:0,
+                  opacity:1
+                }}
+                exit={{
+                  opacity:0
+                }}
+                transition={{
+                  duration:.5,
+                  delay:1.8
+                }}
               >
                 <h2>
                   Start your journey today
@@ -269,6 +457,7 @@ function HeroSection() {
                   }
                 }}
                 size="large"
+                onClick={signUpClickHandle}
                 >
                   Sign up
 

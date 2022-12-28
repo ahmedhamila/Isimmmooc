@@ -1,8 +1,9 @@
-
+import { SERVER_API_CONFIG } from "./../Configurations"
+const URL = `${SERVER_API_CONFIG.PROTOCOL}://${SERVER_API_CONFIG.HOST_NAME}:${SERVER_API_CONFIG.PORT}`;
 
 async function SignUpApprenant(bodyData){
     
-    const response = await fetch('http://127.0.0.1:8000/users/Apprenant/addApprenant/',{
+    const response = await fetch(URL+'/users/Apprenant/addApprenant/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -15,7 +16,7 @@ async function SignUpApprenant(bodyData){
 }
 async function SignUpPreFormateur(bodyData){
     
-    const response = await fetch('http://127.0.0.1:8000/users/Formateur/addPreFormateur/',{
+    const response = await fetch(URL+'/users/Formateur/addPreFormateur/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -28,7 +29,7 @@ async function SignUpPreFormateur(bodyData){
 }
 async function SignUpPreOrganisme(bodyData){
     
-    const response = await fetch('http://127.0.0.1:8000/users/Organisme/addPreOrganisme/',{
+    const response = await fetch(URL+'/users/Organisme/addPreOrganisme/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -41,7 +42,7 @@ async function SignUpPreOrganisme(bodyData){
 }
 async function AuthVerification(bodyData){
     
-    const response = await fetch('http://127.0.0.1:8000/auth/',{
+    const response = await fetch(URL+'/auth/',{
       method:'POST',
       headers:{
         'Accept':'application/json',

@@ -27,6 +27,7 @@ import ListItemText from '@mui/material/ListItemText';
 import {Pages} from '../../Data'
 import { useNavigate } from "react-router-dom";
 
+import {motion} from 'framer-motion';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -47,7 +48,38 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+let easing = [0.6,-0.05,0.01,0.99];
+const stagger = {
+  animate:{
+    transition:{
+      delayChildren:0.4,
+      staggerChildren:0.2,
+      staggerDirection:1
+    }
+  }
+}
 
+
+
+const transition = {duration:1.4,ease:[0.6,0.01,-0.05,0.9]};
+
+
+
+const header={
+  initial:{
+    y:-60,
+    opacity:0,
+    transition:{duration:0.05, ease:easing}
+  },
+  animate:{
+    y:0,
+    opacity:1,
+    animation:{
+      duration:0.6,
+      ease:easing
+    }
+  }
+};
 function NavBar(props) {
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -85,6 +117,9 @@ function NavBar(props) {
   const signUpClickHandle = ()=>{
     navigate("/SignUp")
   }
+  const signInClickHandle = ()=>{
+    navigate("/SignIn")
+  }
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -101,8 +136,15 @@ function NavBar(props) {
   
 
   const drawer = (
-    <Box className='DrawerBox' onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box 
+      className='DrawerBox' 
+      onClick={handleDrawerToggle}
+      sx={{ textAlign: 'center' }}
+    >
+      <Typography
+        variant="h6" 
+        sx={{ my: 2 }}
+        >
         Isimmmooc
       </Typography>
       <Divider />
@@ -154,8 +196,18 @@ function NavBar(props) {
   );
 
   return (
-    <AppBar position="fixed" className='NavBar'>
-        <Container maxWidth="xl">
+    <AppBar 
+      position="fixed" 
+      className='NavBar'
+      component={motion.div}
+      initial='initial'
+      animate='animate'
+    >
+        <Container 
+          maxWidth="xl"
+          component={motion.header}
+          variants={stagger}
+        >
             <Toolbar disableGutters>
             <IconButton
                 sx={{ mr: 2, display: { xs: 'block', sm: 'none' } }}
@@ -169,7 +221,8 @@ function NavBar(props) {
             <Typography
                 variant="h6"
                 noWrap
-                component="a"
+                component={motion.div}
+                variants={header}
                 href="/"
                 sx={{
                 mr: 2,
@@ -206,7 +259,8 @@ function NavBar(props) {
             <Typography
                 variant="h5"
                 noWrap
-                component="a"
+                component={motion.div}
+                variants={header}
                 href=""
                 sx={{
                 mr: 2,
@@ -223,11 +277,17 @@ function NavBar(props) {
             </Typography>
             {/* ////////////////////////////////////// */}
             {/* Pages List */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }}}>
+            <Box 
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }}}
+              component={motion.div}
+              variants={stagger}
+            >
                 {pages.map((page,index) => (
                 <Button
-                key={index}
-                sx={{ mx:1,my: 2, color: 'white', display: 'block', }}
+                  key={index}
+                  sx={{ mx:1,my: 2, color: 'white', display: 'block', }}
+                  component={motion.span}
+                  variants={header}
                 >
                   {page}
                 </Button>
@@ -237,33 +297,42 @@ function NavBar(props) {
             </Box>
             {/* ////////////////////////////////////// */}
             {/* Authentifation Buttons */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, justifyContent:'flex-end'} }>
+            <Box 
+              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'flex' }, justifyContent:'flex-end'} }
+              component={motion.div}
+              variants={stagger}
+            >
                 
                 <Button
-                variant='text' 
-                sx={{
-                  backgroundColor:'transparent',
-                  color:'#fff',
-                  my: 2 , 
-                  mx:2
-                }}
+                  variant='text' 
+                  sx={{
+                    backgroundColor:'transparent',
+                    color:'#fff',
+                    my: 2 , 
+                    mx:2
+                  }}
+                  onClick={signInClickHandle}
+                  component={motion.span}
+                  variants={header}
                 >
                   Log in
                 </Button>
                  
                 <Button 
-                variant='contained'
-                sx={{
-                  backgroundColor:'#fff',
-                  color:styles.SecondaryColor,
-                  "&:hover" : {
-                    backgroundColor : styles.SecondaryColor,
-                    color: '#fff'  ,
-                  },
-                  my: 2, 
-                  borderRadius : '3px'
-                }}
-                onClick={signUpClickHandle}
+                  variant='contained'
+                  sx={{
+                    backgroundColor:'#fff',
+                    color:styles.SecondaryColor,
+                    "&:hover" : {
+                      backgroundColor : styles.SecondaryColor,
+                      color: '#fff'  ,
+                    },
+                    my: 2, 
+                    borderRadius : '3px'
+                  }}
+                  onClick={signUpClickHandle}
+                  component={motion.span}
+                  variants={header}
                 >
                   Sign up
                 </Button >

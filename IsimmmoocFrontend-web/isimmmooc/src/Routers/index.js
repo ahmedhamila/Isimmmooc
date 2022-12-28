@@ -1,3 +1,3 @@
 import RootRouter from "./RootRouter.jsx";
 
-export { RootRouter,};
+export { RootRouter};

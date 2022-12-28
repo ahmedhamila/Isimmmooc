@@ -6,9 +6,11 @@
  * ----------------------------------------------------------------------
  */
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
-import VisitorRouter from "./VisitorRouter.jsx";
-import FormateurRouter from './FormateurRouter.jsx';
+import {Routes,Route} from 'react-router-dom'
+import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
+import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
+import SignIn from '../Spaces/VisitorSpace/SignIn/SignIn'
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -30,7 +32,7 @@ import FormateurRouter from './FormateurRouter.jsx';
  * ----------------------------------------------------------------------
  */
 
-function RootRouter() {
+function VisitorRouter() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -72,11 +74,14 @@ function RootRouter() {
 
   return (
     
-    <BrowserRouter>
-        <VisitorRouter />
-        <FormateurRouter />
-    </BrowserRouter>
+    
+    <Routes>
+        <Route exact path='/' element={<HomeSpace />}/>
+        <Route exact path='/SignUp' element={<SignUp />}/>
+        <Route exact path='/SignIn' element={<SignIn />}/>
+        
+    </Routes>
   )
 }
 
-export default RootRouter
+export default VisitorRouter
