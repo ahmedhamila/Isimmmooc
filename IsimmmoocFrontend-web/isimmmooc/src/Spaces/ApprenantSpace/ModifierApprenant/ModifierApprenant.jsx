@@ -7,8 +7,8 @@
  */
 
 import React from 'react'
-import { Grid } from 'semantic-ui-react';
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
+import SectionModifierApprenant from '../../../Components/SectionModifierApprenant/SectionModifierApprenant';
 import Footer from '../../../Components/Layouts/Footer/Footer'
 
 /*
@@ -25,7 +25,6 @@ import Footer from '../../../Components/Layouts/Footer/Footer'
  * ----------------------------------------------------------------------
  */
 import './ModifierApprenant.scss'
-import SectionModifierApprenant from '../../../Components/SectionModifierApprenant/SectionModifierApprenant';
 
 /*
  * ----------------------------------------------------------------------

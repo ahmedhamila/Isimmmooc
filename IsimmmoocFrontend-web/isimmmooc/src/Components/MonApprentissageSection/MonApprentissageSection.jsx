@@ -5,11 +5,10 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React from 'react'
-import {Routes,Route} from 'react-router-dom'
-import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
-import ModifierApprenant from '../Spaces/ApprenantSpace/ModifierApprenant/ModifierApprenant'
-import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpace/MonApprentissageSpace'
+import * as React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import {Paper,Grid, Typography} from '@mui/material';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -23,7 +22,8 @@ import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpac
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './MonApprentissageSection.scss'
+import { Container } from 'reactstrap';
 
 /*
  * ----------------------------------------------------------------------
@@ -31,7 +31,7 @@ import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpac
  * ----------------------------------------------------------------------
  */
 
-function ApprenantRouter() {
+function MonApprentissageSection() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -50,7 +50,7 @@ function ApprenantRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -70,21 +70,37 @@ function ApprenantRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <React.Fragment>
-        
-        <Routes>
-            <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/ModifierAcount' element={<ModifierApprenant />}/>
-            <Route exact path='/ApprenantHomeSpace/MonApprentissage' element={<MonApprentissageSpace />}/>
-        </Routes>
-        
-        
-    </React.Fragment>
-    
+    <Box>
+      <Box sx={{ paddingTop: '15px',
+            marginTop:'5%' ,
+            minHeight: '100px',
+            display: 'flex',
+            flexDirection: 'row',
+            padding: '25px',
+            color:'rgb(2,0,36)',
+            backgroundColor: '#f8f8ff',
+        }} >
+        <Grid container rowSpacing={1}>
+          <Grid 
+          direction='row' 
+          alignItems='center'
+          justifyContent='center'
+          container
+          >
+            <Grid item justifyContent='center' direction="row" >
+                <Typography variant="h1"  color='#1C1D1F' fontWeight='bold' fontFamily='Georgia' fontSize='45px' component="div">
+                    Mon Apprentissage
+                </Typography> 
+            </Grid>   
+          </Grid>
+        </Grid>    
+      </Box>
+      <Container fixed width='100%'>
+        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+      </Container>
+    </Box>
   )
 }
 
-export default ApprenantRouter
+export default MonApprentissageSection

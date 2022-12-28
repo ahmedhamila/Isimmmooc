@@ -156,7 +156,10 @@ function NavBarApprenantSpace() {
   };
 
   const ProfileClickHandle = ()=>{
-    navigate("/ModifierAcount")
+    navigate("/ApprenantHomeSpace/ModifierAcount")
+  }
+  const MonApprentissageClickHandle = ()=>{
+    navigate("/ApprenantHomeSpace/MonApprentissage")
   }
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -282,7 +285,6 @@ function NavBarApprenantSpace() {
               id="account-menu"
               open={open}
               onClose={handleClose}
-              onClick={handleClose}
               PaperProps={{
                 elevation: 0,
                 sx: {
@@ -317,13 +319,13 @@ function NavBarApprenantSpace() {
                 <Avatar /> Yosomran@Gmail.com
               </MenuItem>
               <Divider />
-              <MenuItem>
+              <MenuItem onClick={MonApprentissageClickHandle}>
                 <ListItemIcon>
                   <ComputerIcon fontSize="small" />
                 </ListItemIcon>
                 Mon apprentissage
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={ProfileClickHandle}>
                 <ListItemIcon>
                   <Settings fontSize="small" />
                 </ListItemIcon>
