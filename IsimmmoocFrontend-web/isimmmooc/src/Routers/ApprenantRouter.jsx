@@ -77,7 +77,6 @@ function ApprenantRouter() {
         
         <Routes>
             <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-            <Route exact path='/ModifierAcount' element={<ModifierApprenant />}/>
             <Route exact path='/ApprenantHomeSpace/ModifierAcount' element={<ModifierApprenant />}/>
             <Route exact path='/ApprenantHomeSpace/MonApprentissage' element={<MonApprentissageSpace />}/>
             <Route  path='/*' element={<Navigate to='/ApprenantHomeSpace' replace/>}/>

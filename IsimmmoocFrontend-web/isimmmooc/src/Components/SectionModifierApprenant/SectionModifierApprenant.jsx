@@ -1,5 +1,3 @@
-
-
 /*
  * ----------------------------------------------------------------------
  *                          Components & Functions                      |
@@ -118,12 +116,10 @@ class SectionModifierApprenant extends Component {
         </Grid>
         <Grid container direction='column'sx={{marginLeft:'20%',marginRight:'18%',marginTop:'1%'}}>
             <Typography sx={{fontWeight:'bold',marginBottom:'1%',fontSize:'20px' }}>
-              Informations de base :
+            Informations de base :
             </Typography>
-          </Grid>
-            
             <Grid
-           width={{sm:'400px',md:'600px',xl:'800px'}}
+           width={{sm:'400px',md:'600px',xl:'700px'}}
            sx={{
                marginBottom:'2%',
            }}
@@ -183,6 +179,7 @@ class SectionModifierApprenant extends Component {
               Choose your photo
               </label>
             </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Container>

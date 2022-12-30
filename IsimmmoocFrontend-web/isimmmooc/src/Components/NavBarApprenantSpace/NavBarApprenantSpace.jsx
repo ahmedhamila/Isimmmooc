@@ -161,6 +161,10 @@ function NavBarApprenantSpace() {
   const MonApprentissageClickHandle = ()=>{
     navigate("/ApprenantHomeSpace/MonApprentissage")
   }
+  const handleSignOut=()=> {
+    localStorage.removeItem("Token")
+    navigate(0);
+}
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
@@ -331,7 +335,7 @@ function NavBarApprenantSpace() {
                 </ListItemIcon>
                 Modifier compte 
               </MenuItem>
-              <MenuItem>
+              <MenuItem onClick={handleSignOut}>
                 <ListItemIcon>
                   <Logout fontSize="small" />
                 </ListItemIcon>
