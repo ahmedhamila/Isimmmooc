@@ -8,7 +8,7 @@
 
 import React from 'react'
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace';
-import SectionModifierApprenant from '../../../Components/SectionModifierApprenant/SectionModifierApprenant';
+import MonApprentissageSection from '../../../Components/MonApprentissageSection/MonApprentissageSection'
 import Footer from '../../../Components/Layouts/Footer/Footer'
 
 /*
@@ -24,7 +24,7 @@ import Footer from '../../../Components/Layouts/Footer/Footer'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './ModifierApprenant.scss'
+import './MonApprentissageSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -32,7 +32,7 @@ import './ModifierApprenant.scss'
  * ----------------------------------------------------------------------
  */
 
-function ModifierApprenant() {
+function MonApprentissageSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -74,10 +74,10 @@ function ModifierApprenant() {
   return (
     <div className='ApprenantHome'>
     <NavBarApprenantSpace />
-    <SectionModifierApprenant/>
+    <MonApprentissageSection/>
     <Footer />
     </div>
   )
 }
 
-export default ModifierApprenant
+export default MonApprentissageSpace
