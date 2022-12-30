@@ -26,9 +26,13 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import avatarImage from './../../Assets/Images/2.jpg'
 
+import { useGetUserCredentialsQuery } from '../../Redux/UserApiSlice';
 
 import './FormateurSideBar.scss';
 import styles from './../../Assets/Styles/style.module.scss'
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { updateCredentials } from '../../Redux/UserSlice';
 
     const drawerWidth = 240;
     const settings = ['Profile', 'Account', 'Sign Out'];
@@ -141,7 +145,8 @@ function FormateurSideBar() {
   *                                 Data                               |
   * --------------------------------------------------------------------
   */
-
+  const {data ,error,isLoading,isSuccess} = useGetUserCredentialsQuery({Token:localStorage.getItem('Token')})
+  
 
   /* --------------------------------------------------------------------
    *                             Hooks & States                         |
@@ -150,10 +155,18 @@ function FormateurSideBar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [forceClose,setForceClose]= useState(false)
+  const dispatch =useDispatch()
+  const navigate =useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
+
+  if(data)
+  {
+    console.log(data)
+    dispatch(updateCredentials(data))
+  }
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -170,6 +183,11 @@ function FormateurSideBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleSignOut=()=> {
+      localStorage.removeItem("Token")
+      navigate(0);
+  }
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -373,7 +391,7 @@ function FormateurSideBar() {
               borderRadius : '3px',
               flexWrap:'nowrap'
               }}
-              //onClick={}
+              onClick={handleSignOut}
             >
               {open?'Sign Out':<ChevronLeftIcon />}
             </Button>

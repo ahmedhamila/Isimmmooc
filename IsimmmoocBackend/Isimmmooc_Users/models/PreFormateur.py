@@ -10,13 +10,13 @@ class PreFormateur (models.Model):
     phone_number = PhoneNumberField(null=False, blank=True,default=None , help_text='Numero de telephone de Formateur')
     cv = models.FileField(null=False, blank=True, help_text='CV de Formateur')
     accepted = models.BooleanField(default=False)
-    organisme = models.ForeignKey('Isimmmooc_Users.Organisme', null=True,default=None,on_delete=models.CASCADE, help_text='Organisme de Formateur(si existe)')
+    organisme = models.ForeignKey('Isimmmooc_Users.Organisme',blank=True, null=True,default=None,on_delete=models.CASCADE, help_text='Organisme de Formateur(si existe)')
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=False,default=None)
 
     
     class Meta :
         ordering = ['-first_name']
     def __str__(self):
-       return self.first_name+" "+self.last_name
+       return self.mail
     
     

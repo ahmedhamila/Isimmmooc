@@ -6,7 +6,7 @@
  * ----------------------------------------------------------------------
  */
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,Navigate} from 'react-router-dom'
 import HomeSpace from '../Spaces/VisitorSpace/HomeSpace/HomeSpace'
 import SignUp from '../Spaces/VisitorSpace/SignUp/SignUp'
 import SignIn from '../Spaces/VisitorSpace/SignIn/SignIn'
@@ -79,6 +79,7 @@ function VisitorRouter() {
         <Route exact path='/' element={<HomeSpace />}/>
         <Route exact path='/SignUp' element={<SignUp />}/>
         <Route exact path='/SignIn' element={<SignIn />}/>
+        <Route  path='/*' element={<Navigate to='/' replace/>}/>
         
     </Routes>
   )

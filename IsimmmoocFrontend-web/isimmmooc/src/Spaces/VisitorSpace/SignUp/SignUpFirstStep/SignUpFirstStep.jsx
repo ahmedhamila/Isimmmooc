@@ -28,7 +28,7 @@ import MuiAlert from '@mui/material/Alert';
 import './SignUpFirstStep.scss';
 import styles from './../../../../Assets/Styles/style.module.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { updateEmail, updateUserType } from '../../../../Redux/UserSignUpInfoSlice';
+import { updateEmail, updateUserTypeSU } from '../../../../Redux/UserSignUpInfoSlice';
 
 /*
  * ----------------------------------------------------------------------
@@ -61,7 +61,7 @@ function SignUpFirstStep(props) {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-  const {email,userType} = useSelector((state)=>state.userInfo)
+  const {email,userTypeSU} = useSelector((state)=>state.userInfo)
   const dispatch = useDispatch()
   const [emailError,setEmailError]=useState(false)
   const [open, setOpen] = useState(false);
@@ -89,7 +89,7 @@ function SignUpFirstStep(props) {
 
   const handleUserType = (event, newUserType) => {
     if(newUserType !==null)
-      dispatch(updateUserType(newUserType));
+      dispatch(updateUserTypeSU(newUserType));
   };
   const handleEmail = (event) => {
       setEmailError(!validateEmail(event.target.value))
@@ -173,7 +173,7 @@ function SignUpFirstStep(props) {
               Vous êtes un ?
             </Typography>
             <ToggleButtonGroup
-              value={userType}
+              value={userTypeSU}
               exclusive
               onChange={handleUserType}
               aria-label="text alignment"

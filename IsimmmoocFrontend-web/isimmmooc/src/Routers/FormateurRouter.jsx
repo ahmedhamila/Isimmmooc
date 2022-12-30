@@ -6,7 +6,7 @@
  * ----------------------------------------------------------------------
  */
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route, Navigate} from 'react-router-dom'
 import Dashboard from './../Spaces/FormateurSpace/Dashboard/Dashboard'
 import FormateurProfile from './../Spaces/FormateurSpace/FormateurProfile/FormateurProfile'
 import FormateurSideBar from './../Components/FormateurSideBar/FormateurSideBar'
@@ -76,9 +76,11 @@ function FormateurRouter() {
     <React.Fragment>
         
         <Routes>
+            
             <Route exact path='/FormateurSpace' element={<FormateurSideBar />}/>
             <Route exact path='/FormateurSpace/Dashboard' element={<Dashboard />}/>
             <Route exact path='/FormateurSpace/Profile' element={<FormateurProfile />}/>
+            <Route  path='/*' element={<Navigate to='/FormateurSpace' replace/>}/>
         </Routes>
         
         

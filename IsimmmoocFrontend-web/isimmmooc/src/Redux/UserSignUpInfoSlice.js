@@ -4,7 +4,7 @@ export const userSignUpInfoSlice = createSlice({
   name: 'userSignUpInfo',
   initialState: {
     email:'',
-    userType:'Apprenant',
+    userTypeSU:'Apprenant',
     firstName :'',
     lastName :'',
     phoneNumber :'',
@@ -21,8 +21,8 @@ export const userSignUpInfoSlice = createSlice({
     updateEmail : (state,action)=>{
         state.email = action.payload
     },
-    updateUserType : (state,action)=>{
-        state.userType = action.payload
+    updateUserTypeSU : (state,action)=>{
+        state.userTypeSU = action.payload
     },
     updateFirstName : (state,action)=>{
         state.firstName = action.payload
@@ -58,6 +58,6 @@ export const userSignUpInfoSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateEmail, updateUserType,updateFirstName,updateLastName,updatePhoneNumber,updateBirthDay,updateCV,updateOrganismeName,updateOrganismeWebSite,updateOrganismeAdress,updatePassword,updateConfirmPassword } = userSignUpInfoSlice.actions
+export const { updateEmail, updateUserTypeSU,updateFirstName,updateLastName,updatePhoneNumber,updateBirthDay,updateCV,updateOrganismeName,updateOrganismeWebSite,updateOrganismeAdress,updatePassword,updateConfirmPassword } = userSignUpInfoSlice.actions
 
 export default userSignUpInfoSlice.reducer

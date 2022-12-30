@@ -20,4 +20,4 @@ class Comite (models.Model):
         ordering = ['-phone_number']
 
     def __str__(self):
-       return self.first_name + self.last_name
+       return self.email

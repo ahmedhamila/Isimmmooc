@@ -67,6 +67,9 @@ const SignUp = () => {
    * --------------------------------------------------------------------
    */
   function _renderStepContent(step) {
+
+    console.log("current step")
+    console.log(step)
     switch (step) {
       case 0:
         return <SignUpFirstStep goNext={handleGoNext}  />;

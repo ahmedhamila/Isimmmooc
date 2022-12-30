@@ -4,3 +4,4 @@ from .FormateurSerializer import FormateurSerializer
 from .PreFormateurSerializer import PreFormateurSerializer
 from .OrganismeSerializer import OrganismeSerializer
 from .PreOrganismeSerializer import PreOrganismeSerializer
+from .UserSerializer import UserSerializer

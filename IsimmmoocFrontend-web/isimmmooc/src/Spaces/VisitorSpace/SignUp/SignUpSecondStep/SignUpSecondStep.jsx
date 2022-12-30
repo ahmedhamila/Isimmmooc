@@ -46,7 +46,7 @@ function SignUpSecondStep(props) {
    * --------------------------------------------------------------------
    */
   const {currentStep,goPrevious,goNext}=props
-  const {userType} = useSelector((state)=>state.userInfo)
+  const {userTypeSU} = useSelector((state)=>state.userInfo)
   /*--------------------------------------------------------------------
   *                                 Data                               |
   * --------------------------------------------------------------------
@@ -63,7 +63,7 @@ function SignUpSecondStep(props) {
    * --------------------------------------------------------------------
    */
   function _renderSecondStepContent() {
-    switch (userType) {
+    switch (userTypeSU) {
       case 'Apprenant':
         return <SignUpFirstStepApprenant currentStep handleGoNext={handleGoNext}  handleGoPrevious={handleGoPrevious}/>;
       case 'Formateur':

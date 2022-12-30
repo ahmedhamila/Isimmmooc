@@ -6,9 +6,11 @@ from .views.OrganismeViewSet import OrganismeViewSet
 from .views.PreOrganismeViewSet import PreOrganismeViewSet
 from .views.FormateurViewSet import FormateurViewSet
 from .views.PreFormateurViewSet import PreFormateurViewSet
+from .views.UserViewSet import UserViewSet
 
 router=routers.DefaultRouter()
 
+router.register("User",UserViewSet)
 router.register("Apprenant",ApprenantViewSet)
 router.register("Comite",ComiteViewSet)
 router.register("Organisme",OrganismeViewSet)

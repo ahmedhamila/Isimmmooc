@@ -12,4 +12,4 @@ class Apprenant (models.Model):
     class Meta :
         ordering = ['-first_name']
     def __str__(self):
-       return self.first_name
+       return self.mail

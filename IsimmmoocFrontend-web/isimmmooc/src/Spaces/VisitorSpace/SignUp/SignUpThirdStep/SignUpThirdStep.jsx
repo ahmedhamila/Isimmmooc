@@ -60,7 +60,7 @@ function SignUpThirdStep(props) {
    */
   const {
     email,
-    userType,
+    userTypeSU,
     firstName,
     lastName,
     phoneNumber,
@@ -107,7 +107,7 @@ function SignUpThirdStep(props) {
       return
     }
 
-    if(userType === "Apprenant")
+    if(userTypeSU === "Apprenant")
     {
       const response = SignUpApprenant({
         first_name:firstName,
@@ -119,7 +119,7 @@ function SignUpThirdStep(props) {
       }).then(token => console.log(token))
       
     }
-    else if(userType === "Formateur")
+    else if(userTypeSU === "Formateur")
     {
       const response = SignUpPreFormateur({
         first_name:firstName,
@@ -131,7 +131,7 @@ function SignUpThirdStep(props) {
       }).then(token => console.log(token))
       
     }
-    else if(userType === "Organisme")
+    else if(userTypeSU === "Organisme")
     {
       const response = SignUpPreOrganisme({
         name:organismeName,

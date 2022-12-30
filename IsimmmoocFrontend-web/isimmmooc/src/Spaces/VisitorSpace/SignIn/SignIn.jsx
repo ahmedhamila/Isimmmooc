@@ -6,9 +6,12 @@
  * ----------------------------------------------------------------------
  */
 
-import { Container, Grid,TextField, Typography, Button } from '@mui/material';
+import { Container, Grid,TextField, Typography, Button ,Snackbar } from '@mui/material';
+
+import MuiAlert from '@mui/material/Alert';
 import React from 'react'
 import { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 
 /*
 * ----------------------------------------------------------------------
@@ -16,7 +19,7 @@ import { useState } from 'react';
 * ----------------------------------------------------------------------
 */
 
-import { AuthVerification } from '../../../Services';
+import { AuthVerification,Authentification } from '../../../Services';
 
 /*
  * ----------------------------------------------------------------------
@@ -25,6 +28,19 @@ import { AuthVerification } from '../../../Services';
  */
 import './SignIn.scss';
 import styles from './../../../Assets/Styles/style.module.scss'
+import { updateEmail,
+    updateToken,
+    updateUserType,
+    updateFirstName,
+    updateLastName,
+    updatePhoneNumber,
+    updateBirthDay,
+    updateCV,
+    updateOrganismeName,
+    updateOrganismeWebSite,
+    updateOrganismeAdress, 
+    updateCredentials} from '../../../Redux/UserSlice';
+import { useNavigate } from 'react-router-dom';
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
@@ -38,6 +54,9 @@ function SignIn() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
 
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -56,19 +75,75 @@ function SignIn() {
    */
     const [email,setEmail] = useState('')
     const [password,setPassword]=useState('')
+    const [open, setOpen] = useState(false);
+    const [warningMessage, setWarningMessage] = useState('');
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+        setOpen(false);
+    };
+    const handleSignIn = async()=>{
 
-    const handleSignIn = ()=>{
-        const response =  AuthVerification(
+        const authResponse =  await AuthVerification(
             {
                 username:email,
                 password : password
             }
         )
-        .then(response => console.log(response))
+        const authJson = await authResponse.json()
+
+        if(authJson.token)
+        {
+            console.log(authJson.token)
+            dispatch(updateToken(authJson.token))
+
+            const authentificationResponse = await Authentification(
+                {
+                    Token:authJson.token
+                }
+            )
+            const authentificationJson = await authentificationResponse.json()
+            if(authentificationJson)
+            {
+                console.log(authentificationJson)
+                dispatch(updateCredentials(authentificationJson))
+                console.log(authentificationJson.UserType)
+                if(authentificationJson.UserType =="Formateur")
+                {
+                    console.log("here")
+                    navigate('/FormateurSpace')
+                }
+                if(authentificationJson.UserType =="Apprenant")
+                {
+                    console.log("here")
+                    navigate('/ApprenantHomeSpace')
+                }
+                    
+            }
+            else
+            {
+                setWarningMessage('An unexpected error has occured !')
+                setOpen(true)
+            }
+        }
+        else
+        {
+            setWarningMessage('Unable to login using the credentials you provided !')
+            setOpen(true)
+        }
+        
+        
+
+        
+        
+        
     }
   
   /* --------------------------------------------------------------------
@@ -216,6 +291,11 @@ function SignIn() {
             
             </Grid>
         </Grid>
+        <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+              {warningMessage}
+            </Alert>
+        </Snackbar>
     </Grid>
   )
 }

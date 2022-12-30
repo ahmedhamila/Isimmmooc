@@ -25,7 +25,7 @@ class ApprenantViewSet(viewsets.ModelViewSet):
             phone_number=request.data["phone_number"]
             password=request.data["password"]
 
-            newUser=User.objects.create(email=mail,password=make_password(password) ,username=mail)
+            newUser=User.objects.create(email=mail,password=make_password(password) ,username=mail,first_name=first_name,last_name=last_name)
             newUser.save()
 
             newApprenant=Apprenant.objects.create(first_name=first_name,last_name=last_name,date_of_birth=date_of_birth,mail=mail,phone_number=phone_number,user=newUser)

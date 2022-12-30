@@ -1,4 +1,4 @@
-import { SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification } from "./AuthentificationServices";
+import { SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification } from "./AuthentificationServices";
 
 
-export {SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification}
+export {SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification}

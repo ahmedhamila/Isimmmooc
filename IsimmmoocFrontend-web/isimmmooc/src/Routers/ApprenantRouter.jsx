@@ -6,7 +6,7 @@
  * ----------------------------------------------------------------------
  */
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route,Navigate} from 'react-router-dom'
 import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
 import ModifierApprenant from '../Spaces/ApprenantSpace/ModifierApprenant/ModifierApprenant'
 /*
@@ -77,6 +77,7 @@ function ApprenantRouter() {
         <Routes>
             <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
             <Route exact path='/ModifierAcount' element={<ModifierApprenant />}/>
+            <Route  path='/*' element={<Navigate to='/ApprenantHomeSpace' replace/>}/>
         </Routes>
         
         

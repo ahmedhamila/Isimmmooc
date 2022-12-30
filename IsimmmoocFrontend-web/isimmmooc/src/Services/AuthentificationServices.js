@@ -42,7 +42,7 @@ async function SignUpPreOrganisme(bodyData){
 }
 async function AuthVerification(bodyData){
     
-    const response = await fetch(URL+'/auth/',{
+    return fetch(URL+'/auth/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -50,8 +50,17 @@ async function AuthVerification(bodyData){
       },
       body:JSON.stringify(bodyData)
       })
-    const json = await response.json()
-    return json.token
+}
+async function Authentification(bodyData){
+    
+    return fetch(URL+'/users/User/getUser/',{
+      method:'POST',
+      headers:{
+        'Accept':'application/json',
+        'Content-Type':'application/json',
+      },
+      body:JSON.stringify(bodyData)
+      })
 }
 
-export {SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification}
+export {SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification}

@@ -21,17 +21,17 @@ class OrganismeViewSet(viewsets.ModelViewSet):
         try:
             print(request.data)
             name=request.data["name"]
-            email=request.data["email"]
+            mail=request.data["mail"]
             phone_number=request.data["phone_number"]
             web_site=request.data["web_site"]
             adress=request.data["adress"]
 
             password=request.data["password"]
 
-            newUser=User.objects.create(email=email,password=make_password(password) ,username=email)
+            newUser=User.objects.create(email=mail,password=make_password(password) ,username=mail,first_name=name)
             newUser.save()
 
-            newOrganisme=PreOrganisme.objects.create(name=name,email=email,phone_number=phone_number,web_site=web_site,adress=adress,user=newUser,accepted=False)
+            newOrganisme=PreOrganisme.objects.create(name=name,mail=mail,phone_number=phone_number,web_site=web_site,adress=adress,user=newUser,accepted=False)
             newOrganisme.save()
 
             token = Token.objects.create(user=newUser)
