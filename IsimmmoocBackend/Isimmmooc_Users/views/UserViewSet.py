@@ -34,32 +34,27 @@ class UserViewSet(viewsets.ModelViewSet):
             tokenUser = Token.objects.get(key=requestToken).user
 
             isApprenant = Apprenant.objects.filter(mail=tokenUser)
-            print(isApprenant)
             isFormateur = Formateur.objects.filter(mail=tokenUser)
-            print(isFormateur)
             isOrganisme = Organisme.objects.filter(mail=tokenUser)
-            print(isOrganisme)
             isPreFormateur = PreFormateur.objects.filter(mail=tokenUser)
-            print(isPreFormateur)
             isPreOrganisme = PreOrganisme.objects.filter(mail=tokenUser)
-            print(isPreOrganisme)
+
             tokenUserSerialized=UserSerializer(tokenUser)
             if isApprenant :
                 userType='Apprenant'
-                tokenUserSerialized = ApprenantSerializer(isApprenant.values()[0])
+                tokenUserSerialized = ApprenantSerializer(Apprenant.objects.get(mail=isApprenant.values()[0]['mail']) , context={'request': request})
             elif isFormateur :
                 userType='Formateur'
-                tokenUserSerialized = FormateurSerializer(isFormateur.values()[0])
+                tokenUserSerialized = FormateurSerializer(Formateur.objects.get(mail =isFormateur.values()[0]['mail']),context={'request': request})
             elif isOrganisme :
                 userType='Organisme'
-                tokenUserSerialized = OrganismeSerializer(isOrganisme.values()[0])
+                tokenUserSerialized = OrganismeSerializer(Organisme.objects.get(mail =isOrganisme.values()[0]['mail']),context={'request': request})
             elif isPreFormateur :
                 userType='PreFormateur'
-                tokenUserSerialized = PreFormateurSerializer(isPreFormateur.values()[0])
+                tokenUserSerialized = PreFormateurSerializer(PreFormateur.objects.get(mail =isPreFormateur.values()[0]['mail']),context={'request': request})
             elif isPreOrganisme :
                 userType='PreOrganisme'
-                tokenUserSerialized = PreOrganismeSerializer(isPreOrganisme.values()[0])
-            print(tokenUserSerialized)
-            return Response({'Token':requestToken,'UserType':userType,'user':tokenUserSerialized.data},status=status.HTTP_201_CREATED)
+                tokenUserSerialized = PreOrganismeSerializer(PreOrganisme.objects.get(mail =isPreOrganisme.values()[0]['mail']),context={'request': request})
+            return Response({'Token':requestToken,'UserType':userType,'user':tokenUserSerialized.data},status=status.HTTP_200_OK)
         except:
             return Response({"message": "Errorrr"}, status=status.HTTP_400_BAD_REQUEST)

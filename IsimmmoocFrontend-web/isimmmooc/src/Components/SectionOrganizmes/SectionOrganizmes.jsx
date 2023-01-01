@@ -17,6 +17,7 @@ import Container from '@mui/material/Container';
 import {Button,Grid} from '@mui/material';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
+import {motion} from 'framer-motion';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -24,6 +25,7 @@ import { styled } from '@mui/material/styles';
 */
 
 
+import {container,item} from './../../Data'
 
 /*
  * ----------------------------------------------------------------------
@@ -38,7 +40,6 @@ import styles from './../../Assets/Styles/style.module.scss'
  * ----------------------------------------------------------------------
  */
 import organizmeImg from '../../Assets/Images/organizmeImg.jpg';
-
 function SectionOrganizmes() {
 
   /* --------------------------------------------------------------------
@@ -87,16 +88,36 @@ function SectionOrganizmes() {
           height: '100%',
           padding: "20px 0",
           position: "relative" }} >
-        <div style={{textAlign:'center'}}>
+        <motion.div
+        component={motion.div}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        transition={{ duration: 0.5 }}
+        variants={{
+          visible: {  opacity: 1, scale: 1 },
+          hidden: { opacity: 0, scale: 0 }
+        }}
+        style={{textAlign:'center'}}>
           <p style={{color:'#ff7468',fontFamily:'Arial'}}>Meet with our organizmes</p>
           <h1 >Our organizmes</h1>
           <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-        </div>    
+        </motion.div>    
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
-            <Grid container justifyContent="center" spacing={12}>
+            <Grid container justifyContent="center" spacing={12}
+            component={motion.div}
+            variants={container}
+            initial='hidden'
+            exit='exit'
+            whileInView='show'
+            viewport={{once:false}}
+            >
               {[0, 1].map((value) => (
-                <Grid key={value} item >
+                <Grid key={value} item 
+                component={motion.div}
+                variants={item}
+                >
                   <Card sx={{ maxWidth: 500, height:420 }}>
                     <CardMedia
                       sx={{ height: 230}}

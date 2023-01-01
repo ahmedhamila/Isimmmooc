@@ -58,13 +58,14 @@ function SignUpSecondStepFormateur(props) {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-    const {firstName,lastName,phoneNumber,birthDay,cv} = useSelector((state)=>state.userInfo)
+    const {firstName,lastName,phoneNumber,birthDay} = useSelector((state)=>state.userInfo)
     const dispatch = useDispatch()
 
     const [firstNameError,setFirstNameError] = useState(false)
     const [lastNameError,setLastNameError] = useState(false)
     const [phoneNumberError,setPhoneNumberError] = useState(false)
     const [dateError,setDateError] = useState(false)
+    const [cvFile,setCvFile] = useState(null)
 
     const[warningMessage,setWarningMessage]=useState('')
     const [open, setOpen] = useState(false);
@@ -114,9 +115,14 @@ function SignUpSecondStepFormateur(props) {
         setDateError(!validateDate(event.target.value))
         dispatch(updateBirthDay(event.target.value));
   };
+  const handleCV = (event) => {
+    let cv = event.target.files[0]
+    setCvFile(cv)
+    
+  };
 
 
-  const goNext = () => {
+  const goNext = async() => {
     
     if ( !validateFirstName(firstName))
     {
@@ -142,6 +148,15 @@ function SignUpSecondStepFormateur(props) {
       setOpen(true)
       return
     }
+    let formData = new FormData()
+    formData.append('cv',cvFile)
+    const response = await fetch('http://127.0.0.1:8000/users/Formateur/createFormateurCV/',{
+      method:'POST',
+      body:formData
+    })
+    const responseJson = await response.json()
+    console.log(responseJson)
+    dispatch(updateCV(responseJson.CV.id))
     handleGoNext();
     
   };
@@ -310,8 +325,7 @@ function SignUpSecondStepFormateur(props) {
           container
         >
           <TextField
-            onChange={(event)=>{dispatch(updateCV((event.target.files[0].name)))}}
-            name='Date de Naissance'
+            onChange={handleCV}
             type='file'
             label="CV"
             

@@ -115,19 +115,21 @@ function SignUpThirdStep(props) {
         date_of_birth:birthDay,
         mail:email,
         phone_number:"+216"+phoneNumber,
-        password:password
+        password:password,
       }).then(token => console.log(token))
       
     }
     else if(userTypeSU === "Formateur")
     {
+      
       const response = SignUpPreFormateur({
         first_name:firstName,
         last_name:lastName,
         date_of_birth:birthDay,
         mail:email,
         phone_number:"+216"+phoneNumber,
-        password:password
+        password:password,
+        cv:cv
       }).then(token => console.log(token))
       
     }

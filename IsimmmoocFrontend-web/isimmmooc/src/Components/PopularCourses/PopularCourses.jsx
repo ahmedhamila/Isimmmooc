@@ -18,7 +18,7 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-
+import {motion} from 'framer-motion';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -26,6 +26,7 @@ import Avatar from '@mui/material/Avatar';
 */
 
 
+import {container,item} from './../../Data'
 
 /*
  * ----------------------------------------------------------------------
@@ -42,7 +43,6 @@ import styles from './../../Assets/Styles/style.module.scss'
  */
 import courseImg from '../../Assets/Images/coursePhoto.jpg';
 import formateurImg from '../../Assets/Images/formateurImg.jpg';
-
 function PopularCourses() {
 
   /* --------------------------------------------------------------------
@@ -94,15 +94,36 @@ function PopularCourses() {
         height: '100%',
         padding: "20px 0",
         position: "relative" }} >
-      <div style={{textAlign:'center',color:'#fff'}}>
+      <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            transition={{ duration: 0.5 }}
+            variants={{
+              visible: {  opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0 }
+            }} 
+            style={{textAlign:'center',color:'#fff'}}>
         <h1 >Our popular courses</h1>
         <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-      </div>    
+      </motion.div>    
       <Grid sx={{ flexGrow: 1 }} container spacing={2}>
         <Grid item xs={12}>
-          <Grid container justifyContent="center" spacing={9}>
+          <Grid container justifyContent="center" spacing={9}
+          component={motion.div}
+          variants={container}
+          initial='hidden'
+          exit='exit'
+          whileInView='show'
+          viewport={{once:false}}
+          
+          >
             {[0, 1, 2].map((value) => (
-              <Grid key={value} item >
+              <Grid key={value} item 
+              component={motion.div}
+              variants={item}
+              
+              >
                 <Paper
                   className='CoursePaper'
                   sx={{

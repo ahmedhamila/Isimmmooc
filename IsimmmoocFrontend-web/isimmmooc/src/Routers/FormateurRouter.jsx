@@ -10,6 +10,7 @@ import {Routes,Route, Navigate} from 'react-router-dom'
 import Dashboard from './../Spaces/FormateurSpace/Dashboard/Dashboard'
 import FormateurProfile from './../Spaces/FormateurSpace/FormateurProfile/FormateurProfile'
 import FormateurSideBar from './../Components/FormateurSideBar/FormateurSideBar'
+import SectionModifierFormateur from '../Components/SectionModifierFormateur/SectionModifierFormateur'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -77,9 +78,14 @@ function FormateurRouter() {
         
         <Routes>
             
-            <Route exact path='/FormateurSpace' element={<FormateurSideBar />}/>
-            <Route exact path='/FormateurSpace/Dashboard' element={<Dashboard />}/>
-            <Route exact path='/FormateurSpace/Profile' element={<FormateurProfile />}/>
+            <Route exact path='/FormateurSpace' element={<FormateurSideBar />}>
+              <Route  index element={<Dashboard />}/>
+              <Route  path='Profile' element={<SectionModifierFormateur />}/>
+              <Route  path='ProfileP' element={<SectionModifierFormateur />}/>
+              
+
+            </Route>
+            
             <Route  path='/*' element={<Navigate to='/FormateurSpace' replace/>}/>
         </Routes>
         

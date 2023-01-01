@@ -1,6 +1,7 @@
 from .ApprenantSerializer import ApprenantSerializer
 from .ComiteSerializer import ComiteSerializer
 from .FormateurSerializer import FormateurSerializer
+from .FormateurCVSerializer import FormateurCVSerializer
 from .PreFormateurSerializer import PreFormateurSerializer
 from .OrganismeSerializer import OrganismeSerializer
 from .PreOrganismeSerializer import PreOrganismeSerializer

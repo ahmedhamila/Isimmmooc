@@ -10,6 +10,7 @@ export const userSlice = createSlice({
     lastName :'',
     phoneNumber :'',
     birthDay :'',
+    image :'',
     cv:'',
     organismeName:'',
     organismeWebSite:'',
@@ -38,6 +39,9 @@ export const userSlice = createSlice({
     updateBirthDay : (state,action)=>{
         state.birthDay = action.payload
     },
+    updateImage : (state,action)=>{
+        state.image = action.payload
+    },
     updateCV : (state,action)=>{
         state.cv = action.payload
     },
@@ -59,6 +63,7 @@ export const userSlice = createSlice({
         state.lastName=action.payload.user.last_name?action.payload.user.last_name:null
         state.phoneNumber=action.payload.user.phone_number?action.payload.user.phone_number:null
         state.birthDay=action.payload.user.date_of_birth?action.payload.user.date_of_birth:null
+        state.image=action.payload.user.image?action.payload.user.image:null
         state.cv=action.payload.user.cv?action.payload.user.cv:null
         state.organismeName=action.payload.user.name?action.payload.user.name:null
         state.organismeWebSite=action.payload.user.web_site?action.payload.user.web_site:null
@@ -68,6 +73,6 @@ export const userSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { updateEmail,updateToken, updateUserType,updateFirstName,updateLastName,updatePhoneNumber,updateBirthDay,updateCV,updateOrganismeName,updateOrganismeWebSite,updateOrganismeAdress,updateCredentials } = userSlice.actions
+export const { updateEmail,updateToken, updateUserType,updateFirstName,updateLastName,updatePhoneNumber,updateBirthDay,updateImage,updateCV,updateOrganismeName,updateOrganismeWebSite,updateOrganismeAdress,updateCredentials } = userSlice.actions
 
 export default userSlice.reducer

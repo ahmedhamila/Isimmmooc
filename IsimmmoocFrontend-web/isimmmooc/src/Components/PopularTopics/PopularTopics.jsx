@@ -13,7 +13,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import StoreIcon from '@mui/icons-material/Store';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import {Button} from '@mui/material';
-
+import {motion} from 'framer-motion';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -30,11 +30,14 @@ import {Button} from '@mui/material';
 
 import './PopularTopics.scss'
 import styles from './../../Assets/Styles/style.module.scss'
+import { useEffect } from 'react';
+import {container,item} from './../../Data'
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+
 
 function PopularTopics() {
 
@@ -76,7 +79,11 @@ function PopularTopics() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='PopularTopics'>
+    <motion.div 
+      className='PopularTopics' 
+      initial='initial'
+      animate='animate'
+    >
         <Grid
         container
         direction='column'
@@ -89,10 +96,20 @@ function PopularTopics() {
             direction='column'
             alignItems='center'
             justifyContent='center'
-            className='PopularTopicsHeader'>
-                <h5>Browse Categories</h5>
-                <h2>Popular Topics to learn</h2>
-                <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
+            className='PopularTopicsHeader'
+            component={motion.div}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            transition={{ duration: 0.5 }}
+            variants={{
+              visible: {  opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0 }
+            }}
+            >
+                <motion.h5 >Browse Categories</motion.h5>
+                <motion.h2 >Popular Topics to learn</motion.h2>
+                <motion.p >A best and cheapest way of getting know learning to make a better tomorrow.</motion.p>
             </Grid>
             <Grid 
             container
@@ -101,6 +118,12 @@ function PopularTopics() {
             justifyContent='center'
             className='PopularTopicsCards'
             gap='25px'
+            component={motion.div}
+            variants={container}
+            initial='hidden'
+            exit='exit'
+            whileInView='show'
+            viewport={{once:false}}
             >
                 <Grid
                     container
@@ -111,7 +134,10 @@ function PopularTopics() {
                     }}
                     justifyContent='center'
                     alignItems='center'
-                    className='PopularTopicsCardsItem'>
+                    className='PopularTopicsCardsItem'
+                    component={motion.div}
+                    variants={item}
+                    >
                       <div className='PopularTopicsCardsItemIcon' >
                         <DesignServicesIcon  sx={{ color: styles.SecondaryColor }} fontSize='large'/>
                       </div>
@@ -129,7 +155,10 @@ function PopularTopics() {
                     }}
                     justifyContent='center'
                     alignItems='center'
-                    className='PopularTopicsCardsItem'>
+                    className='PopularTopicsCardsItem'
+                    component={motion.div}
+                    variants={item}
+                    >
                       <div className='PopularTopicsCardsItemIcon' >
                         <ComputerIcon sx={{ color: styles.PrimaryColor }} color={styles.PrimaryColor} fontSize='large'/>
                       </div>
@@ -147,7 +176,10 @@ function PopularTopics() {
                     }}
                     justifyContent='center'
                     alignItems='center'
-                    className='PopularTopicsCardsItem'>
+                    className='PopularTopicsCardsItem'
+                    component={motion.div}
+                    variants={item}
+                    >
                       <div className='PopularTopicsCardsItemIcon' >
                         <StoreIcon sx={{ color: styles.TertiaryColor }}  fontSize='large'/>
                       </div>
@@ -165,7 +197,10 @@ function PopularTopics() {
                     }}
                     justifyContent='center'
                     alignItems='center'
-                    className='PopularTopicsCardsItem'>
+                    className='PopularTopicsCardsItem'
+                    component={motion.div}
+                    variants={item}
+                    >
                       <div className='PopularTopicsCardsItemIcon' >
                         <VideocamIcon sx={{ color: styles.QuaternaryColor }} fontSize='large'/>
                       </div>
@@ -180,7 +215,10 @@ function PopularTopics() {
             direction='column'
             alignItems='center'
             justifyContent='center'
-            className='PopularTopicsButton'>
+            className='PopularTopicsButton'
+            
+            
+            >
                 <Button
                 variant='text' 
                 sx={{
@@ -197,7 +235,7 @@ function PopularTopics() {
                 </Button> 
             </Grid>
         </Grid>
-    </div>
+    </motion.div>
   )
 }
 

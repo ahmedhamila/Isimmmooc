@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import PhotoIcon from '@mui/icons-material/Photo';
 import {Component} from 'react'
+import { useSelector } from 'react-redux';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -29,6 +30,7 @@ import {Component} from 'react'
  */
 import './SectionModifierApprenant.scss'
 import { ReadMoreRounded } from '@mui/icons-material';
+import { useState } from 'react';
 
 /*
  * ----------------------------------------------------------------------
@@ -42,7 +44,7 @@ import { ReadMoreRounded } from '@mui/icons-material';
    */
 
 
-class SectionModifierApprenant extends Component {
+function  SectionModifierApprenant (props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -65,18 +67,17 @@ class SectionModifierApprenant extends Component {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-  state={
-    profileImg:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-  }
+  const {image,firstName,lastName,email,phoneNumber}=useSelector((state)=>state.user)
+  const [profileImg,setProfileImg]=useState('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png')
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-  imageHandler=(e) =>{
+  const imageHandler=(e) =>{
     const reader = new FileReader();
     reader.onload=()=>{
       if(reader.readyState=== 2 ){
-        this.setState({profileImg:reader.result})
+        setProfileImg({profileImg:reader.result})
       }
     }
     reader.readAsDataURL(e.target.files[0])
@@ -85,16 +86,12 @@ class SectionModifierApprenant extends Component {
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
    */
+  
 
   /* --------------------------------------------------------------------
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-  render(){
-
-
-
-    const{profileImg}=this.state
   return (
     <React.Fragment>
     <CssBaseline />
@@ -103,7 +100,7 @@ class SectionModifierApprenant extends Component {
   
         <Grid container sx={{borderBottom:1,borderColor:'#9d9da8'}} flexDirection='row' justifyContent='center'>
           <Grid item >
-            <Avatar sx={{width:75,height:75,bgcolor:'black' }} >M</Avatar>
+            <Avatar src={image} sx={{width:75,height:75,bgcolor:'black' }} >M</Avatar>
           </Grid>
           <Grid item sx={{marginLeft:'5%'}}>
             <Typography sx={{marginLeft:'30%',marginTop:'3%',marginBottom:'3%',color:'#1C1D1F',fontFamily:'sf pro text',fontWeight:'bold',fontSize:'30px'}}>
@@ -124,7 +121,7 @@ class SectionModifierApprenant extends Component {
                marginBottom:'2%',
            }}
             >
-                <TextField fullWidth label="First name" id="fullWidth" />
+                <TextField fullWidth label="First name" placeholder={firstName} id="fullWidth" />
             </Grid>
             <Grid
            width={{sm:'400px',md:'600px',xl:'700px'}}
@@ -132,7 +129,7 @@ class SectionModifierApprenant extends Component {
                marginBottom:'2%',
            }}
             >
-                <TextField fullWidth label="Last name" id="fullWidth" />
+                <TextField fullWidth label="Last name" placeholder={lastName} id="fullWidth" />
             </Grid>
             <Grid
             width={{sm:'400px',md:'600px',xl:'700px'}}
@@ -140,7 +137,7 @@ class SectionModifierApprenant extends Component {
                 marginBottom:'2%',
             }}
             >
-                <TextField fullWidth label="E-mail" id="fullWidth" />
+                <TextField fullWidth label="E-mail" placeholder={email} id="fullWidth" />
             </Grid>
             <Grid
             width={{sm:'400px',md:'600px',xl:'700px'}}
@@ -148,7 +145,7 @@ class SectionModifierApprenant extends Component {
                 marginBottom:'2%',
             }}
             >
-                <TextField fullWidth label="Phone number" id="fullWidth" />
+                <TextField fullWidth label="Phone number" placeholder={phoneNumber.substr(4)} id="fullWidth" />
             </Grid>
         </Grid>
         <Grid container direction='column'sx={{marginLeft:'20%',marginTop:'1%',marginBottom:'5%'}}>
@@ -167,7 +164,7 @@ class SectionModifierApprenant extends Component {
             }}>
               <img src={profileImg} alt="" id="img" className='img' width='15%'/>
             </Grid>
-            <input type="file" name="image-upload" id="input" accept='image/*' onChange={this.imageHandler}/>
+            <input type="file" name="image-upload" id="input" accept='image/*' onChange={imageHandler}/>
             <Grid sx={{
               width:'100%',
               marginTop:'1rem',
@@ -186,6 +183,6 @@ class SectionModifierApprenant extends Component {
   </React.Fragment>
 
   )
-}
+
 }
 export default SectionModifierApprenant

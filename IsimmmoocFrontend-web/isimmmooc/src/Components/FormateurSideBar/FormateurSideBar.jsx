@@ -25,13 +25,15 @@ import MailIcon from '@mui/icons-material/Mail';
 import SearchIcon from '@mui/icons-material/Search';
 
 import avatarImage from './../../Assets/Images/2.jpg'
+import SectionModifierFormateur from '../SectionModifierFormateur/SectionModifierFormateur';
+import Dashboard from '../../Spaces/FormateurSpace/Dashboard/Dashboard';
 
 import { useGetUserCredentialsQuery } from '../../Redux/UserApiSlice';
 
 import './FormateurSideBar.scss';
 import styles from './../../Assets/Styles/style.module.scss'
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, Route,Routes, useNavigate } from 'react-router-dom';
 import { updateCredentials } from '../../Redux/UserSlice';
 
     const drawerWidth = 240;
@@ -402,9 +404,8 @@ function FormateurSideBar() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography >
-          Main Content
-        </Typography>
+        <Outlet />
+        
       </Box>
     </Box>
   );

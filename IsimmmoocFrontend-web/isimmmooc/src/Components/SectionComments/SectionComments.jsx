@@ -16,7 +16,7 @@ import Paper from '@mui/material/Paper';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-
+import {motion} from 'framer-motion';
 
 
 /*
@@ -26,6 +26,7 @@ import Typography from '@mui/material/Typography';
 */
 
 
+import {container,item} from './../../Data'
 
 /*
  * ----------------------------------------------------------------------
@@ -43,7 +44,6 @@ import styles from './../../Assets/Styles/style.module.scss'
  */
 import imageProfile from '../../Assets/Images/photo-profile.jpg';
 import commentIcon from '../../Assets/Images/comment-icom.png';
-
 function SectionComments(){
 
   /* --------------------------------------------------------------------
@@ -97,16 +97,35 @@ function SectionComments(){
             height: '100%',
             padding: "20px 0",
             position: "relative" }} >
-          <div style={{textAlign:'center'}}>
+          <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+          variants={{
+            visible: {  opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 }
+          }}
+          style={{textAlign:'center'}}>
             <h5 style={{color:styles.QuaternaryColor}}>Membership</h5>
             <h1>What student says</h1>
             <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-          </div>    
+          </motion.div>    
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
             <Grid item xs={12}>
-              <Grid container justifyContent="center" spacing={4}>
+              <Grid container justifyContent="center" spacing={4}
+              component={motion.div}
+              variants={container}
+              initial='hidden'
+              exit='exit'
+              whileInView='show'
+              viewport={{once:false}}
+              >
                 {[0, 1, 2].map((value) => (
-                  <Grid key={value} item >
+                  <Grid key={value} item 
+                  component={motion.div}
+                  variants={item}
+                  >
                     <Paper
                       sx={{
                         height: 400,

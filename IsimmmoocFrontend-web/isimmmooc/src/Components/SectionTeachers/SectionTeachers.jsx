@@ -15,12 +15,14 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
+import {motion} from 'framer-motion';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
 
+import {container,item} from './../../Data'
 
 
 /*
@@ -95,16 +97,35 @@ function SectionTeachers() {
         height: '100%',
         padding: "20px 0",
         position: "relative" }} >
-      <div style={{textAlign:'center'}}>
+      <motion.div 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: {  opacity: 1, scale: 1 },
+        hidden: { opacity: 0, scale: 0 }
+      }} 
+      style={{textAlign:'center'}}>
         <p style={{color:'#ff7468',fontFamily:'Arial'}}>Meet with our teachers</p>
         <h1 >Our teachers</h1>
         <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-      </div>    
+      </motion.div>    
       <Grid sx={{ flexGrow: 1 }} container spacing={2}>
         <Grid item xs={12}>
-          <Grid container justifyContent="center" spacing={12}>
+          <Grid container justifyContent="center" spacing={12}
+          component={motion.div}
+          variants={container}
+          initial='hidden'
+          exit='exit'
+          whileInView='show'
+          viewport={{once:false}}
+          >
             {[0, 1, 2,3].map((value) => (
-              <Grid key={value} item >
+              <Grid key={value} item
+              component={motion.div}
+              variants={item}
+              >
                 <Paper
                       sx={{
                         p: 2,
