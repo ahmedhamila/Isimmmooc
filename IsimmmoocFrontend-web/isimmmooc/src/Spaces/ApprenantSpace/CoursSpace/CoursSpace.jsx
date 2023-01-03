@@ -8,6 +8,7 @@
 
 import React from 'react'
 import Footer from '../../../Components/Layouts/Footer/Footer'
+import NavBarCoursSpace from '../../../Components/NavBarCoursSpace/NavBarCoursSpace'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -69,9 +70,10 @@ function CoursSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div>
-    <h1>holaaa!</h1>
-    <Footer />
+    <div className='ApprenantHome'>
+      <NavBarCoursSpace/>
+      <h1>holaaa!</h1>
+      <Footer />
     </div>
   )
 }

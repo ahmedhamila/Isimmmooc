@@ -55,8 +55,7 @@ import './NavBarApprenantSpace.scss'
    * --------------------------------------------------------------------
    */
    const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
-   const settings = ['Mon apprentissage', 'Modifier compte', 'Logout'];
-
+   
    const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -136,18 +135,11 @@ function NavBarApprenantSpace() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -273,16 +265,16 @@ function NavBarApprenantSpace() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-            <IconButton
-            onClick={handleClick}
-            size="small"
-            sx={{ ml: 2 }}
-            aria-controls={open ? 'account-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-          </IconButton>
+              <IconButton
+              onClick={handleClick}
+              size="small"
+              sx={{ ml: 2 }}
+              aria-controls={open ? 'account-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              >
+              <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+              </IconButton>
             </Tooltip>
             <Menu
               anchorEl={anchorEl}

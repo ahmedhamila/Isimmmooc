@@ -127,7 +127,7 @@ function MonApprentissageSection() {
           >
             <Grid item justifyContent='center' direction="row" >
                 <Typography variant="h1"  color='#1C1D1F' fontWeight='bold' fontFamily='Georgia' fontSize='45px' component="div">
-                    Mon Apprentissage
+                  Mon Apprentissage
                 </Typography> 
             </Grid>   
           </Grid>
