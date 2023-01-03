@@ -5,12 +5,9 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
+
 import React from 'react'
-import {Routes,Route,Navigate} from 'react-router-dom'
-import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
-import ModifierApprenant from '../Spaces/ApprenantSpace/ModifierApprenant/ModifierApprenant'
-import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpace/MonApprentissageSpace'
-import CoursSpace from '../Spaces/ApprenantSpace/CoursSpace/CoursSpace'
+import Footer from '../../../Components/Layouts/Footer/Footer'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -24,7 +21,7 @@ import CoursSpace from '../Spaces/ApprenantSpace/CoursSpace/CoursSpace'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './CoursSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -32,7 +29,7 @@ import CoursSpace from '../Spaces/ApprenantSpace/CoursSpace/CoursSpace'
  * ----------------------------------------------------------------------
  */
 
-function ApprenantRouter() {
+function CoursSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -51,7 +48,7 @@ function ApprenantRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -71,23 +68,12 @@ function ApprenantRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <React.Fragment>
-        
-        <Routes>
-            <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/ModifierAcount' element={<ModifierApprenant />}/>
-            <Route exact path='/ApprenantHomeSpace/MonApprentissage' element={<MonApprentissageSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/MonApprentissage/cours' element={<CoursSpace />}/>
-            <Route  path='/*' element={<Navigate to='/ApprenantHomeSpace' replace/>}/>
-        </Routes>
-        
-        
-    </React.Fragment>
-    
+    <div>
+    <h1>holaaa!</h1>
+    <Footer />
+    </div>
   )
 }
 
-export default ApprenantRouter
+export default CoursSpace
