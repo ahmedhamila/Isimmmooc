@@ -104,7 +104,7 @@ function RootRouter() {
       data?(
           (token )&&(
             <Fragment >
-              {(userType === "PreFormateur") &&  <FormateurRouter />}
+              {(userType === "PreFormateur" || userType === "Formateur") &&  <FormateurRouter />}
               {(userType === "Apprenant") &&  <ApprenantRouter />}
              
               

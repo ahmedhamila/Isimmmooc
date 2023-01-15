@@ -115,7 +115,7 @@ function SignIn() {
                 console.log(authentificationJson)
                 dispatch(updateCredentials(authentificationJson))
                 console.log(authentificationJson.UserType)
-                if(authentificationJson.UserType =="Formateur")
+                if(authentificationJson.UserType =="Formateur" || authentificationJson.UserType =="PreFormateur")
                 {
                     console.log("here")
                     navigate('/FormateurSpace')

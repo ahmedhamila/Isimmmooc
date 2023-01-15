@@ -202,7 +202,7 @@ function FormateurSideBar() {
    * --------------------------------------------------------------------
    */
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex',width:'100%' }}>
       
         <AppBar 
             position="fixed" 
@@ -402,11 +402,11 @@ function FormateurSideBar() {
             </List>
         
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Grid flexDirection='column' alignItems='center' justifyContent='center' container sx={{ flexGrow: 1, p: 3,marginTop:'50px',width:'100%' }}>
         <DrawerHeader />
         <Outlet />
         
-      </Box>
+      </Grid>
     </Box>
   );
 }

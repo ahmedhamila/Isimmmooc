@@ -349,7 +349,7 @@ function SignUpSecondStepFormateur(props) {
                   borderColor: styles.PrimaryColorLight,
                 },
                 '&.Mui-focused fieldset': {
-                  borderColor: firstNameError?'red':styles.PrimaryColorLight,
+                  borderColor: styles.PrimaryColorLight,
                 },
               },
             }}
