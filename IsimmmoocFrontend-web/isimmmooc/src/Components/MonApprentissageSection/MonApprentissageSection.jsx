@@ -20,6 +20,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Rating from '@mui/material/Rating';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useNavigate } from "react-router-dom";
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 /*
 * ----------------------------------------------------------------------
@@ -84,7 +85,7 @@ function MonApprentissageSection() {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-
+  const navigate=useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
@@ -93,7 +94,9 @@ function MonApprentissageSection() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-    
+  const CoursClickHandle = ()=>{
+    navigate("/ApprenantHomeSpace/MonApprentissage/cours")
+  }  
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -124,7 +127,7 @@ function MonApprentissageSection() {
           >
             <Grid item justifyContent='center' direction="row" >
                 <Typography variant="h1"  color='#1C1D1F' fontWeight='bold' fontFamily='Georgia' fontSize='45px' component="div">
-                    Mon Apprentissage
+                  Mon Apprentissage
                 </Typography> 
             </Grid>   
           </Grid>
@@ -201,6 +204,7 @@ function MonApprentissageSection() {
         <Grid container spacing={2} sx={{display:'flex',justifyContent:'center',width:'100%',marginTop:1}} key={value}>
           {[0, 1, 2,3].map((value) => (
             <Grid key={value} item >
+              <IconButton>
               <Paper
                   sx={{
                     height: 300,
@@ -209,7 +213,8 @@ function MonApprentissageSection() {
                       theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                     border: '1px solid rgb(206, 194, 194)',
                     
-                  }}    
+                  }}  
+                  onClick={CoursClickHandle}  
               >
               <CardMedia
                     component="img"
@@ -217,12 +222,13 @@ function MonApprentissageSection() {
                     image={reactNativeImg}
                     alt="course photo"
                     sx={{p:0.2,cursor:'pointer'}}
+                     
               />
               {courses.map((item)=>{
                 return(
                       
                   <Grid padding='0px'>
-                    <Typography variant="h6" fontFamily="Arial" color='#1C1D1F' fontSize='24px'  fontWeight='bold'>
+                    <Typography variant="h6" fontFamily="Arial" color='#1C1D1F' fontSize='24px' fontWeight='bold'>
                         {item.desc}
                     </Typography>
                     <Typography variant="p" fontFamily="Segoe UI" color='#999d9f' fontSize='16px' >
@@ -236,6 +242,7 @@ function MonApprentissageSection() {
                         
                     })}  
                   </Paper>
+                  </IconButton>
               </Grid>
             ))}
         </Grid>  
