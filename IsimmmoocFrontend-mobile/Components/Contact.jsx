@@ -11,18 +11,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const Contact = () => {
    
     return (
-
-    
         <View
         style={{
             flex:1,
             backgroundColor:'#A9CCE3',
         }}>
 
-
-      
-        
-        
         <Card style={styles.card}>
 
         <Card  style={styles.send}>
@@ -36,15 +30,8 @@ const Contact = () => {
             <TextInput  style={styles.in}  placeholder="Message" />
 
             <TextInput  style={styles.in}  placeholder="Email" />
-
-            
             
         </Card>  
-
-
-
-
-
 
         <Card style={styles.socialM}>
         
@@ -57,9 +44,7 @@ const Contact = () => {
 
         <TouchableOpacity ><Image  source={require("../assets/images/linkedin.png")} style={styles.img1}/></TouchableOpacity>  
 
-        
-        
-        
+
         </View>
         </Card>  
 
@@ -90,8 +75,8 @@ const styles = StyleSheet.create({
         fontSize:23,
         marginTop:5,
         marginLeft:66,
-        fontWeight:'bold',   
-    
+        fontWeight:'bold',  
+        
     }
     ,
 
