@@ -165,8 +165,6 @@ const SignUp = () => {
             
           </Grid>
         </Grid>
-        
-      
       </Grid>
   );
 };

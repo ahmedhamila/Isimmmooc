@@ -6,11 +6,11 @@
  * ----------------------------------------------------------------------
  */
 
-import React from 'react'
-import Footer from '../../../Components/Layouts/Footer/Footer'
-import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace'
-import CoursHeroSection from '../../../Components/CoursHeroSection/CoursHeroSection'
-import CoursSpaceStepper from "./CoursSpaceStepper/CoursSpaceStepper";
+import * as React from 'react';
+import {Box,Grid} from '@mui/material';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
+import Typography from '@mui/material/Typography';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -24,15 +24,14 @@ import CoursSpaceStepper from "./CoursSpaceStepper/CoursSpaceStepper";
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './CoursSpace.scss'
+import './CoursHeroSection.scss'
 
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-
-function CoursSpace() {
+function CoursHeroSection() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -72,13 +71,30 @@ function CoursSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='ApprenantHome'>
-      <NavBarApprenantSpace/>
-      <CoursHeroSection />
-      <CoursSpaceStepper/>
-      <Footer />
-    </div>
+    <Box className='CoursHeroSection' sx={{ flexGrow: 1 }}>
+      <Grid container justifyContent='center' >
+        <Grid 
+        width='100%'
+        alignItems='center'
+        container 
+        xs={8}>
+          <Typography sx={{fontFamily:'Inter',fontWeight:'bold',fontSize:'38px'}}>
+            React Native For Beginner
+          </Typography>  
+        </Grid>
+        <Grid container  alignItems='center'xs={8}>
+            <AccessTimeIcon />
+            <Typography marginLeft='1%' marginRight='3%'>
+            12 heures
+            </Typography>
+            <SignalCellularAltIcon />
+            <Typography marginLeft='1%'>
+            Débutant
+            </Typography>
+        </Grid>
+      </Grid>    
+    </Box>
   )
 }
 
-export default CoursSpace
+export default CoursHeroSection
