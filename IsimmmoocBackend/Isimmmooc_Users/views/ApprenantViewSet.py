@@ -67,5 +67,15 @@ class ApprenantViewSet(viewsets.ModelViewSet):
             return Response({"message": error.detail}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e :
             return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
+
+
+    @action(detail=False,methods=['DELETE'])
+    def deleteApprenant(self,request,myid):
+        item= Apprenant.objects.get(id=myid)
+        item.delete()
+            
+
+    
+
             
         

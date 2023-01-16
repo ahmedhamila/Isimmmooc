@@ -14,10 +14,8 @@ class Comite (models.Model):
     class Meta :
         ordering = ['-first_name']
         ordering = ['-last_name']
-        ordering = ['-grade']
-        ordering = ['-department']
-        ordering = ['-email']
-        ordering = ['-phone_number']
+     
+
 
     def __str__(self):
        return self.email

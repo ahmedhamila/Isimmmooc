@@ -6,13 +6,12 @@ const Splash = () => {
     <View >
       <Text style={styles.st}>    Bienvenue sur</Text>
       <Text style={styles.st1}  >                        Isimmmoc </Text>
-      
+     
       <Image   source={require('../assets/images/work.png')}
         style={styles.sm}
         resizeMode="contain"
-        
         ></Image>
-
+        
     </View>
   )
 }
