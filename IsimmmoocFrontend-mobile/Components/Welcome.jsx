@@ -11,7 +11,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Login from './Login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Navigation from './Navigation';
+import OrganismeSignUp from './Organisme_SignUP';
+import SignUp from './SignUp';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import FormateurSignUp from './Formateur_SignUp';
+
+
 
 const Welcome = ({navigation}) => {
   
@@ -28,8 +34,6 @@ const course=({item})=>{
 
 }
 
-
-
   return (
     <View  style={{backgroundColor:Colors.white, height:'100%'}}>
       <View style={styles.mid1}>
@@ -38,6 +42,7 @@ const course=({item})=>{
       </View>
     
     <View  style={styles.si}>
+      
      
       <Text style={styles.bg_text}>Une infinite des cours avec </Text>
 
@@ -48,7 +53,7 @@ const course=({item})=>{
       
       
       <TouchableOpacity  style={styles.btn}
-      
+        
         onPress={()=> navigation.navigate("Login")}
        ><Text  style={styles.btnText}   
       >Commencer ici</Text></TouchableOpacity>

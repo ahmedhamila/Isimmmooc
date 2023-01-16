@@ -77,9 +77,9 @@ const styles = StyleSheet.create({
     card:{
     borderTopLeftRadius:105,
     backgroundColor:'#fff',
-    height:501,
+    height:480,
     width:398,
-    marginTop:20,
+    marginTop:45,
     marginLeft:7,
     marginRight:7,
     
@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
         backgroundColor:'#fff',
         height:73,
         width:398,
-        marginTop:20,
+        marginTop:17,
+        marginBottom:17,
         marginLeft:7,
         marginRight:7,
         flexDirection: "row",
