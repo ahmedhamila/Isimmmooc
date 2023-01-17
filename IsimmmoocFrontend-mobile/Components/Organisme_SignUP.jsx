@@ -156,6 +156,7 @@ container: {
   width:"100%",
   justifyContent: 'center',
   alignItems: 'center',
+  backgroundColor:"#FFF"
 },
 signupContainer: {
   width: '100%',
@@ -164,12 +165,12 @@ signupContainer: {
   backgroundColor: 'white',
   padding: 10,
   elevation: 10,
-  backgroundColor: '#e6e6e6'
+  backgroundColor:"#FFF",
 },
 inputBorder: {
   width: '30%',
   borderRadius: 8,
-  borderColor: '#cacaca',
+  backgroundColor:"#FFF",
   borderWidth: 1,
   marginBottom: 20,
 },
