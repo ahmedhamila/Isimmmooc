@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View ,PreviewLayout} from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View ,PreviewLayout, Alert} from 'react-native'
+import React from 'react';
+import CountDown from 'react-native-countdown-component';
 
 import { TouchableOpacity} from 'react-native-gesture-handler'
+import { SafeAreaView } from 'react-navigation';
 
 const Quiz = () => {
+
+  const finish=()=>{
+    Alert.alert(" Le Temps De Quiz est Termine ! ")
+  }
+
+
   return (
-    <View>
+    <View style={{backgroundColor:'#FFF'}}>
 
       <View style={styles.quiz}>
 
@@ -26,6 +34,25 @@ const Quiz = () => {
 
 <TouchableOpacity style={styles.option}><Text > option 4 </Text></TouchableOpacity>
 </View>
+
+<SafeAreaView>
+<View>
+  <Text style={styles.timer}>Temps Restant </Text>
+<CountDown
+size={20}
+until={960}
+onFinish={()=>{finish()}}
+showSeparator
+timeToShow={['M','S']}
+timeLabels={{m:'Minute',s:'Secondes'}}
+digitStyle={{
+  borderWidth:2,
+  borderColor:'#73B2B3',
+  backgroundColor:'#FFF',
+}}
+/>
+</View>
+</SafeAreaView>
 
 <View style={styles.dbtn}>
 <TouchableOpacity style={styles.finish}><Text style={styles.textf}> Precedent </Text></TouchableOpacity>
@@ -81,6 +108,17 @@ title:
 
 
 },
+
+timer:{
+  fontSize:25,
+  textDecorationLine:"solid",
+  fontWeight: "bold",
+  margin:17,
+  color:'#73B2B3',
+  textAlign: 'center',
+
+}
+,
 quest:{
 fontSize:20,
 textDecorationLine:"solid",
@@ -109,7 +147,7 @@ dbtn:{
 
   justifyContent:'space-between',
   flexDirection: "row",
-  marginTop:148,
+  marginTop:30,
 },
 
 }

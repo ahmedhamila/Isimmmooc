@@ -1,7 +1,7 @@
 import {Image ,ImageBackground,StyleSheet, Text, View ,FlatList} from 'react-native'
 import React, { useState } from "react";
-import Splash from './Splash';
 import SearchCategorie from './SearchCategorie';
+import { Card } from 'react-native-paper';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -11,65 +11,79 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Login from './Login';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Navigation from './Navigation';
+import OrganismeSignUp from './Organisme_SignUP';
+import SignUp from './SignUp';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import FormateurSignUp from './Formateur_SignUp';
+
+
+
 
 const Welcome = ({navigation}) => {
   
 
-const courses=[
- 
-  ];
+const [courses,setCourses]=useState([
 
+  {name:"Cours developement Web",image:require("../assets/images/comp.jpg"),
+  rate:require("../assets/images/5.png")},
+  {name:"Cours Electronique", image:require("../assets/images/e.jpg"),
+  rate:require("../assets/images/4.png")},
+  {name:"Cours Designe", image:require("../assets/images/d.jpg"),
+  rate:require("../assets/images/5.png")},
+  {name:"Cours Mathematique", image:require("../assets/images/m.jpg"),
+   rate:require("../assets/images/4.png")
+  },
+]);
 
+  const dat=({item})=>(
 
-const course=({item})=>{
+<Card style={styles.cours} >
+<View style={styles.dbtn}>
+<Image  source={item.image} style={styles.img}/>
+<View style={styles.infoCours}>
+<Text style={styles.Ctitle} > {item.name}</Text>
+<TouchableOpacity  style={styles.btnCours}
+onPress={()=> navigation.navigate("Login")}>
+<Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
+<Image  source={item.rate} style={styles.rate}/>
+</View>
+</View>
+</Card>
 
-<Text>{item.name}</Text>
-
-}
-
+  );
 
 
   return (
-    <View  style={{backgroundColor:Colors.white, height:'100%'}}>
-      <View style={styles.mid1}>
-      <Text style={styles.nottxt}>Isimmmooc</Text>
-      <Image source={require("../assets/icons/notification.png")} style={styles.notif}  resizeMode="contain" />
-      </View>
-    
-    <View  style={styles.si}>
-     
-      <Text style={styles.bg_text}>Une infinite des cours avec </Text>
+    <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
-      <View  style={styles.mid}>
-      <Text style={styles.bg_text1}>un seul click . </Text>
-      <Image  source={require("../assets/images/portable.png")}   style={styles.icon}/> 
-      </View>
-      
-      
-      <TouchableOpacity  style={styles.btn}
-      
-        onPress={()=> navigation.navigate("Login")}
-       ><Text  style={styles.btnText}   
-      >Commencer ici</Text></TouchableOpacity>
-         
-    </View>
-        
-    <Text style={styles.pop} >Cours plus populaire </Text>
 
-   <SafeAreaView>
-    <FlatList
-    horizontal={true} 
+<View style={styles.head}>
+      <Text style={styles.headtxt}>Isimmmooc</Text>
+      <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
+</View>
 
-    showsHorizontalScrollIndicator={false} 
-   
-    data={courses}
-    renderItem={ course} 
-    ListEmptyComponent={<Text>Liste encore Vide</Text>}
+<Text style={styles.welc1}>    Une   infinite  des  cours  avec </Text>
+<Text style={styles.welc}>                   un  seul    click ! </Text>
+<View style={styles.centerbtn}>
+<TouchableOpacity  style={styles.btn}
+onPress={()=> navigation.navigate("Login")}>
+<Text  style={styles.btnText}>Commencer ici</Text>
+</TouchableOpacity>
+</View>
 
-  />
+<Card style={styles.card} >
+<View styles={styles.Conttitle}>
+<Text style={styles.pop} >Cours plus populaire </Text>
 
-</SafeAreaView>
+<FlatList
+  data={courses}
+  renderItem={dat} 
+/>
+
+</View>
+</Card>
+
 
     </View>
 
@@ -79,25 +93,85 @@ const course=({item})=>{
 export default Welcome
 
 const styles = StyleSheet.create({
-scroll:{
+  centerbtn:{
+    alignItems:'center', 
+  },
+  welc1:{
+
+    fontSize:25,
+    textDecorationLine:"solid",
+    fontWeight: '400',
+    marginTop:6,
+    fontStyle:'italic'
+
+    
+  },
+  welc:{
+
+    fontSize:25,
+    textDecorationLine:"solid",
+    fontWeight: '400',
+    margin:7,
+    fontStyle:'italic'
+    
+  },
+  notif:{
+    marginTop:9,
+    
+  },
+
+  headtxt:{
+    fontSize:27,
+    marginTop:9,
+    marginLeft:9,
+    textDecorationLine:"solid",
+    
+    }
+    ,
+  head:{
+    justifyContent:'space-between',
+    flexDirection: "row",
+    marginTop:20,
+  },
+  infoCours:{
+    justifyContent:'space-between',
+    flexDirection: 'column',
+    justifyContent:'center',
+    alignItems:'center',
+    padding:5,
+    margin:29,
+  }
+,scroll:{
   width:250,
   height:160,
   resizeMode:'contain',
   margin:8,
   marginBottom:42,
   borderRadius:20,
+  
 },
 
 pop:{
-margin:18,
+margin:16,
 fontSize:20,
 textDecorationLine:"solid",
 fontWeight: "bold",
+textAlign: 'center',
 
 },
+Ctitle:{
+
+  margin:2,
+  fontSize:17,
+  textDecorationLine:"solid",
+  fontWeight: "bold",
+  textAlign: 'center',
+
+}
+,
 nottxt:{
 fontSize:22,
-marginTop:9,
+marginTop:29,
 marginLeft:9,
 textDecorationLine:"solid",
 
@@ -110,125 +184,72 @@ marginRight:20,
 
   }
   ,
+img:{
+    margin:2,
+    height:125,
+    width:125,
+    borderRadius:20,
+    }
+  ,
+rate:{
 
-mid:{
+  width:92,
+  marginBottom:43,
+
+},
+
+dbtn:{
 
   justifyContent:'space-between',
   flexDirection: "row",
-
-},
-mid1:{
-
-  justifyContent:'space-between',
-  flexDirection: "row",
-  marginTop:20,
-  padding:5
-
-}
-,
-bg:{
-height:270,
-width:349,
-borderRadius:20,
-marginVertical:20,
-resizeMode:'contain',
-
-}
-,
-
-star:{
-  height:20,
-  width:39,
-
-
-}
-,
-st1:{
-    justifyContent:'center',
-    paddingBottom:92,
-    paddingTop:20,
-    fontSize:35,
-    textDecorationLine:"solid",
-    fontWeight: "bold",
-
-
-},
-
-foot:{
-paddingBottom:10,
-
-},
-
-st:{
-justifyContent:'center',
-paddingTop:80,
-fontSize:35,
-textDecorationLine:"solid",
-fontWeight: "bold",
-
-},
-sm:{
-    height:320,
-    width:370,
-    marginTop:60,
-    marginBottom:10,
-
-
-}
-,
-si:{
-    margin:10,
-    justifyContent:'center',
-    alignItems:'center',
-    borderRadius:34,
-    backgroundColor:'#A9CCE3',
-}
-,
-bg_text:{
-
-  fontSize:25,
-  marginTop:20,
-  textDecorationLine:"solid",
-  fontWeight: "bold",
-  padding:10,
-  
+  margin:7,
 }
 
-,
-bg_text1:{
-
-  fontSize:27,
- 
-  textDecorationLine:"solid",
-  fontWeight: "bold",
-  paddingLeft:10,
-  marginTop:29,
-
-}
 ,
 btn:{
   
-backgroundColor:Colors.white,
-height:40,
-width:130,
-marginBottom:20,
-marginTop:20,
-marginLeft:0,
-borderRadius: 20,
-marginRight:170,
+  backgroundColor:'#84b9db',
+  borderRadius:30,
+  height:50,
+  width:180,
+  marginBottom:12,
+  marginTop:17,
+  borderRadius: 26,
+
+
+
+}
+,
+btnCours:{
+
+  backgroundColor:'#A9CCE3',
+  borderRadius:30,
+  marginTop:8,
 
 }
 ,
 btnText:{
 
-  fontSize:15,
+  fontSize:19,
   color:'black',
   textDecorationLine:"solid",
   fontWeight: "bold",
   alignItems:'center',
   textAlign: "center",
-  padding:7,
+  padding:9,
+ 
+},
+txtbtnCours:{
 
+  fontSize:17,
+  color:'black',
+  textDecorationLine:"solid",
+  fontWeight: "bold",
+  alignItems:'center',
+  textAlign: "center",
+  padding:11,
+
+  
 }
 ,
 
@@ -239,6 +260,54 @@ marginTop:15,
 }
 ,
 
+card:{
+  borderTopRightRadius:55,
+  borderTopLeftRadius:55,
+  backgroundColor:'#e8f6ff',
+  height:400,
+  width:400,
+  marginTop:2,
+  marginLeft:7,
+  marginRight:7,
+  marginBottom:37,
+  alignItems: 'center',
+  
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 12,
+  },
+  shadowOpacity: 0.58,
+  shadowRadius: 16.00,
+  elevation: 24,
 
+  
+  }
+  ,
+cours:{
+
+  borderRadius:13,
+  backgroundColor:'#fff',
+  height:140,
+  width:380,
+  marginTop:15,
+  marginLeft:7,
+  marginRight:7,
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 12,
+  },
+  shadowOpacity: 0.58,
+  shadowRadius: 16.00,
+  
+  elevation: 24,
+},
+
+    Conttitle:{
+  
+      justifyContent: 'center',
+      alignItems: 'center',
+    }
 
 })

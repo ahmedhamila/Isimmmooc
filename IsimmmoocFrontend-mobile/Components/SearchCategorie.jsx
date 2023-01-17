@@ -6,13 +6,15 @@ import { TouchableOpacity} from 'react-native-gesture-handler';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import Ionicons from '@expo/vector-icons/MaterialIcons';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Login from './Login';
 
-const SearchCategorie = () => {
+
+const SearchCategorie = ({navigation}) => {
   return (
     <View style={{backgroundColor:Colors.white,height:'100%'}}>
      
       
-      <Text style={styles.Vtxt}>Choisir Categories</Text>
+      <Text style={styles.Vtxt}>Choisir Une Categorie</Text>
 
       
       <View style={styles.si}>
@@ -22,7 +24,7 @@ const SearchCategorie = () => {
         </View>
 
         <View style={styles.one}>
-        <TouchableOpacity  Style={styles.btn}><Text  style={styles.txt} > Prepa</Text></TouchableOpacity>
+        <TouchableOpacity  Style={styles.btn}><Text  style={styles.txt}  > Prepa</Text></TouchableOpacity>
         
         <Image  source={require("../assets/images/education.png")} style={styles.img}/>
         </View>
@@ -32,7 +34,7 @@ const SearchCategorie = () => {
       <View  style={styles.si}>
 
       <View style={styles.one}>
-          <TouchableOpacity Style={styles.btn} ><Text style={styles.txt}>Ingenieure</Text></TouchableOpacity>
+          <TouchableOpacity Style={styles.btn} ><Text style={styles.txt}>Ingénierie</Text></TouchableOpacity>
           <Image  source={require("../assets/images/office.png")} style={styles.img}/>
       </View>
       
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
 
 Vtxt:{
 
-  margin:40,
+  margin:35,
   fontSize:23,
   textDecorationLine:"solid",
   fontWeight: "bold",
