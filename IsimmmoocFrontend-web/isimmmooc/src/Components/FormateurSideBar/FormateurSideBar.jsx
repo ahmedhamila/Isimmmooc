@@ -20,8 +20,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
+import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import SearchIcon from '@mui/icons-material/Search';
 
 import avatarImage from './../../Assets/Images/2.jpg'
@@ -37,8 +39,8 @@ import { Outlet, Route,Routes, useNavigate } from 'react-router-dom';
 import { updateCredentials } from '../../Redux/UserSlice';
 
     const drawerWidth = 240;
-    const settings = ['Profile', 'Account', 'Sign Out'];
-    const tabs = ['Dashboard','Courses','Your Organisme','Maybe Something','Maybe Something else']
+    
+    
 
   
     const openedMixin = (theme) => ({
@@ -164,6 +166,43 @@ function FormateurSideBar() {
    * --------------------------------------------------------------------
    */
 
+  const settings = [
+    {
+      label:'Profile',
+      action:()=>{navigate('/FormateurSpace/Profile')}
+    }, 
+    {
+      label:'Account',
+      action:()=>{navigate('/FormateurSpace/Account')}
+    }, 
+    {
+      label:'Sign Out',
+      action:()=>{localStorage.removeItem("Token");navigate(0);}
+    }
+  ];
+  const tabs =[
+    {
+      label:'Dashboard',
+      action:()=>{navigate('/FormateurSpace')},
+      icon:<DashboardIcon />
+    }, 
+    {
+      label:'Courses',
+      action:()=>{navigate('/FormateurSpace/Courses')},
+      icon: <FolderSpecialIcon/>
+    }, 
+    {
+      label:'Profile',
+      action:()=>{navigate('/FormateurSpace/Profile')},
+      icon: <PersonPinIcon/>
+    },
+    {
+      label:'Add New Course',
+      action:()=>{navigate('/FormateurSpace/AddCourse')},
+      icon:<CreateNewFolderIcon/>
+    },
+
+  ]; 
   if(data)
   {
     console.log(data)
@@ -264,20 +303,20 @@ function FormateurSideBar() {
                         gap='5px'
                     >
                         <Button 
-                                variant='text'
-                                sx={{
-                                color:styles.PrimaryColorDark,
-                                backgroundColor:"#fff",
-                                "&:hover" : {
-                                    color:'#fff',
-                                    backgroundColor:styles.SecondaryColorDark,
-                                },
-                                my: 2, 
-                                mx:1,
-                                borderRadius : '3px',
-                                flexWrap:'nowrap'
-                                }}
-                            //onClick={}
+                              variant='text'
+                              sx={{
+                              color:styles.PrimaryColorDark,
+                              backgroundColor:"#fff",
+                              "&:hover" : {
+                                  color:'#fff',
+                                  backgroundColor:styles.SecondaryColorDark,
+                              },
+                              my: 2, 
+                              mx:1,
+                              borderRadius : '3px',
+                              flexWrap:'nowrap'
+                              }}
+                              onClick={()=>{navigate('/FormateurSpace/AddCourse')}}
                             >
                                 Add new course
                         </Button>
@@ -304,8 +343,8 @@ function FormateurSideBar() {
                             onClose={handleCloseUserMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                    <MenuItem key={setting.label} onClick={()=>{handleCloseUserMenu(); setting.action()}}>
+                                      <Typography textAlign="center">{setting.label}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -346,15 +385,16 @@ function FormateurSideBar() {
                   gap='10px'
                   container
                 >
-              {tabs.map((text, index) => (
+              {tabs.map((tab, index) => (
                 <Fragment>
-                  <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                  <ListItem key={tab.label} disablePadding sx={{ display: 'block' }}>
                     <ListItemButton
                       sx={{
                         minHeight: 48,
                         justifyContent: open ? 'initial' : 'center',
                         px: 2.5,
                       }}
+                      onClick={()=>{tab.action()}}
                     >
                       <ListItemIcon
                         sx={{
@@ -364,9 +404,9 @@ function FormateurSideBar() {
                           color:"#fff"
                         }}
                       >
-                        {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                        {tab.icon}
                       </ListItemIcon>
-                      <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                      <ListItemText primary={tab.label} sx={{ opacity: open ? 1 : 0 }} />
                     </ListItemButton>
                   </ListItem>     
                   {(index === (Math.floor(tabs.length/2)))?<Divider sx={{color:'#fff',backgroundColor:'#fff'}} />:<></>}
@@ -402,7 +442,7 @@ function FormateurSideBar() {
             </List>
         
       </Drawer>
-      <Grid flexDirection='column' alignItems='center' justifyContent='center' container sx={{ flexGrow: 1, p: 3,marginTop:'50px',width:'100%' }}>
+      <Grid flexDirection='column' alignItems='center' justifyContent='center' container height={{sm:'100vh',md:'90vh',xl:'90vh'}} sx={{ flexGrow: 1, p: 3,marginTop:'50px',width:'100%',backgroundColor:'#EDF1FA',marginTop:'70px' }}>
         <DrawerHeader />
         <Outlet />
         

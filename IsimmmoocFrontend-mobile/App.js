@@ -4,16 +4,12 @@ import {StyleSheet,Text,View} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz} from './Components/index';
+import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers} from './Components/index';
 import Ionicons from '@expo/vector-icons/MaterialIcons';
 
 
 
 const Stack = createStackNavigator();
-const HomeStack = createStackNavigator();
-const SearchStack = createStackNavigator();
-const ContactStack = createStackNavigator();
-
 
 
 function NavStack(){
@@ -28,7 +24,6 @@ name="Splach" component={Splash}   options={{headerShown: false}}
 
     );
 }
-
 
 
 const screenOptions = {

@@ -5,7 +5,7 @@ const Splash = () => {
   return (
     <View >
       <Text style={styles.st}>    Bienvenue sur</Text>
-      <Text style={styles.st1}  >                        Isimmmoc </Text>
+      <Text style={styles.st1}  >                        Isimmmooc </Text>
      
       <Image   source={require('../assets/images/work.png')}
         style={styles.sm}
@@ -28,8 +28,6 @@ st1:{
     fontWeight: "bold",
 
 },
-
-
 
 st:{
 justifyContent:'center',
@@ -55,8 +53,6 @@ si:{
     justifyContent:'center',
 
 }
-
-
 
 })
 
