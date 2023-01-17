@@ -5,12 +5,10 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
+import React, { useState } from 'react'
 
-import React from 'react'
-import Footer from '../../../Components/Layouts/Footer/Footer'
-import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace'
-import CoursHeroSection from '../../../Components/CoursHeroSection/CoursHeroSection'
-import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceStepper";
+import {DefaultPlayer as Video} from 'react-html5video'
+import 'react-html5video/dist/styles.css'  
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -24,21 +22,30 @@ import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceS
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './CoursSpace.scss'
+import './VideoSpace.scss'
 
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
+import imgVideo from '../../Assets/Videos/imgVideo.png';
+import video from '../../Assets/Videos/Video.mp4';
 
-function CoursSpace() {
+function VideoSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+  const [model,setModel]=useState(false)
+  const data=[
+    {
+      id:1,
+      poster:imgVideo,
+      videoUri:video,
+    }
+  ]
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -72,13 +79,25 @@ function CoursSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='ApprenantHome'>
-      <NavBarApprenantSpace/>
-      <CoursHeroSection />
-      <CoursSpaceStepper/>
-      <Footer />
+    <div className='VideoSpaceContainer'>
+       {data.map((item,index)=>{
+         return(
+            <div className='video' key={index}>
+             <div className='video-container'>
+              <Video 
+                style={{width:'100%'}}
+                autoPlay={model}
+                controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+                poster={item.poster}
+              >
+                <source src={item.videoUri} type="video/mp4"/>
+              </Video>  
+             </div>
+            </div>
+         )
+       })}
     </div>
   )
 }
 
-export default CoursSpace
+export default VideoSpace

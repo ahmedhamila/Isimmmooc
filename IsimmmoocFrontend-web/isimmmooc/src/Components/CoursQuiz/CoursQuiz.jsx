@@ -5,10 +5,14 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
-import React, { useState } from 'react'
 
-import {DefaultPlayer as Video} from 'react-html5video'
-import 'react-html5video/dist/styles.css'  
+import * as React from 'react';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -22,30 +26,27 @@ import 'react-html5video/dist/styles.css'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './VideoSpace.scss'
+import './CoursQuiz.scss'
 
 /*
  * ----------------------------------------------------------------------
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import imgVideo from './Videos/imgVideo.png';
-import video from './Videos/Video.mp4';
 
-function VideoSpace() {
+function CoursQuiz() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const [model,setModel]=useState(false)
-  const data=[
-    {
-        id:1,
-        poster:{imgVideo},
-        videoUri:{video},
-    }
-  ]
+    const quiz=[
+        {
+            header:'Question 1',   
+            question:'Quel type erreur voit-on dans le terminal si on supprime le paramètre request de la définition de la vue hello, et qu on essaie de charger cette page dans le navigateur ?',
+        }
+    ]
+    
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -79,25 +80,34 @@ function VideoSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='VideoSpaceContainer'>
-       {data.map((item,index)=>{
-         return(
-            <div className='video' key={index}>
-             <div className='video-container'>
-              <Video 
-                style={{width:'100%'}}
-                autoPlay={model}
-                controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
-                poster={item.poster}
-              >
-                <source src={item.videoUri} type="video/webm"/>
-              </Video>  
-             </div>
-            </div>
-         )
-       })}
+    <div className='quiz-container'>
+      {quiz.map(item =>{
+        return(
+            <div>
+                <div className='header-container'>
+                <h2>{item.header}</h2>
+                </div>
+                <div className='question-container'>
+                <p>
+                  {item.question}
+                </p>
+                </div>
+            </div> 
+        )})}  
+      <div>
+        <FormControl>
+            <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+            >
+                <FormControlLabel value="response1" control={<Radio />} label="response1" />
+                <FormControlLabel value="response2"control={<Radio />} label="response2" />
+            </RadioGroup>
+        </FormControl>
+      </div>      
     </div>
+    
   )
 }
 
-export default VideoSpace
+export default CoursQuiz

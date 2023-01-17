@@ -13,7 +13,8 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import VideoSpace from './VideoSpace/VideoSpace'
+import VideoSpace from '../../Components/VideoSpace/VideoSpace'
+import CoursContenuTabs from '../../Components/CoursContenuTabs/CoursContenuTabs'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -41,7 +42,7 @@ function CoursSpaceStepper() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const steps = ['Objectif chapitre', 'Objectif chapitre', 'Objectif chapitre'];
+  const steps = ['Introduction', 'Objectif chapitre', 'Objectif chapitre'];
   
 
   /* --------------------------------------------------------------------
@@ -133,7 +134,7 @@ function CoursSpaceStepper() {
         {allStepsCompleted() ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
+              All steps completed - Congratulations
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Box sx={{ flex: '1 1 auto' }} />
@@ -144,7 +145,7 @@ function CoursSpaceStepper() {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
               <VideoSpace/>
-              Step {activeStep + 1}
+              <CoursContenuTabs/>
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button

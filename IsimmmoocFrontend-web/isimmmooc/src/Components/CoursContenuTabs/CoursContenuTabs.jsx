@@ -6,11 +6,15 @@
  * ----------------------------------------------------------------------
  */
 
-import React from 'react'
-import Footer from '../../../Components/Layouts/Footer/Footer'
-import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace'
-import CoursHeroSection from '../../../Components/CoursHeroSection/CoursHeroSection'
-import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceStepper";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import CoursQuiz from '../../Components/CoursQuiz/CoursQuiz'
+import AvisApprenant from '../../Components/AvisApprenant/AvisApprenant'
+
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -24,7 +28,7 @@ import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceS
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './CoursSpace.scss'
+import './CoursContenuTabs.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -32,13 +36,19 @@ import './CoursSpace.scss'
  * ----------------------------------------------------------------------
  */
 
-function CoursSpace() {
+function CoursContenuTabs() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+  const [value, setValue] = React.useState('1');
+  const content=[
+    {
+      description:'Many different kinds of people use React Native: from advanced iOS developers to React beginners, to people getting started programming for the first time in their career. These docs were written for all learners, no matter their experience level or background.'
+    }
+  ]
+ 
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -59,7 +69,9 @@ function CoursSpace() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
     
   
   /* --------------------------------------------------------------------
@@ -72,13 +84,28 @@ function CoursSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='ApprenantHome'>
-      <NavBarApprenantSpace/>
-      <CoursHeroSection />
-      <CoursSpaceStepper/>
-      <Footer />
-    </div>
+    <Box sx={{ width: '100%', typography: 'body1' }}>
+    <TabContext value={value}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <TabList onChange={handleChange} aria-label="lab API tabs example">
+          <Tab label="Présentation" value="1" />
+          <Tab label="Quiz" value="2" />
+          <Tab label="Avis" value="3" />
+        </TabList>
+      </Box>
+      {content.map((item)=>{
+        return(
+      <TabPanel value="1" >{item.description}</TabPanel>
+      )})}
+      <TabPanel value="2">
+        <CoursQuiz/>
+      </TabPanel>
+      <TabPanel value="3">
+      <AvisApprenant/>
+      </TabPanel>
+    </TabContext>
+  </Box>
   )
 }
 
-export default CoursSpace
+export default CoursContenuTabs
