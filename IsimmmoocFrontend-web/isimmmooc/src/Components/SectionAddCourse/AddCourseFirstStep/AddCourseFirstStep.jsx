@@ -101,6 +101,8 @@ const AddCourseFirstStep = (props) => {
       setCoursPeriode(event.target.value)
       if(event.target.value <=0 )
         setCoursPeriodeError(true)
+      else
+      setCoursPeriodeError(false)
   };
   const handleChangeCoursDifficulty = (event) => {
     setCoursDifficulty(event.target.value);
@@ -117,7 +119,7 @@ const AddCourseFirstStep = (props) => {
   };
 
   const handleGoNext = async () => {
-    if(coursPeriodeError)
+    if(coursPeriodeError || coursPeriode.length === 0)
     {
       setWarningMessage("Invalid Periode !")
       setOpen(true);
@@ -126,6 +128,18 @@ const AddCourseFirstStep = (props) => {
     if(coursName.length <2)
     {
       setWarningMessage("Invalid name(Min Length is 2 ) !")
+      setOpen(true);
+      return;
+    }
+    if(coursDifficulty.length === 0)
+    {
+      setWarningMessage("Please chose a Difficulty !")
+      setOpen(true);
+      return;
+    }
+    if(coursDiscipline.length === 0)
+    {
+      setWarningMessage("Please chose a Discipline !")
       setOpen(true);
       return;
     }

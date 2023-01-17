@@ -81,7 +81,7 @@ function FormateurRouter() {
             
             <Route exact path='/FormateurSpace' element={<FormateurSideBar />}>
               <Route  index element={<Dashboard />}/>
-              <Route  path='Profile' element={<SectionModifierFormateur />}/>
+              <Route  path='Account' element={<SectionModifierFormateur />}/>
               <Route  path='AddCourse' element={<SectionAddCourse />}/>
               
 

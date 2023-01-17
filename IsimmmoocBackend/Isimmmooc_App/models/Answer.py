@@ -12,6 +12,7 @@ class Answer (models.Model):
             super(Answer, self).save()
         else:
             raise Exception(f'{self.question.question_text} has already {self.question.number_options} Options. No more are allowed.')
+    correct = models.BooleanField(default=False)
     #Metadata
     class Meta :
         ordering = ['-answer_text']
