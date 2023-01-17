@@ -62,8 +62,8 @@ onPress={()=> navigation.navigate("Login")}>
       <Text style={styles.headtxt}>Isimmmooc</Text>
       <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
 </View>
-
-<Text style={styles.welc1}>    Une   infinite  des  cours  avec </Text>
+<Card style={styles.body} >
+<Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
 <Text style={styles.welc}>                   un  seul    click ! </Text>
 <View style={styles.centerbtn}>
 <TouchableOpacity  style={styles.btn}
@@ -83,7 +83,7 @@ onPress={()=> navigation.navigate("Login")}>
 
 </View>
 </Card>
-
+</Card>
 
     </View>
 
@@ -102,7 +102,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontWeight: '400',
     marginTop:6,
-    fontStyle:'italic'
+    fontStyle:'italic',
+    fontWeight: "bold",
 
     
   },
@@ -112,7 +113,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontWeight: '400',
     margin:7,
-    fontStyle:'italic'
+    fontStyle:'italic',
+    fontWeight: "bold",
     
   },
   notif:{
@@ -131,8 +133,10 @@ const styles = StyleSheet.create({
   head:{
     justifyContent:'space-between',
     flexDirection: "row",
-    marginTop:20,
+    marginTop:18,
+    marginBottom:15,
   },
+  
   infoCours:{
     justifyContent:'space-between',
     flexDirection: 'column',
@@ -216,8 +220,6 @@ btn:{
   marginTop:17,
   borderRadius: 26,
 
-
-
 }
 ,
 btnCours:{
@@ -225,7 +227,6 @@ btnCours:{
   backgroundColor:'#A9CCE3',
   borderRadius:30,
   marginTop:8,
-
 }
 ,
 btnText:{
@@ -259,7 +260,11 @@ marginTop:15,
 
 }
 ,
-
+body:{
+  borderTopRightRadius:65,
+  borderTopLeftRadius:65,
+  backgroundColor:'#ebf4fa',
+},
 card:{
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
