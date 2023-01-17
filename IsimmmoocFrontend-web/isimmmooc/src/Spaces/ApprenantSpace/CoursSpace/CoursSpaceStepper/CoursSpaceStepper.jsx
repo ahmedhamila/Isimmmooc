@@ -13,7 +13,7 @@ import Step from '@mui/material/Step';
 import StepButton from '@mui/material/StepButton';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import HomeIcon from '@mui/icons-material/Home';
+import VideoSpace from './VideoSpace/VideoSpace'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -143,6 +143,7 @@ function CoursSpaceStepper() {
         ) : (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
+              <VideoSpace/>
               Step {activeStep + 1}
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
