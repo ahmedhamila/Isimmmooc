@@ -1,2 +1,5 @@
 from .CoursSerializer import CoursSerializer
+from .ChapitreSerializer import ChapitreSerializer
 from .DisciplineSerializer import DisciplineSerializer
+from .AnswerSerializer import AnswerSerializer
+from .QuestionSerializer import QuestionSerializer

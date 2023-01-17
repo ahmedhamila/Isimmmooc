@@ -1,7 +1,7 @@
 import { SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification } from "./AuthentificationServices";
-import {AddCourse,} from './FormateurServices'
+import {AddCourse,AddChapitre,AddQuestion,AddAnswer} from './FormateurServices'
 
 export {
     SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification,
-    AddCourse,
+    AddCourse,AddChapitre,AddQuestion,AddAnswer,
 }

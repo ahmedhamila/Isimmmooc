@@ -95,15 +95,15 @@ function  SectionModifierFormateur (props) {
   return (
     <React.Fragment>
     <CssBaseline />
-    <Grid  sx={{width:'80%'}}>
-      <Grid sx={{ bgcolor: '#ffff', height: '100%',border:1,borderColor:'#9d9da8' }} container>
+    <Grid  sx={{width:'80%',backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
+      <Grid  container flexDirection='column' gap='15px'>
   
-        <Grid container sx={{borderBottom:1,borderColor:'#9d9da8'}} flexDirection='row' justifyContent='center'>
+        <Grid container  flexDirection='row' justifyContent='center' gap='70px'>
           <Grid item >
             <Avatar src={image} sx={{width:75,height:75,bgcolor:'black' }} >M</Avatar>
           </Grid>
-          <Grid item sx={{marginLeft:'5%'}}>
-            <Typography sx={{marginLeft:'30%',marginTop:'3%',marginBottom:'3%',color:'#1C1D1F',fontFamily:'sf pro text',fontWeight:'bold',fontSize:'30px'}}>
+          <Grid item >
+            <Typography sx={{color:'#1C1D1F',fontFamily:'sf pro text',fontWeight:'bold',fontSize:'30px'}}>
               Profil public
             </Typography>
             <Typography >
@@ -111,66 +111,52 @@ function  SectionModifierFormateur (props) {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container direction='column'sx={{marginLeft:'20%',marginRight:'18%',marginTop:'1%'}}>
-            <Typography sx={{fontWeight:'bold',marginBottom:'1%',fontSize:'20px' }}>
+        <Grid container direction='column' alignItems='center' gap='15px'>
+            <Typography sx={{fontWeight:'bold'}}>
             Informations de base :
             </Typography>
             <Grid
-           width={{sm:'400px',md:'600px',xl:'700px'}}
-           sx={{
-               marginBottom:'2%',
-           }}
+              container
+              width={{sm:'100%',md:'90%',xl:'80%'}}
             >
                 <TextField fullWidth label="First name" placeholder={firstName} id="fullWidth" />
             </Grid>
             <Grid
-           width={{sm:'400px',md:'600px',xl:'700px'}}
-           sx={{
-               marginBottom:'2%',
-           }}
+              container
+              width={{sm:'100%',md:'90%',xl:'80%'}}
             >
                 <TextField fullWidth label="Last name" placeholder={lastName} id="fullWidth" />
             </Grid>
             <Grid
-            width={{sm:'400px',md:'600px',xl:'700px'}}
-            sx={{
-                marginBottom:'2%',
-            }}
+              container
+              width={{sm:'100%',md:'90%',xl:'80%'}}
             >
                 <TextField fullWidth label="E-mail" placeholder={email} id="fullWidth" />
             </Grid>
             <Grid
-            width={{sm:'400px',md:'600px',xl:'700px'}}
-            sx={{
-                marginBottom:'2%',
-            }}
+              container
+              width={{sm:'100%',md:'90%',xl:'80%'}}
             >
                 <TextField fullWidth label="Phone number" placeholder={phoneNumber.substr(4)} id="fullWidth" />
             </Grid>
         </Grid>
-        <Grid container direction='column'sx={{marginLeft:'20%',marginTop:'1%',marginBottom:'5%'}}>
-          <Typography sx={{fontWeight:'bold',marginBottom:'1%',fontSize:'20px' }}>
-          Photo :
-          </Typography>
-          <Typography sx={{fontWeight:'bold',marginBottom:'1%',marginLeft:'3%' }}>
-          Ajouter/Modifier l'image
-          </Typography>  
-          <Grid  direction='column' className="containerImg" marginLeft='10%'>
-            <Grid sx={{width:'150px',
-              height:'150px',
-              marginLeft:'10%',
-              border:1,
-             
-            }}>
+        <Grid container direction='column' alignItems='center'>
+          <Grid>
+            <Typography >
+            Photo :
+            </Typography>
+            <Typography >
+            Ajouter/Modifier l'image
+            </Typography>  
+          </Grid>
+          
+          <Grid container direction='column' alignItems='center' className="containerImg" >
+            <Grid >
               <img src={profileImg} alt="" id="img" className='img' width='15%'/>
             </Grid>
-            <input type="file" name="image-upload" id="input" accept='image/*' onChange={imageHandler}/>
-            <Grid sx={{
-              width:'100%',
-              marginTop:'1rem',
-              display:'flex',
-              marginLeft:'8%',
-            }}>
+            
+            <Grid container flexDirection='row' justifyContent='center'>
+              <input type="file" name="image-upload" id="input" accept='image/*' onChange={imageHandler}/>
               <label htmlFor="input" className='image-upload'>
               <PhotoIcon>add_photo_alternate</PhotoIcon>
               Choose your photo
