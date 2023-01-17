@@ -5,8 +5,10 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
+import React, { useState } from 'react'
 
-import React from 'react'
+import {DefaultPlayer as Video} from 'react-html5video'
+import 'react-html5video/dist/styles.css'  
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -27,19 +29,21 @@ import './VideoSpace.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import imgVideo from '../../../Assets/Videos/imgVideo.png';
-import Video from './../../../Assets/Videos/video.m4v';
+import imgVideo from './Videos/imgVideo.png';
+import video from './Videos/Video.mp4';
+
 function VideoSpace() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const [model,setModel]=useState(false)
   const data=[
     {
         id:1,
-        poster:'imgVideo',
-        videoUri:'Video',
+        poster:{imgVideo},
+        videoUri:{video},
     }
   ]
   /* --------------------------------------------------------------------
@@ -78,8 +82,17 @@ function VideoSpace() {
     <div className='VideoSpaceContainer'>
        {data.map((item,index)=>{
          return(
-            <div>
-
+            <div className='video' key={index}>
+             <div className='video-container'>
+              <Video 
+                style={{width:'100%'}}
+                autoPlay={model}
+                controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+                poster={item.poster}
+              >
+                <source src={item.videoUri} type="video/webm"/>
+              </Video>  
+             </div>
             </div>
          )
        })}
