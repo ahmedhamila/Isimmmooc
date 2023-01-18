@@ -31,14 +31,4 @@ class CoursViewSet(viewsets.ModelViewSet):
         except Exception as e:
             return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
             
-
-    '''@action(detail=False,methods=['POST'])
-    def createCoursVideo(self,request):
-        try:
-            
-            newVideo = CoursVideo.objects.create(video=request.FILES['video'])
-            newVideo.save()
-            newVideoSer = CoursVideoSerializer(newVideo)
-            return Response({"Video": newVideoSer.data}, status=status.HTTP_201_CREATED)
-        except Exception as e :
-            return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)'''
+    

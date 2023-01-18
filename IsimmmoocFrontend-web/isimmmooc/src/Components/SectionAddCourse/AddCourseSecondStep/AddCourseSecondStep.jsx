@@ -24,7 +24,6 @@ import MuiAlert from '@mui/material/Alert';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './AddCourseSecondStep.scss';
 import styles from './../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
@@ -74,21 +73,41 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   }
   const handleGoNext = async() => {
       console.log(sessionStorage.getItem('CoursID'))
-      chapitres.map(async(chapitre,index) => {
-        let formData = new FormData()
-        formData.append('title',chapitre.title)
-        formData.append('video',chapitre.video)
-        formData.append('presentation',chapitre.description)
-        formData.append('cours',sessionStorage.getItem('CoursID'))
-
-        const response = await AddChapitre(formData)
-        const responseJson = await response.json()
-        console.log(responseJson)
-        sessionStorage.setItem(`ChapitreID${index+1}`,responseJson.id)
-      })
-      sessionStorage.removeItem('CoursID')
-      sessionStorage.setItem('NBChapitres',chapitres.length)
-      goNext()
+      if(!chapitres.some(chapitre => chapitre.title.length===0) && !chapitres.some(chapitre => chapitre.description.length===0) && !chapitres.some(chapitre => chapitre.video===null) )
+      {
+        chapitres.map(async(chapitre,index) => {
+          let formData = new FormData()
+          formData.append('title',chapitre.title)
+          formData.append('video',chapitre.video)
+          formData.append('presentation',chapitre.description)
+          formData.append('cours',sessionStorage.getItem('CoursID'))
+  
+          const response = await AddChapitre(formData)
+          if(response.ok)
+          {
+            const responseJson = await response.json()
+            console.log(responseJson)
+            sessionStorage.setItem(`ChapitreID${index+1}`,responseJson.id)
+          }
+          else
+          {
+            setWarningMessage('An Error has occured while adding the chapters !')
+            setOpen(true)
+            return;
+          }
+          
+        })
+        sessionStorage.removeItem('CoursID')
+        sessionStorage.setItem('NBChapitres',chapitres.length)
+        goNext()
+      }
+      else
+      {
+        setWarningMessage('All fields must be filled !')
+        setOpen(true)
+        return;
+      }
+      
       
       
       

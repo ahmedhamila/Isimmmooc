@@ -24,7 +24,6 @@ import CoursSpaceStepper from "./CoursSpaceStepper/CoursSpaceStepper";
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './CoursSpace.scss'
 
 /*
  * ----------------------------------------------------------------------

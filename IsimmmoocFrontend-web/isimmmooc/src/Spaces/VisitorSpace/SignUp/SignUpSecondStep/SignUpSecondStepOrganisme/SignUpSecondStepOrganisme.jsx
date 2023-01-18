@@ -25,7 +25,6 @@ import MuiAlert from '@mui/material/Alert';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SignUpSecondStepOrganisme.scss';
 import styles from './../../../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------

@@ -24,7 +24,6 @@ import Footer from '../../../Components/Layouts/Footer/Footer'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './MonApprentissageSpace.scss'
 
 /*
  * ----------------------------------------------------------------------

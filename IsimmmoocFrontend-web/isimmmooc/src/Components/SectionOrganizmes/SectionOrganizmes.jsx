@@ -32,7 +32,6 @@ import {container,item} from './../../Data'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SectionOrganizmes.scss'
 import styles from './../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------

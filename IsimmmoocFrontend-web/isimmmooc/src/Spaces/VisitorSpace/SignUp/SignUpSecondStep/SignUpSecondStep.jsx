@@ -26,7 +26,6 @@ import SignUpThirdtStepOrganisme from './SignUpSecondStepOrganisme/SignUpSecondS
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SignUpSecondStep.scss';
 import styles from './../../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------

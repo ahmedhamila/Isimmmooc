@@ -3,7 +3,7 @@ const URL = `${SERVER_API_CONFIG.PROTOCOL}://${SERVER_API_CONFIG.HOST_NAME}:${SE
 
 async function SignUpApprenant(bodyData){
     
-    const response = await fetch(URL+'/users/Apprenant/addApprenant/',{
+    return fetch(URL+'/users/Apprenant/addApprenant/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -11,12 +11,11 @@ async function SignUpApprenant(bodyData){
       },
       body:JSON.stringify(bodyData)
       })
-    const json = await response.json()
-    return json.Token
+    
 }
 async function SignUpPreFormateur(bodyData){
     
-    const response = await fetch(URL+'/users/Formateur/addPreFormateur/',{
+    return fetch(URL+'/users/Formateur/addPreFormateur/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -24,12 +23,10 @@ async function SignUpPreFormateur(bodyData){
       },
       body:JSON.stringify(bodyData)
       })
-    const json = await response.json()
-    return json.Token
 }
 async function SignUpPreOrganisme(bodyData){
     
-    const response = await fetch(URL+'/users/Organisme/addPreOrganisme/',{
+    return fetch(URL+'/users/Organisme/addPreOrganisme/',{
       method:'POST',
       headers:{
         'Accept':'application/json',
@@ -37,8 +34,6 @@ async function SignUpPreOrganisme(bodyData){
       },
       body:JSON.stringify(bodyData)
       })
-    const json = await response.json()
-    return json.Token
 }
 async function AuthVerification(bodyData){
     

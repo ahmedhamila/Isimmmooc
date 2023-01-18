@@ -30,7 +30,6 @@ import AddCourseSuccessStep from './AddCourseSuccessStep/AddCourseSuccessStep'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SectionAddCourse.scss';
 
 /*
  * ----------------------------------------------------------------------

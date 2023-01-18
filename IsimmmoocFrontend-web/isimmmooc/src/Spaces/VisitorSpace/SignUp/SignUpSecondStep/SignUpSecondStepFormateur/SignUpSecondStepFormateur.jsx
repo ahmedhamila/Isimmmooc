@@ -24,7 +24,6 @@ import MuiAlert from '@mui/material/Alert';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SignUpSecondStepFormateur.scss';
 import styles from './../../../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
@@ -154,10 +153,20 @@ function SignUpSecondStepFormateur(props) {
       method:'POST',
       body:formData
     })
-    const responseJson = await response.json()
-    console.log(responseJson)
-    dispatch(updateCV(responseJson.CV.id))
-    handleGoNext();
+    if(response.ok)
+    {
+      const responseJson = await response.json()
+      console.log(responseJson)
+      dispatch(updateCV(responseJson.CV.id))
+      handleGoNext();
+    }
+    else
+    {
+      setWarningMessage('An Error has occured while sending the CV please try again later !')
+      setOpen(true)
+      return
+    }
+    
     
   };
   const goPrevious = () => {

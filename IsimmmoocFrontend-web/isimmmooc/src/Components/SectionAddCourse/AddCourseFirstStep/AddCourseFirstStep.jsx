@@ -24,7 +24,6 @@ import {AddCourse} from './../../../Services'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './AddCourseFirstStep.scss';
 import styles from './../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
@@ -165,10 +164,20 @@ const AddCourseFirstStep = (props) => {
       formData.append('discipline',coursDiscipline)
 
       const response = await AddCourse(formData)
-      const responseJson = await response.json()
-      sessionStorage.setItem('CoursID',responseJson.id)
-      console.log(responseJson)
-      goNext();
+      if(response.ok)
+      {
+        const responseJson = await response.json()
+        sessionStorage.setItem('CoursID',responseJson.id)
+        console.log(responseJson)
+        goNext();
+      }
+      else
+      {
+        setWarningMessage('An Error has occured while adding the course !')
+        setOpen(true)
+        return; 
+      }
+      
     
     
     

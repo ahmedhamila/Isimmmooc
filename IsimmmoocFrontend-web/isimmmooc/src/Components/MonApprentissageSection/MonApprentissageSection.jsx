@@ -35,7 +35,6 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './MonApprentissageSection.scss'
 
 
 /*

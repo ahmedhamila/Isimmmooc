@@ -9,7 +9,7 @@ import React from 'react'
 import {Routes,Route, Navigate} from 'react-router-dom'
 import Dashboard from './../Spaces/FormateurSpace/Dashboard/Dashboard'
 import FormateurProfile from './../Spaces/FormateurSpace/FormateurProfile/FormateurProfile'
-import FormateurSideBar from './../Components/FormateurSideBar/FormateurSideBar'
+import FormateurSideBar from './../Spaces/FormateurSpace/FormateurSideBar/FormateurSideBar'
 import SectionModifierFormateur from '../Components/SectionModifierFormateur/SectionModifierFormateur'
 import SectionAddCourse from '../Components/SectionAddCourse/SectionAddCourse'
 /*

@@ -24,7 +24,6 @@ import MuiAlert from '@mui/material/Alert';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SignUpSecondStepApprenant.scss';
 import styles from './../../../../../Assets/Styles/style.module.scss'
 import { useState } from 'react';
 

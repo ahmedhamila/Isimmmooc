@@ -12,6 +12,7 @@ class PreFormateur (models.Model):
     mail = models.EmailField(null=False, blank=True,default=None , help_text='Email de Formateur')
     phone_number = PhoneNumberField(null=False, blank=True,default=None , help_text='Numero de telephone de Formateur')
     cv = models.ForeignKey('Isimmmooc_Users.FormateurCV',blank=True, null=True,default=None,on_delete=models.CASCADE, help_text='CV de PreFormateur(si existe)')
+    image = models.ImageField(blank=True,null=True,upload_to='PreFormateur/')
     accepted = models.BooleanField(default=False)
     organisme = models.ForeignKey('Isimmmooc_Users.Organisme',blank=True, null=True,default=None,on_delete=models.CASCADE, help_text='Organisme de Formateur(si existe)')
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=False,default=None)

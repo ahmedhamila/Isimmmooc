@@ -1,5 +1,4 @@
 import React from 'react'
-import './ThemedButton.scss'
 import Button from '@mui/material/Button'
 const themes={
   ThemePrimaryEmpty:{

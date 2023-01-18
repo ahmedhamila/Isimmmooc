@@ -1,6 +1,20 @@
 import { SERVER_API_CONFIG } from "./../Configurations"
 const URL = `${SERVER_API_CONFIG.PROTOCOL}://${SERVER_API_CONFIG.HOST_NAME}:${SERVER_API_CONFIG.PORT}`;
 
+
+
+async function UpdateFormateur(id,bodyData){
+    
+  return fetch(URL+`/users/Formateur/${id}/`,{
+    method:'PUT',
+    headers:{
+      'Authorization': `Token ${localStorage.getItem("Token")}`
+    },
+    body:bodyData
+    })
+ 
+}
+
 async function AddCourse(bodyData){
     
     return fetch(URL+'/app/Cours/',{
@@ -47,4 +61,4 @@ async function AddAnswer(bodyData){
    
 }
 
-export {AddCourse,AddChapitre,AddQuestion,AddAnswer}
+export {UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer}

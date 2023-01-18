@@ -9,7 +9,7 @@ class Question (models.Model):
             MinValueValidator(1)
         ],null=False,help_text='Nombre d option')
 
-    chapitre = models.OneToOneField('Isimmmooc_App.Chapitre', null=False, on_delete=models.CASCADE,default=None,help_text='Chapitre associe')
+    chapitre = models.OneToOneField('Isimmmooc_App.Chapitre',related_name='questions', null=False, on_delete=models.CASCADE,default=None,help_text='Chapitre associe')
 
     class QuestionType(models.TextChoices):
         ONE_CHOICE = 'OC', ('One_Choice')

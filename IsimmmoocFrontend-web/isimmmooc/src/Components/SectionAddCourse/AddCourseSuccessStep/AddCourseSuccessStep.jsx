@@ -21,7 +21,6 @@ import { Grid,Typography } from '@mui/material';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './AddCourseSuccessStep.scss';
 import { Link } from 'react-router-dom';
 
 /*

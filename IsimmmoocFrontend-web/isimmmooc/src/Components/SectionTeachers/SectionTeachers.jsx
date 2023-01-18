@@ -30,7 +30,6 @@ import {container,item} from './../../Data'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './SectionTeachers.scss'
 import styles from './../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------

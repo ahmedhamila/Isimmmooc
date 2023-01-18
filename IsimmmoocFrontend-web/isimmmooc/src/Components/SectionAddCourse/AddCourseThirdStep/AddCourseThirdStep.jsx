@@ -25,7 +25,6 @@ import MuiAlert from '@mui/material/Alert';
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-import './AddCourseThirdStep.scss';
 import styles from './../../../Assets/Styles/style.module.scss'
 /*
  * ----------------------------------------------------------------------
@@ -79,8 +78,10 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     }
     setOpen(false);
   }
+  
   const handleGoNext = async() => {
-    
+    if( !questions.some(question => question.question.length===0) &&  !questions.some(question => question.correctAnswer.length===0) &&  !questions.some(question => question.otherAnswers.length===0))
+    {
       questions.map(async(question,index) => {
         let formData = new FormData()
         formData.append('question_text',question.question)
@@ -88,34 +89,74 @@ const Alert = React.forwardRef(function Alert(props, ref) {
         formData.append('chapitre',sessionStorage.getItem(`ChapitreID${index+1}`))
 
         const response = await AddQuestion(formData)
-        const responseJson = await response.json()
-        console.log(responseJson)
-        const questionId=responseJson.id
-        let formDataAnswer = new FormData()
-        formData.append('answer_text',question.correctAnswer)
-        formData.append('correct',true)
-        formData.append('question',questionId)
+        if(response.ok)
+        {
+          const responseJson = await response.json()
+          console.log(responseJson)
+          const questionId=responseJson.id
+          let formDataAnswer = new FormData()
+          formData.append('answer_text',question.correctAnswer)
+          formData.append('correct',true)
+          formData.append('question',questionId)
 
-        const responseA = await AddAnswer(formData)
-        const responseAJson = await responseA.json()
-        console.log(responseAJson)
-        let wrongAnswersArray =question.otherAnswers.split(',')
-        console.log(wrongAnswersArray)
-        wrongAnswersArray.map(async(wrongAnswer)=>{
-            let formDataAnswer = new FormData()
-            formData.append('answer_text',wrongAnswer)
-            formData.append('correct',false)
-            formData.append('question',questionId)
+          const responseA = await AddAnswer(formData)
+          if(responseA.ok)
+          {
+            const responseAJson = await responseA.json()
+            console.log(responseAJson)
+            let wrongAnswersArray =question.otherAnswers.split(',')
+            console.log(wrongAnswersArray)
+            wrongAnswersArray.map(async(wrongAnswer)=>{
+                let formDataAnswer = new FormData()
+                formData.append('answer_text',wrongAnswer)
+                formData.append('correct',false)
+                formData.append('question',questionId)
 
-            const responseWA = await AddAnswer(formData)
-            const responseWAJson = await responseWA.json()
-            console.log(responseWAJson)
-        })
+                const responseWA = await AddAnswer(formData)
+                if(responseWA.ok)
+                {
+                  const responseWAJson = await responseWA.json()
+                  console.log(responseWAJson)
+                }
+                else
+                {
+                  setWarningMessage('An Error has occured while adding Answers !')
+                  setOpen(true)
+                  return; 
+                }
+                
+            })
+          }
+          else
+          {
+            setWarningMessage('An Error has occured while adding Answers !')
+            setOpen(true)
+            return;
+          }
+          
+          sessionStorage.removeItem(`ChapitreID${index+1}`)
+        }
+        else
+        {
+          setWarningMessage('An Error has occured while adding Questions !')
+          setOpen(true)
+          return;
+        }
+        
 
         
       })
       sessionStorage.removeItem('CoursID')
+      sessionStorage.removeItem('NBChapitres')
       goNext()
+    }
+    else
+    {
+      setWarningMessage('All fields must be filled !')
+      setOpen(true)
+      return;
+    }
+      
       
       
       

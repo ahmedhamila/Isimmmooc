@@ -10,6 +10,6 @@ class ApprenantSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length = False,allow_empty_file=False,allow_null=False,use_url=True,required=False)
     class Meta:
         model=Apprenant
-        fields=["first_name","last_name","date_of_birth","mail","phone_number","image","user"]
+        fields=["id","first_name","last_name","date_of_birth","mail","phone_number","image","user"]
         depth = 1
     

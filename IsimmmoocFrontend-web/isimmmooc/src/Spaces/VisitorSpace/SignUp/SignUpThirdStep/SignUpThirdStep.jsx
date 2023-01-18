@@ -99,7 +99,7 @@ function SignUpThirdStep(props) {
         dispatch(updateConfirmPassword(event.target.value));
   };
 
-  const handleGoNext = () => {
+  const handleGoNext = async() => {
     if ( !validatePasswordConfirm(confirmPassword))
     {
       setWarningMessage('Passwords must match !')
@@ -109,20 +109,32 @@ function SignUpThirdStep(props) {
 
     if(userTypeSU === "Apprenant")
     {
-      const response = SignUpApprenant({
+      const response = await SignUpApprenant({
         first_name:firstName,
         last_name:lastName,
         date_of_birth:birthDay,
         mail:email,
         phone_number:"+216"+phoneNumber,
         password:password,
-      }).then(token => console.log(token))
+      })
+      if(response.ok)
+      {
+        const responseJson = response.json()
+        console.log(responseJson.token)
+      }
+      else
+      {
+        const responseJson=response.json()
+        setWarningMessage('Error ocresponseJson.cured when signing up !')
+        setOpen(true)
+        return
+      }
       
     }
     else if(userTypeSU === "Formateur")
     {
       
-      const response = SignUpPreFormateur({
+      const response = await SignUpPreFormateur({
         first_name:firstName,
         last_name:lastName,
         date_of_birth:birthDay,
@@ -130,19 +142,41 @@ function SignUpThirdStep(props) {
         phone_number:"+216"+phoneNumber,
         password:password,
         cv:cv
-      }).then(token => console.log(token))
+      })
+      if(response.ok)
+      {
+        const responseJson=response.json()
+        console.log(responseJson.token)
+      }
+      else
+      {
+        setWarningMessage('Error occured when signing up !')
+        setOpen(true)
+        return
+      }
       
     }
     else if(userTypeSU === "Organisme")
     {
-      const response = SignUpPreOrganisme({
+      const response = await SignUpPreOrganisme({
         name:organismeName,
         email:email,
         adress:organismeAdress,
         web_site:organismeWebSite,
         phone_number:"+216"+phoneNumber,
         password:password
-      }).then(token => console.log(token))
+      })
+      if(response.ok)
+      {
+        const responseJson=response.json()
+        console.log(responseJson.token)
+      }
+      else
+      {
+        setWarningMessage('Error occured when signing up !')
+        setOpen(true)
+        return
+      }
       
     }
     
