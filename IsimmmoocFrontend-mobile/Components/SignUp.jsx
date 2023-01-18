@@ -1,231 +1,156 @@
-import React, { useState } from 'react'
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  StatusBar,
-  TextInput,
-  Button,
-  ScrollView,
-} from 'react-native'
-import { Formik, Field } from 'formik'
-import * as yup from 'yup'
-import CustomInput from './field'
-import DateField from 'react-native-datefield';
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { HStack, NativeBaseProvider, Pressable } from 'native-base'
-import { Icon } from '@rneui/themed'
+import * as React from 'react';
+import { useContext, useState } from 'react';
+import {Text,View,FlatList,StyleSheet,ScrollView,TextInput,} from 'react-native';
+import { Card } from 'react-native-paper';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+
 const SignUp = () => {
-  const [date, setDate] = useState('');
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
 
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-  const getDate = () => {
-    let tempDate = date.toString().split(' ');
-    return date !== ''
-      ? `${tempDate[0]} ${tempDate[1]} ${tempDate[2]} ${tempDate[3]}`
-      : '';
-  };
+  const [firstName, setFirstName] = useState("")
+  const [last_name, setLast_name] = useState("")
+  const [date_of_birth, setDate_of_birth] = useState("")
+  const [mail, setMail] = useState("")
+  const [phone_number, setPhone_number] = useState("")
+  const [password, setPassword] = useState("")
 
-  const handleConfirm = (dates) => {
-    console.warn("A date has been picked: ", dates);
-    setDate(dates);
-    hideDatePicker();
-    console.warn("A date has been picked1: ", date);
-    console.warn("A date has been picked2: ", date);
-  };
-    const signUpValidationSchema = yup.object().shape({
-        Name: yup
-          .string()
-          .matches(/(\w){2}/, 'Enter at least 2 charcter')
-          .required(' name is required'),
-        LastName: yup
-          .string()
-          .matches(/(\w){2}/, 'Enter at least 2 charcter')
-          .required('Last name is required'),
-        phoneNumber: yup
-          .string()
-          .matches(/(\d){8}\b/, 'Enter a valid phone number')
-          .required('Phone number is required'),
-        email: yup
-          .string()
-          .email("Please enter valid email")
-          .required('Email is required'),
-        password: yup
-          .string()
-          .matches(/\w*[a-z]\w*/,  "Password must have a small letter")
-          .matches(/\w*[A-Z]\w*/,  "Password must have a capital letter")
-          .matches(/\d/, "Password must have a number")
-          .matches(/[!@#$%^&*()\-_"=+{}; :,<.>]/, "Password must have a special character")
-          .min(8, ({ min }) => `Password must be at least ${min} characters`)
-          .required('Password is required'),
-        confirmPassword: yup
-          .string()
-          .oneOf([yup.ref('password')], 'Passwords do not match')
-          .required('Confirm password is required'),
+
+  async function creation() {
+
+    let body = JSON.stringify({
+      'first_name': firstName,
+      'last_name': last_name,
+      'date_of_birth':date_of_birth,
+      'mail': mail,
+      'phone_number':phone_number,
+      'password': password
+    })
+
+   const response = fetch(`http://127.0.0.1:8000/users/Apprenant/addApprenant/`, {
+      method:'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body:body
       })
+      const json = await response.json()
+    return json.Token
+      
+
+  }
+
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.container}>
-      <ScrollView style={{width:"100%"}}>
-        <View style={styles.signupContainer}>
-        <Text>Sign Up Screen</Text>
+    <View style={{backgroundColor:'#FFF',height:'100%'}}>
+      <Card style={styles.card} >
+      <View style={styles.infoCours}>
+      <Text style={styles.pop} >Creer un Compte </Text>
+      <ScrollView style={styles.scrollView}>
+
+      <Text >First Name</Text>
+        <TextInput style={styles.textinput} value={firstName} onChangeText={text => setFirstName(text)}   placeholder='First Name'/>
+
+
+        <Text >Last Name</Text>
+        <TextInput style={styles.textinput} value={last_name} onChangeText={text => setLast_name(text)}   placeholder='Last Name'/>
+
+        <Text >Birth Day</Text>
+        <TextInput style={styles.textinput} value={date_of_birth} onChangeText={text => setDate_of_birth(text)}   placeholder='Birth Day'/>
+
+
+        <Text >Email Address</Text>
+        <TextInput style={styles.textinput} value={mail} onChangeText={text => setMail(text)}   placeholder='Email'/>
         
-
-<Formik
-   validationSchema={signUpValidationSchema}
-  initialValues={{
-    Name: '',
-    LastName:'',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
-  }}
-  onSubmit={values => {console.log(values);
-                        console.log(getDate());
-                            }}
->
-  {({ handleSubmit, isValid }) => (
-    <>
-    
-      <Field
-        component={CustomInput}
-        name="Name"
-        placeholder="Name"
-        label="Name"
-        icon="person"
-      />
-      <Field
-        component={CustomInput}
-        name="LastName"
-        placeholder="Last Name"
-        label="Last Name"
-        icon="person"
-      />
-      <View style={{width:"95%"}}>
-      
-     <NativeBaseProvider>
-        <Pressable p={0.7}  alignItems="flex-start" borderWidth={0} borderBottomWidth={1} borderBottomColor="rgb(134, 147, 158)" _light={{
-    borderColor: "dark.200"
-  }} _dark={{
-    borderColor: "dark.600"
-  }}
-           onPress={showDatePicker}>
-       <Text style={{alignSelf:"flex-start",marginBottom:10,fontWeight:"bold",fontSize:16,color:"#86939E"}}> Date</Text>
-    <View style={{alignItems:"flex-start"}} >
-            <HStack space={30} alignItems="flex-start" >    
-            <Icon name="perm-contact-calendar"  size={30} /> 
-            
-              
-              <Text>
-             {getDate()}
-           
-          </Text>
-          </HStack>
-          </View>
-         
-    
-    
-    </Pressable>
-    
-    </NativeBaseProvider>
-     
-      <DateTimePickerModal
+        <Text >Phone Number</Text>
+        <TextInput style={styles.textinput} value={phone_number} onChangeText={text => setPhone_number(text)}   placeholder='Phone Number'/>
         
-        isVisible={isDatePickerVisible}
-        mode="date"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-      />
-      
-   
- 
+        <Text >Password</Text>
+        <TextInput style={styles.textinput} value={password} onChangeText={text => setPassword(text)}  textContentType="password" autoCompleteType="password"  placeholder='Password'/>
 
-</View>
+        <TouchableOpacity style={styles.btn} onPress={() => creation()}>
+          <Text style={styles.btntxt}>Creer</Text>
+        </TouchableOpacity>
 
-      <Field
-        component={CustomInput}
-        name="email"
-        placeholder="Email Address"
-        keyboardType="email-address"
-        label="Email"
-        icon="mail"
-      />
-      <Field
-        component={CustomInput}
-        name="phoneNumber"
-        placeholder="Phone Number"
-        keyboardType="numeric"
-        label="phoneNumber"
-        icon="call"
-      />
-      <Field
-        component={CustomInput}
-        name="password"
-        placeholder="Password"
-        label="Password"
-        icon="lock-closed"
-        secureTextEntry
-      />
-      <Field
-        component={CustomInput}
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        label="ConfirmPAssword"
-        icon="lock-closed"
-        secureTextEntry
-      />
+      </ScrollView>
+      </View>
 
-      <Button
-        onPress={handleSubmit}
-        title="SIGN UP"
-        disabled={!isValid}
-      />
-     
-    </>
-  )}
-</Formik>
-
-
-        </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+      </Card>
+    </View>
   )
+
+
 }
 
-const styles = StyleSheet.create({
-  container: {
-    
-    flex: 1,
-    width:"100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signupContainer: {
-    width: '100%',
-    height:"100%",
-    alignItems: 'center',
-    backgroundColor: 'white',
-    padding: 10,
-    elevation: 10,
-    backgroundColor: '#e6e6e6'
-  },
-  inputBorder: {
-    width: '30%',
-    borderRadius: 8,
-    borderColor: '#cacaca',
-    borderWidth: 1,
-    marginBottom: 20,
-  },
-})
 export default SignUp
+
+const styles = StyleSheet.create({
+
+card:{
+    borderRadius:45,
+    backgroundColor:'#e8f6ff',
+    height:575,
+    width:398,
+    marginTop:22,
+    marginLeft:7,
+    marginRight:7,
+    borderWidth: 1,
+    }
+    ,
+pop:{
+      margin:16,
+      marginTop:0,
+      fontSize:23,
+      textDecorationLine:"solid",
+      fontWeight: "bold",
+      textAlign: 'center',
+      
+      },
+
+infoCours:{
+        justifyContent:'space-between',
+        flexDirection: 'column',
+        justifyContent:'center',
+        alignItems:'center',
+        padding:5,
+        margin:29,
+      }
+,
+scrollView:{
+  marginHorizontal: 7,
+
+},
+textinput:{
+  borderColor: '#000',
+  width: 313,
+  borderWidth: 1,
+  borderRadius: 10,
+  padding: 10,
+  backgroundColor:'#FFF',
+}
+,
+btn:{
+backgroundColor:'#FFF',
+borderRadius:20,
+height:40,
+width:120,
+borderWidth:1,
+textAlign:'center',
+margin:45,
+marginLeft:90,
+marginTop:25,
+
+}
+,
+btntxt:{
+  textAlign:'center',
+  fontSize:17,
+  color:'black',
+  textDecorationLine:"solid",
+  fontWeight: "bold",
+  alignItems:'center',
+  textAlign: "center",
+  padding:5
+
+}
+})

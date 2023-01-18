@@ -10,7 +10,7 @@ import React from 'react'
 import Footer from '../../../Components/Layouts/Footer/Footer'
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace'
 import CoursHeroSection from '../../../Components/CoursHeroSection/CoursHeroSection'
-import CoursSpaceStepper from "./CoursSpaceStepper/CoursSpaceStepper";
+import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceStepper";
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |

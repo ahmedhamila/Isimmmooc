@@ -11,6 +11,7 @@ import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/Appr
 import ModifierApprenant from '../Spaces/ApprenantSpace/ModifierApprenant/ModifierApprenant'
 import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpace/MonApprentissageSpace'
 import CoursSpace from '../Spaces/ApprenantSpace/CoursSpace/CoursSpace'
+import CoursDetails from '../Components/CoursDetails/CoursDetails'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -81,6 +82,7 @@ function ApprenantRouter() {
             <Route exact path='/ApprenantHomeSpace/ModifierAcount' element={<ModifierApprenant />}/>
             <Route exact path='/ApprenantHomeSpace/MonApprentissage' element={<MonApprentissageSpace />}/>
             <Route exact path='/ApprenantHomeSpace/MonApprentissage/cours' element={<CoursSpace />}/>
+            <Route exact path='/ApprenantHomeSpace/CoursDetails' element={<CoursDetails />}/>
             <Route  path='/*' element={<Navigate to='/ApprenantHomeSpace' replace/>}/>
         </Routes>
         

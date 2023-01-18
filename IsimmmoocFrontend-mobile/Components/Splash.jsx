@@ -26,6 +26,7 @@ st1:{
     fontSize:35,
     textDecorationLine:"solid",
     fontWeight: "bold",
+  
 
 },
 
@@ -35,6 +36,7 @@ paddingTop:80,
 fontSize:35,
 textDecorationLine:"solid",
 fontWeight: "bold",
+
 
 },
 sm:{

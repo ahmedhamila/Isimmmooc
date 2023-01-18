@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
 
 
     card:{
+      borderWidth:1,
     borderTopLeftRadius:105,
     backgroundColor:'#fff',
     height:480,
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     ,
 
     socialM:{
+      borderWidth:1,
         borderRadius:18,
         backgroundColor:'#fff',
         height:73,
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
           ,
 
           send:{
+            borderWidth:1,
             width:90,
             borderRadius:130,
             backgroundColor:'#fff',
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
           }
           ,
           finish:{
-
+            
             width:145,
             height:40,
             backgroundColor:'#A9CCE3',

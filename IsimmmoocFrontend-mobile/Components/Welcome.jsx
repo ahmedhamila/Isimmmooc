@@ -18,8 +18,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import FormateurSignUp from './Formateur_SignUp';
 
 
-
-
 const Welcome = ({navigation}) => {
   
 
@@ -62,8 +60,8 @@ onPress={()=> navigation.navigate("Login")}>
       <Text style={styles.headtxt}>Isimmmooc</Text>
       <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
 </View>
-
-<Text style={styles.welc1}>    Une   infinite  des  cours  avec </Text>
+<Card style={styles.body} >
+<Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
 <Text style={styles.welc}>                   un  seul    click ! </Text>
 <View style={styles.centerbtn}>
 <TouchableOpacity  style={styles.btn}
@@ -83,7 +81,7 @@ onPress={()=> navigation.navigate("Login")}>
 
 </View>
 </Card>
-
+</Card>
 
     </View>
 
@@ -102,7 +100,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontWeight: '400',
     marginTop:6,
-    fontStyle:'italic'
+    fontStyle:'italic',
+    fontWeight: "bold",
 
     
   },
@@ -112,7 +111,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontWeight: '400',
     margin:7,
-    fontStyle:'italic'
+    fontStyle:'italic',
+    fontWeight: "bold",
     
   },
   notif:{
@@ -131,8 +131,10 @@ const styles = StyleSheet.create({
   head:{
     justifyContent:'space-between',
     flexDirection: "row",
-    marginTop:20,
+    marginTop:18,
+    marginBottom:15,
   },
+  
   infoCours:{
     justifyContent:'space-between',
     flexDirection: 'column',
@@ -207,7 +209,7 @@ dbtn:{
 
 ,
 btn:{
-  
+  borderWidth:1,
   backgroundColor:'#84b9db',
   borderRadius:30,
   height:50,
@@ -216,16 +218,13 @@ btn:{
   marginTop:17,
   borderRadius: 26,
 
-
-
 }
 ,
 btnCours:{
-
+  borderWidth:1,
   backgroundColor:'#A9CCE3',
   borderRadius:30,
   marginTop:8,
-
 }
 ,
 btnText:{
@@ -259,8 +258,14 @@ marginTop:15,
 
 }
 ,
-
+body:{
+  borderWidth:1,
+  borderTopRightRadius:65,
+  borderTopLeftRadius:65,
+  backgroundColor:'#FFF',
+},
 card:{
+  borderWidth:1,
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
   backgroundColor:'#e8f6ff',
@@ -281,11 +286,11 @@ card:{
   shadowRadius: 16.00,
   elevation: 24,
 
-  
   }
   ,
 cours:{
-
+  
+  borderWidth:1,
   borderRadius:13,
   backgroundColor:'#fff',
   height:140,

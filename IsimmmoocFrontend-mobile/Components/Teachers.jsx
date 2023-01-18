@@ -119,7 +119,7 @@ txt:{
 }
 ,
 cours:{
-
+  borderWidth:1,
   borderRadius:35,
   backgroundColor:'#fff',
   height:260,
