@@ -127,9 +127,9 @@ fontWeight: "bold",
 }
 ,
 finish:{
-
+  borderWidth:1,
   width:145,
-  height:40,
+  height:45,
   backgroundColor:'#73B2B3',
   borderRadius:70,
   justifyContent: "center",
@@ -137,7 +137,7 @@ finish:{
   
 },
 textf:{
-  fontSize:17,
+  fontSize:19,
   textDecorationLine:"solid",
   fontWeight: "bold",
   textAlign: 'center',

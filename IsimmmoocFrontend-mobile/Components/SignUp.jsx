@@ -49,21 +49,21 @@ const SignUp = () => {
       <ScrollView style={styles.scrollView}>
 
       <Text >First Name</Text>
-        <TextInput style={styles.textinput} value={firstName} onChangeText={text => setFirstName(text)} textContentType="name" autoCompleteType="email"  placeholder='First Name'/>
+        <TextInput style={styles.textinput} value={firstName} onChangeText={text => setFirstName(text)}   placeholder='First Name'/>
 
 
         <Text >Last Name</Text>
-        <TextInput style={styles.textinput} value={last_name} onChangeText={text => setLast_name(text)} textContentType="name" autoCompleteType="email"  placeholder='Last Name'/>
+        <TextInput style={styles.textinput} value={last_name} onChangeText={text => setLast_name(text)}   placeholder='Last Name'/>
 
         <Text >Birth Day</Text>
-        <TextInput style={styles.textinput} value={date_of_birth} onChangeText={text => setDate_of_birth(text)} textContentType="name" autoCompleteType="email"  placeholder='Birth Day'/>
+        <TextInput style={styles.textinput} value={date_of_birth} onChangeText={text => setDate_of_birth(text)}   placeholder='Birth Day'/>
 
 
         <Text >Email Address</Text>
-        <TextInput style={styles.textinput} value={mail} onChangeText={text => setMail(text)} textContentType="username" autoCompleteType="email"  placeholder='Email'/>
+        <TextInput style={styles.textinput} value={mail} onChangeText={text => setMail(text)}   placeholder='Email'/>
         
         <Text >Phone Number</Text>
-        <TextInput style={styles.textinput} value={phone_number} onChangeText={text => setPhone_number(text)} textContentType="username" autoCompleteType="email"  placeholder='Phone Number'/>
+        <TextInput style={styles.textinput} value={phone_number} onChangeText={text => setPhone_number(text)}   placeholder='Phone Number'/>
         
         <Text >Password</Text>
         <TextInput style={styles.textinput} value={password} onChangeText={text => setPassword(text)}  textContentType="password" autoCompleteType="password"  placeholder='Password'/>
@@ -86,19 +86,20 @@ export default SignUp
 
 const styles = StyleSheet.create({
 
-  card:{
+card:{
     borderRadius:45,
     backgroundColor:'#e8f6ff',
-    height:550,
+    height:575,
     width:398,
-    marginTop:35,
+    marginTop:22,
     marginLeft:7,
     marginRight:7,
     borderWidth: 1,
     }
     ,
-    pop:{
+pop:{
       margin:16,
+      marginTop:0,
       fontSize:23,
       textDecorationLine:"solid",
       fontWeight: "bold",
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
       
       },
 
-      infoCours:{
+infoCours:{
         justifyContent:'space-between',
         flexDirection: 'column',
         justifyContent:'center',
@@ -126,8 +127,6 @@ textinput:{
   borderRadius: 10,
   padding: 10,
   backgroundColor:'#FFF',
-
-
 }
 ,
 btn:{
@@ -139,6 +138,7 @@ borderWidth:1,
 textAlign:'center',
 margin:45,
 marginLeft:90,
+marginTop:25,
 
 }
 ,

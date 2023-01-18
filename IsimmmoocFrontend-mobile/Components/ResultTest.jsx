@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     },
 
     img:{
-        height:200,
-        width:200,
+        height:190,
+        width:190,
         margin:10,
         marginTop:35,
         
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 ,
 txt:{
     fontSize:24,
-    marginTop:35,
+    marginTop:75,
     fontWeight:'bold',
     marginBottom:15,
 
@@ -55,27 +55,27 @@ txt:{
 rslt:{
     
     fontSize:20,
-    marginTop:44,
+    marginTop:40,
     fontWeight:'bold',
 
 }
 ,
 
 finish:{
-
-    width:145,
-    height:40,
+    borderWidth:1,
+    width:152,
+    height:50,
     backgroundColor:'#A9CCE3',
     borderRadius:70,
     justifyContent: "center",
     marginHorizontal:9,
-    marginTop:50,
+    marginTop:30,
 
     
   },
 
   textf:{
-    fontSize:17,
+    fontSize:18,
     textDecorationLine:"solid",
     fontWeight: "bold",
     textAlign: 'center',

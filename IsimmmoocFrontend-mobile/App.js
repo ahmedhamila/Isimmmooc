@@ -4,13 +4,16 @@ import {StyleSheet,Text,View} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers} from './Components/index';
+import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers, ResultQuiz, ResultTest} from './Components/index';
 import Ionicons from '@expo/vector-icons/MaterialIcons';
 import SignUp from './Components/SignUp';
 import FormateurSignUp from './Components/Formateur_SignUp';
 import Login from './Components/Formateur_SignUp';
 import field from './Components/Formateur_SignUp';
 import OrganismeSignUp from './Components/Organisme_SignUP';
+
+
+
 const Stack = createStackNavigator();
 
 
@@ -30,10 +33,13 @@ name="Splach" component={Splash}   options={{headerShown: false}}
 
 const screenOptions = {
     tabBarStyle:{
+        borderTopColor:'#000',
+        borderTopWidth:1,
         margin:7,
         borderRadius:25,
-        height:73,
+        height:71,
         paddingBottom:13,
+        borderWidth:1,
     },
    
   };
@@ -50,7 +56,7 @@ function BottomTab(){
               headerShown: false,
               headerTintColor: '#fff',
               tabBarIcon: ({}) => (
-                <Ionicons name="home" color={'#A9CCE3'} size={29} />
+                <Ionicons name="home" color={'#A9CCE3'} size={29}   />
               )
             }}
           />
@@ -100,7 +106,6 @@ await new Promise((resolve)=>{setTimeout(resolve,5000)})
 
 }
 
-
 }
 init();
 
@@ -119,15 +124,7 @@ appIsReady?
     );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#52cb',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
 
 });
 

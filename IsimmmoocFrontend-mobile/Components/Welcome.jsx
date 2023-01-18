@@ -18,8 +18,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import FormateurSignUp from './Formateur_SignUp';
 
 
-
-
 const Welcome = ({navigation}) => {
   
 
@@ -211,7 +209,7 @@ dbtn:{
 
 ,
 btn:{
-  
+  borderWidth:1,
   backgroundColor:'#84b9db',
   borderRadius:30,
   height:50,
@@ -223,7 +221,7 @@ btn:{
 }
 ,
 btnCours:{
-
+  borderWidth:1,
   backgroundColor:'#A9CCE3',
   borderRadius:30,
   marginTop:8,
@@ -261,11 +259,13 @@ marginTop:15,
 }
 ,
 body:{
+  borderWidth:1,
   borderTopRightRadius:65,
   borderTopLeftRadius:65,
-  backgroundColor:'#ebf4fa',
+  backgroundColor:'#FFF',
 },
 card:{
+  borderWidth:1,
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
   backgroundColor:'#e8f6ff',
@@ -286,11 +286,11 @@ card:{
   shadowRadius: 16.00,
   elevation: 24,
 
-  
   }
   ,
 cours:{
-
+  
+  borderWidth:1,
   borderRadius:13,
   backgroundColor:'#fff',
   height:140,
