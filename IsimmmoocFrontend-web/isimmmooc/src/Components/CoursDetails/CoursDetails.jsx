@@ -77,6 +77,7 @@ function CoursDetails() {
         <NavBarApprenantSpace />
         <CoursDetailsHeroSection/>
         <AvisParticipant/>
+       <br />
         <Footer />
     </div>
   )

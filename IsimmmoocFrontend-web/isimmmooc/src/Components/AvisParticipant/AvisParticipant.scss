@@ -1,0 +1,19 @@
+.avis-container{
+    align-items: center;
+    justify-content: center;
+    margin-top: 4%;
+    margin: auto;
+    width: 60%;
+    border-bottom: 1px solid #999d9f;
+
+}
+.header-container{
+    margin-top: 3%;
+    display: grid;
+  grid-template-columns: 50px 130px ;
+  align-items: start;
+  border-bottom-color:white ;
+}
+.body-container{
+    margin-left: 50px;
+}
