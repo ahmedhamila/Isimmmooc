@@ -17,6 +17,8 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
+import { useNavigate } from "react-router-dom";
+
 
 /*
 * ----------------------------------------------------------------------
@@ -48,6 +50,7 @@ function SectionApprenantCourses() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const navigate=useNavigate()
   const [courses,setCourses]=useState([
     {title:'Developement mobile',desc:'The complete dev mobile course for beginer.',formateurName:'Paolo yokt'}
   ])
@@ -72,7 +75,9 @@ function SectionApprenantCourses() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
+  const CoursDetailsClickHandle = ()=>{
+    navigate("/ApprenantHomeSpace/CoursDetails")
+  }
     
   
   /* --------------------------------------------------------------------
@@ -101,6 +106,7 @@ function SectionApprenantCourses() {
                     <Grid key={value} item >
                         <Paper
                         className='CoursePaper'
+                        onClick={CoursDetailsClickHandle}
                         sx={{
                             height: 350,
                             width: 250,

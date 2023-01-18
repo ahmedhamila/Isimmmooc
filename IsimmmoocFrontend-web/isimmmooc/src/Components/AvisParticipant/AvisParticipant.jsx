@@ -5,13 +5,8 @@
  *                          Components & Functions                      |
  * ----------------------------------------------------------------------
  */
+
 import React from 'react'
-import {Routes,Route,Navigate} from 'react-router-dom'
-import ApprenantHomeSpace from '../Spaces/ApprenantSpace/ApprenantHomeSpace/ApprenantHomeSpace'
-import ModifierApprenant from '../Spaces/ApprenantSpace/ModifierApprenant/ModifierApprenant'
-import MonApprentissageSpace from '../Spaces/ApprenantSpace/MonApprentissageSpace/MonApprentissageSpace'
-import CoursSpace from '../Spaces/ApprenantSpace/CoursSpace/CoursSpace'
-import CoursDetails from '../Components/CoursDetails/CoursDetails'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -25,7 +20,7 @@ import CoursDetails from '../Components/CoursDetails/CoursDetails'
  *                                Styles                                |
  * ----------------------------------------------------------------------
  */
-
+import './AvisParticipant.scss'
 
 /*
  * ----------------------------------------------------------------------
@@ -33,7 +28,7 @@ import CoursDetails from '../Components/CoursDetails/CoursDetails'
  * ----------------------------------------------------------------------
  */
 
-function ApprenantRouter() {
+function AvisParticipant() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -52,7 +47,7 @@ function ApprenantRouter() {
 
 
   /* --------------------------------------------------------------------
-   *                              States                                |
+   *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
 
@@ -72,24 +67,9 @@ function ApprenantRouter() {
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
-
   return (
-    
-    <React.Fragment>
-        
-        <Routes>
-            <Route exact path='/ApprenantHomeSpace' element={<ApprenantHomeSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/ModifierAcount' element={<ModifierApprenant />}/>
-            <Route exact path='/ApprenantHomeSpace/MonApprentissage' element={<MonApprentissageSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/MonApprentissage/cours' element={<CoursSpace />}/>
-            <Route exact path='/ApprenantHomeSpace/CoursDetails' element={<CoursDetails />}/>
-            <Route  path='/*' element={<Navigate to='/ApprenantHomeSpace' replace/>}/>
-        </Routes>
-        
-        
-    </React.Fragment>
-    
+    <h1>holaaa!</h1>
   )
 }
 
-export default ApprenantRouter
+export default AvisParticipant
