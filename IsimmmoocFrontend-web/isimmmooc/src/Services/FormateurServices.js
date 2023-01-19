@@ -60,5 +60,15 @@ async function AddAnswer(bodyData){
       })
    
 }
+async function GetCourses(){
+    
+    return fetch(URL+'/app/Cours/getCoursByFormateur',{
+      method:'GET',
+      headers:{
+        'Authorization': `Token ${localStorage.getItem("Token")}`
+      }
+      })
+   
+}
 
-export {UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer}
+export {UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer,GetCourses}

@@ -30,5 +30,16 @@ class CoursViewSet(viewsets.ModelViewSet):
 
         except Exception as e:
             return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
+    @action(detail=False,methods=['GET'])
+    def getCoursByFormateur(self,request):
+        try :
+            user = request.user
+            userFormateur = Formateur.objects.get(user=user)
+            FormateurCourses = Cours.objects.filter(formateur = userFormateur)
+            FormateurCoursesSerialized = CoursSerializer(FormateurCourses,many=True)
+            return Response(FormateurCoursesSerialized.data,status=status.HTTP_200_OK)
+
+        except Exception as e:
+            return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
             
     

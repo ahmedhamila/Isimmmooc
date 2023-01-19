@@ -209,7 +209,7 @@ function  SectionModifierFormateur (props) {
    * --------------------------------------------------------------------
    */
   return (
-    <Grid  sx={{width:'80%',backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
+    <Grid container sx={{width:'80%',backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
       <Grid  container flexDirection='column' gap='15px'>
   
         <Grid container  flexDirection='row' justifyContent='center' gap='70px'>

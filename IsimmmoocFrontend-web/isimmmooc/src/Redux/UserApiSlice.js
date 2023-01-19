@@ -12,7 +12,8 @@ export const userApi = createApi({
                 method:'POST',
                 body,
             })
-        })
+        }),
+        
     })
 
 })

@@ -380,64 +380,64 @@ function FormateurSideBar() {
                   gap='10px'
                   container
                 >
-              {tabs.map((tab, index) => (
-                <Fragment>
-                  <ListItem key={tab.label} disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? 'initial' : 'center',
-                        px: 2.5,
-                      }}
-                      onClick={()=>{tab.action()}}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : 'auto',
-                          justifyContent: 'center',
-                          color:"#fff"
-                        }}
-                      >
-                        {tab.icon}
-                      </ListItemIcon>
-                      <ListItemText primary={tab.label} sx={{ opacity: open ? 1 : 0 }} />
-                    </ListItemButton>
-                  </ListItem>     
-                  {(index === (Math.floor(tabs.length/2)))?<Divider sx={{color:'#fff',backgroundColor:'#fff'}} />:<></>}
-                </Fragment>
-                
-                
-              ))}
+                  {tabs.map((tab, index) => (
+                    <Fragment>
+                      <ListItem key={tab.label} disablePadding sx={{ display: 'block' }}>
+                        <ListItemButton
+                          sx={{
+                            minHeight: 48,
+                            justifyContent: open ? 'initial' : 'center',
+                            px: 2.5,
+                          }}
+                          onClick={()=>{tab.action()}}
+                        >
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: open ? 3 : 'auto',
+                              justifyContent: 'center',
+                              color:"#fff"
+                            }}
+                          >
+                            {tab.icon}
+                          </ListItemIcon>
+                          <ListItemText primary={tab.label} sx={{ opacity: open ? 1 : 0 }} />
+                        </ListItemButton>
+                      </ListItem>     
+                      {(index === (Math.floor(tabs.length/2)))?<Divider sx={{color:'#fff',backgroundColor:'#fff'}} />:<></>}
+                    </Fragment>
+                    
+                    
+                  ))}
               </Grid>
               <Grid
-            flexDirection='column'
-            container
-          >
-            <Button 
-              variant='text'
-              sx={{
-              color:styles.PrimaryColorDark,
-              backgroundColor:"#fff",
-              "&:hover" : {
-                  color:'#fff',
-                  backgroundColor:styles.SecondaryColorDark,
-              },
-              my: 2, 
-              mx:1,
-              borderRadius : '3px',
-              flexWrap:'nowrap'
-              }}
-              onClick={handleSignOut}
-            >
-              {open?'Sign Out':<ChevronLeftIcon />}
-            </Button>
-          </Grid>
+                flexDirection='column'
+                container
+              >
+                <Button 
+                  variant='text'
+                  sx={{
+                  color:styles.PrimaryColorDark,
+                  backgroundColor:"#fff",
+                  "&:hover" : {
+                      color:'#fff',
+                      backgroundColor:styles.SecondaryColorDark,
+                  },
+                  my: 2, 
+                  mx:1,
+                  borderRadius : '3px',
+                  flexWrap:'nowrap'
+                  }}
+                  onClick={handleSignOut}
+                >
+                  {open?'Sign Out':<ChevronLeftIcon />}
+                </Button>
+              </Grid>
               </Grid>
             </List>
         
       </Drawer>
-      <Grid flexDirection='column' alignItems='center' justifyContent='center' container height={{sm:'100vh',md:'90vh',xl:'90vh'}} sx={{ flexGrow: 1, p: 3,marginTop:'50px',width:'100%',backgroundColor:'#EDF1FA',marginTop:'70px' }}>
+      <Grid flexDirection='column' alignItems='center' justifyContent='center' container  sx={{width:'100%',height:'100%',marginTop:'30px' }}>
         <DrawerHeader />
         <Outlet />
         

@@ -117,7 +117,7 @@ const SectionAddCourse = () => {
         flexDirection='column'
         justifyContent='center'
         alignItems='center'
-        sx={{backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}
+        sx={{width:'80%',backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}
       >
         <Grid
           className="AddCourseContent"
@@ -128,22 +128,6 @@ const SectionAddCourse = () => {
           direction='column'
           gap='50px'
           >
-            {/*<Grid
-            className="StepperHeader"
-            >
-              <Stepper activeStep={currentStep}>
-                  {steps.map((step,index)=>{
-                      return(
-                          <Step key={index}>
-                            <StepLabel>
-                              {step}
-                            </StepLabel>
-                          </Step>
-                          
-                      )
-                  })}
-              </Stepper>
-                </Grid>*/}
             <Grid
             container
             direction='column'
