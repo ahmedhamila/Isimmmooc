@@ -3,6 +3,7 @@ from ..models import Question,Answer
 
 class AnswerAdminInline(admin.TabularInline):
     model = Answer
+    show_change_link=True
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):

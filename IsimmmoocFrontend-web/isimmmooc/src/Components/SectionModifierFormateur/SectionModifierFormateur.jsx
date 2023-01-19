@@ -17,7 +17,7 @@ import TextField from '@mui/material/TextField';
 import PhotoIcon from '@mui/icons-material/Photo';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Button } from '@mui/material';
+import { Button,Slide,Dialog,DialogTitle,DialogActions,DialogContent,DialogContentText } from '@mui/material';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -32,6 +32,7 @@ import {UpdateFormateur} from './../../Services'
  * ----------------------------------------------------------------------
  */
 import styles from './../../Assets/Styles/style.module.scss'
+import { useNavigate } from 'react-router-dom';
 
 
 /*
@@ -54,6 +55,9 @@ function  SectionModifierFormateur (props) {
    */
   const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
   });
 
   /* --------------------------------------------------------------------
@@ -91,15 +95,21 @@ function  SectionModifierFormateur (props) {
 
   const[warningMessage,setWarningMessage]=useState('')
   const [open, setOpen] = useState(false);
+  const [openDialog,setOpenDialog]=useState(false)
+  const navigate = useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
   const handleClose = (event, reason) => {
+    setOpenDialog(false);
+  };
+  const handleCloseDialog = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
     setOpen(false);
+    navigate(0)
   };
   const imageHandler=(e) =>{
     setProfileImg(URL.createObjectURL(e.target.files[0]))
@@ -178,7 +188,7 @@ function  SectionModifierFormateur (props) {
     if(response.ok)
     {
       const responseJson = await response.json()
-      console.log(responseJson)
+      setOpenDialog(true)
     }
     else
     {
@@ -199,8 +209,6 @@ function  SectionModifierFormateur (props) {
    * --------------------------------------------------------------------
    */
   return (
-    <React.Fragment>
-    <CssBaseline />
     <Grid  sx={{width:'80%',backgroundColor:'white',borderRadius:'15px',boxShadow:'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'}}>
       <Grid  container flexDirection='column' gap='15px'>
   
@@ -399,8 +407,24 @@ function  SectionModifierFormateur (props) {
           {warningMessage}
         </Alert>
       </Snackbar>
+      <Dialog
+        open={openDialog}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleCloseDialog}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Details Updated"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Account details have been successfully updated
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog}>OK</Button>
+        </DialogActions>
+      </Dialog>
     </Grid>
-  </React.Fragment>
 
   )
 
