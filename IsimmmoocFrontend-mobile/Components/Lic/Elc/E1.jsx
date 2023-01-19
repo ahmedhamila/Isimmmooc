@@ -1,37 +1,31 @@
 import {Image ,ImageBackground,StyleSheet, Text, View ,FlatList} from 'react-native'
 import React, { useState } from "react";
-import SearchCategorie from './SearchCategorie';
+
 import { Card } from 'react-native-paper';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Login from './Login';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import OrganismeSignUp from './Organisme_SignUP';
-import SignUp from './SignUp';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import FormateurSignUp from './Formateur_SignUp';
-import Teachers from './Teachers';
 
-const Welcome = ({navigation}) => {
+import Teachers from '../../Teachers';
+
+const E1 = ({navigation}) => {
   
 
 const [courses,setCourses]=useState([
+    {name:"Cours Elctro", image:require("../../../assets/images/e.jpg"),
+    rate:require("../../../assets/images/4.png")
+   },
 
-  {name:"Cours developement Web",image:require("../assets/images/comp.jpg"),
-  rate:require("../assets/images/5.png")},
-  {name:"Cours Electronique", image:require("../assets/images/e.jpg"),
-  rate:require("../assets/images/4.png")},
-  {name:"Cours Designe", image:require("../assets/images/d.jpg"),
-  rate:require("../assets/images/5.png")},
-  {name:"Cours Mathematique", image:require("../assets/images/m.jpg"),
-   rate:require("../assets/images/4.png")
-  },
+   {name:"Cours Francais", image:require("../../../assets/images/fr.jpg"),
+   rate:require("../../../assets/images/0.png")},
+   {name:"Cours circuit", image:require("../../../assets/images/circuit.jpg"),
+   rate:require("../../../assets/images/4.png")},
+  {name:"Cours reseau",image:require("../../../assets/images/res.jpg"),
+  rate:require("../../../assets/images/5.png")},
+
+
+ 
+ 
 ]);
 
   const dat=({item})=>(
@@ -51,28 +45,26 @@ onPress={()=> navigation.navigate('Teachers')}>
 
   );
 
+
+
   return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
+
 <View style={styles.head}>
-      <Text style={styles.headtxt}>Isimmmooc</Text>
-      <TouchableOpacity>
-      <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
-      </TouchableOpacity>
+    <TouchableOpacity>
+      <Image source={require("../../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
+    </TouchableOpacity>
 </View>
-<Card style={styles.body} >
-<Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
-<Text style={styles.welc}>                   un  seul    click ! </Text>
+
 <View style={styles.centerbtn}>
-<TouchableOpacity  
-onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
-<Text  style={styles.btnText}>Commencer ici</Text>
-</TouchableOpacity>
+
 </View>
 
 <Card style={styles.card} >
 <View styles={styles.Conttitle}>
-<Text style={styles.pop} >Cours plus populaire </Text>
+
+<Text style={styles.pop} >Cours Elc 1 </Text>
 
 <FlatList
   data={courses}
@@ -81,14 +73,14 @@ onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
 
 </View>
 </Card>
-</Card>
+
 
     </View>
 
   )
 }
 
-export default Welcome
+export default E1
 
 const styles = StyleSheet.create({
   centerbtn:{
@@ -116,7 +108,7 @@ const styles = StyleSheet.create({
     
   },
   notif:{
-    marginTop:9,
+    marginTop:19,
     
   },
 
@@ -131,8 +123,8 @@ const styles = StyleSheet.create({
   head:{
     justifyContent:'space-between',
     flexDirection: "row",
-    marginTop:18,
-    marginBottom:15,
+    marginTop:25,
+    marginBottom:10,
   },
   
   infoCours:{
@@ -155,8 +147,8 @@ const styles = StyleSheet.create({
 },
 
 pop:{
-margin:16,
-fontSize:20,
+margin:12,
+fontSize:28,
 textDecorationLine:"solid",
 fontWeight: "bold",
 textAlign: 'center',
@@ -265,12 +257,20 @@ body:{
   borderTopLeftRadius:65,
   backgroundColor:'#FFF',
 },
+title:{
+    borderWidth:1,
+    height:70,
+    width:170,
+    alignItems:'center',
+    backgroundColor:'#FFFF',
+    borderRadius:27,
+},
 card:{
   borderWidth:1,
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
   backgroundColor:'#e8f6ff',
-  height:400,
+  height:550,
   width:400,
   marginTop:2,
   marginLeft:7,

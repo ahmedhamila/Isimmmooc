@@ -3,13 +3,13 @@ import React from 'react';
 
 import { TouchableOpacity} from 'react-native-gesture-handler';
 
-const ResultQuiz = () => {
+const ResultTest = () => {
   return (
     <View  style={styles.main}>
 
-    <Text style={styles.txt}>Vous Avez Terminez Le Quiz </Text>
+    <Text style={styles.txt}>Vous Avez Terminez Le Test </Text>
 
-    <Image source={require("../assets/images/quiz.png")} style={styles.img} />
+    <Image source={require("../../assets/images/success.png")} style={styles.img} />
 
       
     <Text style={styles.rslt} >Votre Score est :</Text>
@@ -22,7 +22,7 @@ const ResultQuiz = () => {
   )
 }
 
-export default ResultQuiz
+export default ResultTest
 
 const styles = StyleSheet.create({
 
@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
         width:190,
         margin:10,
         marginTop:35,
-        marginRight:43,
+        
 
     }
 ,
 txt:{
-    fontSize:23,
+    fontSize:24,
     marginTop:75,
     fontWeight:'bold',
     marginBottom:15,
@@ -55,7 +55,7 @@ txt:{
 rslt:{
     
     fontSize:20,
-    marginTop:30,
+    marginTop:40,
     fontWeight:'bold',
 
 }
@@ -69,7 +69,7 @@ finish:{
     borderRadius:70,
     justifyContent: "center",
     marginHorizontal:9,
-    marginTop:40,
+    marginTop:30,
 
     
   },

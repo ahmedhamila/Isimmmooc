@@ -2,8 +2,8 @@
 import React from 'react';
 
 import {Image ,ImageBackground,StyleSheet, Text, View } from 'react-native';
-import { TouchableOpacity} from 'react-native-gesture-handler';
-import { setStatusBarBackgroundColor } from 'expo-status-bar';
+import { TouchableOpacity} from 'react-native';
+
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Card } from 'react-native-paper';
 

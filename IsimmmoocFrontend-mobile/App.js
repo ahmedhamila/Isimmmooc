@@ -4,7 +4,7 @@ import {StyleSheet,Text,View} from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers, ResultQuiz, ResultTest} from './Components/index';
+import{Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers, ResultQuiz, ResultTest, Notif,Ing1, Ing2,Ing3, Niv, NivP,P1, P2, M1, M2, M3, E1, E2, E3, Section, I1, I2, I3} from './Components/index';
 import Ionicons from '@expo/vector-icons/MaterialIcons';
 import SignUp from './Components/SignUp';
 import FormateurSignUp from './Components/Formateur_SignUp';
@@ -12,10 +12,7 @@ import Login from './Components/Formateur_SignUp';
 import field from './Components/Formateur_SignUp';
 import OrganismeSignUp from './Components/Organisme_SignUP';
 
-
-
 const Stack = createStackNavigator();
-
 
 function NavStack(){
     return(
@@ -29,7 +26,6 @@ name="Splach" component={Splash}   options={{headerShown: false}}
 
     );
 }
-
 
 const screenOptions = {
     tabBarStyle:{
@@ -62,7 +58,7 @@ function BottomTab(){
           />
           <Tab.Screen 
             name="Search" 
-            component={SearchCategorie}
+            component={Notif}
             options={{ 
               headerShown: false,
               headerTintColor: '#fff',
