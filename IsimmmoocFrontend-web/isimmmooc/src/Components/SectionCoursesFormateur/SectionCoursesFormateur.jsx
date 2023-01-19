@@ -112,7 +112,7 @@ const SectionCoursesFormateur = () => {
                                 autoPlay={model}
                                 controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
                             >
-                                <source src={'http://127.0.0.1:8000/'+course.short_video} type="video/mp4"/>
+                                <source src={course.short_video} type="video/mp4"/>
                             </Video>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="div">

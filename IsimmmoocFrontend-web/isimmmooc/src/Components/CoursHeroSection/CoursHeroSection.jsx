@@ -31,7 +31,7 @@ import './CoursHeroSection.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-function CoursHeroSection(Props) {
+function CoursHeroSection(props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -42,7 +42,9 @@ function CoursHeroSection(Props) {
    *                               Props                                |
    * --------------------------------------------------------------------
    */
-
+  const {nameCours,
+    periodCours,
+    difficultyCours} = props
   /*--------------------------------------------------------------------
   *                                 Data                               |
   * --------------------------------------------------------------------
@@ -79,17 +81,17 @@ function CoursHeroSection(Props) {
         container 
         xs={8}>
           <Typography sx={{fontFamily:'Inter',fontWeight:'bold',fontSize:'38px'}}>
-            {Props.nameCours}
+            {nameCours}
           </Typography>  
         </Grid>
         <Grid container  alignItems='center'xs={8}>
             <AccessTimeIcon />
             <Typography marginLeft='1%' marginRight='3%'>
-            {Props.periodCours} heures
+            {periodCours} heures
             </Typography>
             <SignalCellularAltIcon />
             <Typography marginLeft='1%'>
-            {Props.difficultyCours}
+            {difficultyCours === 'BG'?'Beginner':difficultyCours === 'AV'?'Advanced':'Intermediate'}
             </Typography>
         </Grid>
       </Grid>    

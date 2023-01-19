@@ -34,18 +34,14 @@ import './CoursQuiz.scss'
  * ----------------------------------------------------------------------
  */
 
-function CoursQuiz() {
+function CoursQuiz(props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-    const quiz=[
-        {
-            header:'Question 1',   
-            question:'Quel type erreur voit-on dans le terminal si on supprime le paramètre request de la définition de la vue hello, et qu on essaie de charger cette page dans le navigateur ?',
-        }
-    ]
+    
+    const{questions}=props
     
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -80,28 +76,30 @@ function CoursQuiz() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='quiz-container'>
-      {quiz.map(item =>{
-        return(
-            <div>
-                <div className='header-container'>
-                <h2>{item.header}</h2>
-                </div>
-                <div className='question-container'>
-                <p>
-                  {item.question}
-                </p>
-                </div>
-            </div> 
-        )})}  
+    <div className='quiz-container'> 
+      <div>
+          <div className='header-container'>
+          <h2>Question</h2>
+          </div>
+          <div className='question-container'>
+          <p>
+            {questions.question_text}
+          </p>
+          </div>
+      </div> 
       <div>
         <FormControl>
             <RadioGroup
                 aria-labelledby="demo-radio-buttons-group-label"
                 name="radio-buttons-group"
             >
-                <FormControlLabel value="response1" control={<Radio />} label="response1" />
-                <FormControlLabel value="response2"control={<Radio />} label="response2" />
+              {questions.answers.map((answer)=>{
+                return (
+                  <FormControlLabel value={answer.answer_text} control={<Radio />} label={answer.answer_text} />
+                )
+              })
+              
+              }
             </RadioGroup>
         </FormControl>
       </div>      

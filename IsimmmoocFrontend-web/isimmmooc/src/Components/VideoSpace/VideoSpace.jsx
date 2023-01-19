@@ -32,20 +32,14 @@ import './VideoSpace.scss'
 import imgVideo from '../../Assets/Videos/imgVideo.png';
 import video from '../../Assets/Videos/Video.mp4';
 
-function VideoSpace() {
+function VideoSpace(props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
   const [model,setModel]=useState(false)
-  const data=[
-    {
-      id:1,
-      poster:imgVideo,
-      videoUri:video,
-    }
-  ]
+  const {videoUri}=props
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -79,23 +73,18 @@ function VideoSpace() {
    * --------------------------------------------------------------------
    */
   return (
-    <div className='VideoSpaceContainer'>
-       {data.map((item,index)=>{
-         return(
-            <div className='video' key={index}>
-             <div className='video-container'>
-              <Video 
-                style={{width:'100%'}}
-                autoPlay={model}
-                controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
-                poster={item.poster}
-              >
-                <source src={item.videoUri} type="video/mp4"/>
-              </Video>  
-             </div>
-            </div>
-         )
-       })}
+    <div className='VideoSpaceContainer'>   
+      <div className='video' >
+        <div className='video-container'>
+        <Video 
+          style={{width:'100%'}}
+          autoPlay={model}
+          controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+        >
+          <source src={videoUri} type="video/mp4"/>
+        </Video>  
+        </div>
+      </div>
     </div>
   )
 }
