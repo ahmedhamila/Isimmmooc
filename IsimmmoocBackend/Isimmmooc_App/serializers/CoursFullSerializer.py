@@ -3,6 +3,11 @@ from ..models.Cours import Cours
 from .ChapitreFullSerializer import ChapitreFullSerializer
 class CoursFullSerializer(serializers.ModelSerializer):
     chapitres = ChapitreFullSerializer(many=True)
+    formateur = serializers.SlugRelatedField(
+        many=False,
+        read_only=True,
+        slug_field='mail'
+     )
     
     class Meta:
         model=Cours

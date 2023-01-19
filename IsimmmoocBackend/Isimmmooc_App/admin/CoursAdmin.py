@@ -3,6 +3,7 @@ from ..models import Cours,Chapitre
 
 class ChapitreAdminInline(admin.TabularInline):
     model=Chapitre
+    show_change_link=True
 
 
 @admin.register(Cours)
