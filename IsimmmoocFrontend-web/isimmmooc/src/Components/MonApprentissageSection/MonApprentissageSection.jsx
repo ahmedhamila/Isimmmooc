@@ -21,6 +21,7 @@ import Rating from '@mui/material/Rating';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from "react-router-dom";
+import {useEffect } from 'react';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 /*
 * ----------------------------------------------------------------------
@@ -28,7 +29,6 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 * ----------------------------------------------------------------------
 */
 import {GetCourses} from './../../Services'
-
 
 /*
  * ----------------------------------------------------------------------
@@ -53,9 +53,7 @@ function MonApprentissageSection() {
    */
   const [age, setAge] = React.useState('');
 
-  const [courses,setCourses]=React.useState([
-    {desc:'React Native for bginner',formateurName:'Paolo yokt'}
-  ])
+  const [courses,setCourses]=React.useState([  ])
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 3,
@@ -79,7 +77,6 @@ function MonApprentissageSection() {
   * --------------------------------------------------------------------
   */
 
-
   /* --------------------------------------------------------------------
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
@@ -93,9 +90,20 @@ function MonApprentissageSection() {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-  const CoursClickHandle = ()=>{
+  const CoursClickHandle = (id)=>{
     navigate(`/ApprenantHomeSpace/MonApprentissage/cours/${id}`)
-  }  
+  } 
+
+  
+  const Getcourses = async()=>{
+   
+    const response = await GetCourses()   
+    const responseJson = await response.json()
+    setCourses(responseJson)
+    
+  }
+  useEffect(   
+    ()=>{Getcourses() ; },[])
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -204,6 +212,8 @@ function MonApprentissageSection() {
           {[0, 1, 2,3].map((value) => (
             <Grid key={value} item >
               <IconButton>
+              {courses.map((item)=>{
+                return(
               <Paper
                   sx={{
                     height: 300,
@@ -213,34 +223,30 @@ function MonApprentissageSection() {
                     border: '1px solid rgb(206, 194, 194)',
                     
                   }}  
-                  onClick={CoursClickHandle}  
+                  onClick={()=>{CoursClickHandle(item.id)}}  
               >
-              <CardMedia
-                    component="img"
-                    height="160"
-                    image={reactNativeImg}
-                    alt="course photo"
-                    sx={{p:0.2,cursor:'pointer'}}
-                     
-              />
-              {courses.map((item)=>{
-                return(
+                <CardMedia
+                      component="img"
+                      height="160"
+                      image={reactNativeImg}
+                      alt="course photo"
+                      sx={{p:0.2,cursor:'pointer'}}
                       
-                  <Grid padding='0px'>
-                    <Typography variant="h6" fontFamily="Arial" color='#1C1D1F' fontSize='24px' fontWeight='bold'>
-                        {item.desc}
-                    </Typography>
-                    <Typography variant="p" fontFamily="Segoe UI" color='#999d9f' fontSize='16px' >
-                      {item.formateurName}
-                    </Typography>
-                    <Stack spacing={1}>
-                      <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
-                    </Stack> 
-                    <BorderLinearProgress variant="determinate" value={30} /> 
-                  </Grid>)
-                        
-                    })}  
-                  </Paper>
+                />        
+                <Grid padding='0px'>
+                  <Typography variant="h6" fontFamily="Arial" color='#1C1D1F' fontSize='24px' fontWeight='bold'>
+                      {item.name}
+                  </Typography>
+                  <Typography variant="p" fontFamily="Segoe UI" color='#999d9f' fontSize='16px' >
+                    {item.formateur}
+                  </Typography>
+                  <Stack spacing={1}>
+                    <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
+                  </Stack> 
+                  <BorderLinearProgress variant="determinate" value={30} /> 
+                </Grid> 
+              </Paper>
+                  ) })} 
                   </IconButton>
               </Grid>
             ))}

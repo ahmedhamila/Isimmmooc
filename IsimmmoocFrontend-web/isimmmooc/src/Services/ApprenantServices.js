@@ -12,5 +12,16 @@ async function GetCourses(){
       }
       })
   }
+async function GetCoursById(id){
+    
+    return fetch(URL+`/app/CoursFull/${id}`,{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization': `Token ${localStorage.getItem("Token")}`
+      },
+      })
+   
+  }  
 
-  export {GetCourses}  
+  export {GetCourses,GetCoursById}  

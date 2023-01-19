@@ -17,8 +17,7 @@ import { json, useParams } from 'react-router-dom';
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
-
-
+import {GetCoursById} from '../../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -60,7 +59,15 @@ function CoursSpace() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
+  const Getcourses = async()=>{
+   
+    const response = await GetCoursById()   
+    const responseJson = await response.json()
+    setCourses(responseJson)
     
+  }
+  useEffect(   
+    ()=>{Getcourses() ; },[])
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -74,8 +81,13 @@ function CoursSpace() {
   return (
     <div className='ApprenantHome'>
       <NavBarApprenantSpace/>
-      <CoursHeroSection />
+      {courses.map((item)=>{
+      return(
+      <div>
+      <CoursHeroSection nameCours={item.name} periodCours={item.period} difficultyCours={item.difficulty} />
       <CoursSpaceStepper/>
+       </div> 
+      ) })}
       <Footer />
     </div>
   )
