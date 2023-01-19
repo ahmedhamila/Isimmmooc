@@ -27,7 +27,7 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
-
+import {GetCourses} from './../../Services'
 
 
 /*
@@ -94,7 +94,7 @@ function MonApprentissageSection() {
     setAge(event.target.value);
   };
   const CoursClickHandle = ()=>{
-    navigate("/ApprenantHomeSpace/MonApprentissage/cours")
+    navigate(`/ApprenantHomeSpace/MonApprentissage/cours/${id}`)
   }  
   
   /* --------------------------------------------------------------------
