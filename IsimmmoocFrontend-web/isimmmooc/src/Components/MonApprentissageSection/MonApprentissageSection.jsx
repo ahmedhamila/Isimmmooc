@@ -142,72 +142,6 @@ function MonApprentissageSection() {
       </Box>
       <Grid container justifyContent='center'>
         
-        <Grid container spacing={10} flexDirection='row' sx={{display:'flex',justifyContent:'center',padding:3,width:'100%'}}>
-          <Grid item flexDirection='column' justifyContent='center' >
-            <Typography>
-            Filtrer en fonction de
-            </Typography>
-            <FormControl sx={{ margin:0,width:'200px'}} size="small">
-              <InputLabel id="demo-select-small">Catégorie</InputLabel>
-              <Select
-                labelId="demo-select-small"
-                id="demo-select-small"
-                value={age}
-                label="Age"
-                onChange={handleChange}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item flexDirection='column' justifyContent='center'>
-            <Typography>
-              <br />
-            </Typography>
-            <FormControl sx={{ margin:0,width:'200px'}} size="small">
-              <InputLabel id="demo-select-small">Formateur</InputLabel>
-              <Select
-                labelId="demo-select-small"
-                id="demo-select-small"
-                value={age}
-                label="Age"
-                onChange={handleChange}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item flexDirection='column' justifyContent='center'marginLeft='4%'>
-            <Typography marginLeft='2%'>
-              Rechercher mes cours
-            </Typography>
-            <FormControl sx={{width:'250px'}} size="small">
-              <Paper 
-                sx={{ p: '2px 4px',border:1,borderColor:'#9d9da8',boxShadow:0, alignItems: 'center',height:'35px' }}
-              > 
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Rechercher mes cours"
-                  inputProps={{ 'aria-label': 'Rechercher mes cours' }}
-                />
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                  <SearchIcon />
-                </IconButton>
-              </Paper>
-            </FormControl>
-          </Grid> 
-        </Grid> 
-        
         <Grid container spacing={2} sx={{display:'flex',justifyContent:'center',width:'100%',marginTop:1}} >
           {courses.map((item,index)=>{
             return(
@@ -247,9 +181,6 @@ function MonApprentissageSection() {
               </IconButton>
               ) })} 
         </Grid>  
-        <Stack spacing={2} marginTop='2%' marginBottom='2%'>
-          <Pagination count={10} variant="outlined" />
-        </Stack> 
       </Grid>
     </Box>
   )

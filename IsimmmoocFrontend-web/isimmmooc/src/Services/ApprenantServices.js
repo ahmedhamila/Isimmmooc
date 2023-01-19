@@ -2,6 +2,18 @@ import { SERVER_API_CONFIG } from "./../Configurations"
 const URL = `${SERVER_API_CONFIG.PROTOCOL}://${SERVER_API_CONFIG.HOST_NAME}:${SERVER_API_CONFIG.PORT}`;
 
 
+async function UpdateApprenant(id,bodyData){
+    
+  return fetch(URL+`/users/Apprenant/${id}/`,{
+    method:'PUT',
+    headers:{
+      'Authorization': `Token ${localStorage.getItem("Token")}`
+    },
+    body:bodyData
+    })
+ 
+}
+
 async function GetCourses(){
     
     return fetch(URL+`/app/Cours`,{
@@ -24,4 +36,4 @@ async function GetCoursById(id){
    
   }  
 
-  export {GetCourses,GetCoursById}  
+  export {UpdateApprenant,GetCourses,GetCoursById}  
