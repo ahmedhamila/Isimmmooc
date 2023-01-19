@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import {Text,View,FlatList,StyleSheet,ScrollView,TextInput,} from 'react-native';
 import { Card } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 
 
 const OrganismeSignUp = () => {
@@ -23,20 +23,23 @@ const OrganismeSignUp = () => {
       'mail': mail,
       'phone_number':phone_number,
       'web_site': web_site,
-      'adress':date_of_birth,
+      'adress':adress,
       'password': password
     })
 
-   const response = fetch(`http://127.0.0.1:8000/users/Organisme/addPreOrganisme/`, {
+   const response = await fetch(`http://192.168.56.1:8000/users/Organisme/addPreOrganisme/`, {
       method:'POST',
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body:body
       })
-      const json = await response.json()
-    return json.Token
-      
+      .catch(function(error) {
+        console.log('There has been a problem with fetch operation: ' + error.message);
+        });
+        const json = await response.json()
+        return json.Token
 
   }
 

@@ -4,8 +4,8 @@ import SearchCategorie from './SearchCategorie';
 import { Card } from 'react-native-paper';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Login from './Login';
@@ -16,7 +16,7 @@ import SignUp from './SignUp';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import FormateurSignUp from './Formateur_SignUp';
-
+import Teachers from './Teachers';
 
 const Welcome = ({navigation}) => {
   
@@ -42,7 +42,7 @@ const [courses,setCourses]=useState([
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
 <TouchableOpacity  style={styles.btnCours}
-onPress={()=> navigation.navigate("Login")}>
+onPress={()=> navigation.navigate('Teachers')}>
 <Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
 <Image  source={item.rate} style={styles.rate}/>
 </View>
@@ -50,6 +50,7 @@ onPress={()=> navigation.navigate("Login")}>
 </Card>
 
   );
+
 
 
   return (
@@ -64,8 +65,8 @@ onPress={()=> navigation.navigate("Login")}>
 <Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
 <Text style={styles.welc}>                   un  seul    click ! </Text>
 <View style={styles.centerbtn}>
-<TouchableOpacity  style={styles.btn}
-onPress={()=> navigation.navigate("Login")}>
+<TouchableOpacity  
+onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
 <Text  style={styles.btnText}>Commencer ici</Text>
 </TouchableOpacity>
 </View>
@@ -142,8 +143,9 @@ const styles = StyleSheet.create({
     alignItems:'center',
     padding:5,
     margin:29,
-  }
-,scroll:{
+  },
+  
+  scroll:{
   width:250,
   height:160,
   resizeMode:'contain',
@@ -161,31 +163,31 @@ fontWeight: "bold",
 textAlign: 'center',
 
 },
-Ctitle:{
 
+Ctitle:{
   margin:2,
   fontSize:17,
   textDecorationLine:"solid",
   fontWeight: "bold",
   textAlign: 'center',
 
-}
-,
+},
+
 nottxt:{
 fontSize:22,
 marginTop:29,
 marginLeft:9,
 textDecorationLine:"solid",
 
-}
-,
+},
+
 notif:{
 height:35,
 width:53,
 marginRight:20,
 
-  }
-  ,
+  },
+
 img:{
     margin:2,
     height:125,
