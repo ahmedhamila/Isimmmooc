@@ -31,7 +31,7 @@ import './CoursHeroSection.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-function CoursHeroSection() {
+function CoursHeroSection(Props) {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
@@ -79,17 +79,17 @@ function CoursHeroSection() {
         container 
         xs={8}>
           <Typography sx={{fontFamily:'Inter',fontWeight:'bold',fontSize:'38px'}}>
-            React Native For Beginner
+            {Props.nameCours}
           </Typography>  
         </Grid>
         <Grid container  alignItems='center'xs={8}>
             <AccessTimeIcon />
             <Typography marginLeft='1%' marginRight='3%'>
-            12 heures
+            {Props.periodCours} heures
             </Typography>
             <SignalCellularAltIcon />
             <Typography marginLeft='1%'>
-            Débutant
+            {Props.difficultyCours}
             </Typography>
         </Grid>
       </Grid>    
