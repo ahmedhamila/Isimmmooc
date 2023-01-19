@@ -6,11 +6,12 @@
  * ----------------------------------------------------------------------
  */
 
-import React from 'react'
+import React, { useState ,useEffect} from 'react'
 import Footer from '../../../Components/Layouts/Footer/Footer'
 import NavBarApprenantSpace from '../../../Components/NavBarApprenantSpace/NavBarApprenantSpace'
 import CoursHeroSection from '../../../Components/CoursHeroSection/CoursHeroSection'
 import CoursSpaceStepper from "../../../Components/CoursSpaceStepper/CoursSpaceStepper";
+import { json, useParams } from 'react-router-dom';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -37,7 +38,8 @@ function CoursSpace() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-
+  const [courses,setCourses]=useState([])
+  const {id}=useParams()
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -58,7 +60,6 @@ function CoursSpace() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
     
   
   /* --------------------------------------------------------------------
