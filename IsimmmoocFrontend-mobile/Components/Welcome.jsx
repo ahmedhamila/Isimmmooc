@@ -51,15 +51,14 @@ onPress={()=> navigation.navigate('Teachers')}>
 
   );
 
-
-
   return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
-
 <View style={styles.head}>
       <Text style={styles.headtxt}>Isimmmooc</Text>
+      <TouchableOpacity>
       <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
+      </TouchableOpacity>
 </View>
 <Card style={styles.body} >
 <Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
