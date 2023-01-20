@@ -208,312 +208,312 @@ const AddCourseFirstStep = (props) => {
           ):
           (
             <Grid
-        className='AddCourseFirstStep'
-        container
-        sx={{
-          width:{'xs':'100%','sm':'50%','md':'50%'}
-        }}
-      >
-        <Grid
-        container
-        flexDirection='column'
-        alignItems='flex-start'
-        gap='35px'
-        flexBasis={0}
-        flexGrow={1}
-        flexShrink={0}
+          className='AddCourseFirstStep'
+          container
+          sx={{
+            width:{'xs':'100%','sm':'50%','md':'50%'}
+          }}
         >
-            <Grid
-                container
-                flexDirection='row'
-                flexWrap='nowrap'
-                gap='15px'
-                justifyContent='center'
-            >
-                <Typography variant='h2'>
-                  New Course
-                </Typography>
-            
-            </Grid>
-            <Grid
-                container
-                flexDirection='row'
-                flexWrap='nowrap'
-                gap='15px'
-            >
-                <Grid
-                    container
-                >
-                <TextField
-                    value={coursName}
-                    onChange={handleCoursName}
-                    name='Name'
-                    placeholder='Eg. Cours UI/UX'
-                    label="Name"
-                    fullWidth
-                    sx={{
-                    width:'100%',
-                    '& label.Mui-focused': {
-                        color: styles.PrimaryColorLight,
-                    },
-                    '& .MuiInput-underline:after': {
-                        borderBottomColor: styles.PrimaryColorLight,
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                        borderColor: styles.PrimaryColorLight,
-                        },
-                        '&:hover fieldset': {
-                        borderColor: styles.PrimaryColorLight,
-                        },
-                        '&.Mui-focused fieldset': {
-                        borderColor: styles.PrimaryColorLight,
-                        },
-                    },
-                    }}
-                />
-                </Grid>
-                <Grid
-                    container
-                >
-                <TextField
-                    value={coursPeriode}
-                    onChange={handleCoursPeriode}
-                    name='Periode'
-                    label="Periode"
-                    type='number'
-                    error={coursPeriodeError}
-                    placeholder='En Heure'
-                    id="outlined-adornment-weight"
-                    InputProps={{
-                        endAdornment: <InputAdornment position="end">H</InputAdornment>,
-                      }}
-                    fullWidth
-                    sx={{
-                    width:'100%',
-                    '& label.Mui-focused': {
-                        color: coursPeriodeError?'red':styles.PrimaryColorLight,
-                    },
-                    '& .MuiInput-underline:after': {
-                        borderBottomColor: coursPeriodeError?'red':styles.PrimaryColorLight,
-                    },
-                    '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
-                        borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
-                        },
-                        '&:hover fieldset': {
-                        borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
-                        },
-                        '&.Mui-focused fieldset': {
-                        borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
-                        },
-                    },
-                    }}
-                />
-                </Grid>
-            </Grid>
-          
           <Grid
-            container
-            flexDirection='row'
-            flexWrap='nowrap'
-            gap='15px'
+          container
+          flexDirection='column'
+          alignItems='flex-start'
+          gap='35px'
+          flexBasis={0}
+          flexGrow={1}
+          flexShrink={0}
           >
-            <Grid
-                container
-                flexDirection='column'
-            >
-                <TextField
-                select
-                value={coursDifficulty}
-                onChange={handleChangeCoursDifficulty}
-                name='Difficulty'
-                label="Difficulty"
-                fullWidth
-                sx={{
-                width:'100%',
-                '& label.Mui-focused': {
-                    color: styles.PrimaryColorLight,
-                },
-                '& .MuiInput-underline:after': {
-                    borderBottomColor: styles.PrimaryColorLight,
-                },
-                '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                    '&:hover fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                    '&.Mui-focused fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                },
-                }}
-                    
-                >
-                    <MenuItem value={'BG'}>Beginner</MenuItem>
-                    <MenuItem value={'MD'}>Intermediate</MenuItem>
-                    <MenuItem value={'AV'}>Advanced</MenuItem>
-                </TextField>
-            </Grid>
-            <Grid
-            container
-            flexDirection='column'
-            >
-                <TextField
-                select
-                value={coursDiscipline}
-                onChange={handleChangeCoursDiscipline}
-                name='Discipline'
-                label="Discipline"
-                fullWidth
-                sx={{
-                width:'100%',
-                '& label.Mui-focused': {
-                    color: styles.PrimaryColorLight,
-                },
-                '& .MuiInput-underline:after': {
-                    borderBottomColor: styles.PrimaryColorLight,
-                },
-                '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                    '&:hover fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                    '&.Mui-focused fieldset': {
-                    borderColor: styles.PrimaryColorLight,
-                    },
-                },
-                }}
-                    
-                >
-                    {data.map((discipline,index)=>{
-                        return(
-                            <MenuItem key={discipline.name} value={discipline.name}>{discipline.name}</MenuItem>
-                        )
-                    })}
-                    
-                    
-                </TextField>
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            flexDirection='row'
-            flexWrap='nowrap'
-            gap='15px'
-          >
-            <Grid
-                container
-            >
-                <TextareaAutosize 
-                   value={coursDescription}
-                   onChange={handleChangeCoursDescription}
-                   name='Description'
-                   placeholder='Cours Description'
-                   label="Description"
-                   minRows={4}
-                   maxRows={10}
-                   style={{
-                    width:'100%',
-                    resize:'none'
-                    }}
-                   sx={{
-                   '& label.Mui-focused': {
-                       color: styles.PrimaryColorLight,
-                   },
-                   '& .MuiInput-underline:after': {
-                       borderBottomColor: styles.PrimaryColorLight,
-                   },
-                   '& .MuiOutlinedInput-root': {
-                       '& fieldset': {
-                       borderColor: styles.PrimaryColorLight,
-                       },
-                       '&:hover fieldset': {
-                       borderColor: styles.PrimaryColorLight,
-                       },
-                       '&.Mui-focused fieldset': {
-                       borderColor: styles.PrimaryColorLight,
-                       },
-                   },
-                   }} 
-                />
-                    
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            flexDirection='row'
-            flexWrap='nowrap'
-            gap='15px'
-          >
-            <Grid
-                container
-            >
-                <TextField
-                    onChange={handleChangeCoursVideo}
-                    type='file'
-                    label="Video"
-                    InputLabelProps={{
-                        shrink: true,
-                      }}
-                    fullWidth
-                    sx={{
+              <Grid
+                  container
+                  flexDirection='row'
+                  flexWrap='nowrap'
+                  gap='15px'
+                  justifyContent='center'
+              >
+                  <Typography variant='h2'>
+                    New Course
+                  </Typography>
+              
+              </Grid>
+              <Grid
+                  container
+                  flexDirection='row'
+                  flexWrap='nowrap'
+                  gap='15px'
+              >
+                  <Grid
+                      container
+                  >
+                  <TextField
+                      value={coursName}
+                      onChange={handleCoursName}
+                      name='Name'
+                      placeholder='Eg. Cours UI/UX'
+                      label="Name"
+                      fullWidth
+                      sx={{
                       width:'100%',
                       '& label.Mui-focused': {
-                        color: styles.PrimaryColorLight,
+                          color: styles.PrimaryColorLight,
                       },
                       '& .MuiInput-underline:after': {
-                        borderBottomColor: styles.PrimaryColorLight,
+                          borderBottomColor: styles.PrimaryColorLight,
                       },
                       '& .MuiOutlinedInput-root': {
-                        '& fieldset': {
+                          '& fieldset': {
                           borderColor: styles.PrimaryColorLight,
+                          },
+                          '&:hover fieldset': {
+                          borderColor: styles.PrimaryColorLight,
+                          },
+                          '&.Mui-focused fieldset': {
+                          borderColor: styles.PrimaryColorLight,
+                          },
+                      },
+                      }}
+                  />
+                  </Grid>
+                  <Grid
+                      container
+                  >
+                  <TextField
+                      value={coursPeriode}
+                      onChange={handleCoursPeriode}
+                      name='Periode'
+                      label="Periode"
+                      type='number'
+                      error={coursPeriodeError}
+                      placeholder='En Heure'
+                      id="outlined-adornment-weight"
+                      InputProps={{
+                          endAdornment: <InputAdornment position="end">H</InputAdornment>,
+                        }}
+                      fullWidth
+                      sx={{
+                      width:'100%',
+                      '& label.Mui-focused': {
+                          color: coursPeriodeError?'red':styles.PrimaryColorLight,
+                      },
+                      '& .MuiInput-underline:after': {
+                          borderBottomColor: coursPeriodeError?'red':styles.PrimaryColorLight,
+                      },
+                      '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                          borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
+                          },
+                          '&:hover fieldset': {
+                          borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
+                          },
+                          '&.Mui-focused fieldset': {
+                          borderColor: coursPeriodeError?'red':styles.PrimaryColorLight,
+                          },
+                      },
+                      }}
+                  />
+                  </Grid>
+              </Grid>
+            
+            <Grid
+              container
+              flexDirection='row'
+              flexWrap='nowrap'
+              gap='15px'
+            >
+              <Grid
+                  container
+                  flexDirection='column'
+              >
+                  <TextField
+                  select
+                  value={coursDifficulty}
+                  onChange={handleChangeCoursDifficulty}
+                  name='Difficulty'
+                  label="Difficulty"
+                  fullWidth
+                  sx={{
+                  width:'100%',
+                  '& label.Mui-focused': {
+                      color: styles.PrimaryColorLight,
+                  },
+                  '& .MuiInput-underline:after': {
+                      borderBottomColor: styles.PrimaryColorLight,
+                  },
+                  '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                      '&:hover fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                      '&.Mui-focused fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                  },
+                  }}
+                      
+                  >
+                      <MenuItem value={'BG'}>Beginner</MenuItem>
+                      <MenuItem value={'MD'}>Intermediate</MenuItem>
+                      <MenuItem value={'AV'}>Advanced</MenuItem>
+                  </TextField>
+              </Grid>
+              <Grid
+              container
+              flexDirection='column'
+              >
+                  <TextField
+                  select
+                  value={coursDiscipline}
+                  onChange={handleChangeCoursDiscipline}
+                  name='Discipline'
+                  label="Discipline"
+                  fullWidth
+                  sx={{
+                  width:'100%',
+                  '& label.Mui-focused': {
+                      color: styles.PrimaryColorLight,
+                  },
+                  '& .MuiInput-underline:after': {
+                      borderBottomColor: styles.PrimaryColorLight,
+                  },
+                  '& .MuiOutlinedInput-root': {
+                      '& fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                      '&:hover fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                      '&.Mui-focused fieldset': {
+                      borderColor: styles.PrimaryColorLight,
+                      },
+                  },
+                  }}
+                      
+                  >
+                      {data.map((discipline,index)=>{
+                          return(
+                              <MenuItem key={discipline.name} value={discipline.name}>{discipline.name}</MenuItem>
+                          )
+                      })}
+                      
+                      
+                  </TextField>
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              flexDirection='row'
+              flexWrap='nowrap'
+              gap='15px'
+            >
+              <Grid
+                  container
+              >
+                  <TextareaAutosize 
+                    value={coursDescription}
+                    onChange={handleChangeCoursDescription}
+                    name='Description'
+                    placeholder='Cours Description'
+                    label="Description"
+                    minRows={4}
+                    maxRows={10}
+                    style={{
+                      width:'100%',
+                      resize:'none'
+                      }}
+                    sx={{
+                    '& label.Mui-focused': {
+                        color: styles.PrimaryColorLight,
+                    },
+                    '& .MuiInput-underline:after': {
+                        borderBottomColor: styles.PrimaryColorLight,
+                    },
+                    '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                        borderColor: styles.PrimaryColorLight,
                         },
                         '&:hover fieldset': {
-                          borderColor: styles.PrimaryColorLight,
+                        borderColor: styles.PrimaryColorLight,
                         },
                         '&.Mui-focused fieldset': {
-                          borderColor: styles.PrimaryColorLight,
+                        borderColor: styles.PrimaryColorLight,
                         },
-                      },
-                    }}
-                />
+                    },
+                    }} 
+                  />
+                      
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              flexDirection='row'
+              flexWrap='nowrap'
+              gap='15px'
+            >
+              <Grid
+                  container
+              >
+                  <TextField
+                      onChange={handleChangeCoursVideo}
+                      type='file'
+                      label="Video"
+                      InputLabelProps={{
+                          shrink: true,
+                        }}
+                      fullWidth
+                      sx={{
+                        width:'100%',
+                        '& label.Mui-focused': {
+                          color: styles.PrimaryColorLight,
+                        },
+                        '& .MuiInput-underline:after': {
+                          borderBottomColor: styles.PrimaryColorLight,
+                        },
+                        '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                            borderColor: styles.PrimaryColorLight,
+                          },
+                          '&:hover fieldset': {
+                            borderColor: styles.PrimaryColorLight,
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: styles.PrimaryColorLight,
+                          },
+                        },
+                      }}
+                  />
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid 
-          container
-          direction='row'
-          alignItems='center'
-          justifyContent='flex-end'
-          className="StepperFooter">
-             <Button 
-                variant='text'
-                sx={{
-                  backgroundColor:'#fff',
-                  color:styles.SecondaryColor,
-                  "&:hover" : {
-                    backgroundColor : styles.SecondaryColor,
-                    color: '#fff'  ,
-                  },
-                  my: 2, 
-                  mx:1,
-                  borderRadius : '3px'
-                }}
-                onClick={handleGoNext}
-              >
-                next
-              </Button>
-          </Grid>
-          <Snackbar open={open} autoHideDuration={4000}  onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-              {warningMessage}
-            </Alert>
-          </Snackbar>
+          <Grid 
+            container
+            direction='row'
+            alignItems='center'
+            justifyContent='flex-end'
+            className="StepperFooter">
+              <Button 
+                  variant='text'
+                  sx={{
+                    backgroundColor:'#fff',
+                    color:styles.SecondaryColor,
+                    "&:hover" : {
+                      backgroundColor : styles.SecondaryColor,
+                      color: '#fff'  ,
+                    },
+                    my: 2, 
+                    mx:1,
+                    borderRadius : '3px'
+                  }}
+                  onClick={handleGoNext}
+                >
+                  next
+                </Button>
+            </Grid>
+            <Snackbar open={open} autoHideDuration={4000}  onClose={handleClose}>
+              <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                {warningMessage}
+              </Alert>
+            </Snackbar>
       </Grid>
           )
     }

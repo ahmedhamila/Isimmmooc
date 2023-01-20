@@ -25,7 +25,7 @@ class CoursViewSet(viewsets.ModelViewSet):
             user=Formateur.objects.get(user=request.user)
             newCours=Cours.objects.create(name=name,short_video=short_video,description=description,period=period,difficulty=difficulty,discipline=discipline,formateur=user)
             newCours.save()
-            CoursSerialized = CoursSerializer(newCours)
+            CoursSerialized = CoursSerializer(newCours,context={'request': request})
             return Response(CoursSerialized.data,status=status.HTTP_201_CREATED)
 
         except Exception as e:
@@ -36,7 +36,7 @@ class CoursViewSet(viewsets.ModelViewSet):
             user = request.user
             userFormateur = Formateur.objects.get(user=user)
             FormateurCourses = Cours.objects.filter(formateur = userFormateur)
-            FormateurCoursesSerialized = CoursSerializer(FormateurCourses,many=True)
+            FormateurCoursesSerialized = CoursSerializer(FormateurCourses,many=True,context={'request': request})
             return Response(FormateurCoursesSerialized.data,status=status.HTTP_200_OK)
 
         except Exception as e:

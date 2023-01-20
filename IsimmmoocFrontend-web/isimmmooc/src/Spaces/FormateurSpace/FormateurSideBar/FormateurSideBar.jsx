@@ -176,21 +176,17 @@ function FormateurSideBar() {
     }
   ];
   const tabs =[
-    {
-      label:'Dashboard',
-      action:()=>{navigate('/FormateurSpace')},
-      icon:<DashboardIcon />
-    }, 
-    {
-      label:'Courses',
-      action:()=>{navigate('/FormateurSpace/Courses')},
-      icon: <FolderSpecialIcon/>
-    }, 
+    
     {
       label:'Profile',
       action:()=>{navigate('/FormateurSpace/Profile')},
       icon: <PersonPinIcon/>
     },
+    {
+      label:'Courses',
+      action:()=>{navigate('/FormateurSpace/Courses')},
+      icon: <FolderSpecialIcon/>
+    }, 
     {
       label:'Add New Course',
       action:()=>{navigate('/FormateurSpace/AddCourse')},

@@ -3,4 +3,4 @@ from ..models.Discipline import Discipline
 class DisciplineSerializer(serializers.ModelSerializer):
     class Meta:
         model=Discipline
-        fields=["name"]
+        fields=["id","name"]

@@ -10,14 +10,14 @@ import {React,useState} from 'react'
 import { Grid,Card,CardContent,CardMedia,Typography,CardActions,Button } from '@mui/material'
 import {DefaultPlayer as Video} from 'react-html5video'
 import 'react-html5video/dist/styles.css'  
-import video from '../../Assets/Videos/Video.mp4';
+import { useNavigate,Link } from 'react-router-dom'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
 
-import {GetCourses} from './../../Services'
+import {GetCoursesByFormateur} from './../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -58,13 +58,16 @@ const SectionCoursesFormateur = () => {
 
   const [model,setModel]=useState(false)
   const [courses,setCourses] = useState([])
+  const navigate = useNavigate()
 
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
 
-    
+    const handleClick = (id)=>{
+        navigate(`/FormateurSpace/Courses/${id}`)
+    }
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -73,7 +76,7 @@ const SectionCoursesFormateur = () => {
 
     useEffect(()=>{
         const fetchCourses = async()=>{
-            const response=await GetCourses()
+            const response=await GetCoursesByFormateur()
             const responsejson = await response.json()
             console.log(responsejson)
             setCourses(responsejson)
@@ -106,7 +109,7 @@ const SectionCoursesFormateur = () => {
                     <Grid
                         item
                     >
-                        <Card sx={{ height:300,width: 250 }}>
+                        <Card sx={{ height:'fit-content',width: 'fit-content',maxWidth:'300px' }}>
                             <Video 
                                 style={{width:'100%'}}
                                 autoPlay={model}
@@ -123,12 +126,29 @@ const SectionCoursesFormateur = () => {
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <Button size="small">More</Button>
+                                <Button size="small" onClick={()=>{handleClick(course.id)}}>More</Button>
                             </CardActions>
                         </Card>
                     </Grid>
                 )
             })
+        }
+        {(courses.length === 0)&&(
+            <Grid container flexDirection='column' alignItems='center'>
+                <Grid>
+                    <Typography variant='h3'>
+                        You have No Courses 
+                    </Typography>
+                </Grid>
+                <Grid>
+                    <Link to='/FormateurSpace/AddCourse'>
+                        Add courses ?
+                    </Link>
+                </Grid>
+                
+            </Grid>
+            
+        )
         }
         
     </Grid>
