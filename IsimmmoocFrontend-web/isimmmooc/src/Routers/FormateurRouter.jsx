@@ -12,6 +12,7 @@ import FormateurSideBar from './../Spaces/FormateurSpace/FormateurSideBar/Format
 import SectionModifierFormateur from '../Components/SectionModifierFormateur/SectionModifierFormateur'
 import SectionProfileFormateur from '../Components/SectionProfileFormateur/SectionProfileFormateur'
 import SectionCoursesFormateur from '../Components/SectionCoursesFormateur/SectionCoursesFormateur'
+import SectionCourseFormateur from '../Components/SectionCourseFormateur/SectionCourseFormateur'
 import SectionAddCourse from '../Components/SectionAddCourse/SectionAddCourse'
 /*
 * ----------------------------------------------------------------------
@@ -81,10 +82,11 @@ function FormateurRouter() {
         <Routes>
             
             <Route exact path='/FormateurSpace' element={<FormateurSideBar />}>
-              <Route  index element={<Dashboard />}/>
+              <Route  index element={<SectionProfileFormateur />}/>
               <Route  path='Account' element={<SectionModifierFormateur />}/>
               <Route  path='Profile' element={<SectionProfileFormateur />}/>
               <Route  path='Courses' element={<SectionCoursesFormateur />}/>
+              <Route  path='Courses/:id' element={<SectionCourseFormateur />}/>
               <Route  path='AddCourse' element={<SectionAddCourse />}/>
               
 

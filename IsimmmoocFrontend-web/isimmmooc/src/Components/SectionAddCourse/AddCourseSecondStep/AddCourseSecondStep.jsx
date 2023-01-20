@@ -189,7 +189,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
                     <Typography>Chapitre {index+1}</Typography>
                   </Grid>
                   <Grid>
-                    <IconButton disabled={chapitres.length === 1} onClick={() => handleRemoveChapitre(index)}>
+                    <IconButton disabled={chapitres.length === 1} onClick={(e) => {e.stopPropagation();handleRemoveChapitre(index)}}>
                       <RemoveIcon />
                     </IconButton>
                     <IconButton

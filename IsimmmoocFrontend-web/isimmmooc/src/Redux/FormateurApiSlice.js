@@ -11,10 +11,16 @@ export const formateurApi = createApi({
                 url:'Discipline',
                 method:'GET',
             })
+        }),
+        getFullCourse : builder.query({
+            query : (id)=>({
+                url:`CoursFull/${id}`,
+                method:'GET',
+            })
         })
     })
 
 })
 
 
-export const {useGetDisciplinesQuery}=formateurApi
+export const {useGetDisciplinesQuery,useGetFullCourseQuery}=formateurApi

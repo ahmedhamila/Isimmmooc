@@ -26,6 +26,17 @@ async function AddCourse(bodyData){
       })
    
 }
+async function UpdateCourse(id,bodyData){
+    
+    return fetch(URL+`/app/Cours/${id}/`,{
+      method:'PUT',
+      headers:{
+        'Authorization': `Token ${localStorage.getItem("Token")}`
+      },
+      body:bodyData
+      })
+   
+}
 
 async function AddChapitre(bodyData){
     
@@ -60,7 +71,7 @@ async function AddAnswer(bodyData){
       })
    
 }
-async function GetCourses(){
+async function GetCoursesByFormateur(){
     
     return fetch(URL+'/app/Cours/getCoursByFormateur',{
       method:'GET',
@@ -71,4 +82,6 @@ async function GetCourses(){
    
 }
 
-export {UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer,GetCourses}
+
+
+export {UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer,UpdateCourse,GetCoursesByFormateur}

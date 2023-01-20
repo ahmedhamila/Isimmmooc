@@ -24,6 +24,7 @@ async function GetCourses(){
       }
       })
   }
+
 async function GetCoursById(id){
     
     return fetch(URL+`/app/CoursFull/${id}`,{
