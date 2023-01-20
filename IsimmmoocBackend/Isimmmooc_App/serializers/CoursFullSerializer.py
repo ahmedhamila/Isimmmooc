@@ -9,7 +9,6 @@ class CoursFullSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='mail'
      )
-    formateurImg =serializers.ImageField(source='formateur.image')
     discipline = serializers.SlugRelatedField(
         many=False,
         read_only=True,
@@ -18,4 +17,4 @@ class CoursFullSerializer(serializers.ModelSerializer):
     
     class Meta:
         model=Cours
-        fields=["id","name","short_video","description","period","difficulty","formateur","formateurImg","discipline","chapitres"]
+        fields=["id","name","short_video","description","period","difficulty","formateur","discipline","chapitres"]

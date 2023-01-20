@@ -45,7 +45,6 @@ function ApprentissageSectionApprenant() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const [model,setModel]=React.useState(false)
   const [courses,setCourses]=React.useState([])
   const {email}=useSelector((state)=>state.user)
   

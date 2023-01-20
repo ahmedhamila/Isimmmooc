@@ -26,7 +26,7 @@ import { useNavigate } from "react-router-dom";
 * ----------------------------------------------------------------------
 */
 
-
+import {GetCourses} from './../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -49,10 +49,8 @@ function SectionApprenantCourses() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const [courses,setCourses]=React.useState([])
   const navigate=useNavigate()
-  const [courses,setCourses]=useState([
-    {title:'Developement mobile',desc:'The complete dev mobile course for beginer.',formateurName:'Paolo yokt'}
-  ])
 
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -77,6 +75,15 @@ function SectionApprenantCourses() {
   const CoursDetailsClickHandle = ()=>{
     navigate("/ApprenantHomeSpace/CoursDetails")
   }
+  const Getcourses = async()=>{
+   
+    const response = await GetCourses()   
+    const responseJson = await response.json()
+    setCourses(responseJson)
+    
+  }
+  React.useEffect(   
+    ()=>{Getcourses() ; },[])
     
   
   /* --------------------------------------------------------------------
@@ -91,23 +98,24 @@ function SectionApprenantCourses() {
   return (
     <React.Fragment>
     <Container maxWidth="false" sx={{ width:"100%", marginBottom:'3%',marginTop:'1%'}} >
+    {courses.map((item,index)=>{
+                      return(
         <Box sx={{
             height: '100%',
             padding: "20px 0",
             position: "relative" }} >
             <Grid classeName='textContainer' item>
-                <h1 color='#1C1D1F' >Meilleurs cours dans la catégorie <a className='link'>React Native</a></h1>
+                <h1 color='#1C1D1F' >Meilleurs cours dans la catégorie <a className='link'>{item.discipline}</a></h1>
             </Grid>  
             <Grid sx={{ flexGrow: 1 }} container spacing={2}>
                 <Grid item xs={12}>
                 <Grid container justifyContent="center" spacing={2}>
-                    {[0, 1, 2,3,4].map((value) => (
-                    <Grid key={value} item >
+                    <Grid  item key={index}>
                         <Paper
                         className='CoursePaper'
                         onClick={CoursDetailsClickHandle}
                         sx={{
-                            height: 350,
+                            
                             width: 250,
                             backgroundColor: (theme) =>
                             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -119,45 +127,35 @@ function SectionApprenantCourses() {
                         <CardMedia
                             component="img"
                             height="160"
-                            image={courseImg}
+                            image={item.formateurImg}
                             alt="course photo"
                             sx={{p:0.2}}
                         />
-                        {courses.map((item)=>{
-                            return(
-                            
-                            <CardContent>
-                           
-                            <Typography gutterBottom variant="p" textAlign="left" marginBottom="2%" marginTop="0" fontFamily='Segoe UI' color='#9d9da8' component="div">
-                                {item.title}
-                            </Typography>
                         
+                         <CardContent>
+                            <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
+                                {item.formateur}
+                            </Typography>
+                            <Typography gutterBottom variant="p" textAlign="left" marginBottom="2%" marginTop="0" fontFamily='Segoe UI' color='#9d9da8' component="div">
+                                {item.name}
+                            </Typography>
                             <Typography variant="h6" fontFamily="Arial" fontSize='16px' fontWeight='bold'>
-                                {item.desc}
+                                {item.description}
                             </Typography>
                             <Stack spacing={1} marginTop="2%">
                                 <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
                             </Stack>
-                            <Stack marginTop="2%" direction='row' spacing={2}>
-                            <Avatar alt="Remy Sharp" src={formateurImg} />
-                            <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
-                                {item.formateurName}
-                            </Typography>
-                            </Stack>
-                            
-                            </CardContent>)
-                                
-                            })}  
+                            </CardContent> 
                         </Paper>
                     </Grid>
-                    ))}
+
                 </Grid>
                 </Grid>
             </Grid>     
         </Box>
-    </Container>
+    ) })}
+</Container>
     </React.Fragment>
-
   )
 }
 
