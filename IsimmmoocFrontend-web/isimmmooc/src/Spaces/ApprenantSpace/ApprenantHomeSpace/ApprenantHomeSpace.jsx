@@ -81,9 +81,7 @@ function ApprenantHomeSpace() {
     <NavBarApprenantSpace />
     <ApprenantHeroSection />
     <ApprentissageSectionApprenant/>
-    {[0, 1, 2].map((value) => (
-    <SectionApprenantCourses key={value} />
-    ))}
+    <SectionApprenantCourses  />
     <Footer />
     </Grid>
   )
