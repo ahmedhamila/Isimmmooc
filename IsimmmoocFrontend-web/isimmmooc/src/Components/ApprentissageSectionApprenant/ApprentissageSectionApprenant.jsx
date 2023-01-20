@@ -15,13 +15,16 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { useNavigate } from "react-router-dom";
+import {useSelector} from "react-redux"
+import {DefaultPlayer as Video} from 'react-html5video'
+import 'react-html5video/dist/styles.css'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
-
-
+import {GetCourses} from './../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -35,19 +38,17 @@ import './ApprentissageSectionApprenant.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import playVedioImg from '../../Assets/Images/playVedio.png';
+
 function ApprentissageSectionApprenant() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const Img = styled('img')({
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  });
+  const [model,setModel]=React.useState(false)
+  const [courses,setCourses]=React.useState([])
+  const {email}=useSelector((state)=>state.user)
+  
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 5,
@@ -74,13 +75,27 @@ function ApprentissageSectionApprenant() {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-
+  const navigate=useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
+  const CoursClickHandle = (id)=>{
+    navigate(`/ApprenantHomeSpace/MonApprentissage/cours/${id}`)
+  }
+  const MonApprentissageClickHandler=()=>{
+    navigate("/ApprenantHomeSpace/MonApprentissage")
+  }
+  
+  const Getcourses = async()=>{
+   
+    const response = await GetCourses()   
+    const responseJson = await response.json()
+    setCourses(responseJson)
     
+  }
+  React.useEffect(   
+    ()=>{Getcourses() ; },[])
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -98,17 +113,18 @@ function ApprentissageSectionApprenant() {
         <Box sx={{height: '50vh',  maxWidth:'100%',flexDirection: 'column'}} >
           <Grid classeName='textContainer' item>
             <h1 color='#1C1D1F' fontFamily=' Georgia'>Commençons notre apprentissage,<br/>
-              yosomran@Gmail.Com
+              {email}
             </h1>
-            <a className='link1'><span>Mon apprentissage</span></a>
+            <a className='link1' onClick={MonApprentissageClickHandler}><span>Mon apprentissage</span></a>
             <br />
             <br />
           </Grid>
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
           <Grid container spacing={3} flexDirection='row'>
-          {[0, 1, 2].map((value) => (
-            <Grid key={value} item>
+            <Grid item>
+            {courses.map((item,index)=>{
+            return(
               <Paper
                 sx={{
                   cursor: 'pointer',
@@ -124,30 +140,31 @@ function ApprentissageSectionApprenant() {
                   backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                 }}
+                onClick={()=>{CoursClickHandle(item.id)}} 
               >
-
-                <Grid container spacing={2}>
+                <Grid container spacing={2} key={index}>
                   <Grid item >
-                    <ButtonBase sx={{ width: 128, height:'100%',borderRight:1,borderColor:'#8d8e8f', }}>
-                      <Img alt="complex" src={playVedioImg} />
+                    <ButtonBase sx={{ width: 150, height:'100%',borderRight:1,borderColor:'#8d8e8f', }}>
+                      <Video 
+                          style={{width:'100%'}}     
+                      >
+                          <source src={item.short_video} type="video/mp4"/>
+                      </Video>
                     </ButtonBase>
                   </Grid>
                   <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={2}>
                       <Grid item xs>
                         <Typography gutterBottom variant="subtitle1" component="div" fontWeight='bold' color='#999d9f' fontSize='12px'>
-                          React Native 
+                          {item.name} 
                         </Typography>
                         <Typography variant="body2" gutterBottom fontWeight='bold' fontSize='20px'>
-                          15.Components
+                          {item.period} Heures
                         </Typography>
                       </Grid>
                       <Grid item  xs container direction="row">
                         <Typography variant="body2" color='#999d9f' fontWeight='bold' fontSize='14px'>
-                          Session.
-                        </Typography>
-                        <Typography variant="body2" color='#999d9f' fontSize='12px'>
-                          Il reste 17 min
+                          Session by {item.formateur}
                         </Typography>
                       </Grid>
                       <BorderLinearProgress variant="determinate" value={40} />
@@ -155,8 +172,8 @@ function ApprentissageSectionApprenant() {
                   </Grid>
                 </Grid>
               </Paper>
+                  ) })} 
             </Grid>
-          ))}
           </Grid>
           </Grid>
           </Grid>

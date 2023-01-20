@@ -4,5 +4,5 @@ import {GetCourses,GetCoursById,UpdateApprenant} from './ApprenantServices'
 
 export {
     SignUpApprenant,SignUpPreFormateur,SignUpPreOrganisme,AuthVerification,Authentification,
-    UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer,GetCourses,GetCoursById,UpdateApprenant,
+    UpdateFormateur,AddCourse,AddChapitre,AddQuestion,AddAnswer,GetCourses,GetCoursById,UpdateApprenant
 }

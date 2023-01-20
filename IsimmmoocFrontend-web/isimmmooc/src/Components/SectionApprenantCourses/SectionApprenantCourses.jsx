@@ -34,7 +34,6 @@ import { useNavigate } from "react-router-dom";
  * ----------------------------------------------------------------------
  */
 import './SectionApprenantCourses.scss'
-import styles from './../../Assets/Styles/style.module.scss'
 
 /*
  * ----------------------------------------------------------------------

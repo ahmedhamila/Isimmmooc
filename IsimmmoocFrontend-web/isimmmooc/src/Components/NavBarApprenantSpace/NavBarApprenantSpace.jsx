@@ -28,6 +28,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from "react-router-dom";
+import {useSelector} from "react-redux"
 
 /*
 * ----------------------------------------------------------------------
@@ -54,7 +55,8 @@ import './NavBarApprenantSpace.scss'
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-   const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
+ 
+  const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
    
    const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -104,6 +106,8 @@ function NavBarApprenantSpace() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const {email}=useSelector((state)=>state.user)
+ 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -157,6 +161,9 @@ function NavBarApprenantSpace() {
     localStorage.removeItem("Token")
     navigate(0);
 }
+
+
+
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
@@ -312,7 +319,7 @@ function NavBarApprenantSpace() {
             >
 
               <MenuItem onClick={ProfileClickHandle}>
-                <Avatar /> Yosomran@Gmail.com
+                <Avatar /> {email}
               </MenuItem>
               <Divider />
               <MenuItem onClick={MonApprentissageClickHandle}>
