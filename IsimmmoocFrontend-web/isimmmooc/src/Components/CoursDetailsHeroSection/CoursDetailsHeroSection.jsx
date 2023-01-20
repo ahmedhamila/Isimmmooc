@@ -10,13 +10,16 @@ import {Box,Grid} from '@mui/material'
 import {Button} from '@mui/material';
 import {motion} from 'framer-motion';
 import Rating from '@mui/material/Rating';
+import { json, useParams } from 'react-router-dom';
+import {DefaultPlayer as Video} from 'react-html5video'
+import 'react-html5video/dist/styles.css'
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
 
-
+import {GetCoursById} from './../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -41,6 +44,8 @@ function CoursDetailsHeroSection() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
+  const [course,setCourse]=React.useState({})
+  const {id}=useParams()
   const [value, setValue] = React.useState(4);
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -69,7 +74,16 @@ function CoursDetailsHeroSection() {
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
    */
-
+  React.useEffect(()=>{
+    const Getcourse = async()=>{
+  
+      const response = await GetCoursById(id)   
+      const responseJson = await response.json()
+      setCourse(responseJson)
+    }
+    Getcourse() ; 
+    
+  },[])
   /* --------------------------------------------------------------------
    *                                 JSX                                |
    * --------------------------------------------------------------------
@@ -97,14 +111,14 @@ function CoursDetailsHeroSection() {
           xs={6}>
             <motion.div>
               <motion.h2 variants={fadeInUp}>
-                The complete cours React Native for beginner
+                The complete cours {course.name} for {course.difficulty === 'BG'?'Beginner':course.difficulty === 'AV'?'Advanced':'Intermediate'}
               </motion.h2>
               <motion.p variants={fadeInUp} sx={{fontSize:'20px'}}>
-                Learn javascript,react native,Hooks
+                {course.description}
               </motion.p>
               <Rating name="read-only" value={value} readOnly /> 
               <motion.p variants={fadeInUp}>
-                created by name of formateur
+                created by {course.formateur}
               </motion.p>
               <Button
             variant='text' 
@@ -129,9 +143,14 @@ function CoursDetailsHeroSection() {
             height='200px'
             width='300px'
             item xs={4} 
-            style={{backgroundImage: `url(${coursePhoto})`,display:'flex' }}
+            style={{display:'flex' }}
             component={motion.div}
           >  
+          <Video 
+            style={{width:'100%'}}     
+          >
+            <source src={course.short_video} type="video/mp4"/>
+          </Video>
           </Grid>
         </Grid>      
       </Box>

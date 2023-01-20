@@ -16,7 +16,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import { useNavigate } from "react-router-dom";
 
 
@@ -40,8 +39,7 @@ import './SectionApprenantCourses.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import courseImg from '../../Assets/Images/coursePhoto.jpg';
-import formateurImg from '../../Assets/Images/formateurImg.jpg';
+
 
 function SectionApprenantCourses() {
 
@@ -72,8 +70,8 @@ function SectionApprenantCourses() {
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-  const CoursDetailsClickHandle = ()=>{
-    navigate("/ApprenantHomeSpace/CoursDetails")
+  const CoursDetailsClickHandle = (id)=>{
+    navigate(`/ApprenantHomeSpace/CoursDetails/${id}`)
   }
   const Getcourses = async()=>{
    
@@ -113,16 +111,14 @@ function SectionApprenantCourses() {
                     <Grid  item key={index}>
                         <Paper
                         className='CoursePaper'
-                        onClick={CoursDetailsClickHandle}
-                        sx={{
-                            
+                        onClick={()=>{CoursDetailsClickHandle(item.id)}}
+                        sx={{  
                             width: 250,
                             backgroundColor: (theme) =>
                             theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                             border: '1px solid rgb(206, 194, 194)',
                             
-                        }}
-                        
+                        }}  
                         >
                         <CardMedia
                             component="img"
