@@ -56,7 +56,22 @@ import './NavBarApprenantSpace.scss'
    * --------------------------------------------------------------------
    */
  
-  const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
+  //const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
+  const pages = [
+    {
+      label:'Catégories',
+      linkTo:'/ApprenantHomeSpace'
+    },
+    {
+      label:'Courses',
+      linkTo:'/ApprenantHomeSpace'
+    },
+    {
+      label:'apprentissage',
+      linkTo:'/ApprenantHomeSpace/MonApprentissage'
+    },
+
+  ];
    
    const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -106,7 +121,7 @@ function NavBarApprenantSpace() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const {email}=useSelector((state)=>state.user)
+  const {email,image}=useSelector((state)=>state.user)
  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -225,8 +240,8 @@ function NavBarApprenantSpace() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page} onClick={()=>{ handleCloseNavMenu();navigate(page.linkTo)}}>
+                  <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -262,10 +277,10 @@ function NavBarApprenantSpace() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>{ handleCloseNavMenu();navigate(page.linkTo)}}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
@@ -280,7 +295,7 @@ function NavBarApprenantSpace() {
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               >
-              <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+              <Avatar sx={{ width: 32, height: 32 }} src={image}>M</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
@@ -319,7 +334,7 @@ function NavBarApprenantSpace() {
             >
 
               <MenuItem onClick={ProfileClickHandle}>
-                <Avatar /> {email}
+                <Avatar src={image} /> {email}
               </MenuItem>
               <Divider />
               <MenuItem onClick={MonApprentissageClickHandle}>
