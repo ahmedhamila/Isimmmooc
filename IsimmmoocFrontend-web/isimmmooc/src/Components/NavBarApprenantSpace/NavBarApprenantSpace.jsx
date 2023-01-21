@@ -55,8 +55,6 @@ import './NavBarApprenantSpace.scss'
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
- 
-  //const pages = ['Catégories', 'Courses', 'Mon apprentissage'];
   const pages = [
     {
       label:'Catégories',
