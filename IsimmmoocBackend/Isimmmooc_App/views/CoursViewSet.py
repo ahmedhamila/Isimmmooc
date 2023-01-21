@@ -2,7 +2,8 @@ from rest_framework import viewsets
 from ..serializers.CoursSerializer import CoursSerializer
 from ..models.Cours import Cours
 from ..models.Discipline import Discipline
-from Isimmmooc_Users.models.Formateur import Formateur
+from Isimmmooc_Users.models import Formateur
+from Isimmmooc_Users.models import Apprenant
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework import status
@@ -39,6 +40,18 @@ class CoursViewSet(viewsets.ModelViewSet):
             FormateurCoursesSerialized = CoursSerializer(FormateurCourses,many=True,context={'request': request})
             return Response(FormateurCoursesSerialized.data,status=status.HTTP_200_OK)
 
+        except Exception as e:
+            return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=False,methods=['POST'])
+    def registerCourse(self,request):
+        try:
+            apprenant = Apprenant.objects.get(user=request.user) 
+            print(apprenant)
+            course= Cours.objects.get(id=request.data['id']) 
+            print(course)
+            apprenant.registered_courses.add(course)
+            return Response(status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"message": e.__str__()}, status=status.HTTP_400_BAD_REQUEST)
             

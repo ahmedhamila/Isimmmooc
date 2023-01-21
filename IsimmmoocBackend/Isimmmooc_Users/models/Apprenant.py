@@ -13,6 +13,7 @@ class Apprenant (models.Model):
     phone_number = PhoneNumberField(null=False, blank=True,default=None , help_text='Numero de Telephone de l Apprenant')
     image = models.ImageField(blank=True,null=True,upload_to='Apprenant/')
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=False,default=None)
+    registered_courses = models.ManyToManyField('Isimmmooc_App.Cours',related_name='registered_courses', default=None,help_text='Registered Courses')
     class Meta :
         ordering = ['-first_name']
     def __str__(self):

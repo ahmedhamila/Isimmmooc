@@ -228,7 +228,7 @@ function  SectionModifierApprenant (props) {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container direction='column'sx={{marginLeft:'20%',marginRight:'18%',marginTop:'1%'}}>
+        <Grid container direction='column' gap='20px'sx={{marginLeft:'20%',marginRight:'18%',marginTop:'1%'}}>
             <Typography sx={{fontWeight:'bold',marginBottom:'1%',fontSize:'20px' }}>
             Informations de base :
             </Typography>

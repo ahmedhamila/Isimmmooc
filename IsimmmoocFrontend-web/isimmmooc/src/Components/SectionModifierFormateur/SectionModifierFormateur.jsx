@@ -371,10 +371,6 @@ function  SectionModifierFormateur (props) {
           <Grid container direction='row'  alignItems='center' justifyContent='center' className="containerImg" > 
             <Grid container flexDirection='row' width='fit-content' justifyContent='flex-start'>
               <input type="file" name="image-upload" id="input" accept='image/*' onChange={imageHandler}/>
-              <label htmlFor="input" className='image-upload'>
-              <PhotoIcon>add_photo_alternate</PhotoIcon>
-              Choose your photo
-              </label>
             </Grid>
           </Grid>
           <Grid container flexDirection='row' justifyContent='center'>

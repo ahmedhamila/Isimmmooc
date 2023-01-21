@@ -36,7 +36,30 @@ async function GetCoursById(id){
       })
    
   } 
+async function GetDiscipline(){
+    
+    return fetch(URL+`/app/Discipline`,{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization': `Token ${localStorage.getItem("Token")}`
+      },
+      })
+   
+  } 
+async function RegisterCourse(id){
+    
+    return fetch(URL+`/app/Cours/registerCourse/`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization': `Token ${localStorage.getItem("Token")}`
+      },
+      body:JSON.stringify({id})
+      })
+   
+  } 
 
  
 
-  export {UpdateApprenant,GetCourses,GetCoursById}  
+  export {UpdateApprenant,GetCourses,GetCoursById,GetDiscipline,RegisterCourse}  

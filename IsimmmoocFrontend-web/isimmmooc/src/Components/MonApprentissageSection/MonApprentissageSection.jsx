@@ -15,13 +15,15 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from "react-router-dom";
 import {useEffect } from 'react';
+import {DefaultPlayer as Video} from 'react-html5video'
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { useSelector } from 'react-redux';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
 * ----------------------------------------------------------------------
 */
-import {GetCourses} from './../../Services'
+
 
 /*
  * ----------------------------------------------------------------------
@@ -45,8 +47,7 @@ function MonApprentissageSection() {
    * --------------------------------------------------------------------
    */
   const [age, setAge] = React.useState('');
-
-  const [courses,setCourses]=React.useState([])
+  const [model,setModel]=React.useState(false)
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 3,
@@ -75,6 +76,7 @@ function MonApprentissageSection() {
    * --------------------------------------------------------------------
    */
   const navigate=useNavigate()
+  const {registeredCourses} = useSelector((state)=>state.user)
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
@@ -88,15 +90,7 @@ function MonApprentissageSection() {
   } 
 
   
-  const Getcourses = async()=>{
-   
-    const response = await GetCourses()   
-    const responseJson = await response.json()
-    setCourses(responseJson)
-    
-  }
-  useEffect(   
-    ()=>{Getcourses() ; },[])
+  
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -136,7 +130,7 @@ function MonApprentissageSection() {
       <Grid container justifyContent='center'>
         
         <Grid container spacing={2} sx={{display:'flex',justifyContent:'center',width:'100%',marginTop:1}} >
-          {courses.map((item,index)=>{
+          {registeredCourses.map((item,index)=>{
             return(
               <IconButton key={index}>
                 <Paper
@@ -150,14 +144,13 @@ function MonApprentissageSection() {
                     }}  
                     onClick={()=>{CoursClickHandle(item.id)}}  
                 >
-                  <CardMedia
-                        component="img"
-                        height="160"
-                        image={reactNativeImg}
-                        alt="course photo"
-                        sx={{p:0.2,cursor:'pointer'}}
-                        
-                  />        
+                  <Video 
+                      style={{width:'100%'}}
+                      autoPlay={model}
+                      controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+                  >
+                      <source src={item.short_video} type="video/mp4"/>
+                  </Video>   
                   <Grid padding='0px'>
                     <Typography variant="h6" fontFamily="Arial" color='#1C1D1F' fontSize='20px' fontWeight='bold'>
                         {item.name}

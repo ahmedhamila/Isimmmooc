@@ -13,6 +13,7 @@ export const userSlice = createSlice({
     birthDay :'',
     image :'',
     cv:'',
+    registeredCourses:[],
     organismeName:'',
     organismeWebSite:'',
     organismeAdress:'',
@@ -49,6 +50,9 @@ export const userSlice = createSlice({
     updateCV : (state,action)=>{
         state.cv = action.payload
     },
+    updateRegisteredCourses : (state,action)=>{
+        state.registeredCourses = action.payload
+    },
     updateOrganismeName : (state,action)=>{
       state.organismeName = action.payload
     },
@@ -73,6 +77,7 @@ export const userSlice = createSlice({
         state.organismeName=action.payload.user.name?action.payload.user.name:null
         state.organismeWebSite=action.payload.user.web_site?action.payload.user.web_site:null
         state.organismeAdress=action.payload.user.adress?action.payload.user.adress:null
+        state.registeredCourses=action.payload.user.registered_courses?action.payload.user.registered_courses:[]
     }
   }
 })

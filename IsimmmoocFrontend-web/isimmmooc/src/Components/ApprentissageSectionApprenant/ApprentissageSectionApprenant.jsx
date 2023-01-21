@@ -45,8 +45,7 @@ function ApprentissageSectionApprenant() {
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const [courses,setCourses]=React.useState([])
-  const {email}=useSelector((state)=>state.user)
+  const {email,registeredCourses}=useSelector((state)=>state.user)
   
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
@@ -86,15 +85,7 @@ function ApprentissageSectionApprenant() {
     navigate("/ApprenantHomeSpace/MonApprentissage")
   }
   
-  const Getcourses = async()=>{
-   
-    const response = await GetCourses()   
-    const responseJson = await response.json()
-    setCourses(responseJson)
-    
-  }
-  React.useEffect(   
-    ()=>{Getcourses() ; },[])
+  
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
@@ -106,10 +97,8 @@ function ApprentissageSectionApprenant() {
    * --------------------------------------------------------------------
    */
   return (
-    <React.Fragment>
-      <CssBaseline />
       <Container maxWidth='false' >
-        <Box sx={{height: '50vh',  maxWidth:'100%',flexDirection: 'column'}} >
+        <Box sx={{flexDirection: 'column'}} >
           <Grid classeName='textContainer' item>
             <h1 color='#1C1D1F' fontFamily=' Georgia'>Commençons notre apprentissage,<br/>
               {email}
@@ -120,10 +109,11 @@ function ApprentissageSectionApprenant() {
           </Grid>
           <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
-          <Grid container spacing={3} flexDirection='row'>
-            <Grid item>
-            {courses.map((item,index)=>{
+          <Grid container spacing={3} flexDirection='row' justifyContent='center'>
+            
+            {registeredCourses.map((item,index)=>{
             return(
+            <Grid item key={index}>
               <Paper
                 sx={{
                   cursor: 'pointer',
@@ -141,7 +131,7 @@ function ApprentissageSectionApprenant() {
                 }}
                 onClick={()=>{CoursClickHandle(item.id)}} 
               >
-                <Grid container spacing={2} key={index}>
+                <Grid container spacing={2} >
                   <Grid item >
                     <ButtonBase sx={{ width: 150, height:'100%',borderRight:1,borderColor:'#8d8e8f', }}>
                       <Video 
@@ -171,14 +161,14 @@ function ApprentissageSectionApprenant() {
                   </Grid>
                 </Grid>
               </Paper>
+              </Grid>
                   ) })} 
-            </Grid>
+            
           </Grid>
           </Grid>
           </Grid>
         </Box>
       </Container>
-    </React.Fragment>
   )
 }
 

@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 * ----------------------------------------------------------------------
 */
 
-import {GetCourses} from './../../Services'
+import {GetCourses,GetDiscipline} from './../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -48,6 +48,7 @@ function SectionApprenantCourses() {
    * --------------------------------------------------------------------
    */
   const [courses,setCourses]=React.useState([])
+  const [disciplines,setDisciplines]=React.useState([])
   const navigate=useNavigate()
 
   /* --------------------------------------------------------------------
@@ -77,11 +78,20 @@ function SectionApprenantCourses() {
    
     const response = await GetCourses()   
     const responseJson = await response.json()
+    console.log(responseJson)
     setCourses(responseJson)
     
   }
+  const Getdisciplines = async()=>{
+   
+    const response = await GetDiscipline()   
+    const responseJson = await response.json()
+    console.log(responseJson)
+    setDisciplines(responseJson)
+    
+  }
   React.useEffect(   
-    ()=>{Getcourses() ; },[])
+    ()=>{Getcourses() ;Getdisciplines() },[])
     
   
   /* --------------------------------------------------------------------
@@ -96,19 +106,21 @@ function SectionApprenantCourses() {
   return (
     <React.Fragment>
     <Container maxWidth="false" sx={{ width:"100%", marginBottom:'3%',marginTop:'1%'}} >
-    {courses.map((item,index)=>{
+    {disciplines.map((discipline,index)=>{
                       return(
         <Box sx={{
-            height: '100%',
             padding: "20px 0",
             position: "relative" }} >
             <Grid classeName='textContainer' item>
-                <h1 color='#1C1D1F' >Meilleurs cours dans la catégorie <a className='link'>{item.discipline}</a></h1>
+                <h1 color='#1C1D1F' >Meilleurs cours dans la catégorie <a className='link'>{discipline.name}</a></h1>
             </Grid>  
             <Grid sx={{ flexGrow: 1 }} container spacing={2}>
                 <Grid item xs={12}>
                 <Grid container justifyContent="center" spacing={2}>
-                    <Grid  item key={index}>
+                {courses.map((item,index)=>{
+                    if (item.discipline === discipline.name )
+                    return(
+                        <Grid  item key={index}>
                         <Paper
                         className='CoursePaper'
                         onClick={()=>{CoursDetailsClickHandle(item.id)}}
@@ -144,6 +156,9 @@ function SectionApprenantCourses() {
                             </CardContent> 
                         </Paper>
                     </Grid>
+                    )
+                })}
+                    
 
                 </Grid>
                 </Grid>
