@@ -1,7 +1,7 @@
 import {Image,Text,View,FlatList,StyleSheet} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 
 const Teachers = () => {
 

@@ -1,5 +1,11 @@
-
+import SignUp from "./SignUp_LogIn/SignUp";
+import Login from "./SignUp_LogIn/Login";
+import FormateurSignUp from "./SignUp_LogIn/Formateur_SignUp";
+import OrganismeSignUp from "./SignUp_LogIn/Organisme_SignUP";
+import File from "./SignUp_LogIn/UplodFile";
+import FormInput from "./SignUp_LogIn/field";
 import Contact from "./Contact";
+import Course from "./Course";
 import Splash from "./Splash";
 import Welcome from "./Welcome";
 import Quiz from "./Quiz";
@@ -29,10 +35,17 @@ import I3 from "./Lic/Inf/I3";
 
 
 export {
+    SignUp,
+    OrganismeSignUp,
+    FormateurSignUp,
+    Login,
+    File,
+    FormInput,
     ResultTest,
     ResultQuiz,
     Teachers,
     Contact,
+    Course,
     Splash,
     Welcome,
     Quiz,
@@ -56,6 +69,5 @@ export {
     I1,
     I2,
     I3,
-
 
 }
