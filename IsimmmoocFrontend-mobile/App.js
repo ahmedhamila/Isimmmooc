@@ -55,7 +55,7 @@ function BottomTab(){
           />
           <Tab.Screen 
             name="Search" 
-            component={SearchCategorie}
+            component={Course}
             options={{ 
               headerShown: false,
               headerTintColor: '#fff',

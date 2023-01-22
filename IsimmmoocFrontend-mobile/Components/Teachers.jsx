@@ -115,7 +115,7 @@ txt:{
     marginLeft:15,
     fontWeight:'bold',   
     margin:12,
-    fontStyle:'italic'
+    fontStyle:'italic',
 }
 ,
 cours:{
