@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import {Text,View,FlatList,StyleSheet,ScrollView,} from 'react-native';
+import {Image ,Text,View,FlatList,StyleSheet,ScrollView,} from 'react-native';
 import { Video, AVPlaybackStatus } from 'expo-av';
 import { TouchableOpacity} from 'react-native';
 
@@ -17,14 +17,16 @@ const Course = () => {
         onPlaybackStatusUpdate={status => setStatus(() => status)}
       />
       <View style={styles.dbtn}>
-      <TouchableOpacity style={styles.finish}><Text style={styles.textf}> Precedent </Text></TouchableOpacity>
-      <TouchableOpacity style={styles.finish}><Text style={styles.textf}> Suivant </Text></TouchableOpacity>
+      <TouchableOpacity ><Image  source={require("../assets/images/previous.png")} style={styles.icon}/>
+</TouchableOpacity>
+<TouchableOpacity ><Image  source={require("../assets/images/next.png")} style={styles.iconnext}/>
+</TouchableOpacity>
       </View>
       <Text style={styles.Ct} > Description Cours :</Text>
       <Text style={styles.Cdes}>Rain is liquid precipitation: water falling from the sky. Raindrops fall to Earth when clouds become saturated, or filled, with water droplets.</Text>
 
       <View style={styles.tel}>
-      <TouchableOpacity style={styles.telch}><Text style={styles.textf}> Telecharger Pdf  📑</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.telch}><Text style={styles.textf}> Telecharger Pdf </Text></TouchableOpacity>
       </View>
     </View>
   )
@@ -41,24 +43,15 @@ height:280,
 width:415,
 }
 ,
-finish:{
-  borderWidth:1,
-  width:145,
-  height:45,
-  backgroundColor:'#A9CCE3',
-  borderRadius:70,
-  justifyContent: "center",
-  marginHorizontal:9,
-},
 
 telch:{
   borderWidth:1,
   width:175,
   height:50,
-  backgroundColor:'#A9CCE3',
-  borderRadius:70,
+  backgroundColor:'#FFF',
   justifyContent: "center",
   marginBottom:20,
+  borderRadius:10,
   
 },
 textf:{
@@ -88,6 +81,7 @@ Ct:{
 Cdes:{
   margin:10,
   marginTop:7,
+  marginBottom:0,
   fontSize:17,
   textDecorationLine:"solid",
  
@@ -109,4 +103,20 @@ tel:{
   alignContent:"center",
   
 },
+icon:{
+
+  marginTop:7,
+  marginLeft:115,
+  height:40,
+  width:40,
+  
+  },
+  iconnext:{
+
+    marginTop:7,
+    marginRight:115,
+    height:40,
+    width:40,
+    
+    }
 })
