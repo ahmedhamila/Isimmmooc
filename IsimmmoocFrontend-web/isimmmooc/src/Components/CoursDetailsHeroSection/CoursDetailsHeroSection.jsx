@@ -36,7 +36,6 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import coursePhoto from '../../Assets/Images/coursePhoto.jpg';
 
 import {fadeInUp} from './../../Data'
 import { useSelector } from 'react-redux';
@@ -202,12 +201,12 @@ const Alert = React.forwardRef(function Alert(props, ref) {
             component={motion.div}
           >  
           <Video 
-            style={{width:'100%'}}     
-            autoPlay={model}
-            controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
-          >
-            <source src={course.short_video} type="video/mp4"/>
-          </Video>
+          style={{width:'100%'}}
+          autoPlay={model}
+          controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+        >
+          <source src={course.short_video} type="video/mp4"/>
+        </Video>
           </Grid>
         </Grid>  
         <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>

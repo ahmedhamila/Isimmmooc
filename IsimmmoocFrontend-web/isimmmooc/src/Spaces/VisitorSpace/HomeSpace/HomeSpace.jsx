@@ -15,7 +15,6 @@ import PopularTopics from '../../../Components/PopularTopics/PopularTopics'
 import PopularCourses from '../../../Components/PopularCourses/PopularCourses'
 import SectionTeachers from '../../../Components/SectionTeachers/SectionTeachers'
 import SectionOrganizmes from '../../../Components/SectionOrganizmes/SectionOrganizmes'
-import AboutUs from '../../../Components/AboutUs/AboutUs'
 
 /*
 * ----------------------------------------------------------------------
@@ -88,10 +87,7 @@ function HomeSpace() {
       <SectionTeachers/>
       <SectionOrganizmes/>
       <SectionComments/>
-      <AboutUs/>
-      <div className="FooterDisposition">
-        <Footer />
-      </div>
+      <Footer />
   </div>
     
   )

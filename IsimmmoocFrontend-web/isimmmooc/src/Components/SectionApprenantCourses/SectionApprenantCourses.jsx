@@ -107,7 +107,7 @@ function SectionApprenantCourses() {
     <React.Fragment>
     <Container maxWidth="false" sx={{ width:"100%", marginBottom:'3%',marginTop:'1%'}} >
     {disciplines.map((discipline,index)=>{
-                      return(
+        return(
         <Box sx={{
             padding: "20px 0",
             position: "relative" }} >
@@ -158,8 +158,6 @@ function SectionApprenantCourses() {
                     </Grid>
                     )
                 })}
-                    
-
                 </Grid>
                 </Grid>
             </Grid>     

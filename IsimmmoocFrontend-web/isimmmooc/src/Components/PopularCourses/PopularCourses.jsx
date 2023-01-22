@@ -19,6 +19,9 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import {motion} from 'framer-motion';
+import {DefaultPlayer as Video} from 'react-html5video'
+import 'react-html5video/dist/styles.css'  
+import { useNavigate } from "react-router-dom";
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -26,7 +29,8 @@ import {motion} from 'framer-motion';
 */
 
 
-import {container,item} from './../../Data'
+import {container} from './../../Data'
+import {GetCoursesHomePage} from'./../../Services'
 
 /*
  * ----------------------------------------------------------------------
@@ -41,17 +45,14 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import courseImg from '../../Assets/Images/coursePhoto.jpg';
-import formateurImg from '../../Assets/Images/formateurImg.jpg';
 function PopularCourses() {
 
   /* --------------------------------------------------------------------
    *                           Constants                                |
    * --------------------------------------------------------------------
    */
-  const [courses,setCourses]=useState([
-    {title:'Developement mobile',desc:'The complete dev mobile course for beginer.',formateurName:'Paolo yokt'}
-  ])
+  const [model,setModel]=useState(false)
+  const [courses,setCourses]=useState([])
 
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -68,18 +69,33 @@ function PopularCourses() {
    *                             Hooks & States                         |
    * --------------------------------------------------------------------
    */
-
+  const navigate=useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
    */
-
+  const CoursDetailsClickHandle = (id)=>{
+    navigate(`/CoursDetails/${id}`)
+  }
+  const SignInClickHandle = ()=>{
+    navigate(`/SignIn`)
+  }
     
   
   /* --------------------------------------------------------------------
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
    */
+  const Getcourses = async()=>{
+   
+    const response = await GetCoursesHomePage()   
+    const responseJson = await response.json()
+    console.log(responseJson)
+    setCourses(responseJson)
+    
+  }
+  React.useEffect(   
+    ()=>{Getcourses() },[])
 
   /* --------------------------------------------------------------------
    *                                 JSX                                |
@@ -118,11 +134,10 @@ function PopularCourses() {
           viewport={{once:false}}
           
           >
-            {[0, 1, 2].map((value) => (
-              <Grid key={value} item 
+            {courses.map((item)=>{
+              return(
+              <Grid  item 
               component={motion.div}
-              variants={item}
-              
               >
                 <Paper
                   className='CoursePaper'
@@ -134,44 +149,38 @@ function PopularCourses() {
                     border: '1px solid rgb(206, 194, 194)',
                     
                   }}
-                  
+                  onClick={()=>{CoursDetailsClickHandle(item.id)}}
                   >
-                  <CardMedia
-                    component="img"
-                    height="160"
-                    image={courseImg}
-                    alt="course photo"
-                    sx={{p:0.2}}
-                  />
-                  {courses.map((item)=>{
-                    return(
-                      
+                 <Video 
+                    style={{width:'100%'}}
+                    autoPlay={model}
+                    controls={['PlayPause','Seek','Time','Volume','Fullscreen']}
+                  >
+                    <source src={item.short_video} type="video/mp4"/>
+                  </Video> 
                     <CardContent>
                       <Grid container direction='row'>
                       
                       <Typography gutterBottom variant="p" textAlign="left" marginBottom="3%" fontFamily='Segoe UI' color='#9d9da8' component="div">
-                        {item.title}
+                        {item.name}
                       </Typography>
                       </Grid>
                       <Typography variant="h6" marginTop="3%" fontFamily="Arial" fontSize='18' fontWeight='bold'>
-                        {item.desc}
+                        {item.description}
                       </Typography>
                       <Stack spacing={1} marginTop="5%">
                         <Rating name="half-rating-read" defaultValue={4} precision={1} readOnly />
                       </Stack>
                       <Stack marginTop="7%" direction='row' spacing={2}>
-                      <Avatar alt="Remy Sharp" src={formateurImg} />
+                      <Avatar alt="Remy Sharp" src={item.formateurImg} />
                       <Typography variant="p" marginTop="3%" fontFamily="Segoe UI" fontSize='12' >
-                        {item.formateurName}
+                        {item.formateur}
                       </Typography>
                       </Stack>
-                      
-                    </CardContent>)
-                        
-                    })}  
+                    </CardContent> 
                   </Paper>
               </Grid>
-            ))}
+              )})} 
           </Grid>
         </Grid>
         <Grid 
@@ -192,6 +201,7 @@ function PopularCourses() {
                 }
               }}
             size="large"
+            onClick={SignInClickHandle}
             >
                 Browse All 
             </Button> 

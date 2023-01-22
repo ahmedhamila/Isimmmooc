@@ -42,7 +42,7 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import imageProfile from '../../Assets/Images/photo-profile.jpg';
+import imageProfile from '../../Assets/Images/2.jpg';
 import commentIcon from '../../Assets/Images/comment-icom.png';
 function SectionComments(){
 
@@ -53,6 +53,8 @@ function SectionComments(){
   const [comments,setComments]=useState([
     {txt:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?',
      userName:'Yosra Omran'},
+     {txt:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?',
+     userName:'Ahmed Hamila'}
   ])
   /* --------------------------------------------------------------------
    *                               Props                                |
@@ -121,10 +123,12 @@ function SectionComments(){
               whileInView='show'
               viewport={{once:false}}
               >
-                {[0, 1, 2].map((value) => (
-                  <Grid key={value} item 
+                {comments.map((item,index)=>{
+                        return(
+                
+                  <Grid  item 
                   component={motion.div}
-                  variants={item}
+                  key={index}
                   >
                     <Paper
                       sx={{
@@ -138,8 +142,7 @@ function SectionComments(){
                       }}
                       
                       >
-                      {comments.map((item)=>{
-                        return(
+                      
                         <CardContent>
                           <Grid container direction='row'>
                           <img src={commentIcon} alt="commentIcon" />
@@ -157,12 +160,12 @@ function SectionComments(){
                           <Typography variant="body2" marginTop="3%" align='justify' fontFamily="Arial" fontSize='16'>
                             {item.txt}
                           </Typography>
-                        </CardContent>)
-                            
-                        })}
+                        </CardContent>
                       </Paper>
                   </Grid>
-                ))}
+                  )
+                            
+                })}
               </Grid>
             </Grid>
           </Grid>
