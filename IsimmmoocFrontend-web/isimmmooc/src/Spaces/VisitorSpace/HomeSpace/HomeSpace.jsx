@@ -85,7 +85,7 @@ function HomeSpace() {
       <PopularTopics />
       <PopularCourses />
       <SectionTeachers/>
-      <SectionOrganizmes/>
+      {/*<SectionOrganizmes/>*/}
       <SectionComments/>
       <Footer />
   </div>

@@ -14,6 +14,7 @@ import StoreIcon from '@mui/icons-material/Store';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import {Button} from '@mui/material';
 import {motion} from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 /*
 * ----------------------------------------------------------------------
 *                              Services & Models                       |
@@ -61,7 +62,7 @@ function PopularTopics() {
    *                              States                                |
    * --------------------------------------------------------------------
    */
-
+  const navigate=useNavigate()
   /* --------------------------------------------------------------------
    *                             Functions                              |
    * --------------------------------------------------------------------
@@ -230,6 +231,9 @@ function PopularTopics() {
                     }
                   }}
                 size="large"
+                
+                onClick={()=>{navigate(`/SignIn`)}}  
+                
                 >
                     Browse All 
                 </Button> 

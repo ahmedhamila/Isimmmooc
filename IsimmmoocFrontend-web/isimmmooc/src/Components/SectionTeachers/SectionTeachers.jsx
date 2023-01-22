@@ -156,7 +156,7 @@ function SectionTeachers() {
                 <Grid container >
                   <Grid item>
                     <ButtonBase sx={{ width: 140, height: 140 }}>
-                      <Img alt="complex" scr={teacher.image} />
+                      <Img alt="complex" src={teacher.image} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs={12} sm container>
