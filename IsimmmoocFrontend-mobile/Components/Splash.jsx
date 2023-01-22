@@ -1,16 +1,15 @@
-import {Image ,StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {Image ,StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import Lottie from 'lottie-react-native';
 
 const Splash = () => {
   return (
-    <View >
+    <View style={{height:'100%',backgroundColor:'#FFF'}}>
+  
+      <Lottie  source={ require("../assets/edu.json")} autoPlay loop  styles={styles.lot} />
       <Text style={styles.st}>    Bienvenue sur</Text>
       <Text style={styles.st1}  >                        Isimmmooc </Text>
      
-      <Image   source={require('../assets/images/work.png')}
-        style={styles.sm}
-        resizeMode="contain"
-        ></Image>
         
     </View>
   )
@@ -55,6 +54,12 @@ si:{
     justifyContent:'center',
 
 }
+,
+lot:{
+  height:50,
+  width:50,
+  margin:3,
+  }
 
 })
 

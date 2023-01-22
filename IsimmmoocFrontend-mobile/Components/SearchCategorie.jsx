@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import {Image ,ImageBackground,StyleSheet, Text, View } from 'react-native';
+import {Image ,StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity} from 'react-native';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';

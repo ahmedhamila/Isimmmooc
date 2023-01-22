@@ -1,7 +1,7 @@
 import { Image,StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-
-import { TouchableOpacity} from 'react-native-gesture-handler';
+import Lottie from 'lottie-react-native';
+import { TouchableOpacity} from 'react-native';
 
 const ResultQuiz = () => {
   return (
@@ -9,10 +9,12 @@ const ResultQuiz = () => {
 
     <Text style={styles.txt}>Vous Avez Terminez Le Quiz </Text>
 
-    <Image source={require("../../assets/images/quiz.png")} style={styles.img} />
-
-      
-    <Text style={styles.rslt} >Votre Score est :</Text>
+   {/* <Image source={require("../../assets/images/quiz.png")} style={styles.img} />  */}
+    {/*<LottieView  source={require=("../../assets/hour.mp4")} style={styles.lot} /> */}
+    
+    <Lottie  source={ require("../../assets/hour.json")} autoPlay loop  styles={styles.lot} />
+   
+    <Text style={styles.rslt1} >Votre Score est :</Text>
     <Text style={styles.rslt} >Score</Text>
     
     <TouchableOpacity style={styles.finish}><Text style={styles.textf}> Quitter </Text></TouchableOpacity>
@@ -52,10 +54,18 @@ txt:{
 
 }
 ,
+rslt1:{
+    
+  fontSize:20,
+  marginTop:210,
+  fontWeight:'bold',
+
+}
+,
 rslt:{
     
     fontSize:20,
-    marginTop:30,
+    marginTop:40,
     fontWeight:'bold',
 
 }
@@ -82,4 +92,9 @@ finish:{
    
   },
 
+lot:{
+height:50,
+width:50,
+margin:3,
+}
 })

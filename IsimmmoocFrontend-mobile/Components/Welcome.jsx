@@ -1,23 +1,15 @@
-import {Image ,ImageBackground,StyleSheet, Text, View ,FlatList} from 'react-native'
+import {Image ,StyleSheet, Text, View ,FlatList} from 'react-native'
 import React, { useState } from "react";
-import SearchCategorie from './SearchCategorie';
+
 import { Card } from 'react-native-paper';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Login from './Login';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import OrganismeSignUp from './Organisme_SignUP';
-import SignUp from './SignUp';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import FormateurSignUp from './Formateur_SignUp';
-import Teachers from './Teachers';
+import {useNavigation} from '@react-navigation/native';
 
+import Teachers from './Teachers';
 const Welcome = ({navigation}) => {
   
 
@@ -42,7 +34,7 @@ const [courses,setCourses]=useState([
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
 <TouchableOpacity  style={styles.btnCours}
-onPress={()=> navigation.navigate('Teachers')}>
+>
 <Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
 <Image  source={item.rate} style={styles.rate}/>
 </View>
@@ -81,6 +73,7 @@ onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
 
 </View>
 </Card>
+
 </Card>
 
     </View>
@@ -275,7 +268,7 @@ card:{
   marginTop:2,
   marginLeft:7,
   marginRight:7,
-  marginBottom:37,
+  marginBottom:3,
   alignItems: 'center',
   
   shadowColor: "#000",
@@ -296,7 +289,8 @@ cours:{
   backgroundColor:'#fff',
   height:140,
   width:380,
-  marginTop:15,
+  marginBottom:6,
+  marginTop:12,
   marginLeft:7,
   marginRight:7,
   shadowColor: "#000",
@@ -310,10 +304,26 @@ cours:{
   elevation: 24,
 },
 
-    Conttitle:{
+Conttitle:{
   
       justifyContent: 'center',
       alignItems: 'center',
-    }
+},
+
+socialM:{
+        borderTopWidth:1,
+        borderLeftWidth:1,
+        borderRightWidth:1,
+        borderRadius:18,
+        backgroundColor:'#fff',
+        height:58,
+        width:398,
+        marginLeft:7,
+        marginRight:7,
+        marginBottom:3,
+        flexDirection: "row",
+        justifyContent:'space-between',
+        alignItems:'center',
+        }
 
 })

@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View ,PreviewLayout, Alert} from 'react-native'
+import { StyleSheet, Text, View ,Alert} from 'react-native'
 import React from 'react';
 import CountDown from 'react-native-countdown-component';
 
-import { TouchableOpacity} from 'react-native-gesture-handler'
+import { TouchableOpacity} from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 
 const Quiz = () => {
