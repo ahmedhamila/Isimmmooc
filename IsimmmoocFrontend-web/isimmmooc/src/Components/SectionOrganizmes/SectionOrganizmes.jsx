@@ -112,8 +112,7 @@ function SectionOrganizmes() {
             whileInView='show'
             viewport={{once:false}}
             >
-              {[0, 1].map((value) => (
-                <Grid key={value} item 
+                <Grid item 
                 component={motion.div}
                 variants={item}
                 >
@@ -150,7 +149,6 @@ function SectionOrganizmes() {
                     </CardActions>
                   </Card>
                 </Grid>
-              ))}
             </Grid>
           </Grid>
           <Grid 

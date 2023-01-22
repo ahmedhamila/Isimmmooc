@@ -29,8 +29,6 @@ import './VideoSpace.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import imgVideo from '../../Assets/Videos/imgVideo.png';
-import video from '../../Assets/Videos/Video.mp4';
 
 function VideoSpace(props) {
 

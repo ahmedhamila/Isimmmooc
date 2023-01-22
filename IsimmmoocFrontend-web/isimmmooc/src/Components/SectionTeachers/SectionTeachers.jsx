@@ -23,6 +23,7 @@ import {motion} from 'framer-motion';
 */
 
 import {container,item} from './../../Data'
+import {GetFormateurs,GetCoursesHomePage} from'./../../Services'
 
 
 /*
@@ -36,7 +37,7 @@ import styles from './../../Assets/Styles/style.module.scss'
  *                                Images                                |
  * ----------------------------------------------------------------------
  */
-import teacherImg from '../../Assets/Images/teacherImg.jpg';
+
 
 function SectionTeachers() {
 
@@ -50,11 +51,8 @@ function SectionTeachers() {
     maxWidth: '100%',
     maxHeight: '100%',
   });
-  const [teachers,setTeachers]=useState([
-    {teacherName:'David Warner',
-     jobTitle:'React Native',
-     desc:'David Warner is one of the best react native course mentorof our plateform.'}
-  ])
+  const [courses,setCourses]=useState([])
+  const [teachers,setTeachers]=useState([])
   /* --------------------------------------------------------------------
    *                               Props                                |
    * --------------------------------------------------------------------
@@ -82,18 +80,32 @@ function SectionTeachers() {
    *                            Effect Hooks                            |
    * --------------------------------------------------------------------
    */
-
+  const Getcourses = async()=>{
+   
+    const response = await GetCoursesHomePage()   
+    const responseJson = await response.json()
+    setCourses(responseJson)
+    
+  }
+  
+  const getTeachers = async()=>{
+   
+    const response = await GetFormateurs()   
+    const responseJson = await response.json()
+    setTeachers(responseJson)
+    
+  }
+  React.useEffect(   
+    ()=>{getTeachers();Getcourses()},[])
   /* --------------------------------------------------------------------
    *                                 JSX                                |
    * --------------------------------------------------------------------
    */
   return (
-  <React.Fragment>
-  <Container maxWidth="false" sx={{marginTop:'2%',
-    width:"100%"}} 
+
+  <Container maxWidth="false"
   >
     <Box sx={{
-        height: '100%',
         padding: "20px 0",
         position: "relative" }} >
       <motion.div 
@@ -109,7 +121,9 @@ function SectionTeachers() {
         <p style={{color:'#ff7468',fontFamily:'Arial'}}>Meet with our teachers</p>
         <h1 >Our teachers</h1>
         <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-      </motion.div>    
+      </motion.div>   
+      {teachers.map((teacher)=>{
+          return(
       <Grid sx={{ flexGrow: 1 }} container spacing={2}>
         <Grid item xs={12}>
           <Grid container justifyContent="center" spacing={12}
@@ -120,15 +134,16 @@ function SectionTeachers() {
           whileInView='show'
           viewport={{once:false}}
           >
-            {[0, 1, 2,3].map((value) => (
-              <Grid key={value} item
+              {courses.map((course)=>{
+          if (teacher.mail===course.formateur )
+          return( 
+              <Grid  item
               component={motion.div}
               variants={item}
               >
                 <Paper
                       sx={{
                         p: 2,
-                        margin: 'auto',
                         maxWidth: 400,
                         flexGrow: 1,
                         backgroundColor: (theme) =>
@@ -137,80 +152,42 @@ function SectionTeachers() {
                         boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                         borderRadius:'15px',
                       }}
-                    >
-                <Grid container spacing={2}>
+                    >  
+                <Grid container >
                   <Grid item>
                     <ButtonBase sx={{ width: 140, height: 140 }}>
-                      <Img alt="complex" src={teacherImg} />
+                      <Img alt="complex" scr={teacher.image} />
                     </ButtonBase>
                   </Grid>
                   <Grid item xs={12} sm container>
                     <Grid item xs container direction="column" spacing={2}>
-                    {teachers.map((item)=>{
-                    return(
                       <Grid item xs>
                         <Typography gutterBottom variant="p" fontFamily='Arial' fontWeight='bold' component="div">
-                          {item.teacherName}
+                          {teacher.first_name}_{teacher.last_name}
                         </Typography>
                         <Typography variant="body2" gutterBottom color="text.secondary">
-                          {item.jobTitle}
+                          {course.name}
                         </Typography>
                         <Typography variant="p" color="text.secondary" fontFamily='Arial'>
-                          {item.desc}
+                        {teacher.first_name}_{teacher.last_name} is one of the best {course.name} course mentorof our plateform.
                         </Typography>
                       </Grid>
-                       )})}
                       <Grid item>
-                        <Button
-                        variant='text' 
-                        sx={{
-                            backgroundColor:styles.SecondaryColor,
-                            color:'#fff',
-                            "&:hover" : {
-                              backgroundColor : '#fff',
-                              color: styles.SecondaryColor  ,
-                            }
-                          }}
-                        
-                        >
-                          View Profile 
-                        </Button>
                       </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
               </Paper>
+               
               </Grid>
-            ))}
+               )
+              })}
           </Grid>
         </Grid>
-        <Grid 
-        container
-        marginTop='2%'
-        direction='column'
-        alignItems='center'
-        justifyContent='center'
-        className='PopularTopicsButton'>
-            <Button
-            variant='text' 
-            sx={{
-                backgroundColor:styles.SecondaryColor,
-                color:'#fff',
-                "&:hover" : {
-                  backgroundColor : '#fff',
-                  color: styles.SecondaryColor  ,
-                }
-              }}
-            size="large"
-            >
-               See All 
-            </Button> 
-        </Grid>
       </Grid>
-      
+       ) })}
     </Box>
   </Container>
-</React.Fragment>
 
   )
 }
