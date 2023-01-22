@@ -147,8 +147,8 @@ function HeroSection() {
                 Anytime Anywhere learn on your suitable schedule
               </motion.h2>
               <motion.p variants={fadeInUp}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, 
-                maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?
+                Un apprentissage qui vous ressemble Des compétences pour aujourd'hui (et demain). Nous vous accompagnons dans vos premiers pas.
+                Un apprentissage qui vous ressemble Des compétences pour aujourd'hui (et demain). Nous vous accompagnons dans vos premiers pas.
               </motion.p>
             </motion.div>
           </Grid>

@@ -51,9 +51,9 @@ function SectionComments(){
    * --------------------------------------------------------------------
    */
   const [comments,setComments]=useState([
-    {txt:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?',
+    {txt:'Excellente formation. Etant novice jai beaucoup appris. Cela va grandement. maider pour mes projets. Formateur très pédagogue. Je ne peux que le recommander !',
      userName:'Yosra Omran'},
-     {txt:'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum voluptates quod dolorem aut voluptatum rerum, maiores eaque ipsa atque dolorum iusto perferendis est laboriosam qui itaque cupiditate. Obcaecati, perferendis unde?',
+     {txt:'Trop d’évolutions du coup certains chapitres ne correspondent plus du tout à la réalité actuelle.Impossible de joindre le formateur c’est un peu décevant.',
      userName:'Ahmed Hamila'}
   ])
   /* --------------------------------------------------------------------
@@ -153,8 +153,6 @@ function SectionComments(){
                           <CardMedia 
                             component="img"
                             height="170"
-                            image={imageProfile}
-                            alt="userName photo"
                             sx={{ borderRadius: '50%' }}
                           />
                           <Typography variant="body2" marginTop="3%" align='justify' fontFamily="Arial" fontSize='16'>
