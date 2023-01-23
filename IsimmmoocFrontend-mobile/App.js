@@ -6,6 +6,17 @@ import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import{Login,SignUp,Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers, ResultQuiz, ResultTest, Notif,Ing1, Ing2,Ing3, Niv, NivP,P1, P2, M1, M2, M3, E1, E2, E3, Section, I1, I2, I3} from './Components/index';
 import Ionicons from '@expo/vector-icons/MaterialIcons';
+/*import ApprenantHome from './ProjectComponents/Apprenant_Home';
+import FormateurHome from './ProjectComponents/Formateur_home';
+import Login from './ProjectComponents/Login';
+import Course from './ProjectComponents/Course';
+import Profile from './ProjectComponents/Profile';
+import Quiz from './ProjectComponents/Quiz';
+import Settings from './ProjectComponents/Settings';
+import FormateurSignUp from './ProjectComponents/Formateur_SignUp';
+import SignUp from './ProjectComponents/SignUp';
+import OrganismeSignUp from './ProjectComponents/Oraganisme_SignUp';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';*/
 
 
 
@@ -124,3 +135,31 @@ const styles = StyleSheet.create({
 
 
 export default App
+/*const Stack = createNativeStackNavigator();
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator  
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: 'rgb(91, 33, 182)',
+          },
+          headerTintColor: '#fff',
+        }}>
+           <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="FHome" component={ApprenantHome}   options={{ headerShown: false }}/>
+        <Stack.Screen name="Home" component={FormateurHome}   options={{ headerShown: false,title:"Home" }}/>
+        <Stack.Screen name="QQapp" component={Course} />
+        <Stack.Screen name="profile" component={Profile} />
+        <Stack.Screen name="QQQapp" component={Quiz} />
+        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="FormateurSignUp" component={FormateurSignUp} options={{title:'SignUp'}} />
+        <Stack.Screen name="SignUp" component={SignUp} options={{title:'SignUp'}} />
+        <Stack.Screen name="OrganismeSignUp" component={OrganismeSignUp} options={{title:'SignUp'}} />
+       
+       
+      </Stack.Navigator>
+    </NavigationContainer>
+   
+  );
+}*/
