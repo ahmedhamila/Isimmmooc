@@ -38,6 +38,8 @@ import Ajouter from "./Ensg/Ajouter";
 import Mescours from "./Ensg/Mescours";
 import Successform from "./SignUp_LogIn/Successform";
 import Successorg from "./SignUp_LogIn/Successorg";
+import Choose from "./SignUp_LogIn/Choose";
+
 
 export {
     SignUp,
@@ -80,4 +82,5 @@ export {
     Ajouter,
     Successform,
     Successorg,
+    Choose,
 }

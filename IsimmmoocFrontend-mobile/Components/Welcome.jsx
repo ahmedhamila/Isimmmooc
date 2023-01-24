@@ -36,16 +36,26 @@ const dat=({item})=>(
         height: 45,
         width: 35,
         padding: 0,
-        marginTop: 7,
+        marginTop: 0,
         marginRight:19,
-        marginBottom:15,
+        marginBottom:31,
       }}
       source={ require("../assets/animation/heart.json")}
       autoPlay loop
     />
 
-<Image  source={item.rate} style={styles.rate}/>
-</View>
+<Animation
+      style={{
+        height: 25,
+        width: 15,
+        padding: 0,
+        marginTop: 3,
+        marginRight:97,
+        marginBottom:25,
+      }}
+      source={ require("../assets/animation/star.json")}
+      autoPlay loop
+    /></View>
 
 </View>
 </View>

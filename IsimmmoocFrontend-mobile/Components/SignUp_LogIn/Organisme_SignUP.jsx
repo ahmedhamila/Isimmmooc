@@ -5,7 +5,9 @@ import { Card } from 'react-native-paper';
 import { Image,TouchableOpacity } from 'react-native';
 
 
+
 const OrganismeSignUp = ({navigation}) => {
+
 
   const [name, setName] = useState("")
   const [web_site, setWeb_site] = useState("")
@@ -35,13 +37,12 @@ const OrganismeSignUp = ({navigation}) => {
       })
       .catch(function(error) {
         console.log('There has been a problem with fetch operation: ' + error.message);
-        });
-        const json = await response.json()
+      });
+
         navigation.navigate("Successorg")
+        const json = await response.json()
         return json.Token
-
   }
-
 
   return (
     <View style={{backgroundColor:'#FFF',height:'100%'}}>
@@ -54,7 +55,7 @@ const OrganismeSignUp = ({navigation}) => {
 
       <Card style={styles.card} >
       <View style={styles.infoCours}>
-      <Text style={styles.pop} >Creer un Compte </Text>
+      <Text style={styles.pop} > Creer un Compte </Text>
       <ScrollView style={styles.scrollView}>
 
       <Text >Name</Text>
@@ -71,18 +72,16 @@ const OrganismeSignUp = ({navigation}) => {
 
       <Text >Adress</Text>
       <TextInput style={styles.textinput} value={adress} onChangeText={text => setAdress(text)}    placeholder='Adress'/>
-
        
       <Text >Password</Text>
       <TextInput style={styles.textinput} value={password} onChangeText={text => setPassword(text)}  textContentType="password" autoCompleteType="password"  placeholder='Password'/>
 
       <TouchableOpacity style={styles.btn} onPress={() => creation()}>
-          <Text style={styles.btntxt}>Creer</Text>
+      <Text style={styles.btntxt}>Creer</Text>
       </TouchableOpacity>
-
       </ScrollView>
       </View>
-
+        
       </Card>
     </View>
   )
@@ -135,21 +134,33 @@ textinput:{
   borderRadius: 10,
   padding: 10,
   backgroundColor:'#FFF',
-}
-,
-btn:{
-backgroundColor:'#FFF',
-borderRadius:20,
-height:40,
-width:120,
-borderWidth:1,
-textAlign:'center',
-margin:45,
-marginLeft:90,
-marginTop:25,
+},
 
-}
-,
+btn:{
+  backgroundColor:'#FFF',
+  borderRadius:20,
+  height:40,
+  width:120,
+  borderWidth:1,
+  textAlign:'center',
+  margin:45,
+  marginBottom:25,
+  marginLeft:90,
+  marginTop:25,
+  },
+
+  bt1:{
+    backgroundColor:'#FFF',
+    borderRadius:20,
+    height:40,
+    width:120,
+    borderWidth:1,
+    textAlign:'center',
+    margin:45,
+    marginLeft:97,
+    marginTop:5,
+    },
+
 btntxt:{
   textAlign:'center',
   fontSize:17,

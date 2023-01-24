@@ -4,17 +4,14 @@ import {Text,View,FlatList,StyleSheet,ScrollView,TextInput,} from 'react-native'
 import { Card } from 'react-native-paper';
 import { TouchableOpacity,Image } from 'react-native';
 
-
 const Login = ({navigation}) => {
 
   const [mail, setMail] = useState("")
   const [password, setPassword] = useState("")
 
-
-
   async function connecter(){
     let body = JSON.stringify({
-      'mail': mail,
+      'username': mail,
       'password':password,
     })
     const response = await fetch(`http://192.168.56.1:8000/auth/`,{
@@ -33,25 +30,26 @@ const Login = ({navigation}) => {
 
         if(json.token){
 
-          console.log("bien")
+          let bd = JSON.stringify({
+            'Token': json.token,
 
+          })
           const responselog =  fetch('http://192.168.56.1:8000/users/User/getUser/',{
             method:'POST',
             headers:{
               'Accept':'application/json',
               'Content-Type':'application/json',
             },
-            body:JSON.stringify(json.token)
+            body:bd
             })
             .catch(function(error) {
               console.log('There has been a problem with  fetch operation: ' + error.message);
               });
 
             if(responselog){
-              console.log("connecte")
+              navigation.navigate("Choose")
 
             }
-            
 
         }else{
           console.log("bien pas")

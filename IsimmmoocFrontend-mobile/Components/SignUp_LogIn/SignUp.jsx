@@ -36,8 +36,9 @@ const SignUp = ({navigation}) => {
       .catch(function(error) {
         console.log('There has been a problem with  fetch operation: ' + error.message);
         });
-        const json = await response.json()
+        
         navigation.navigate("Success")
+        const json = await response.json()
         return json.Token
 
   }
@@ -149,7 +150,6 @@ textAlign:'center',
 margin:45,
 marginLeft:90,
 marginTop:25,
-
 }
 ,
 btntxt:{

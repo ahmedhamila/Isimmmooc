@@ -24,7 +24,7 @@ const Successorg = ({navigation}) => {
 <CountDown
 size={0}
 until={7}
-onFinish={()=> navigation.navigate("Welcome")}
+onFinish={()=> navigation.navigate("Start")}
 showSeparator
 timeToShow={['S']}
 timeLabels={{s:''}}

@@ -3,9 +3,6 @@ import React from 'react';
 import Lottie from 'lottie-react-native';
 import CountDown from 'react-native-countdown-component';
 
-const finish=()=>{
-  
-}
 
 const Splash = ({navigation}) => {
   return (
@@ -57,13 +54,10 @@ sm:{
     paddingLeft:460,
     paddingTop:160,
     paddingBottom:160,
-    
-
 }
 ,
 si:{
     justifyContent:'center',
-
 }
 ,
 lot:{
