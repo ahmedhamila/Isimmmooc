@@ -4,11 +4,9 @@ import { Card } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 
 
-const Ing1 = ({navigation}) => {
+const Mescours = ({navigation}) => {
   
-
 const [courses,setCourses]=useState([
-
   {name:"Cours developement Web",image:require("../../assets/images/comp.jpg"),
   rate:require("../../assets/images/3s.png")},
   {name:"Cours Mathematique", image:require("../../assets/images/alg.jpg"),
@@ -20,17 +18,15 @@ const [courses,setCourses]=useState([
   },
 ]);
 
-  const dat=({item})=>(
-
+const dat=({item})=>(
 <Card style={styles.cours} >
 <View style={styles.dbtn}>
 <Image  source={item.image} style={styles.img}/>
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
 <TouchableOpacity  style={styles.btnCours}
-onPress={()=> navigation.navigate('Teachers')}>
-<Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
-<Image  source={item.rate} style={styles.rate}/>
+onPress={()=> navigation.navigate('Welcome')}>
+<Text  style={styles.txtbtnCours}>Modifier</Text></TouchableOpacity>
 </View>
 </View>
 </Card>
@@ -38,20 +34,23 @@ onPress={()=> navigation.navigate('Teachers')}>
   );
 
 
-
-  return (
+return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
+
+
 <View style={styles.head}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=> navigation.navigate('Welcome')} >
       <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
     </TouchableOpacity>
 </View>
-<View style={styles.centerbtn}>
+<View >
+
 </View>
 
 <Card style={styles.card} >
-<View styles={styles.Conttitle}>
-<Text style={styles.pop} >Cours Ing 1 </Text>
+<View >
+
+<Text style={styles.pop} >Mes cours</Text>
 
 <FlatList
   data={courses}
@@ -60,46 +59,22 @@ onPress={()=> navigation.navigate('Teachers')}>
 
 </View>
 </Card>
-</View>
+
+<TouchableOpacity  style={styles.btnajout}
+onPress={()=> navigation.navigate('Ajouter')}>
+<Text  style={styles.txtbtnCours}>Ajouter un cours</Text></TouchableOpacity>
+    </View>
 
   )
 }
 
-export default Ing1
+export default Mescours
 
 const styles = StyleSheet.create({
 
-centerbtn:{
-    alignItems:'center', 
-},
-
-welc1:{
-    fontSize:25,
-    textDecorationLine:"solid",
-    fontWeight: '400',
-    marginTop:6,
-    fontStyle:'italic',
-    fontWeight: "bold",
-},
-
-welc:{
-    fontSize:25,
-    textDecorationLine:"solid",
-    fontWeight: '400',
-    margin:7,
-    fontStyle:'italic',
-    fontWeight: "bold",
-},
-
 notif:{
-    marginTop:19,
-},
-
-headtxt:{
-    fontSize:27,
-    marginTop:9,
-    marginLeft:9,
-    textDecorationLine:"solid",
+  marginTop:19,
+    
 },
 
 head:{
@@ -125,6 +100,7 @@ scroll:{
   margin:8,
   marginBottom:42,
   borderRadius:20,
+  
 },
 
 pop:{
@@ -133,6 +109,7 @@ fontSize:28,
 textDecorationLine:"solid",
 fontWeight: "bold",
 textAlign: 'center',
+
 },
 
 Ctitle:{
@@ -141,19 +118,15 @@ Ctitle:{
   textDecorationLine:"solid",
   fontWeight: "bold",
   textAlign: 'center',
+
 },
 
-nottxt:{
-fontSize:22,
-marginTop:29,
-marginLeft:9,
-textDecorationLine:"solid",
-},
 
 notif:{
 height:35,
 width:53,
 marginRight:20,
+
 },
 
 img:{
@@ -161,29 +134,23 @@ img:{
     height:125,
     width:125,
     borderRadius:20,
-},
-
-rate:{
-
-  width:92,
-  marginBottom:43,
-},
+    },
 
 dbtn:{
+
   justifyContent:'space-between',
   flexDirection: "row",
   margin:7,
 },
 
-btn:{
-  borderWidth:1,
-  backgroundColor:'#84b9db',
-  borderRadius:30,
-  height:50,
+btnajout:{
+  borderWidth:2,
+  backgroundColor:'#FFF',
+  borderRadius:13,
+  marginTop:0,
+  height:55,
   width:180,
-  marginBottom:12,
-  marginTop:17,
-  borderRadius: 26,
+  marginLeft:120,
 },
 
 btnCours:{
@@ -191,19 +158,14 @@ btnCours:{
   backgroundColor:'#A9CCE3',
   borderRadius:30,
   marginTop:8,
+  height:50,
+  width:120,
+ 
 },
 
-btnText:{
-  fontSize:19,
-  color:'black',
-  textDecorationLine:"solid",
-  fontWeight: "bold",
-  alignItems:'center',
-  textAlign: "center",
-  padding:9,
-},
 
 txtbtnCours:{
+
   fontSize:17,
   color:'black',
   textDecorationLine:"solid",
@@ -211,55 +173,37 @@ txtbtnCours:{
   alignItems:'center',
   textAlign: "center",
   padding:11,
-},
+  
+}
+,
 
-icon:{
-marginRight:15,
-marginTop:15,
-},
-
-body:{
-  borderWidth:1,
-  borderTopRightRadius:65,
-  borderTopLeftRadius:65,
-  backgroundColor:'#FFF',
-},
-title:{
-    borderWidth:1,
-    height:70,
-    width:170,
-    alignItems:'center',
-    backgroundColor:'#FFFF',
-    borderRadius:27,
-},
 card:{
-  borderWidth:1,
-  borderTopRightRadius:55,
-  borderTopLeftRadius:55,
+  borderWidth:1.5,
+  borderTopRightRadius:47,
+  borderTopLeftRadius:47,
   backgroundColor:'#e8f6ff',
-  height:550,
+  height:540,
   width:400,
   marginTop:2,
   marginLeft:7,
   marginRight:7,
-  marginBottom:37,
+  marginBottom:20,
   alignItems: 'center',
+
 },
 
 cours:{
+  
   borderWidth:1,
   borderRadius:13,
   backgroundColor:'#fff',
   height:140,
   width:380,
-  marginTop:15,
+  marginTop:10,
   marginLeft:7,
   marginRight:7,
-},
+  marginBottom:7,
 
-Conttitle:{
-  justifyContent: 'center',
-  alignItems: 'center',
-}
+},
 
 })

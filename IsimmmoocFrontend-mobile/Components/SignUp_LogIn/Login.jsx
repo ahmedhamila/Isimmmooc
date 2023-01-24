@@ -5,7 +5,7 @@ import { Card } from 'react-native-paper';
 import { TouchableOpacity,Image } from 'react-native';
 
 
-const Login = () => {
+const Login = ({navigation}) => {
 
   const [mail, setMail] = useState("")
   const [password, setPassword] = useState("")
@@ -51,6 +51,8 @@ const Login = () => {
               console.log("connecte")
 
             }
+            
+
         }else{
           console.log("bien pas")
         }
@@ -60,7 +62,7 @@ const Login = () => {
   return (
     <View style={{backgroundColor:'#FFF',height:'100%'}}>
       <View style={styles.head}>
-    <TouchableOpacity>
+    <TouchableOpacity  onPress={()=> navigation.navigate("Start")}>
       <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
     </TouchableOpacity>
     </View>
@@ -101,7 +103,7 @@ card:{
     marginTop:14,
     marginLeft:7,
     marginRight:7,
-    borderWidth: 1,
+    borderWidth: 2,
     }
     ,
 pop:{
@@ -121,16 +123,16 @@ infoCours:{
         alignItems:'center',
         padding:5,
         margin:29,
-      }
-,
+},
+
 scrollView:{
-  marginHorizontal: 7,
+  marginHorizontal: 5,
 
 },
 textinput:{
   borderColor: '#000',
   width: 313,
-  borderWidth: 1,
+  borderWidth: 2,
   borderRadius: 10,
   padding: 10,
   backgroundColor:'#FFF',
@@ -142,7 +144,7 @@ backgroundColor:'#FFF',
 borderRadius:20,
 height:50,
 width:160,
-borderWidth:1,
+borderWidth:2,
 textAlign:'center',
 margin:35,
 marginLeft:90,

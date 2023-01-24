@@ -1,11 +1,184 @@
+import * as React from 'react';
+import { StyleSheet} from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import {Successorg,Successform,Ajouter,Mescours,QuizTest,Ask,Course,P2,P1,Success,Start,Splash,FormateurSignUp,OrganismeSignUp,SignUp ,Login,Welcome,Contact,ResultTest,Quiz,SearchCategorie,Teachers,ResultQuiz,Notif,NivP} from './Components/index';
 
-import {React,useState,useEffect} from 'react';
-import {StyleSheet,Text,View} from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import{Login,SignUp,Splash,Welcome,SearchCategorie,Contact,Course, Quiz,Teachers, ResultQuiz, ResultTest, Notif,Ing1, Ing2,Ing3, Niv, NivP,P1, P2, M1, M2, M3, E1, E2, E3, Section, I1, I2, I3} from './Components/index';
-import Ionicons from '@expo/vector-icons/MaterialIcons';
+
+export default createAppContainer(
+
+  createStackNavigator(
+    {
+    
+    Splash: {
+        screen: Splash, 
+        navigationOptions: {
+          headerShown: false,        },
+    },
+
+    Successorg: {
+      screen: Successorg, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+
+    Successform: {
+      screen: Successform, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+
+    Mescours: {
+      screen: Mescours, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    Ajouter: {
+      screen: Ajouter, 
+      navigationOptions: {
+      headerShown: false,        },
+    },
+    
+    Ask: {
+      screen: Ask, 
+      navigationOptions: {
+      headerShown: false,        },
+    },
+
+    QuizTest: {
+      screen: QuizTest, 
+      navigationOptions: {
+      headerShown: false,        },
+    },
+
+    ResultTest: {
+      screen: ResultTest, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    ResultQuiz: {
+      screen: ResultQuiz, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    Course: {
+      screen: Course, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    NivP: {
+      screen: NivP, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    P1: {
+      screen: P1, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    P2: {
+      screen: P2, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    SearchCategorie: {
+      screen: SearchCategorie, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    Success: {
+      screen: Success, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
+    Start: {
+      screen: Start, 
+      navigationOptions: {
+        headerShown: false,      },
+    },
+       
+    Notif: {
+      screen: Notif, 
+      navigationOptions: {
+        headerShown: false,      },
+    },
+    
+    Login : {
+      screen: Login, 
+      navigationOptions: {
+        headerShown: false,      },
+      },
+   
+    FormateurSignUp : {
+      screen: FormateurSignUp, 
+      navigationOptions: {
+        headerShown: false,
+      },
+      },
+    SignUp : {
+        screen: SignUp, 
+        navigationOptions: {
+          headerShown: false,
+        },
+        },
+    OrganismeSignUp : {
+          screen: OrganismeSignUp, 
+          navigationOptions: {
+            headerShown: false,
+          },
+          },
+    Welcome : {
+            screen: Welcome, 
+            navigationOptions: {
+              headerShown: false,
+            },
+            },
+    Teachers : {
+          screen: Teachers, 
+          navigationOptions: {
+            headerShown: false,
+          },
+          },
+    Quiz : {
+          screen: Quiz, 
+          navigationOptions: {
+            headerShown: false,
+          },
+          },
+    Contact : {
+      screen: Contact, 
+      navigationOptions: {
+        headerShown: false,
+      },
+      },
+    Login : {
+      screen: Login, 
+      navigationOptions: {
+        headerShown: false,
+      },
+      },
+    },
+    {
+      initialRouteName:"Splash"
+    }
+    ,
+    
+    
+    )
+);
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 /*import ApprenantHome from './ProjectComponents/Apprenant_Home';
 import FormateurHome from './ProjectComponents/Formateur_home';
 import Login from './ProjectComponents/Login';
@@ -18,123 +191,6 @@ import SignUp from './ProjectComponents/SignUp';
 import OrganismeSignUp from './ProjectComponents/Oraganisme_SignUp';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';*/
 
-
-
-const Stack = createStackNavigator();
-
-function NavStack(){
-    return(
-<Stack.Navigator>
-<Stack.Screen
-name="Splach" component={Splash}   options={{headerShown: false}}
-
-></Stack.Screen>
-
-</Stack.Navigator>
-
-    );
-}
-
-const screenOptions = {
-    tabBarStyle:{
-        borderTopColor:'#000',
-        borderTopWidth:1,
-        margin:7,
-        borderRadius:25,
-        height:71,
-        paddingBottom:13,
-        borderWidth:1,
-    },
-   
-  };
-
-const Tab=createBottomTabNavigator();
-
-function BottomTab(){
-    return (
-        <Tab.Navigator {...{ screenOptions }}>
-          <Tab.Screen
-            name="Home" 
-            component={Welcome}
-            options={{ 
-              headerShown: false,
-              headerTintColor: '#fff',
-              tabBarIcon: ({}) => (
-                <Ionicons name="home" color={'#A9CCE3'} size={29}   />
-              )
-            }}
-          />
-          <Tab.Screen 
-            name="Search" 
-            component={Course}
-            options={{ 
-              headerShown: false,
-              headerTintColor: '#fff',
-              tabBarIcon: ({}) => (
-                <Ionicons name="search" color={'#A9CCE3'} size={29} />
-              )
-            }} 
-          />
-          <Tab.Screen 
-            name="Contact" 
-            component={Contact}
-            options={{ 
-                headerShown: false,
-              headerTintColor: '#fff',
-              tabBarIcon: ({}) => (
-                <Ionicons name="email" color={'#A9CCE3'} size={29} />
-              )
-            }}
-          />
-        </Tab.Navigator>
-      );
-}
-
-const App = () => {
-
-const [appIsReady,setAppIsReady]=useState(false);
-
-useEffect(()=>{
-
-async function init(){
-
-try{
-await new Promise((resolve)=>{setTimeout(resolve,5000)})
-
-
-}catch(e){
-
-    console.log(e);
-}finally{
-    setAppIsReady(true);
-
-}
-
-}
-init();
-
-});
-    return (
-<>
-<NavigationContainer>
-{
-appIsReady?
-<BottomTab/>
-:
-<NavStack/>
-}
-</NavigationContainer>
-</>
-    );
-}
-
-const styles = StyleSheet.create({
-
-});
-
-
-
-export default App
 /*const Stack = createNativeStackNavigator();
 export default function App() {
   return (

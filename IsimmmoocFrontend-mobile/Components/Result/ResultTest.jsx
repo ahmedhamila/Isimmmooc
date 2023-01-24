@@ -1,22 +1,31 @@
 import { Image,StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import Animation from 'lottie-react-native';
 
 import { TouchableOpacity} from 'react-native-gesture-handler';
 
-const ResultTest = () => {
+const ResultTest = ({navigation}) => {
   return (
     <View  style={styles.main}>
 
     <Text style={styles.txt}>Vous Avez Terminez Le Test </Text>
 
-    <Image source={require("../../assets/images/success.png")} style={styles.img} />
-
+    <Animation
+      style={{
+        height: 200,
+        width: 200,
+        padding: 0,
+        marginTop: 3,
+      }}
+      source={ require("../../assets/animation/test.json")}
+      autoPlay loop
+    />
       
     <Text style={styles.rslt} >Votre Score est :</Text>
-    <Text style={styles.rslt} >Score</Text>
+    <Text style={styles.rslt} >19/20</Text>
     
-    <TouchableOpacity style={styles.finish}><Text style={styles.textf}> Quitter </Text></TouchableOpacity>
-
+    <TouchableOpacity onPress={()=> navigation.navigate('SearchCategorie')}
+    style={styles.finish}><Text style={styles.textf}> Quitter </Text></TouchableOpacity>
     
     </View>
   )

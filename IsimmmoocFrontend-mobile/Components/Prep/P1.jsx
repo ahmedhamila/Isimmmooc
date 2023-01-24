@@ -32,23 +32,20 @@ const [courses,setCourses]=useState([
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
 <TouchableOpacity  style={styles.btnCours}
-onPress={()=> navigation.navigate('Teachers')}>
+onPress={()=> navigation.navigate("Course")}>
 <Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
 <Image  source={item.rate} style={styles.rate}/>
 </View>
 </View>
 </Card>
-
   );
-
-
 
   return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
 
 <View style={styles.head}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=> navigation.navigate("NivP")}>
       <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
     </TouchableOpacity>
 </View>
@@ -266,7 +263,7 @@ card:{
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
   backgroundColor:'#e8f6ff',
-  height:550,
+  height:610,
   width:400,
   marginTop:2,
   marginLeft:7,
@@ -292,8 +289,9 @@ cours:{
   backgroundColor:'#fff',
   height:140,
   width:380,
-  marginTop:15,
+  marginTop:12,
   marginLeft:7,
+  marginBottom:7,
   marginRight:7,
   shadowColor: "#000",
   shadowOffset: {

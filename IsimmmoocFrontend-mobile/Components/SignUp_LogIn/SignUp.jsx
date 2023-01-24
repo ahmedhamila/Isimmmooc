@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import {Text,View,FlatList,StyleSheet,ScrollView,TextInput,} from 'react-native';
 import { Card } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native';
+import { Image,TouchableOpacity } from 'react-native';
 
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
   const [firstName, setFirstName] = useState("")
   const [last_name, setLast_name] = useState("")
   const [date_of_birth, setDate_of_birth] = useState("")
@@ -37,6 +37,7 @@ const SignUp = () => {
         console.log('There has been a problem with  fetch operation: ' + error.message);
         });
         const json = await response.json()
+        navigation.navigate("Success")
         return json.Token
 
   }
@@ -44,6 +45,14 @@ const SignUp = () => {
 
   return (
     <View style={{backgroundColor:'#FFF',height:'100%'}}>
+      
+      
+      <View style={styles.head}>
+      <TouchableOpacity  onPress={()=> navigation.navigate("Start")}>
+      <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
+      </TouchableOpacity>
+      </View>
+      
       <Card style={styles.card} >
       <View style={styles.infoCours}>
       <Text style={styles.pop} >Creer un Compte </Text>
@@ -153,5 +162,17 @@ btntxt:{
   textAlign: "center",
   padding:5
 
-}
+},
+head:{
+  justifyContent:'space-between',
+  flexDirection: "row",
+  marginTop:33,
+  marginBottom:15,
+},
+notif:{
+  height:35,
+  width:53,
+  marginRight:20,
+  
+},
 })

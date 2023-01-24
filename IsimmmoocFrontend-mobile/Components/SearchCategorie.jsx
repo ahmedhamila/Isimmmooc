@@ -15,7 +15,7 @@ const SearchCategorie = ({navigation}) => {
      
      <View style={styles.si}>
      <Card style={styles.cours} >
-     <TouchableOpacity>
+     <TouchableOpacity  onPress={()=> navigation.navigate("NivP")}>
      <Image  source={require("../assets/images/prep.png")} style={styles.icon}/>
      <Text  style={styles.txt} >Prepa</Text>
      </TouchableOpacity>
@@ -123,9 +123,7 @@ txt:{
 }
 ,
 icon:{
-
 marginTop:7,
 marginLeft:51,
-
 }
 })

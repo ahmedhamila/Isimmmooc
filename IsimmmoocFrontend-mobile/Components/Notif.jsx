@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 import { TouchableOpacity } from 'react-native';
 
-
 const Notif = ({navigation}) => {
   
 
@@ -40,13 +39,12 @@ const [courses,setCourses]=useState([
   return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
-<View style={styles.head}>
-      <TouchableOpacity>
+      <View style={styles.head}>
+      <TouchableOpacity  onPress={()=> navigation.navigate("Welcome")}>
       <Image source={require("../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
       </TouchableOpacity>
       <Text style={styles.headtxt}>Notification</Text>
-     
-</View>
+      </View>
 
 
 <FlatList
@@ -115,7 +113,7 @@ height:35,
 width:53,
 marginRight:20,
 
-  },
+},
 
 img:{
     margin:2,

@@ -1,16 +1,29 @@
-import {Image ,StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Lottie from 'lottie-react-native';
+import CountDown from 'react-native-countdown-component';
 
-const Splash = () => {
+const finish=()=>{
+  
+}
+
+const Splash = ({navigation}) => {
   return (
     <View style={{height:'100%',backgroundColor:'#FFF'}}>
   
-      <Lottie  source={ require("../assets/edu.json")} autoPlay loop  styles={styles.lot} />
+      <Lottie  source={ require("../assets/animation/edu.json")} autoPlay loop  styles={styles.lot} />
       <Text style={styles.st}>    Bienvenue sur</Text>
       <Text style={styles.st1}  >                        Isimmmooc </Text>
      
         
+<CountDown
+size={0}
+until={7}
+onFinish={()=> navigation.navigate("Welcome")}
+showSeparator
+timeToShow={['S']}
+timeLabels={{s:''}}
+/>
     </View>
   )
 }
@@ -25,7 +38,6 @@ st1:{
     fontSize:35,
     textDecorationLine:"solid",
     fontWeight: "bold",
-  
 
 },
 
@@ -35,9 +47,8 @@ paddingTop:80,
 fontSize:35,
 textDecorationLine:"solid",
 fontWeight: "bold",
-
-
 },
+
 sm:{
 
     justifyContent:'center',

@@ -1,15 +1,8 @@
 import {Image ,StyleSheet, Text, View ,FlatList} from 'react-native'
 import React, { useState } from "react";
-
 import { Card } from 'react-native-paper';
-
 import { TouchableOpacity } from 'react-native';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
-
-import Teachers from './Teachers';
+import Animation from 'lottie-react-native';
 const Welcome = ({navigation}) => {
   
 
@@ -26,21 +19,37 @@ const [courses,setCourses]=useState([
   },
 ]);
 
-  const dat=({item})=>(
+const dat=({item})=>(
 
 <Card style={styles.cours} >
 <View style={styles.dbtn}>
 <Image  source={item.image} style={styles.img}/>
+
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
-<TouchableOpacity  style={styles.btnCours}
->
+<TouchableOpacity  style={styles.btnCours} onPress={()=> navigation.navigate("Start")}>
 <Text  style={styles.txtbtnCours}>Commencer</Text></TouchableOpacity>
+
+<View style={styles.dbtn}>
+<Animation
+      style={{
+        height: 45,
+        width: 35,
+        padding: 0,
+        marginTop: 7,
+        marginRight:19,
+        marginBottom:15,
+      }}
+      source={ require("../assets/animation/heart.json")}
+      autoPlay loop
+    />
+
 <Image  source={item.rate} style={styles.rate}/>
+</View>
+
 </View>
 </View>
 </Card>
-
   );
 
   return (
@@ -48,16 +57,16 @@ const [courses,setCourses]=useState([
 
 <View style={styles.head}>
       <Text style={styles.headtxt}>Isimmmooc</Text>
-      <TouchableOpacity>
+      <TouchableOpacity  onPress={()=> navigation.navigate("Notif")}>
       <Image source={require("../assets/images/notification.png")} style={styles.notif}  resizeMode="contain" />
       </TouchableOpacity>
 </View>
 <Card style={styles.body} >
-<Text style={styles.welc1}>       Une   infinite  des  cours  avec </Text>
+<Text style={styles.welc1}>     Une   infinite  des  cours  avec </Text>
 <Text style={styles.welc}>                   un  seul    click ! </Text>
 <View style={styles.centerbtn}>
 <TouchableOpacity  
-onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
+onPress={()=> navigation.navigate("Start")} style={styles.btn}  >
 <Text  style={styles.btnText}>Commencer ici</Text>
 </TouchableOpacity>
 </View>
@@ -70,12 +79,16 @@ onPress={()=> navigation.navigate("Teachers")} style={styles.btn}  >
   data={courses}
   renderItem={dat} 
 />
-
 </View>
 </Card>
-
+        <Card style={styles.bot}>
+        <View style={styles.sb}>
+        <TouchableOpacity onPress={()=> navigation.navigate("Welcome")} ><Image  source={require("../assets/images/home.png")} style={styles.img2}/></TouchableOpacity>
+        <TouchableOpacity onPress={()=> navigation.navigate("Teachers")}><Image  source={require("../assets/images/teacher.png")} style={styles.img2}/></TouchableOpacity>  
+        <TouchableOpacity onPress={()=> navigation.navigate("Contact")}><Image  source={require("../assets/images/email.png")} style={styles.img2}/></TouchableOpacity>  
+        </View>
+        </Card> 
 </Card>
-
     </View>
 
   )
@@ -104,6 +117,7 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontWeight: '400',
     margin:7,
+    marginBottom:0,
     fontStyle:'italic',
     fontWeight: "bold",
     
@@ -198,7 +212,9 @@ dbtn:{
 
   justifyContent:'space-between',
   flexDirection: "row",
-  margin:7,
+  paddingBottom:12,
+  paddingTop:4,
+  paddingLeft:5,
 }
 
 ,
@@ -243,8 +259,7 @@ txtbtnCours:{
   padding:11,
 
   
-}
-,
+},
 
 icon:{
 marginRight:15,
@@ -263,25 +278,15 @@ card:{
   borderTopRightRadius:55,
   borderTopLeftRadius:55,
   backgroundColor:'#e8f6ff',
-  height:400,
+  height:380,
   width:400,
   marginTop:2,
   marginLeft:7,
   marginRight:7,
   marginBottom:3,
   alignItems: 'center',
-  
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 0,
-    height: 12,
   },
-  shadowOpacity: 0.58,
-  shadowRadius: 16.00,
-  elevation: 24,
 
-  }
-  ,
 cours:{
   
   borderWidth:1,
@@ -293,37 +298,40 @@ cours:{
   marginTop:12,
   marginLeft:7,
   marginRight:7,
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 0,
-    height: 12,
-  },
-  shadowOpacity: 0.58,
-  shadowRadius: 16.00,
-  
-  elevation: 24,
+ 
 },
 
 Conttitle:{
-  
       justifyContent: 'center',
       alignItems: 'center',
 },
 
-socialM:{
-        borderTopWidth:1,
-        borderLeftWidth:1,
-        borderRightWidth:1,
-        borderRadius:18,
-        backgroundColor:'#fff',
-        height:58,
-        width:398,
-        marginLeft:7,
-        marginRight:7,
-        marginBottom:3,
-        flexDirection: "row",
-        justifyContent:'space-between',
-        alignItems:'center',
-        }
+bot:{
+  borderWidth:1,
+    borderRadius:18,
+    backgroundColor:'#fff',
+    height:64,
+    width:398,
+    marginTop:9,
+    marginBottom:17,
+    marginLeft:6,
+    marginRight:2,
+    flexDirection: "row",
+    justifyContent:'space-between',
+    alignItems:'center',
+    },
+
+sb:{
+      justifyContent:'space-between',
+      flexDirection: "row",
+      padding:26,
+    
+    },
+
+img2:{
+      margin:36,
+      height:43,
+      width:43, 
+}
 
 })

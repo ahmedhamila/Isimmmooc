@@ -5,11 +5,9 @@ import CountDown from 'react-native-countdown-component';
 import { TouchableOpacity} from 'react-native'
 import { SafeAreaView } from 'react-navigation';
 
-const Quiz = () => {
+const Quiz = ({navigation}) => {
 
-  const finish=()=>{
-    Alert.alert(" Le Temps De Quiz est Termine ! ")
-  }
+
 
 
   return (
@@ -38,10 +36,11 @@ const Quiz = () => {
 <SafeAreaView>
 <View>
   <Text style={styles.timer}>Temps Restant </Text>
+  
 <CountDown
 size={20}
 until={960}
-onFinish={()=>{finish()}}
+onFinish={()=> navigation.navigate("ResultQuiz")}
 showSeparator
 timeToShow={['M','S']}
 timeLabels={{m:'Minute',s:'Secondes'}}
@@ -55,8 +54,7 @@ digitStyle={{
 </SafeAreaView>
 
 <View style={styles.dbtn}>
-<TouchableOpacity style={styles.finish}><Text style={styles.textf}> Precedent </Text></TouchableOpacity>
-<TouchableOpacity style={styles.finish}><Text style={styles.textf}> Suivant </Text></TouchableOpacity>
+<TouchableOpacity onPress={()=> navigation.navigate("ResultQuiz")}  style={styles.finish}><Text style={styles.textf}> Suivant </Text></TouchableOpacity>
 </View>
        
 
@@ -117,15 +115,15 @@ timer:{
   color:'#73B2B3',
   textAlign: 'center',
 
-}
-,
+},
+
 quest:{
 fontSize:20,
 textDecorationLine:"solid",
 fontWeight: "bold",
 
-}
-,
+},
+
 finish:{
   borderWidth:1,
   width:145,
@@ -134,6 +132,7 @@ finish:{
   borderRadius:70,
   justifyContent: "center",
   marginHorizontal:9,
+  marginLeft:135,
   
 },
 textf:{

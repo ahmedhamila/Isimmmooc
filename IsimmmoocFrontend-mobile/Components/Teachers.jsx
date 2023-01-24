@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native';
 
-const Teachers = () => {
+const Teachers = ({navigation}) => {
 
     const [Teachers,setTeachers]=useState([
 
@@ -70,17 +70,18 @@ const dat=({item})=>(
   return (
 
     <View style={styles.mainView}>
-      <Text  style={styles.txt} >  Nos Enseignants </Text>
+          <TouchableOpacity  onPress={()=> navigation.navigate("Welcome")}>
+          <Image source={require("../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
+          </TouchableOpacity>
 
+      <Text  style={styles.txt} > Nos Enseignants </Text>
       <FlatList
       data={Teachers}
       renderItem={dat} 
       ListEmptyComponent={<Text>Liste encore Vide ! </Text>}
-    
       />
      
     </View>
-
   
   )
 }
@@ -88,7 +89,8 @@ const dat=({item})=>(
 export default Teachers
 
 const styles = StyleSheet.create({
-  infoCours:{
+
+infoCours:{
     justifyContent:'space-between',
     flexDirection: 'column',
     justifyContent:'center',
@@ -106,12 +108,12 @@ img:{
 mainView:{
 height:'100 %',
 alignItems:'center',
-backgroundColor:'#ebf4fa'
+backgroundColor:'#e8f6ff'
 
 },
 txt:{
     fontSize:26,
-    marginTop:40,
+    marginTop:1,
     marginLeft:15,
     fontWeight:'bold',   
     margin:12,
@@ -169,5 +171,13 @@ Ctitle2:{
   marginRight:80,
   marginBottom:38
 
-}
+},
+notif:{
+  height:35,
+  width:53,
+  marginRight:340,
+  marginTop:40,
+  
+},
+ 
 })

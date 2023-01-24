@@ -2,13 +2,11 @@ import SignUp from "./SignUp_LogIn/SignUp";
 import Login from "./SignUp_LogIn/Login";
 import FormateurSignUp from "./SignUp_LogIn/Formateur_SignUp";
 import OrganismeSignUp from "./SignUp_LogIn/Organisme_SignUP";
-import File from "./SignUp_LogIn/UplodFile";
-import FormInput from "./SignUp_LogIn/field";
 import Contact from "./Contact";
 import Course from "./Course";
 import Splash from "./Splash";
 import Welcome from "./Welcome";
-import Quiz from "./Quiz";
+import Quiz from "./Result/Quiz";
 import SearchCategorie from "./SearchCategorie";
 import ResultQuiz from "./Result/ResultQuiz";
 import Teachers from "./Teachers";
@@ -32,15 +30,20 @@ import Section from "./Lic/Section";
 import I1 from "./Lic/Inf/I1";
 import I2 from "./Lic/Inf/I2";
 import I3 from "./Lic/Inf/I3";
-
+import Start from "./SignUp_LogIn/Start";
+import Success from "./SignUp_LogIn/Success";
+import Ask from "./Result/Ask";
+import QuizTest from "./Result/QuizTest";
+import Ajouter from "./Ensg/Ajouter";
+import Mescours from "./Ensg/Mescours";
+import Successform from "./SignUp_LogIn/Successform";
+import Successorg from "./SignUp_LogIn/Successorg";
 
 export {
     SignUp,
     OrganismeSignUp,
     FormateurSignUp,
     Login,
-    File,
-    FormInput,
     ResultTest,
     ResultQuiz,
     Teachers,
@@ -69,5 +72,12 @@ export {
     I1,
     I2,
     I3,
-
+    Start,
+    Success,
+    Ask,
+    QuizTest,
+    Mescours,
+    Ajouter,
+    Successform,
+    Successorg,
 }

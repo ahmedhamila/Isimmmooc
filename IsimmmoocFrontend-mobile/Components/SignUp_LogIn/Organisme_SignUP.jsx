@@ -2,11 +2,10 @@ import * as React from 'react';
 import { useContext, useState } from 'react';
 import {Text,View,FlatList,StyleSheet,ScrollView,TextInput,} from 'react-native';
 import { Card } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native';
+import { Image,TouchableOpacity } from 'react-native';
 
 
-const OrganismeSignUp = () => {
-
+const OrganismeSignUp = ({navigation}) => {
 
   const [name, setName] = useState("")
   const [web_site, setWeb_site] = useState("")
@@ -14,7 +13,6 @@ const OrganismeSignUp = () => {
   const [mail, setMail] = useState("")
   const [phone_number, setPhone_number] = useState("")
   const [password, setPassword] = useState("")
-
 
   async function creation() {
 
@@ -39,6 +37,7 @@ const OrganismeSignUp = () => {
         console.log('There has been a problem with fetch operation: ' + error.message);
         });
         const json = await response.json()
+        navigation.navigate("Successorg")
         return json.Token
 
   }
@@ -46,6 +45,13 @@ const OrganismeSignUp = () => {
 
   return (
     <View style={{backgroundColor:'#FFF',height:'100%'}}>
+ 
+      <View style={styles.head}>
+      <TouchableOpacity  onPress={()=> navigation.navigate("Start")}>
+      <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
+      </TouchableOpacity>
+      </View>
+
       <Card style={styles.card} >
       <View style={styles.infoCours}>
       <Text style={styles.pop} >Creer un Compte </Text>
@@ -91,9 +97,9 @@ const styles = StyleSheet.create({
 card:{
     borderRadius:45,
     backgroundColor:'#e8f6ff',
-    height:575,
+    height:579,
     width:398,
-    marginTop:22,
+    marginTop:1,
     marginLeft:7,
     marginRight:7,
     borderWidth: 1,
@@ -154,5 +160,17 @@ btntxt:{
   textAlign: "center",
   padding:5
 
-}
+},
+head:{
+  justifyContent:'space-between',
+  flexDirection: "row",
+  marginTop:33,
+  marginBottom:15,
+},
+notif:{
+  height:35,
+  width:53,
+  marginRight:20,
+  
+},
 })

@@ -7,59 +7,55 @@ import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { Card } from 'react-native-paper';
 
-const NivP= ({navigation}) => {
+const Ask= ({navigation}) => {
   return (
     <View style={{alignItems:'center', backgroundColor:'#FFF',height:'100%'}}>
-    <View style={styles.head}>
-    <TouchableOpacity>
-    <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
-    </TouchableOpacity>
+ 
+    <Card style={styles.body} >
+    <View style={styles.bd}>
+    <Card style={styles.cours} >
+    <TouchableOpacity onPress={()=> navigation.navigate("QuizTest")} >
+    <View style={styles.dbtn}>
+    <View style={styles.infoCours}>
+    <Text style={styles.Ctitle} > Passer Test Final</Text>
     </View>
-    <View >
-  
-
-     <Text  style={styles.txt1} >  Choisissez Votre Niveau </Text>
-     
+    </View>
+    </TouchableOpacity>
+    </Card>
+    
     <Card style={styles.cours} >
     <TouchableOpacity onPress={()=> navigation.navigate("P1")} >
     <View style={styles.dbtn}>
-    <Image  source={require("../../assets/images/1a.png")} style={styles.img}/>
     <View style={styles.infoCours}>
-    <Text style={styles.Ctitle} > 1 ere annee</Text>
+    <Text style={styles.Ctitle} > retour HomePage</Text>
     </View>
     </View>
     </TouchableOpacity>
     </Card>
-
-    <Card style={styles.cours} >
-    <TouchableOpacity onPress={()=> navigation.navigate("P2")} >
-    <View style={styles.dbtn}>
-    <Image  source={require("../../assets/images/2a.png")} style={styles.img}/>
-    <View style={styles.infoCours}>
-    <Text style={styles.Ctitle} > 2 eme annee</Text>
-    </View>
-    </View>
-    </TouchableOpacity>
-    </Card>
-
      </View>
+
+     </Card>
      </View>
    
 
   )
 }
 
-export default NivP
+export default Ask
 
 const styles = StyleSheet.create({
 
-head:{
-        justifyContent:'space-between',
-        flexDirection: "row",
-        marginTop:25,
-        marginBottom:10,
-      },
-    
+body:{
+        borderWidth:1,
+        borderColor:'#000',
+        borderRadius:55,
+        backgroundColor:'#FFF',
+        height:630,
+        width:400,
+        padding:7,
+        marginTop:42,
+        
+},
 cours:{
   
         borderWidth:1,
@@ -68,16 +64,9 @@ cours:{
         height:100,
         width:340,
         marginTop:15,
-        marginLeft:7,
+        marginLeft:22,
         marginRight:7,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 12,
-        },  shadowOpacity: 0.58,
-        shadowRadius: 16.00,
-        
-        elevation: 24,
+
 },
 dbtn:{
 
@@ -102,15 +91,6 @@ btn:{
   
   }
 ,
-txt1:{
-
-  fontSize:26,
-  marginBottom:40,
-  fontWeight:'bold',   
-  margin:12,
-  fontStyle:'italic',
-  textAlign: "center",
-},
 
 infoCours:{
     justifyContent:'space-between',
@@ -121,19 +101,20 @@ infoCours:{
     backgroundColor:Colors.white,
     height:'100%'
   },
-  notif:{
-    height:39,
-    marginRight:337,
-    
-  },
+
   Ctitle:{
     margin:2,
     fontSize:23,
     textDecorationLine:"solid",
     fontWeight: "bold",
     textAlign: 'center',
-    marginRight:50,
+    marginLeft:50,
+    marginTop:11,
   
   },
+  bd:{
+    marginTop:160,
+
+  }
 
 })
