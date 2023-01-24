@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import {Successorg,Successform,Ajouter,Mescours,QuizTest,Ask,Course,P2,P1,Success,Start,Splash,FormateurSignUp,OrganismeSignUp,SignUp ,Login,Welcome,Contact,ResultTest,Quiz,SearchCategorie,Teachers,ResultQuiz,Notif,NivP} from './Components/index';
+import {Choose,Successorg,Successform,Ajouter,Mescours,QuizTest,Ask,Course,P2,P1,Success,Start,Splash,FormateurSignUp,OrganismeSignUp,SignUp ,Login,Welcome,Contact,ResultTest,Quiz,SearchCategorie,Teachers,ResultQuiz,Notif,NivP} from './Components/index';
 
 
 export default createAppContainer(
@@ -15,7 +15,11 @@ export default createAppContainer(
         navigationOptions: {
           headerShown: false,        },
     },
-
+    Choose: {
+      screen: Choose, 
+      navigationOptions: {
+        headerShown: false,        },
+    },
     Successorg: {
       screen: Successorg, 
       navigationOptions: {

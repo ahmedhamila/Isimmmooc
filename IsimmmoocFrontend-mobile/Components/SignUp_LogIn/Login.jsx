@@ -47,8 +47,8 @@ const Login = ({navigation}) => {
               });
 
             if(responselog){
+              console.log('Hi')
               navigation.navigate("Choose")
-
             }
 
         }else{

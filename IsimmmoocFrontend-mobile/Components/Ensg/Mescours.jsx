@@ -25,7 +25,7 @@ const dat=({item})=>(
 <View style={styles.infoCours}>
 <Text style={styles.Ctitle} > {item.name}</Text>
 <TouchableOpacity  style={styles.btnCours}
-onPress={()=> navigation.navigate('Welcome')}>
+onPress={()=> navigation.navigate('Mescours')}>
 <Text  style={styles.txtbtnCours}>Modifier</Text></TouchableOpacity>
 </View>
 </View>
@@ -38,11 +38,6 @@ return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
 
-<View style={styles.head}>
-    <TouchableOpacity onPress={()=> navigation.navigate('Welcome')} >
-      <Image source={require("../../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />
-    </TouchableOpacity>
-</View>
 <View >
 
 </View>

@@ -62,13 +62,10 @@ export default Notif
 const styles = StyleSheet.create({
 
   date:{
-
     fontSize:16,
     fontStyle:'italic',
-    
   },
   qui:{
-
     fontSize:18,
     marginRight:33,
   },
@@ -79,9 +76,8 @@ const styles = StyleSheet.create({
     textDecorationLine:"solid",
     fontStyle:'italic',
     fontWeight: "bold",
-    
-    }
-    ,
+    },
+
   head:{
     justifyContent:'space-between',
     flexDirection: "row",
@@ -131,7 +127,6 @@ dbtn:{
 },
 
 sep:{
-
   borderWidth:1,
   backgroundColor:'#000',
   width:400,
