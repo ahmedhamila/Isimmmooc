@@ -75,7 +75,7 @@ function PopularCourses() {
    * --------------------------------------------------------------------
    */
   const CoursDetailsClickHandle = (id)=>{
-    navigate(`/CoursDetails/${id}`)
+    navigate(`/SignIn`)
   }
   const SignInClickHandle = ()=>{
     navigate(`/SignIn`)

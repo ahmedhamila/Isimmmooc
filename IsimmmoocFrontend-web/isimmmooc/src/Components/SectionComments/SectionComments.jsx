@@ -94,6 +94,7 @@ function SectionComments(){
       <Container maxWidth="false" sx={{marginTop:'2%',
         backgroundColor: '#f8f8ff',
         width:"100%",}} 
+        id='Students'
       >
         <Box sx={{ bgcolor: '#f8f8ff',
             height: '100%',

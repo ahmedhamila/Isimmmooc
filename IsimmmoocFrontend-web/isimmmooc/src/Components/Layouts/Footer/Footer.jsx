@@ -117,7 +117,7 @@ const Footer = (props) => {
                 item
                 className='FooterLink'
                 component={Link}
-                to="/custom-software"
+                to="/"
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(1);
@@ -129,7 +129,7 @@ const Footer = (props) => {
                 item
                 className='FooterLink'
                 component={Link}
-                to="/mobile-apps"
+                to="/"
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(2);
@@ -141,7 +141,7 @@ const Footer = (props) => {
                 item
                 className='FooterLink'
                 component={Link}
-                to="/web-sites"
+                to="/SignIn"
                 onClick={() => {
                   setValue(1);
                   setSelectedIndex(3);
@@ -163,8 +163,8 @@ const Footer = (props) => {
                 <Grid
                   item
                   className='FooterLink'
-                  component={Link}
-                  to="/revolution"
+                  component={'a'}
+                  href="#Teachers"
                   onClick={() => setValue(2)}
                 >
                   Teachers
@@ -172,20 +172,11 @@ const Footer = (props) => {
                 <Grid
                   item
                   className='FooterLink'
-                  component={Link}
-                  to="/revolution"
+                  component={'a'}
+                  href="#Students"
                   onClick={() => setValue(2)}
                 >
                   Students
-                </Grid>
-                <Grid
-                  item
-                  className='FooterLink'
-                  component={Link}
-                  to="/revolution"
-                  onClick={() => setValue(2)}
-                >
-                  Organizmes
                 </Grid>
               </Grid>
             </Grid>
@@ -234,9 +225,9 @@ const Footer = (props) => {
                     flexWrap: 'wrap',
                 }}>
                   <LanguageIcon className='FooterIcon'/>
-                  <Link to="http://www.isimm.rnu.tn/" style={{
+                  <a href="http://www.isimm.rnu.tn/" target="_blank" style={{
                   color: '#fff',              
-                  }}>http://www.isimm.rnu.tn/</Link>
+                  }}>http://www.isimm.rnu.tn/</a>
                 </div>          
               </Grid>
             </Grid> 
@@ -258,8 +249,7 @@ const Footer = (props) => {
                 item
                 component={"a"}
                 target="_blank"
-                rel="noreferrer noopener"
-                href="https://satoruakiyama.com"
+                href="http://www.isimm.rnu.tn/"
               >
                 <HomeIcon className='FooterIcon' />
               </Grid>
@@ -267,8 +257,7 @@ const Footer = (props) => {
                 item
                 component={"a"}
                 target="_blank"
-                rel="noreferrer noopener"
-                href="https://www.facebook.com/satoruakiyama1998"
+                href="https://www.facebook.com/profile.php?id=100063489403806"
               >
                 <FacebookIcon  className='FooterIcon' />
               </Grid>
@@ -277,7 +266,7 @@ const Footer = (props) => {
                 component={"a"}
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://www.instagram.com/developer_satoru_akiyama/"
+                href="https://www.facebook.com/profile.php?id=100063489403806"
               >
                 <InstagramIcon className='FooterIcon' />
               </Grid>
@@ -286,7 +275,7 @@ const Footer = (props) => {
                 component={"a"}
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://github.com/SatoruAkiyama/material-ui-header-and-footer/"
+                href="https://www.facebook.com/profile.php?id=100063489403806"
               >
                 <GitHubIcon className='FooterIcon' />
               </Grid>

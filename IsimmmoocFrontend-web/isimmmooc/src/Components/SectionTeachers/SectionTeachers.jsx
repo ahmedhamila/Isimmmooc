@@ -103,7 +103,7 @@ function SectionTeachers() {
    */
   return (
 
-  <Container maxWidth="false"
+  <Container maxWidth="false" id='Teachers'
   >
     <Box sx={{
         padding: "20px 0",
@@ -121,10 +121,11 @@ function SectionTeachers() {
         <p style={{color:'#ff7468',fontFamily:'Arial'}}>Meet with our teachers</p>
         <h1 >Our teachers</h1>
         <p>A best and cheapest way of getting know learning to make a better tomorrow.</p>
-      </motion.div>   
+      </motion.div> 
+      <Grid sx={{ flexGrow: 1 }} container spacing={2} gap='15px'>  
       {teachers.map((teacher)=>{
           return(
-      <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+      
         <Grid item xs={12}>
           <Grid container justifyContent="center" spacing={12}
           component={motion.div}
@@ -184,8 +185,9 @@ function SectionTeachers() {
               })}
           </Grid>
         </Grid>
-      </Grid>
+      
        ) })}
+       </Grid>
     </Box>
   </Container>
 
