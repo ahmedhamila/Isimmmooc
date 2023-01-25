@@ -24,7 +24,7 @@ const ResultTest = ({navigation}) => {
     <Text style={styles.rslt} >Votre Score est :</Text>
     <Text style={styles.rslt} >19/20</Text>
     
-    <TouchableOpacity onPress={()=> navigation.navigate('SearchCategorie')}
+    <TouchableOpacity onPress={()=> navigation.navigate('Nvo')}
     style={styles.finish}><Text style={styles.textf}> Quitter </Text></TouchableOpacity>
     
     </View>

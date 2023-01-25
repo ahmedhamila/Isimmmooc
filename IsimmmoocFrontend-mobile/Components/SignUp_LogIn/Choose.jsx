@@ -24,7 +24,7 @@ const Choose= ({navigation}) => {
     </Card>
     
     <Card style={styles.cours} >
-    <TouchableOpacity onPress={()=> navigation.navigate("MesCours")} >
+    <TouchableOpacity onPress={()=> navigation.navigate("Mescours")} >
     <View style={styles.dbtn}>
     <View style={styles.infoCours}>
     <Text style={styles.Ctitle} > Un Formateur</Text>
@@ -50,10 +50,10 @@ body:{
         borderColor:'#000',
         borderRadius:55,
         backgroundColor:'#FFF',
-        height:630,
-        width:400,
+        height:600,
+        width:390,
         padding:7,
-        marginTop:42,
+        marginTop:62,
         
 },
 cours:{
@@ -61,8 +61,8 @@ cours:{
         borderWidth:1,
         borderRadius:13,
         backgroundColor:'#fff',
-        height:100,
-        width:340,
+        height:90,
+        width:330,
         marginTop:15,
         marginLeft:22,
         marginRight:7,
@@ -108,8 +108,8 @@ infoCours:{
     textDecorationLine:"solid",
     fontWeight: "bold",
     textAlign: 'center',
-    marginLeft:50,
-    marginTop:11,
+    marginLeft:73,
+    marginTop:12,
   
   },
   bd:{

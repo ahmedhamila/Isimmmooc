@@ -18,16 +18,20 @@ const Start = ({navigation}) => {
     <Text style={styles.pop} >Creer un compte </Text>
 
     <View style={styles.si}>
-    <Card style={styles.cours} >
-    <TouchableOpacity>
-    <Text  style={styles.txt} onPress={()=> navigation.navigate("FormateurSignUp")} >Formateur</Text>
-    </TouchableOpacity>
-    </Card>
+
     <Card style={styles.cours} >
     <TouchableOpacity onPress={()=> navigation.navigate("SignUp")}>
     <Text  style={styles.txt} >Apprenant</Text>
     </TouchableOpacity>
     </Card>
+
+    <Card style={styles.cours} >
+    <TouchableOpacity>
+    <Text  style={styles.txt} onPress={()=> navigation.navigate("FormateurSignUp")} >Formateur</Text>
+    </TouchableOpacity>
+    </Card>
+    
+    
     </View>
 
     <View style={styles.si1} >
@@ -38,7 +42,7 @@ const Start = ({navigation}) => {
     </Card>
     </View>
     
-    <Text style={styles.pop1}>Vous avez deja un compte  </Text>
+    <Text style={styles.pop1}>    Vous avez deja un compte  </Text>
     <TouchableOpacity style={styles.conct} >
     <Text  style={styles.btntxt} onPress={()=> navigation.navigate("Login")}>Se Connecter</Text>
     </TouchableOpacity>
@@ -131,8 +135,8 @@ btntxt:{
     margin:12,
     fontStyle:'italic',
     textAlign: "center",
-
 },
+
 si:{
   justifyContent:'space-between',
   flexDirection: "row",

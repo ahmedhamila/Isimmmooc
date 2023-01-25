@@ -24,7 +24,7 @@ const Successform = ({navigation}) => {
 <CountDown
 size={0}
 until={7}
-onFinish={()=> navigation.navigate("Mescours")}
+onFinish={()=> navigation.navigate("Start")}
 showSeparator
 timeToShow={['S']}
 timeLabels={{s:''}}

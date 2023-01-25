@@ -8,7 +8,7 @@ const Course = ({navigation}) => {
   return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
    <Text style={styles.Ctitle} > Cours 1 : Chapitre 3 </Text>
-      {/*
+      
       <Video
        style={styles.video}
         source={require( '../assets/video/video.mp4')}
@@ -16,7 +16,7 @@ const Course = ({navigation}) => {
         isLooping
         onPlaybackStatusUpdate={status => setStatus(() => status)}
       />
-      */}
+      
       
       <View style={styles.dbtn}>
       <TouchableOpacity onPress={()=> navigation.navigate("P1")}><Image  source={require("../assets/images/previous.png")} style={styles.icon}/>

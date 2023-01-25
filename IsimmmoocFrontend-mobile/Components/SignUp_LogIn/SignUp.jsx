@@ -102,7 +102,7 @@ card:{
     backgroundColor:'#e8f6ff',
     height:575,
     width:398,
-    marginTop:22,
+    marginTop:7,
     marginLeft:7,
     marginRight:7,
     borderWidth: 1,

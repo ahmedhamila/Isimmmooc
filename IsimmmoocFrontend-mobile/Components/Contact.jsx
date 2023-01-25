@@ -11,11 +11,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const Contact = ({navigation}) => {
    
     return (
-        <View
-        style={{
-            flex:1,
-            backgroundColor:'#A9CCE3',
-        }}>
+        <View style={{flex:1,backgroundColor:'#A9CCE3',}}>
           
           <TouchableOpacity  onPress={()=> navigation.navigate("Welcome")}>
           <Image source={require("../assets/images/back.png")} style={styles.notif}  resizeMode="contain" />

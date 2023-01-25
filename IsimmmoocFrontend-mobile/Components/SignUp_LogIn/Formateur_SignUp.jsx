@@ -14,14 +14,14 @@ const FormateurSignUp = ({navigation}) => {
   const [password, setPassword] = useState("")
   const [cv, setCv] = useState([]);
 
-  async function _pickDocument ()  {
 
+  async function _pickDocument ()  {
     const response = await DocumentPicker.getDocumentAsync({});
     setCv(response);
     }
 
   async function creation() {
-
+  
     let body = JSON.stringify({
       'first_name': firstName,
       'last_name': last_name,

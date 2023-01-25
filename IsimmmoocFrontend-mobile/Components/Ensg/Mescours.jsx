@@ -30,17 +30,13 @@ onPress={()=> navigation.navigate('Mescours')}>
 </View>
 </View>
 </Card>
-
-  );
+);
 
 
 return (
     <View  style={{height:'100%',backgroundColor:'#FFF'}}>
 
 
-<View >
-
-</View>
 
 <Card style={styles.card} >
 <View >
@@ -51,14 +47,14 @@ return (
   data={courses}
   renderItem={dat} 
 />
-
 </View>
 </Card>
 
-<TouchableOpacity  style={styles.btnajout}
+<TouchableOpacity  style={styles.body}
 onPress={()=> navigation.navigate('Ajouter')}>
-<Text  style={styles.txtbtnCours}>Ajouter un cours</Text></TouchableOpacity>
-    </View>
+<Text  style={styles.txtbtnajout}>Ajouter un cours</Text></TouchableOpacity>
+
+</View>
 
   )
 }
@@ -67,17 +63,20 @@ export default Mescours
 
 const styles = StyleSheet.create({
 
-notif:{
-  marginTop:19,
-    
+
+body:{
+  borderWidth:1.5,
+  borderColor:'#000',
+  borderRadius:11,
+  backgroundColor:'#e8f6ff',
+  height:70,
+  width:390,
+  padding:3,
+  margin:10,
+  marginTop:5, 
+  padding:7,   
 },
 
-head:{
-    justifyContent:'space-between',
-    flexDirection: "row",
-    marginTop:25,
-    marginBottom:10,
-},
   
 infoCours:{
     justifyContent:'space-between',
@@ -116,14 +115,6 @@ Ctitle:{
 
 },
 
-
-notif:{
-height:35,
-width:53,
-marginRight:20,
-
-},
-
 img:{
     margin:2,
     height:125,
@@ -158,7 +149,17 @@ btnCours:{
  
 },
 
+txtbtnajout:{
 
+  fontSize:20,
+  color:'black',
+  textDecorationLine:"solid",
+  fontWeight: "bold",
+  alignItems:'center',
+  textAlign: "center",
+  padding:11,
+  
+},
 txtbtnCours:{
 
   fontSize:17,
@@ -169,20 +170,19 @@ txtbtnCours:{
   textAlign: "center",
   padding:11,
   
-}
-,
+},
 
 card:{
   borderWidth:1.5,
-  borderTopRightRadius:47,
-  borderTopLeftRadius:47,
+  borderTopLeftRadius:25,
+  borderTopRightRadius:25,
   backgroundColor:'#e8f6ff',
-  height:540,
-  width:400,
-  marginTop:2,
-  marginLeft:7,
+  height:580,
+  width:395,
+  marginTop:35,
   marginRight:7,
-  marginBottom:20,
+  marginBottom:7,
+  marginLeft:7,
   alignItems: 'center',
 
 },

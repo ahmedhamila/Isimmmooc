@@ -120,7 +120,6 @@ function SignUpSecondStepFormateur(props) {
     
   };
 
-
   const goNext = async() => {
     
     if ( !validateFirstName(firstName))

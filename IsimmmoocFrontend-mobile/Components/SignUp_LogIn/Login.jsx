@@ -25,14 +25,12 @@ const Login = ({navigation}) => {
       .catch(function(error) {
         console.log('There has been a problem with  fetch operation: ' + error.message);
         });
-
         const json = await response.json()
 
         if(json.token){
 
           let bd = JSON.stringify({
             'Token': json.token,
-
           })
           const responselog =  fetch('http://192.168.56.1:8000/users/User/getUser/',{
             method:'POST',
@@ -47,7 +45,6 @@ const Login = ({navigation}) => {
               });
 
             if(responselog){
-              console.log('Hi')
               navigation.navigate("Choose")
             }
 

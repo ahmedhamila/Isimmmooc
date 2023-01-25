@@ -39,7 +39,7 @@ import Mescours from "./Ensg/Mescours";
 import Successform from "./SignUp_LogIn/Successform";
 import Successorg from "./SignUp_LogIn/Successorg";
 import Choose from "./SignUp_LogIn/Choose";
-
+import Nvo from "./Nvo";
 
 export {
     SignUp,
@@ -83,4 +83,5 @@ export {
     Successform,
     Successorg,
     Choose,
+    Nvo,
 }
