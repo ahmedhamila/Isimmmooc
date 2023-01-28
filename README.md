@@ -1,4 +1,11 @@
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
+##Conventions
+
+You can refer to the  demo and also to the specification of this application which are under the main tree.
+[Demo](Isimmmooc Project.mp4) |
+[Specification](isimmmooc.pdf) |
+
+---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
 
 ##Conventions
 
@@ -92,3 +99,4 @@ II) Instalation & Configuration
 		nom de l'utilsateur : admin
 		nom de la base de données : isimmmooc_db
 		mot de passe : ""
+
