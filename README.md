@@ -1,11 +1,13 @@
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
-##Conventions
+##General Information
 
 You can refer to the  demo and also to the specification of this application which are under the main tree.
+
 [Demo](Isimmmooc Project.mp4) |
 [Specification](isimmmooc.pdf) |
 
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
+##For those who intend to run this app
 
 ##Conventions
 
