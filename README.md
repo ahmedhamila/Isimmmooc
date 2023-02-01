@@ -1,5 +1,5 @@
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
-##General Information
+## General Information
 
 You can refer to the  demo and also to the specification of this application which are under the main tree.
 
@@ -7,9 +7,9 @@ You can refer to the  demo and also to the specification of this application whi
 [Specification](isimmmooc.pdf) |
 
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
-##For those who intend to run this app
+## For those who intend to run this app
 
-##Conventions
+## Conventions
 
 I) Déclaration des Classes :
 	language utilisée : (ENGLISH)
@@ -63,7 +63,7 @@ VI) Dependences et modules :
 	
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
 
-##Front-End
+## Front-End
 
 I) Mot clé :
 	1- Languages : JavaScript
@@ -87,7 +87,7 @@ VI) Dependences et modules :
     
 	
 ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- ---------------------------------- 
-##DataBase
+## DataBase
 I) Mot clé :
 	1- Languages : SQL
 	2- SGBD: MySQL
