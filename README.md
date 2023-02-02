@@ -59,14 +59,19 @@ You can refer to the  demo and also to the specification of this application whi
 ## Conventions
 
 I) Déclaration des Classes :
+
 	language utilisée : (ENGLISH)
+	
 	1-nom de la classe : 
 		. commence avec une lettre MAJ et si elle se compose de plusieurs mots en met la premiere lettre de chaque mot en MAJ sans separateur .
 		exemple : Class MyClass , Class ModelNameAdminView
 	2-attributs de Classes:
 		.les attributs sont ecrit en miniscule en separant les mots avec "_" (le nom de l'attribut doit etre significatif par rapport à son role)
+		
 II) Déclaration des Methodes :
+
 	1-nom de la methode : 
+	
 		. commence avec une lettre min et si elle se compose de plusieurs mots en met la premiere lettre de chaque mot en MAJ sans separateur .
 		exemple : def myMethod , def methodToDoSomething
 
